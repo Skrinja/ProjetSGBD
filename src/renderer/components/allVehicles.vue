@@ -2,7 +2,7 @@
     <ul>
         <li v-for="vehicle in vehicles">{{ vehicle }}</li>
     </ul>
-
+    
 </template>
 
 <script setup lang="ts">

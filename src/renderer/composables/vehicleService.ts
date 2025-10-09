@@ -7,8 +7,15 @@ export default function useVehicleService() {
         vehicles.value = await (window as any).electronService.vehicleRepo.getAllVehicles();
     }
 
+    const addVehicle = async (numPlate: string, numVehicle: string) => {
+        await (window as any).electronService.vehicleRepo.addVehicle(numPlate, numVehicle);
+        await getAllVehicles();
+    }
+
     return {
         vehicles,
-        getAllVehicles
+        getAllVehicles,
+        addVehicle
     }
 }
+
