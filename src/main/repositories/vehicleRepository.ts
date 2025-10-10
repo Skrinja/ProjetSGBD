@@ -16,8 +16,7 @@ export default class VehicleRepository {
     return this.vehicles;
   }
 
-  addVehicle(numPlate:string,numVehicle:number){
-    let newVehicle = {numPlate, numVehicle};
-    this.vehicles.push(newVehicle);
+  addVehicle(vehicle: vehicle){
+    this.vehicles.push(vehicle);
   }
 }

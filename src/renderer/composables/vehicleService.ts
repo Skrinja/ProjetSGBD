@@ -1,3 +1,4 @@
+import vehicle from "src/shared/vehicle";
 import { ref } from "vue";
 
 const vehicles = ref([]);
@@ -7,8 +8,8 @@ export default function useVehicleService() {
         vehicles.value = await (window as any).electronService.vehicleRepo.getAllVehicles();
     }
 
-    const addVehicle = async (numPlate: string, numVehicle: number) => {
-        await (window as any).electronService.vehicleRepo.addVehicle(numPlate, numVehicle);
+    const addVehicle = async (vehicle: vehicle) => {
+        await (window as any).electronService.vehicleRepo.addVehicle(vehicle);
         await getAllVehicles();
     }
 

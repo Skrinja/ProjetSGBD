@@ -1,3 +1,4 @@
+import vehicle from "src/shared/vehicle";
 import VehicleRepository from "./vehicleRepository";
 import { ipcMain } from "electron/main";
 
@@ -9,7 +10,7 @@ export function registerVehicleHandlers() {
         return vehicleRepository.getAllVehicles();
     })
 
-    ipcMain.handle('vehicleRepo:addVehicle', (event, numPlate: string, numVehicle: number) => {
-        return vehicleRepository.addVehicle(numPlate, numVehicle);
+    ipcMain.handle('vehicleRepo:addVehicle', (event, vehicle: vehicle) => {
+        return vehicleRepository.addVehicle(vehicle);
     })
 }

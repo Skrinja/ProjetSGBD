@@ -25,6 +25,7 @@
 import { ref } from 'vue';
 import useVehicleService from '../composables/vehicleService';
 
+
 const numPlate = ref();
 const numVehicle = ref();
 const successMessage = ref('');
@@ -46,7 +47,7 @@ const handleSubmit = async () => {
     }
 
     try {
-        await addVehicle(numPlate.value, numVehicle.value);
+        await addVehicle({ numPlate: numPlate.value, numVehicle: numVehicle.value });
         numPlate.value = '';
         numVehicle.value = null;
         successMessage.value = message;
