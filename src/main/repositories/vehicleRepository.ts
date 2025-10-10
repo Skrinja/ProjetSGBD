@@ -1,7 +1,7 @@
-import vehicle from "src/shared/vehicle";
+import Vehicle from "src/shared/vehicle";
 
 export default class VehicleRepository {
-  vehicles: vehicle[] = [
+  vehicles: Vehicle[] = [
     {
       numPlate: "1AAA222",
       numVehicle: 1,
@@ -12,11 +12,11 @@ export default class VehicleRepository {
     },
   ];
 
-  getAllVehicles(): vehicle[]{
+  getAllVehicles(): Vehicle[]{
     return this.vehicles;
   }
 
-  addVehicle(vehicle: vehicle){
+  addVehicle(vehicle: Vehicle){
     this.vehicles.push(vehicle);
   }
 }

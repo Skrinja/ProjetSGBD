@@ -1,4 +1,4 @@
-export default interface vehicle {
+export default interface Vehicle {
     numPlate: string;
     numVehicle: number;
 }
