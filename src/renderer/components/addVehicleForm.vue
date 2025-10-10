@@ -13,8 +13,11 @@
         
         <button type="submit">Sauvegarder</button>
     </form>
-    <p v-if="successMessage" style="color: green; font-weight: bold; margin-top: 15px;">
+    <p v-if="successMessage">
         {{ successMessage }}
+    </p>
+    <p v-if="errorMessage">
+        {{ errorMessage }}
     </p>
 </template>
 
@@ -25,18 +28,20 @@ import useVehicleService from '../composables/vehicleService';
 const numPlate = ref();
 const numVehicle = ref();
 const successMessage = ref('');
+const errorMessage = ref('');
 
 const { addVehicle } = useVehicleService();
 
 const handleSubmit = async () => {
-    successMessage.value = ''; 
+    let message = 'Véhicule sauvegardé !'; 
     if (
         !numPlate.value || 
         numVehicle.value === null || 
         isNaN(numVehicle.value) || 
         numVehicle.value <= 0
     ) {
-        alert("Veuillez remplir tous les champs correctement (le numéro de véhicule doit être un nombre entier positif).");
+        message = "Veuillez remplir tous les champs correctement (le numéro de véhicule doit être un nombre entier positif).";
+        errorMessage.value = message;
         return;
     }
 
@@ -44,11 +49,12 @@ const handleSubmit = async () => {
         await addVehicle(numPlate.value, numVehicle.value);
         numPlate.value = '';
         numVehicle.value = null;
-        successMessage.value = 'Véhicule sauvegardé !'
+        successMessage.value = message;
         
     } catch (error) {
         console.error("Erreur lors de l'ajout du véhicule:", error);
-        alert("Une erreur est survenue lors de l'ajout.");
+        message = "Une erreur est survenue lors de l'ajout."
+        errorMessage.value = message;
     }
 }
 </script>

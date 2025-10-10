@@ -12,7 +12,7 @@ export default class VehicleRepository {
     },
   ];
 
-  getAllVehicles(){
+  getAllVehicles(): vehicle[]{
     return this.vehicles;
   }
 
