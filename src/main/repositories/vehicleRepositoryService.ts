@@ -11,6 +11,6 @@ export function registerVehicleHandlers() {
     })
 
     ipcMain.handle('vehicleRepo:addVehicle', (event, vehicle: Vehicle) => {
-        return vehicleRepository.addVehicle(vehicle);
+        vehicleRepository.addVehicle(vehicle);
     })
 }

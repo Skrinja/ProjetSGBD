@@ -16,7 +16,7 @@ export default class VehicleRepository {
     return this.vehicles;
   }
 
-  addVehicle(vehicle: Vehicle){
+  addVehicle(vehicle: Vehicle): void{
     this.vehicles.push(vehicle);
   }
 }

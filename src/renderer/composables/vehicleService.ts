@@ -1,7 +1,7 @@
 import Vehicle from "src/shared/vehicle";
 import { ref } from "vue";
 
-const vehicles = ref([]);
+const vehicles = ref<Vehicle[]>([]);
 
 export default function useVehicleService() {
     const getAllVehicles = async () => {
