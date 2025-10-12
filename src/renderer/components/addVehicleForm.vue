@@ -1,16 +1,16 @@
 <template>
     <h2>Ajouter un Nouveau Véhicule</h2>
-    <form @submit.prevent="handleSubmit">
+    <form @submit.prevent="handleSubmit"> <!-- @ = raccourci de v-on et .prevent empeche le submit de rafraichir la page -->
         <div>
             <label for="num-plate"></label>
-            <input id="num-plate" v-model="numPlate" required placeholder="Plaque d'immatriculation"/>
+            <input id="num-plate" v-model="numPlate" required placeholder="Plaque d'immatriculation" />
         </div>
-        
+
         <div>
             <label for="num-vehicle"></label>
             <input id="num-vehicle" v-model.number="numVehicle" required placeholder="VRM" />
         </div>
-        
+
         <button type="submit">Sauvegarder</button>
     </form>
     <p v-if="successMessage">
@@ -24,38 +24,38 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import useVehicleService from '../composables/vehicleService';
-
+import useSetMessageService from '../composables/setMessageService';
 
 const numPlate = ref();
 const numVehicle = ref();
-const successMessage = ref('');
-const errorMessage = ref('');
 
 const { addVehicle } = useVehicleService();
+const { successMessage, errorMessage, setMessage } = useSetMessageService();
+
+const resetForm = () => {
+    numPlate.value = '';
+    numVehicle.value = null;
+}
 
 const handleSubmit = async () => {
-    let message = 'Véhicule sauvegardé !'; 
     if (
-        !numPlate.value || 
-        numVehicle.value === null || 
-        isNaN(numVehicle.value) || 
+        !numPlate.value ||
+        !numVehicle.value ||
+        isNaN(numVehicle.value) ||
         numVehicle.value <= 0
     ) {
-        message = "Veuillez remplir tous les champs correctement (le numéro de véhicule doit être un nombre entier positif).";
-        errorMessage.value = message;
+        setMessage('error', "Erreur dans la saisie");
         return;
     }
 
     try {
         await addVehicle({ numPlate: numPlate.value, numVehicle: numVehicle.value });
-        numPlate.value = '';
-        numVehicle.value = null;
-        successMessage.value = message;
-        
+        setMessage('success', "Véhicule sauvegardé !");
+        resetForm();
+
     } catch (error) {
         console.error("Erreur lors de l'ajout du véhicule:", error);
-        message = "Une erreur est survenue lors de l'ajout."
-        errorMessage.value = message;
+        setMessage('error', "Un problème est survenu");
     }
 }
 </script>
