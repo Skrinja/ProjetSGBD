@@ -5,11 +5,11 @@ const vehicles = ref<Vehicle[]>([]);
 
 export default function useVehicleService() {
     const getAllVehicles = async () => {
-        vehicles.value = await (window as any).electronService.vehicleRepo.getAllVehicles();
+        vehicles.value = await (window as any).electronService.vehicle.getAllVehicles();
     }
 
     const addVehicle = async (vehicle: Vehicle) => {
-        await (window as any).electronService.vehicleRepo.addVehicle(vehicle);
+        await (window as any).electronService.vehicle.addVehicle(vehicle);
         await getAllVehicles();
     }
 

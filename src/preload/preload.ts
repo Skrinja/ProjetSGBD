@@ -1,10 +1,8 @@
 import { contextBridge, ipcRenderer } from "electron";
-import Vehicle from "src/shared/vehicle";
+import { vehicleService } from "./vehicleService";
+import IElectronService from "src/shared/interfaces/IElectronService";
 
 
 contextBridge.exposeInMainWorld('electronService', {
-    vehicleRepo: {
-        getAllVehicles: () => ipcRenderer.invoke('vehicleRepo:getAll'),
-        addVehicle: (vehicle: Vehicle) => ipcRenderer.invoke('vehicleRepo:addVehicle', vehicle)
-    }
-})
+    vehicle: vehicleService()
+} as IElectronService) 
