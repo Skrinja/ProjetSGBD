@@ -1,27 +1,44 @@
 <template>
-  <h1>Gestionnaire de Véhicules</h1>
-  
-  <button @click="currentView = 'list'" v-if="currentView === 'form'">
-    Retour à la Liste
-  </button>
-  <button @click="currentView = 'form'" v-if="currentView === 'list'">
-    Ajouter un Véhicule
-  </button>
-  
-  <div v-if="currentView === 'list'">
-    <allVehicles/>
-  </div>
-
-  <div v-else-if="currentView === 'form'">
-    <addVehicleForm/>
-  </div>
-  
+    <div class="home-bar">
+        <BaseCard>
+            <button class="go-to-vehicles" @click="handleClick">Véhicules</button>
+            <p>{{ vehicles.length }}</p> 
+        </BaseCard>
+        <BaseCard>
+            <button class="go-to-interventions">Interventions</button>
+            <p>(Nbr interventions)</p>
+        </BaseCard>
+        <BaseCard>
+            <button class="go-to-accidents">Accidents</button>
+            <p>(Nbr accidents)</p>
+        </BaseCard>
+    </div>
 </template>
 
-<script setup>
-import { ref } from 'vue';
-import allVehicles from '../components/AllVehicles.vue';
-import addVehicleForm from '../components/AddVehicleForm.vue';
+<script setup lang="ts">
+    import { useRouter } from 'vue-router';
+    import BaseCard from '../components/BaseCard.vue';
+    import useVehicleService from '../composables/vehicleService';
+    import { onMounted } from 'vue';
 
-const currentView = ref('list'); 
+    const { vehicles, getAllVehicles } = useVehicleService();
+    const router = useRouter();
+
+    const handleClick = () => {
+        router.push('/vehicles');
+    }
+
+    onMounted(async () => {
+        await getAllVehicles();
+    });
 </script>
+
+<style>
+.home-bar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    gap : 1rem;
+}
+</style>
