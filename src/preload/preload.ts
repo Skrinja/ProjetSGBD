@@ -1,4 +1,4 @@
-import { contextBridge, ipcRenderer } from "electron";
+import { contextBridge } from "electron";
 import { vehicleService } from "./vehicleService";
 import IElectronService from "src/shared/interfaces/IElectronService";
 
