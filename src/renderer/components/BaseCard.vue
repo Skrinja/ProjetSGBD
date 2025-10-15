@@ -13,7 +13,7 @@
     flex-direction: column;
     align-items: center;
     border: 1px solid black;
-    background-color: rgba(155, 155, 155, .8);
+    background-color: rgba(37, 95, 255, 0.8);
     padding: 1rem;
     margin-bottom: 1rem; 
 }
