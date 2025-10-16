@@ -13,9 +13,14 @@ export default function useVehicleService() {
         await getAllVehicles();
     }
 
+    const getVehicleByVin = async (vin: string) => {
+        return await (window as any).electronService.vehicle.getVehicleByVin(vin);
+    }
+
     return {
         vehicles,
         getAllVehicles,
+        getVehicleByVin,
         addVehicle
     }
 }

@@ -15,6 +15,6 @@
     border: 1px solid black;
     background-color: rgba(37, 95, 255, 0.8);
     padding: 1rem;
-    margin-bottom: 1rem; 
+    margin: 1rem; 
 }
 </style>
