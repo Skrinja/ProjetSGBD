@@ -42,14 +42,13 @@ import { FuelType } from '../../shared/enums/fuelType';
 
 const vin = ref('');
 const numPlate = ref('');
-const numVehicle = ref<number | null>(null);
+const numVehicle = ref<number>();
 const brand = ref('');
 const model = ref('');
-const year = ref(''); // Laisser en string pour le v-model de type="date"
-const fuel = ref<FuelType>(FuelType.Petrol); // Valeur par défaut
+const year = ref(''); 
+const fuel = ref<FuelType>(FuelType.Petrol); 
 
 const fuelTypes = ref(Object.values(FuelType));
-
 const { addVehicle } = useVehicleService();
 const { successMessage, errorMessage, setMessage } = useSetMessageService();
 
@@ -75,7 +74,7 @@ const handleSubmit = async () => {
             numVehicle: numVehicle.value,
             brand: brand.value,
             model: model.value,
-            year: new Date(year.value), // Convertir en objet Date ici
+            year: new Date(year.value), 
             fuel: fuel.value,
         });
         setMessage('success', "Véhicule sauvegardé !");
