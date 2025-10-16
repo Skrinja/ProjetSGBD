@@ -16,14 +16,14 @@
     <addVehicleForm/>
   </div>
   
-  <ButtonBackHome/>
+  <BackHomeButton/>
 </template>
 
 <script setup lang="ts">
 import { ref } from 'vue';
 import allVehicles from '../components/AllVehicles.vue';
 import addVehicleForm from '../components/AddVehicleForm.vue';
-import ButtonBackHome from '../components/BackHomeButton.vue';
+import BackHomeButton from '../components/BackHomeButton.vue';
 
 const currentView = ref('list'); 
 </script>
