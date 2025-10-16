@@ -1,6 +1,9 @@
 <template>
     <div v-if="vehicle">
         <h1>Détails du Véhicule {{ vehicle.numVehicle }}</h1>
+        <router-link to="/vehicles">
+            <button>Retour à la liste</button>
+        </router-link>
         <BaseCard>
             <p><strong>N° de Châssis :</strong> {{ vehicle.vin }}</p>
             <p><strong>Plaque :</strong> {{ vehicle.numPlate }}</p>
@@ -13,9 +16,6 @@
     <div v-else>
         <p>Chargement des données du véhicule...</p>
     </div>
-    <router-link to="/vehicles">
-        <button>Retour à la liste</button>
-    </router-link>
     <BackHomeButton />
 </template>
 
@@ -27,9 +27,9 @@ import BaseCard from '../components/BaseCard.vue';
 import Vehicle from 'src/shared/vehicle';
 import BackHomeButton from '../components/BackHomeButton.vue';
 
-const route = useRoute(); 
+const route = useRoute();
 const { getVehicleByVin } = useVehicleService();
-const vehicle = ref<Vehicle | undefined>(undefined);
+const vehicle = ref<Vehicle>();
 
 onMounted(async () => {
     const vin = route.params.vin as string;
@@ -43,6 +43,7 @@ onMounted(async () => {
 button {
     margin-top: 1rem;
 }
+
 p {
     text-align: left;
     width: 100%;
