@@ -26,7 +26,6 @@
     "@electron-forge/plugin-auto-unpack-natives": "^7.9.0",
     "@electron-forge/plugin-fuses": "^7.9.0",
     "@electron-forge/plugin-vite": "^7.9.0",
-    "@electron/fuses": "^2.0.0",
     "@types/electron-squirrel-startup": "^1.0.2",
     "@types/vue-router": "^2.0.0",
     "@typescript-eslint/eslint-plugin": "^8.46.1",
@@ -35,10 +34,13 @@
     "electron": "38.3.0",
     "eslint": "^9.37.0",
     "eslint-plugin-import": "^2.32.0",
+    "prisma": "^6.17.1",
     "typescript": "~5.9.3",
     "vite": "^7.1.10"
   },
   "dependencies": {
+    "@prisma/adapter-mariadb": "^6.17.1",
+    "@prisma/client": "^6.17.1",
     "electron-squirrel-startup": "^1.0.1",
     "vue": "^3.5.22",
     "vue-router": "^4.6.2"
