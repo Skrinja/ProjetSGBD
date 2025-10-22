@@ -9,21 +9,21 @@
   </button>
   
   <div v-if="currentView === 'list'">
-    <allVehicles/>
+    <AllVehicles/>
   </div>
 
   <div v-else-if="currentView === 'form'">
-    <addVehicleForm/>
+    <AddVehicleForm/>
   </div>
-  
+
   <BackHomeButton/>
 </template>
 
 <script setup lang="ts">
 import { ref } from 'vue';
-import allVehicles from '../components/AllVehicles.vue';
-import addVehicleForm from '../components/AddVehicleForm.vue';
+import AllVehicles from '../components/AllVehicles.vue';
+import AddVehicleForm from '../components/AddVehicleForm.vue';
 import BackHomeButton from '../components/BackHomeButton.vue';
 
-const currentView = ref('list'); 
+const currentView = ref('list');
 </script>

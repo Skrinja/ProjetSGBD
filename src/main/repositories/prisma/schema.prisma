@@ -1,0 +1,207 @@
+generator client {
+  provider   = "prisma-client-ts"
+  output     = "./generated"
+  engineType = "client"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model accidents {
+  accident_id      Int                      @id @default(autoincrement())
+  accident_date    DateTime                 @db.Date
+  time             DateTime?                @db.Time(0)
+  street           String?                  @db.VarChar(255)
+  street_number    String?                  @db.VarChar(10)
+  postal_code      String?                  @db.VarChar(10)
+  city             String?                  @db.VarChar(100)
+  country          String?                  @db.VarChar(50)
+  accident_type    accidents_accident_type?
+  damages          String?                  @db.Text
+  circumstances    String?                  @db.Text
+  report_number    String?                  @db.VarChar(50)
+  info_number      String?                  @db.VarChar(50)
+  other_party_info String?                  @db.Text
+  documents        String?                  @db.VarChar(255)
+  repair_completed Boolean?                 @default(false)
+  interventions    interventions[]
+  staff_accidents  staff_accidents[]
+}
+
+model contacts {
+  contact_id   Int       @id @default(autoincrement())
+  last_name    String    @db.VarChar(100)
+  first_name   String?   @db.VarChar(100)
+  email        String?   @db.VarChar(255)
+  phone_number String?   @db.VarChar(20)
+  provider_id  Int
+  providers    providers @relation(fields: [provider_id], references: [provider_id], onDelete: Cascade, map: "contacts_ibfk_1")
+
+  @@index([provider_id], map: "provider_id")
+}
+
+model departments {
+  department_id      Int               @id @default(autoincrement())
+  name               String            @unique(map: "name") @db.VarChar(100)
+  service_address_id Int
+  service_addresses  service_addresses @relation(fields: [service_address_id], references: [service_address_id], map: "departments_ibfk_1")
+  vehicles           vehicles[]
+
+  @@index([service_address_id], map: "service_address_id")
+}
+
+model interventions {
+  intervention_id        Int        @id @default(autoincrement())
+  intervention_type      String?    @db.VarChar(100)
+  creation_date          DateTime?  @default(now()) @db.DateTime(0)
+  details                String?    @db.Text
+  garage_entry_date      DateTime?  @db.DateTime(0)
+  garage_exit_date       DateTime?  @db.DateTime(0)
+  intervention_completed Boolean?   @default(false)
+  vehicle_vin            String     @db.VarChar(50)
+  user_id                String     @db.VarChar(36)
+  accident_id            Int?
+  provider_id            Int
+  vehicles               vehicles   @relation(fields: [vehicle_vin], references: [vin], map: "interventions_ibfk_1")
+  users                  users      @relation(fields: [user_id], references: [user_id], map: "interventions_ibfk_2")
+  accidents              accidents? @relation(fields: [accident_id], references: [accident_id], map: "interventions_ibfk_3")
+  providers              providers  @relation(fields: [provider_id], references: [provider_id], map: "interventions_ibfk_4")
+  invoices               invoices[]
+
+  @@index([accident_id], map: "accident_id")
+  @@index([provider_id], map: "provider_id")
+  @@index([user_id], map: "user_id")
+  @@index([vehicle_vin], map: "vehicle_vin")
+}
+
+model invoices {
+  invoice_id      Int           @id @default(autoincrement())
+  amount          Decimal       @db.Decimal(10, 2)
+  documents       String?       @db.VarChar(255)
+  invoice_number  String?       @unique(map: "invoice_number") @db.VarChar(50)
+  invoice_paid    Boolean?      @default(false)
+  intervention_id Int
+  interventions   interventions @relation(fields: [intervention_id], references: [intervention_id], map: "invoices_ibfk_1")
+
+  @@index([intervention_id], map: "intervention_id")
+}
+
+model providers {
+  provider_id   Int             @id @default(autoincrement())
+  name          String          @db.VarChar(100)
+  street        String?         @db.VarChar(255)
+  street_number String?         @db.VarChar(10)
+  postal_code   String?         @db.VarChar(10)
+  city          String?         @db.VarChar(100)
+  country       String?         @db.VarChar(50)
+  contacts      contacts[]
+  interventions interventions[]
+}
+
+model service_addresses {
+  service_address_id Int           @id @default(autoincrement())
+  street             String?       @db.VarChar(255)
+  street_number      String?       @db.VarChar(10)
+  postal_code        String?       @db.VarChar(10)
+  city               String?       @db.VarChar(100)
+  country            String?       @db.VarChar(50)
+  departments        departments[]
+}
+
+model staff {
+  employee_id     Int               @id
+  last_name       String            @db.VarChar(100)
+  first_name      String            @db.VarChar(100)
+  staff_accidents staff_accidents[]
+}
+
+model staff_accidents {
+  employee_id Int
+  accident_id Int
+  role        staff_accidents_role
+  staff       staff                @relation(fields: [employee_id], references: [employee_id], onDelete: Cascade, map: "staff_accidents_ibfk_1")
+  accidents   accidents            @relation(fields: [accident_id], references: [accident_id], onDelete: Cascade, map: "staff_accidents_ibfk_2")
+
+  @@id([employee_id, accident_id])
+  @@index([accident_id], map: "accident_id")
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model users {
+  user_id       String          @id @default(dbgenerated("(uuid())")) @db.VarChar(36)
+  email         String          @unique(map: "email") @db.VarChar(255)
+  password      String          @db.VarChar(255)
+  interventions interventions[]
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model vehicles {
+  vin                           String                          @id @db.VarChar(50)
+  vehicle_number                Int?                            @unique(map: "vehicle_number")
+  license_plate                 String                          @unique(map: "license_plate") @db.VarChar(20)
+  make                          String?                         @db.VarChar(50)
+  model                         String?                         @db.VarChar(50)
+  manufacture_date              DateTime?                       @db.Date
+  fuel_type                     vehicles_fuel_type?
+  license_type                  vehicles_license_type?
+  vehicle_configuration         vehicles_vehicle_configuration?
+  inspection_expiry_date        DateTime?                       @db.Date
+  tire_size                     String?                         @db.VarChar(50)
+  insurance_number              String?                         @db.VarChar(75)
+  comprehensive_insurance       Boolean?                        @default(false)
+  maintenance_contract          Boolean?                        @default(false)
+  maintenance_contract_end_km   Int?
+  maintenance_contract_end_date DateTime?                       @db.Date
+  maintenance_contract_number   String?                         @db.VarChar(75)
+  other_info                    String?                         @db.Text
+  documents                     String?                         @db.VarChar(255)
+  department_id                 Int
+  interventions                 interventions[]
+  departments                   departments                     @relation(fields: [department_id], references: [department_id], map: "vehicles_ibfk_1")
+
+  @@index([department_id], map: "department_id")
+}
+
+enum staff_accidents_role {
+  Conducteur
+  Passager
+  T_moin     @map("Témoin")
+}
+
+enum vehicles_fuel_type {
+  Essence
+  Diesel
+  Hybride
+  Electrique
+}
+
+enum vehicles_license_type {
+  AM
+  A1
+  A2
+  A
+  B
+  C1
+  C
+  D1
+  D
+  E
+}
+
+enum accidents_accident_type {
+  Accident_en_faute @map("Accident en faute")
+  Accident_en_droit @map("Accident en droit")
+  Accident_ind_cis  @map("Accident indécis")
+  Vandalisme
+  D_g_ts_en_faute   @map("Dégâts en faute")
+  D_g_ts_en_droit   @map("Dégâts en droit")
+}
+
+enum vehicles_vehicle_configuration {
+  Stripping
+  Battenburg
+  Banalis_   @map("Banalisé")
+  Civil
+}

@@ -2,10 +2,10 @@ import Vehicle from "../../shared/vehicle";
 import VehicleRepository from "./vehicleRepository";
 import { ipcMain } from "electron/main";
 
-const vehicleRepository = new VehicleRepository();
 
 export function registerVehicleHandlers() {
-    
+    const vehicleRepository = new VehicleRepository();
+        
     ipcMain.handle('vehicleRepo:getAll', () =>{
         return vehicleRepository.getAllVehicles();
     })

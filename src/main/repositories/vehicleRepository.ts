@@ -1,7 +1,15 @@
 import { FuelType } from "../../shared/enums/fuelType"; 
 import Vehicle from "../../shared/vehicle";
+import { PrismaClient } from "./prisma/generated/client";
+import { PrismaMariaDb } from "@prisma/adapter-mariadb";
 
 export default class VehicleRepository {
+    private dbclient: PrismaClient;
+  constructor() {
+    let adapter = new PrismaMariaDb(process.env.DATABASE_URL);
+    this.dbclient = new PrismaClient({ adapter });
+  }
+
   vehicles: Vehicle[] = [
 {
       vin: "VF123ABCDEF456789",
@@ -24,6 +32,7 @@ export default class VehicleRepository {
   ];
 
   getAllVehicles(): Vehicle[]{
+    this.dbclient.vehicles.findFirst().then(x => console.log(x));
     return this.vehicles;
   }
 
