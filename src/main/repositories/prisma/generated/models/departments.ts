@@ -37,19 +37,19 @@ export type DepartmentsSumAggregateOutputType = {
 
 export type DepartmentsMinAggregateOutputType = {
   department_id: number | null
-  name: string | null
+  department_name: string | null
   service_address_id: number | null
 }
 
 export type DepartmentsMaxAggregateOutputType = {
   department_id: number | null
-  name: string | null
+  department_name: string | null
   service_address_id: number | null
 }
 
 export type DepartmentsCountAggregateOutputType = {
   department_id: number
-  name: number
+  department_name: number
   service_address_id: number
   _all: number
 }
@@ -67,19 +67,19 @@ export type DepartmentsSumAggregateInputType = {
 
 export type DepartmentsMinAggregateInputType = {
   department_id?: true
-  name?: true
+  department_name?: true
   service_address_id?: true
 }
 
 export type DepartmentsMaxAggregateInputType = {
   department_id?: true
-  name?: true
+  department_name?: true
   service_address_id?: true
 }
 
 export type DepartmentsCountAggregateInputType = {
   department_id?: true
-  name?: true
+  department_name?: true
   service_address_id?: true
   _all?: true
 }
@@ -172,7 +172,7 @@ export type departmentsGroupByArgs<ExtArgs extends runtime.Types.Extensions.Inte
 
 export type DepartmentsGroupByOutputType = {
   department_id: number
-  name: string
+  department_name: string
   service_address_id: number
   _count: DepartmentsCountAggregateOutputType | null
   _avg: DepartmentsAvgAggregateOutputType | null
@@ -201,7 +201,7 @@ export type departmentsWhereInput = {
   OR?: Prisma.departmentsWhereInput[]
   NOT?: Prisma.departmentsWhereInput | Prisma.departmentsWhereInput[]
   department_id?: Prisma.IntFilter<"departments"> | number
-  name?: Prisma.StringFilter<"departments"> | string
+  department_name?: Prisma.StringFilter<"departments"> | string
   service_address_id?: Prisma.IntFilter<"departments"> | number
   service_addresses?: Prisma.XOR<Prisma.Service_addressesScalarRelationFilter, Prisma.service_addressesWhereInput>
   vehicles?: Prisma.VehiclesListRelationFilter
@@ -209,7 +209,7 @@ export type departmentsWhereInput = {
 
 export type departmentsOrderByWithRelationInput = {
   department_id?: Prisma.SortOrder
-  name?: Prisma.SortOrder
+  department_name?: Prisma.SortOrder
   service_address_id?: Prisma.SortOrder
   service_addresses?: Prisma.service_addressesOrderByWithRelationInput
   vehicles?: Prisma.vehiclesOrderByRelationAggregateInput
@@ -218,18 +218,18 @@ export type departmentsOrderByWithRelationInput = {
 
 export type departmentsWhereUniqueInput = Prisma.AtLeast<{
   department_id?: number
-  name?: string
+  department_name?: string
   AND?: Prisma.departmentsWhereInput | Prisma.departmentsWhereInput[]
   OR?: Prisma.departmentsWhereInput[]
   NOT?: Prisma.departmentsWhereInput | Prisma.departmentsWhereInput[]
   service_address_id?: Prisma.IntFilter<"departments"> | number
   service_addresses?: Prisma.XOR<Prisma.Service_addressesScalarRelationFilter, Prisma.service_addressesWhereInput>
   vehicles?: Prisma.VehiclesListRelationFilter
-}, "department_id" | "name">
+}, "department_id" | "department_name">
 
 export type departmentsOrderByWithAggregationInput = {
   department_id?: Prisma.SortOrder
-  name?: Prisma.SortOrder
+  department_name?: Prisma.SortOrder
   service_address_id?: Prisma.SortOrder
   _count?: Prisma.departmentsCountOrderByAggregateInput
   _avg?: Prisma.departmentsAvgOrderByAggregateInput
@@ -243,49 +243,49 @@ export type departmentsScalarWhereWithAggregatesInput = {
   OR?: Prisma.departmentsScalarWhereWithAggregatesInput[]
   NOT?: Prisma.departmentsScalarWhereWithAggregatesInput | Prisma.departmentsScalarWhereWithAggregatesInput[]
   department_id?: Prisma.IntWithAggregatesFilter<"departments"> | number
-  name?: Prisma.StringWithAggregatesFilter<"departments"> | string
+  department_name?: Prisma.StringWithAggregatesFilter<"departments"> | string
   service_address_id?: Prisma.IntWithAggregatesFilter<"departments"> | number
 }
 
 export type departmentsCreateInput = {
-  name: string
+  department_name: string
   service_addresses: Prisma.service_addressesCreateNestedOneWithoutDepartmentsInput
   vehicles?: Prisma.vehiclesCreateNestedManyWithoutDepartmentsInput
 }
 
 export type departmentsUncheckedCreateInput = {
   department_id?: number
-  name: string
+  department_name: string
   service_address_id: number
   vehicles?: Prisma.vehiclesUncheckedCreateNestedManyWithoutDepartmentsInput
 }
 
 export type departmentsUpdateInput = {
-  name?: Prisma.StringFieldUpdateOperationsInput | string
+  department_name?: Prisma.StringFieldUpdateOperationsInput | string
   service_addresses?: Prisma.service_addressesUpdateOneRequiredWithoutDepartmentsNestedInput
   vehicles?: Prisma.vehiclesUpdateManyWithoutDepartmentsNestedInput
 }
 
 export type departmentsUncheckedUpdateInput = {
   department_id?: Prisma.IntFieldUpdateOperationsInput | number
-  name?: Prisma.StringFieldUpdateOperationsInput | string
+  department_name?: Prisma.StringFieldUpdateOperationsInput | string
   service_address_id?: Prisma.IntFieldUpdateOperationsInput | number
   vehicles?: Prisma.vehiclesUncheckedUpdateManyWithoutDepartmentsNestedInput
 }
 
 export type departmentsCreateManyInput = {
   department_id?: number
-  name: string
+  department_name: string
   service_address_id: number
 }
 
 export type departmentsUpdateManyMutationInput = {
-  name?: Prisma.StringFieldUpdateOperationsInput | string
+  department_name?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
 export type departmentsUncheckedUpdateManyInput = {
   department_id?: Prisma.IntFieldUpdateOperationsInput | number
-  name?: Prisma.StringFieldUpdateOperationsInput | string
+  department_name?: Prisma.StringFieldUpdateOperationsInput | string
   service_address_id?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
@@ -297,7 +297,7 @@ export type departmentsOrderByRelevanceInput = {
 
 export type departmentsCountOrderByAggregateInput = {
   department_id?: Prisma.SortOrder
-  name?: Prisma.SortOrder
+  department_name?: Prisma.SortOrder
   service_address_id?: Prisma.SortOrder
 }
 
@@ -308,13 +308,13 @@ export type departmentsAvgOrderByAggregateInput = {
 
 export type departmentsMaxOrderByAggregateInput = {
   department_id?: Prisma.SortOrder
-  name?: Prisma.SortOrder
+  department_name?: Prisma.SortOrder
   service_address_id?: Prisma.SortOrder
 }
 
 export type departmentsMinOrderByAggregateInput = {
   department_id?: Prisma.SortOrder
-  name?: Prisma.SortOrder
+  department_name?: Prisma.SortOrder
   service_address_id?: Prisma.SortOrder
 }
 
@@ -395,13 +395,13 @@ export type departmentsUpdateOneRequiredWithoutVehiclesNestedInput = {
 }
 
 export type departmentsCreateWithoutService_addressesInput = {
-  name: string
+  department_name: string
   vehicles?: Prisma.vehiclesCreateNestedManyWithoutDepartmentsInput
 }
 
 export type departmentsUncheckedCreateWithoutService_addressesInput = {
   department_id?: number
-  name: string
+  department_name: string
   vehicles?: Prisma.vehiclesUncheckedCreateNestedManyWithoutDepartmentsInput
 }
 
@@ -436,18 +436,18 @@ export type departmentsScalarWhereInput = {
   OR?: Prisma.departmentsScalarWhereInput[]
   NOT?: Prisma.departmentsScalarWhereInput | Prisma.departmentsScalarWhereInput[]
   department_id?: Prisma.IntFilter<"departments"> | number
-  name?: Prisma.StringFilter<"departments"> | string
+  department_name?: Prisma.StringFilter<"departments"> | string
   service_address_id?: Prisma.IntFilter<"departments"> | number
 }
 
 export type departmentsCreateWithoutVehiclesInput = {
-  name: string
+  department_name: string
   service_addresses: Prisma.service_addressesCreateNestedOneWithoutDepartmentsInput
 }
 
 export type departmentsUncheckedCreateWithoutVehiclesInput = {
   department_id?: number
-  name: string
+  department_name: string
   service_address_id: number
 }
 
@@ -468,35 +468,35 @@ export type departmentsUpdateToOneWithWhereWithoutVehiclesInput = {
 }
 
 export type departmentsUpdateWithoutVehiclesInput = {
-  name?: Prisma.StringFieldUpdateOperationsInput | string
+  department_name?: Prisma.StringFieldUpdateOperationsInput | string
   service_addresses?: Prisma.service_addressesUpdateOneRequiredWithoutDepartmentsNestedInput
 }
 
 export type departmentsUncheckedUpdateWithoutVehiclesInput = {
   department_id?: Prisma.IntFieldUpdateOperationsInput | number
-  name?: Prisma.StringFieldUpdateOperationsInput | string
+  department_name?: Prisma.StringFieldUpdateOperationsInput | string
   service_address_id?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
 export type departmentsCreateManyService_addressesInput = {
   department_id?: number
-  name: string
+  department_name: string
 }
 
 export type departmentsUpdateWithoutService_addressesInput = {
-  name?: Prisma.StringFieldUpdateOperationsInput | string
+  department_name?: Prisma.StringFieldUpdateOperationsInput | string
   vehicles?: Prisma.vehiclesUpdateManyWithoutDepartmentsNestedInput
 }
 
 export type departmentsUncheckedUpdateWithoutService_addressesInput = {
   department_id?: Prisma.IntFieldUpdateOperationsInput | number
-  name?: Prisma.StringFieldUpdateOperationsInput | string
+  department_name?: Prisma.StringFieldUpdateOperationsInput | string
   vehicles?: Prisma.vehiclesUncheckedUpdateManyWithoutDepartmentsNestedInput
 }
 
 export type departmentsUncheckedUpdateManyWithoutService_addressesInput = {
   department_id?: Prisma.IntFieldUpdateOperationsInput | number
-  name?: Prisma.StringFieldUpdateOperationsInput | string
+  department_name?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
 
@@ -532,7 +532,7 @@ export type DepartmentsCountOutputTypeCountVehiclesArgs<ExtArgs extends runtime.
 
 export type departmentsSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   department_id?: boolean
-  name?: boolean
+  department_name?: boolean
   service_address_id?: boolean
   service_addresses?: boolean | Prisma.service_addressesDefaultArgs<ExtArgs>
   vehicles?: boolean | Prisma.departments$vehiclesArgs<ExtArgs>
@@ -543,11 +543,11 @@ export type departmentsSelect<ExtArgs extends runtime.Types.Extensions.InternalA
 
 export type departmentsSelectScalar = {
   department_id?: boolean
-  name?: boolean
+  department_name?: boolean
   service_address_id?: boolean
 }
 
-export type departmentsOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"department_id" | "name" | "service_address_id", ExtArgs["result"]["departments"]>
+export type departmentsOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"department_id" | "department_name" | "service_address_id", ExtArgs["result"]["departments"]>
 export type departmentsInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   service_addresses?: boolean | Prisma.service_addressesDefaultArgs<ExtArgs>
   vehicles?: boolean | Prisma.departments$vehiclesArgs<ExtArgs>
@@ -562,7 +562,7 @@ export type $departmentsPayload<ExtArgs extends runtime.Types.Extensions.Interna
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     department_id: number
-    name: string
+    department_name: string
     service_address_id: number
   }, ExtArgs["result"]["departments"]>
   composites: {}
@@ -936,7 +936,7 @@ export interface Prisma__departmentsClient<T, Null = never, ExtArgs extends runt
  */
 export interface departmentsFieldRefs {
   readonly department_id: Prisma.FieldRef<"departments", 'Int'>
-  readonly name: Prisma.FieldRef<"departments", 'String'>
+  readonly department_name: Prisma.FieldRef<"departments", 'String'>
   readonly service_address_id: Prisma.FieldRef<"departments", 'Int'>
 }
     

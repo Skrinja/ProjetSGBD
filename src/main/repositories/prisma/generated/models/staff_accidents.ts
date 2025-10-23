@@ -38,19 +38,19 @@ export type Staff_accidentsSumAggregateOutputType = {
 export type Staff_accidentsMinAggregateOutputType = {
   employee_id: number | null
   accident_id: number | null
-  role: $Enums.staff_accidents_role | null
+  accident_role: $Enums.staff_accidents_accident_role | null
 }
 
 export type Staff_accidentsMaxAggregateOutputType = {
   employee_id: number | null
   accident_id: number | null
-  role: $Enums.staff_accidents_role | null
+  accident_role: $Enums.staff_accidents_accident_role | null
 }
 
 export type Staff_accidentsCountAggregateOutputType = {
   employee_id: number
   accident_id: number
-  role: number
+  accident_role: number
   _all: number
 }
 
@@ -68,19 +68,19 @@ export type Staff_accidentsSumAggregateInputType = {
 export type Staff_accidentsMinAggregateInputType = {
   employee_id?: true
   accident_id?: true
-  role?: true
+  accident_role?: true
 }
 
 export type Staff_accidentsMaxAggregateInputType = {
   employee_id?: true
   accident_id?: true
-  role?: true
+  accident_role?: true
 }
 
 export type Staff_accidentsCountAggregateInputType = {
   employee_id?: true
   accident_id?: true
-  role?: true
+  accident_role?: true
   _all?: true
 }
 
@@ -173,7 +173,7 @@ export type staff_accidentsGroupByArgs<ExtArgs extends runtime.Types.Extensions.
 export type Staff_accidentsGroupByOutputType = {
   employee_id: number
   accident_id: number
-  role: $Enums.staff_accidents_role
+  accident_role: $Enums.staff_accidents_accident_role
   _count: Staff_accidentsCountAggregateOutputType | null
   _avg: Staff_accidentsAvgAggregateOutputType | null
   _sum: Staff_accidentsSumAggregateOutputType | null
@@ -202,7 +202,7 @@ export type staff_accidentsWhereInput = {
   NOT?: Prisma.staff_accidentsWhereInput | Prisma.staff_accidentsWhereInput[]
   employee_id?: Prisma.IntFilter<"staff_accidents"> | number
   accident_id?: Prisma.IntFilter<"staff_accidents"> | number
-  role?: Prisma.Enumstaff_accidents_roleFilter<"staff_accidents"> | $Enums.staff_accidents_role
+  accident_role?: Prisma.Enumstaff_accidents_accident_roleFilter<"staff_accidents"> | $Enums.staff_accidents_accident_role
   staff?: Prisma.XOR<Prisma.StaffScalarRelationFilter, Prisma.staffWhereInput>
   accidents?: Prisma.XOR<Prisma.AccidentsScalarRelationFilter, Prisma.accidentsWhereInput>
 }
@@ -210,7 +210,7 @@ export type staff_accidentsWhereInput = {
 export type staff_accidentsOrderByWithRelationInput = {
   employee_id?: Prisma.SortOrder
   accident_id?: Prisma.SortOrder
-  role?: Prisma.SortOrder
+  accident_role?: Prisma.SortOrder
   staff?: Prisma.staffOrderByWithRelationInput
   accidents?: Prisma.accidentsOrderByWithRelationInput
 }
@@ -222,7 +222,7 @@ export type staff_accidentsWhereUniqueInput = Prisma.AtLeast<{
   NOT?: Prisma.staff_accidentsWhereInput | Prisma.staff_accidentsWhereInput[]
   employee_id?: Prisma.IntFilter<"staff_accidents"> | number
   accident_id?: Prisma.IntFilter<"staff_accidents"> | number
-  role?: Prisma.Enumstaff_accidents_roleFilter<"staff_accidents"> | $Enums.staff_accidents_role
+  accident_role?: Prisma.Enumstaff_accidents_accident_roleFilter<"staff_accidents"> | $Enums.staff_accidents_accident_role
   staff?: Prisma.XOR<Prisma.StaffScalarRelationFilter, Prisma.staffWhereInput>
   accidents?: Prisma.XOR<Prisma.AccidentsScalarRelationFilter, Prisma.accidentsWhereInput>
 }, "employee_id_accident_id">
@@ -230,7 +230,7 @@ export type staff_accidentsWhereUniqueInput = Prisma.AtLeast<{
 export type staff_accidentsOrderByWithAggregationInput = {
   employee_id?: Prisma.SortOrder
   accident_id?: Prisma.SortOrder
-  role?: Prisma.SortOrder
+  accident_role?: Prisma.SortOrder
   _count?: Prisma.staff_accidentsCountOrderByAggregateInput
   _avg?: Prisma.staff_accidentsAvgOrderByAggregateInput
   _max?: Prisma.staff_accidentsMaxOrderByAggregateInput
@@ -244,11 +244,11 @@ export type staff_accidentsScalarWhereWithAggregatesInput = {
   NOT?: Prisma.staff_accidentsScalarWhereWithAggregatesInput | Prisma.staff_accidentsScalarWhereWithAggregatesInput[]
   employee_id?: Prisma.IntWithAggregatesFilter<"staff_accidents"> | number
   accident_id?: Prisma.IntWithAggregatesFilter<"staff_accidents"> | number
-  role?: Prisma.Enumstaff_accidents_roleWithAggregatesFilter<"staff_accidents"> | $Enums.staff_accidents_role
+  accident_role?: Prisma.Enumstaff_accidents_accident_roleWithAggregatesFilter<"staff_accidents"> | $Enums.staff_accidents_accident_role
 }
 
 export type staff_accidentsCreateInput = {
-  role: $Enums.staff_accidents_role
+  accident_role: $Enums.staff_accidents_accident_role
   staff: Prisma.staffCreateNestedOneWithoutStaff_accidentsInput
   accidents: Prisma.accidentsCreateNestedOneWithoutStaff_accidentsInput
 }
@@ -256,11 +256,11 @@ export type staff_accidentsCreateInput = {
 export type staff_accidentsUncheckedCreateInput = {
   employee_id: number
   accident_id: number
-  role: $Enums.staff_accidents_role
+  accident_role: $Enums.staff_accidents_accident_role
 }
 
 export type staff_accidentsUpdateInput = {
-  role?: Prisma.Enumstaff_accidents_roleFieldUpdateOperationsInput | $Enums.staff_accidents_role
+  accident_role?: Prisma.Enumstaff_accidents_accident_roleFieldUpdateOperationsInput | $Enums.staff_accidents_accident_role
   staff?: Prisma.staffUpdateOneRequiredWithoutStaff_accidentsNestedInput
   accidents?: Prisma.accidentsUpdateOneRequiredWithoutStaff_accidentsNestedInput
 }
@@ -268,23 +268,23 @@ export type staff_accidentsUpdateInput = {
 export type staff_accidentsUncheckedUpdateInput = {
   employee_id?: Prisma.IntFieldUpdateOperationsInput | number
   accident_id?: Prisma.IntFieldUpdateOperationsInput | number
-  role?: Prisma.Enumstaff_accidents_roleFieldUpdateOperationsInput | $Enums.staff_accidents_role
+  accident_role?: Prisma.Enumstaff_accidents_accident_roleFieldUpdateOperationsInput | $Enums.staff_accidents_accident_role
 }
 
 export type staff_accidentsCreateManyInput = {
   employee_id: number
   accident_id: number
-  role: $Enums.staff_accidents_role
+  accident_role: $Enums.staff_accidents_accident_role
 }
 
 export type staff_accidentsUpdateManyMutationInput = {
-  role?: Prisma.Enumstaff_accidents_roleFieldUpdateOperationsInput | $Enums.staff_accidents_role
+  accident_role?: Prisma.Enumstaff_accidents_accident_roleFieldUpdateOperationsInput | $Enums.staff_accidents_accident_role
 }
 
 export type staff_accidentsUncheckedUpdateManyInput = {
   employee_id?: Prisma.IntFieldUpdateOperationsInput | number
   accident_id?: Prisma.IntFieldUpdateOperationsInput | number
-  role?: Prisma.Enumstaff_accidents_roleFieldUpdateOperationsInput | $Enums.staff_accidents_role
+  accident_role?: Prisma.Enumstaff_accidents_accident_roleFieldUpdateOperationsInput | $Enums.staff_accidents_accident_role
 }
 
 export type Staff_accidentsListRelationFilter = {
@@ -305,7 +305,7 @@ export type staff_accidentsEmployee_idAccident_idCompoundUniqueInput = {
 export type staff_accidentsCountOrderByAggregateInput = {
   employee_id?: Prisma.SortOrder
   accident_id?: Prisma.SortOrder
-  role?: Prisma.SortOrder
+  accident_role?: Prisma.SortOrder
 }
 
 export type staff_accidentsAvgOrderByAggregateInput = {
@@ -316,13 +316,13 @@ export type staff_accidentsAvgOrderByAggregateInput = {
 export type staff_accidentsMaxOrderByAggregateInput = {
   employee_id?: Prisma.SortOrder
   accident_id?: Prisma.SortOrder
-  role?: Prisma.SortOrder
+  accident_role?: Prisma.SortOrder
 }
 
 export type staff_accidentsMinOrderByAggregateInput = {
   employee_id?: Prisma.SortOrder
   accident_id?: Prisma.SortOrder
-  role?: Prisma.SortOrder
+  accident_role?: Prisma.SortOrder
 }
 
 export type staff_accidentsSumOrderByAggregateInput = {
@@ -414,18 +414,18 @@ export type staff_accidentsUncheckedUpdateManyWithoutStaffNestedInput = {
   deleteMany?: Prisma.staff_accidentsScalarWhereInput | Prisma.staff_accidentsScalarWhereInput[]
 }
 
-export type Enumstaff_accidents_roleFieldUpdateOperationsInput = {
-  set?: $Enums.staff_accidents_role
+export type Enumstaff_accidents_accident_roleFieldUpdateOperationsInput = {
+  set?: $Enums.staff_accidents_accident_role
 }
 
 export type staff_accidentsCreateWithoutAccidentsInput = {
-  role: $Enums.staff_accidents_role
+  accident_role: $Enums.staff_accidents_accident_role
   staff: Prisma.staffCreateNestedOneWithoutStaff_accidentsInput
 }
 
 export type staff_accidentsUncheckedCreateWithoutAccidentsInput = {
   employee_id: number
-  role: $Enums.staff_accidents_role
+  accident_role: $Enums.staff_accidents_accident_role
 }
 
 export type staff_accidentsCreateOrConnectWithoutAccidentsInput = {
@@ -460,17 +460,17 @@ export type staff_accidentsScalarWhereInput = {
   NOT?: Prisma.staff_accidentsScalarWhereInput | Prisma.staff_accidentsScalarWhereInput[]
   employee_id?: Prisma.IntFilter<"staff_accidents"> | number
   accident_id?: Prisma.IntFilter<"staff_accidents"> | number
-  role?: Prisma.Enumstaff_accidents_roleFilter<"staff_accidents"> | $Enums.staff_accidents_role
+  accident_role?: Prisma.Enumstaff_accidents_accident_roleFilter<"staff_accidents"> | $Enums.staff_accidents_accident_role
 }
 
 export type staff_accidentsCreateWithoutStaffInput = {
-  role: $Enums.staff_accidents_role
+  accident_role: $Enums.staff_accidents_accident_role
   accidents: Prisma.accidentsCreateNestedOneWithoutStaff_accidentsInput
 }
 
 export type staff_accidentsUncheckedCreateWithoutStaffInput = {
   accident_id: number
-  role: $Enums.staff_accidents_role
+  accident_role: $Enums.staff_accidents_accident_role
 }
 
 export type staff_accidentsCreateOrConnectWithoutStaffInput = {
@@ -501,42 +501,42 @@ export type staff_accidentsUpdateManyWithWhereWithoutStaffInput = {
 
 export type staff_accidentsCreateManyAccidentsInput = {
   employee_id: number
-  role: $Enums.staff_accidents_role
+  accident_role: $Enums.staff_accidents_accident_role
 }
 
 export type staff_accidentsUpdateWithoutAccidentsInput = {
-  role?: Prisma.Enumstaff_accidents_roleFieldUpdateOperationsInput | $Enums.staff_accidents_role
+  accident_role?: Prisma.Enumstaff_accidents_accident_roleFieldUpdateOperationsInput | $Enums.staff_accidents_accident_role
   staff?: Prisma.staffUpdateOneRequiredWithoutStaff_accidentsNestedInput
 }
 
 export type staff_accidentsUncheckedUpdateWithoutAccidentsInput = {
   employee_id?: Prisma.IntFieldUpdateOperationsInput | number
-  role?: Prisma.Enumstaff_accidents_roleFieldUpdateOperationsInput | $Enums.staff_accidents_role
+  accident_role?: Prisma.Enumstaff_accidents_accident_roleFieldUpdateOperationsInput | $Enums.staff_accidents_accident_role
 }
 
 export type staff_accidentsUncheckedUpdateManyWithoutAccidentsInput = {
   employee_id?: Prisma.IntFieldUpdateOperationsInput | number
-  role?: Prisma.Enumstaff_accidents_roleFieldUpdateOperationsInput | $Enums.staff_accidents_role
+  accident_role?: Prisma.Enumstaff_accidents_accident_roleFieldUpdateOperationsInput | $Enums.staff_accidents_accident_role
 }
 
 export type staff_accidentsCreateManyStaffInput = {
   accident_id: number
-  role: $Enums.staff_accidents_role
+  accident_role: $Enums.staff_accidents_accident_role
 }
 
 export type staff_accidentsUpdateWithoutStaffInput = {
-  role?: Prisma.Enumstaff_accidents_roleFieldUpdateOperationsInput | $Enums.staff_accidents_role
+  accident_role?: Prisma.Enumstaff_accidents_accident_roleFieldUpdateOperationsInput | $Enums.staff_accidents_accident_role
   accidents?: Prisma.accidentsUpdateOneRequiredWithoutStaff_accidentsNestedInput
 }
 
 export type staff_accidentsUncheckedUpdateWithoutStaffInput = {
   accident_id?: Prisma.IntFieldUpdateOperationsInput | number
-  role?: Prisma.Enumstaff_accidents_roleFieldUpdateOperationsInput | $Enums.staff_accidents_role
+  accident_role?: Prisma.Enumstaff_accidents_accident_roleFieldUpdateOperationsInput | $Enums.staff_accidents_accident_role
 }
 
 export type staff_accidentsUncheckedUpdateManyWithoutStaffInput = {
   accident_id?: Prisma.IntFieldUpdateOperationsInput | number
-  role?: Prisma.Enumstaff_accidents_roleFieldUpdateOperationsInput | $Enums.staff_accidents_role
+  accident_role?: Prisma.Enumstaff_accidents_accident_roleFieldUpdateOperationsInput | $Enums.staff_accidents_accident_role
 }
 
 
@@ -544,7 +544,7 @@ export type staff_accidentsUncheckedUpdateManyWithoutStaffInput = {
 export type staff_accidentsSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   employee_id?: boolean
   accident_id?: boolean
-  role?: boolean
+  accident_role?: boolean
   staff?: boolean | Prisma.staffDefaultArgs<ExtArgs>
   accidents?: boolean | Prisma.accidentsDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["staff_accidents"]>
@@ -554,10 +554,10 @@ export type staff_accidentsSelect<ExtArgs extends runtime.Types.Extensions.Inter
 export type staff_accidentsSelectScalar = {
   employee_id?: boolean
   accident_id?: boolean
-  role?: boolean
+  accident_role?: boolean
 }
 
-export type staff_accidentsOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"employee_id" | "accident_id" | "role", ExtArgs["result"]["staff_accidents"]>
+export type staff_accidentsOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"employee_id" | "accident_id" | "accident_role", ExtArgs["result"]["staff_accidents"]>
 export type staff_accidentsInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   staff?: boolean | Prisma.staffDefaultArgs<ExtArgs>
   accidents?: boolean | Prisma.accidentsDefaultArgs<ExtArgs>
@@ -572,7 +572,7 @@ export type $staff_accidentsPayload<ExtArgs extends runtime.Types.Extensions.Int
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     employee_id: number
     accident_id: number
-    role: $Enums.staff_accidents_role
+    accident_role: $Enums.staff_accidents_accident_role
   }, ExtArgs["result"]["staff_accidents"]>
   composites: {}
 }
@@ -946,7 +946,7 @@ export interface Prisma__staff_accidentsClient<T, Null = never, ExtArgs extends 
 export interface staff_accidentsFieldRefs {
   readonly employee_id: Prisma.FieldRef<"staff_accidents", 'Int'>
   readonly accident_id: Prisma.FieldRef<"staff_accidents", 'Int'>
-  readonly role: Prisma.FieldRef<"staff_accidents", 'staff_accidents_role'>
+  readonly accident_role: Prisma.FieldRef<"staff_accidents", 'staff_accidents_accident_role'>
 }
     
 

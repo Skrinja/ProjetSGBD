@@ -35,7 +35,7 @@ export type ProvidersSumAggregateOutputType = {
 
 export type ProvidersMinAggregateOutputType = {
   provider_id: number | null
-  name: string | null
+  provider_name: string | null
   street: string | null
   street_number: string | null
   postal_code: string | null
@@ -45,7 +45,7 @@ export type ProvidersMinAggregateOutputType = {
 
 export type ProvidersMaxAggregateOutputType = {
   provider_id: number | null
-  name: string | null
+  provider_name: string | null
   street: string | null
   street_number: string | null
   postal_code: string | null
@@ -55,7 +55,7 @@ export type ProvidersMaxAggregateOutputType = {
 
 export type ProvidersCountAggregateOutputType = {
   provider_id: number
-  name: number
+  provider_name: number
   street: number
   street_number: number
   postal_code: number
@@ -75,7 +75,7 @@ export type ProvidersSumAggregateInputType = {
 
 export type ProvidersMinAggregateInputType = {
   provider_id?: true
-  name?: true
+  provider_name?: true
   street?: true
   street_number?: true
   postal_code?: true
@@ -85,7 +85,7 @@ export type ProvidersMinAggregateInputType = {
 
 export type ProvidersMaxAggregateInputType = {
   provider_id?: true
-  name?: true
+  provider_name?: true
   street?: true
   street_number?: true
   postal_code?: true
@@ -95,7 +95,7 @@ export type ProvidersMaxAggregateInputType = {
 
 export type ProvidersCountAggregateInputType = {
   provider_id?: true
-  name?: true
+  provider_name?: true
   street?: true
   street_number?: true
   postal_code?: true
@@ -192,7 +192,7 @@ export type providersGroupByArgs<ExtArgs extends runtime.Types.Extensions.Intern
 
 export type ProvidersGroupByOutputType = {
   provider_id: number
-  name: string
+  provider_name: string
   street: string | null
   street_number: string | null
   postal_code: string | null
@@ -225,7 +225,7 @@ export type providersWhereInput = {
   OR?: Prisma.providersWhereInput[]
   NOT?: Prisma.providersWhereInput | Prisma.providersWhereInput[]
   provider_id?: Prisma.IntFilter<"providers"> | number
-  name?: Prisma.StringFilter<"providers"> | string
+  provider_name?: Prisma.StringFilter<"providers"> | string
   street?: Prisma.StringNullableFilter<"providers"> | string | null
   street_number?: Prisma.StringNullableFilter<"providers"> | string | null
   postal_code?: Prisma.StringNullableFilter<"providers"> | string | null
@@ -237,7 +237,7 @@ export type providersWhereInput = {
 
 export type providersOrderByWithRelationInput = {
   provider_id?: Prisma.SortOrder
-  name?: Prisma.SortOrder
+  provider_name?: Prisma.SortOrder
   street?: Prisma.SortOrderInput | Prisma.SortOrder
   street_number?: Prisma.SortOrderInput | Prisma.SortOrder
   postal_code?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -253,7 +253,7 @@ export type providersWhereUniqueInput = Prisma.AtLeast<{
   AND?: Prisma.providersWhereInput | Prisma.providersWhereInput[]
   OR?: Prisma.providersWhereInput[]
   NOT?: Prisma.providersWhereInput | Prisma.providersWhereInput[]
-  name?: Prisma.StringFilter<"providers"> | string
+  provider_name?: Prisma.StringFilter<"providers"> | string
   street?: Prisma.StringNullableFilter<"providers"> | string | null
   street_number?: Prisma.StringNullableFilter<"providers"> | string | null
   postal_code?: Prisma.StringNullableFilter<"providers"> | string | null
@@ -265,7 +265,7 @@ export type providersWhereUniqueInput = Prisma.AtLeast<{
 
 export type providersOrderByWithAggregationInput = {
   provider_id?: Prisma.SortOrder
-  name?: Prisma.SortOrder
+  provider_name?: Prisma.SortOrder
   street?: Prisma.SortOrderInput | Prisma.SortOrder
   street_number?: Prisma.SortOrderInput | Prisma.SortOrder
   postal_code?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -283,7 +283,7 @@ export type providersScalarWhereWithAggregatesInput = {
   OR?: Prisma.providersScalarWhereWithAggregatesInput[]
   NOT?: Prisma.providersScalarWhereWithAggregatesInput | Prisma.providersScalarWhereWithAggregatesInput[]
   provider_id?: Prisma.IntWithAggregatesFilter<"providers"> | number
-  name?: Prisma.StringWithAggregatesFilter<"providers"> | string
+  provider_name?: Prisma.StringWithAggregatesFilter<"providers"> | string
   street?: Prisma.StringNullableWithAggregatesFilter<"providers"> | string | null
   street_number?: Prisma.StringNullableWithAggregatesFilter<"providers"> | string | null
   postal_code?: Prisma.StringNullableWithAggregatesFilter<"providers"> | string | null
@@ -292,7 +292,7 @@ export type providersScalarWhereWithAggregatesInput = {
 }
 
 export type providersCreateInput = {
-  name: string
+  provider_name: string
   street?: string | null
   street_number?: string | null
   postal_code?: string | null
@@ -304,7 +304,7 @@ export type providersCreateInput = {
 
 export type providersUncheckedCreateInput = {
   provider_id?: number
-  name: string
+  provider_name: string
   street?: string | null
   street_number?: string | null
   postal_code?: string | null
@@ -315,7 +315,7 @@ export type providersUncheckedCreateInput = {
 }
 
 export type providersUpdateInput = {
-  name?: Prisma.StringFieldUpdateOperationsInput | string
+  provider_name?: Prisma.StringFieldUpdateOperationsInput | string
   street?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   street_number?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   postal_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -327,7 +327,7 @@ export type providersUpdateInput = {
 
 export type providersUncheckedUpdateInput = {
   provider_id?: Prisma.IntFieldUpdateOperationsInput | number
-  name?: Prisma.StringFieldUpdateOperationsInput | string
+  provider_name?: Prisma.StringFieldUpdateOperationsInput | string
   street?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   street_number?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   postal_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -339,7 +339,7 @@ export type providersUncheckedUpdateInput = {
 
 export type providersCreateManyInput = {
   provider_id?: number
-  name: string
+  provider_name: string
   street?: string | null
   street_number?: string | null
   postal_code?: string | null
@@ -348,7 +348,7 @@ export type providersCreateManyInput = {
 }
 
 export type providersUpdateManyMutationInput = {
-  name?: Prisma.StringFieldUpdateOperationsInput | string
+  provider_name?: Prisma.StringFieldUpdateOperationsInput | string
   street?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   street_number?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   postal_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -358,7 +358,7 @@ export type providersUpdateManyMutationInput = {
 
 export type providersUncheckedUpdateManyInput = {
   provider_id?: Prisma.IntFieldUpdateOperationsInput | number
-  name?: Prisma.StringFieldUpdateOperationsInput | string
+  provider_name?: Prisma.StringFieldUpdateOperationsInput | string
   street?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   street_number?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   postal_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -379,7 +379,7 @@ export type providersOrderByRelevanceInput = {
 
 export type providersCountOrderByAggregateInput = {
   provider_id?: Prisma.SortOrder
-  name?: Prisma.SortOrder
+  provider_name?: Prisma.SortOrder
   street?: Prisma.SortOrder
   street_number?: Prisma.SortOrder
   postal_code?: Prisma.SortOrder
@@ -393,7 +393,7 @@ export type providersAvgOrderByAggregateInput = {
 
 export type providersMaxOrderByAggregateInput = {
   provider_id?: Prisma.SortOrder
-  name?: Prisma.SortOrder
+  provider_name?: Prisma.SortOrder
   street?: Prisma.SortOrder
   street_number?: Prisma.SortOrder
   postal_code?: Prisma.SortOrder
@@ -403,7 +403,7 @@ export type providersMaxOrderByAggregateInput = {
 
 export type providersMinOrderByAggregateInput = {
   provider_id?: Prisma.SortOrder
-  name?: Prisma.SortOrder
+  provider_name?: Prisma.SortOrder
   street?: Prisma.SortOrder
   street_number?: Prisma.SortOrder
   postal_code?: Prisma.SortOrder
@@ -444,7 +444,7 @@ export type providersUpdateOneRequiredWithoutInterventionsNestedInput = {
 }
 
 export type providersCreateWithoutContactsInput = {
-  name: string
+  provider_name: string
   street?: string | null
   street_number?: string | null
   postal_code?: string | null
@@ -455,7 +455,7 @@ export type providersCreateWithoutContactsInput = {
 
 export type providersUncheckedCreateWithoutContactsInput = {
   provider_id?: number
-  name: string
+  provider_name: string
   street?: string | null
   street_number?: string | null
   postal_code?: string | null
@@ -481,7 +481,7 @@ export type providersUpdateToOneWithWhereWithoutContactsInput = {
 }
 
 export type providersUpdateWithoutContactsInput = {
-  name?: Prisma.StringFieldUpdateOperationsInput | string
+  provider_name?: Prisma.StringFieldUpdateOperationsInput | string
   street?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   street_number?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   postal_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -492,7 +492,7 @@ export type providersUpdateWithoutContactsInput = {
 
 export type providersUncheckedUpdateWithoutContactsInput = {
   provider_id?: Prisma.IntFieldUpdateOperationsInput | number
-  name?: Prisma.StringFieldUpdateOperationsInput | string
+  provider_name?: Prisma.StringFieldUpdateOperationsInput | string
   street?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   street_number?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   postal_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -502,7 +502,7 @@ export type providersUncheckedUpdateWithoutContactsInput = {
 }
 
 export type providersCreateWithoutInterventionsInput = {
-  name: string
+  provider_name: string
   street?: string | null
   street_number?: string | null
   postal_code?: string | null
@@ -513,7 +513,7 @@ export type providersCreateWithoutInterventionsInput = {
 
 export type providersUncheckedCreateWithoutInterventionsInput = {
   provider_id?: number
-  name: string
+  provider_name: string
   street?: string | null
   street_number?: string | null
   postal_code?: string | null
@@ -539,7 +539,7 @@ export type providersUpdateToOneWithWhereWithoutInterventionsInput = {
 }
 
 export type providersUpdateWithoutInterventionsInput = {
-  name?: Prisma.StringFieldUpdateOperationsInput | string
+  provider_name?: Prisma.StringFieldUpdateOperationsInput | string
   street?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   street_number?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   postal_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -550,7 +550,7 @@ export type providersUpdateWithoutInterventionsInput = {
 
 export type providersUncheckedUpdateWithoutInterventionsInput = {
   provider_id?: Prisma.IntFieldUpdateOperationsInput | number
-  name?: Prisma.StringFieldUpdateOperationsInput | string
+  provider_name?: Prisma.StringFieldUpdateOperationsInput | string
   street?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   street_number?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   postal_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -601,7 +601,7 @@ export type ProvidersCountOutputTypeCountInterventionsArgs<ExtArgs extends runti
 
 export type providersSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   provider_id?: boolean
-  name?: boolean
+  provider_name?: boolean
   street?: boolean
   street_number?: boolean
   postal_code?: boolean
@@ -616,7 +616,7 @@ export type providersSelect<ExtArgs extends runtime.Types.Extensions.InternalArg
 
 export type providersSelectScalar = {
   provider_id?: boolean
-  name?: boolean
+  provider_name?: boolean
   street?: boolean
   street_number?: boolean
   postal_code?: boolean
@@ -624,7 +624,7 @@ export type providersSelectScalar = {
   country?: boolean
 }
 
-export type providersOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"provider_id" | "name" | "street" | "street_number" | "postal_code" | "city" | "country", ExtArgs["result"]["providers"]>
+export type providersOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"provider_id" | "provider_name" | "street" | "street_number" | "postal_code" | "city" | "country", ExtArgs["result"]["providers"]>
 export type providersInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   contacts?: boolean | Prisma.providers$contactsArgs<ExtArgs>
   interventions?: boolean | Prisma.providers$interventionsArgs<ExtArgs>
@@ -639,7 +639,7 @@ export type $providersPayload<ExtArgs extends runtime.Types.Extensions.InternalA
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     provider_id: number
-    name: string
+    provider_name: string
     street: string | null
     street_number: string | null
     postal_code: string | null
@@ -1017,7 +1017,7 @@ export interface Prisma__providersClient<T, Null = never, ExtArgs extends runtim
  */
 export interface providersFieldRefs {
   readonly provider_id: Prisma.FieldRef<"providers", 'Int'>
-  readonly name: Prisma.FieldRef<"providers", 'String'>
+  readonly provider_name: Prisma.FieldRef<"providers", 'String'>
   readonly street: Prisma.FieldRef<"providers", 'String'>
   readonly street_number: Prisma.FieldRef<"providers", 'String'>
   readonly postal_code: Prisma.FieldRef<"providers", 'String'>

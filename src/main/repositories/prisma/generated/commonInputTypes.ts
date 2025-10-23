@@ -46,6 +46,28 @@ export type DateTimeNullableFilter<$PrismaModel = never> = {
   not?: Prisma.NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
 }
 
+export type StringFilter<$PrismaModel = never> = {
+  equals?: string | Prisma.StringFieldRefInput<$PrismaModel>
+  in?: string[]
+  notIn?: string[]
+  lt?: string | Prisma.StringFieldRefInput<$PrismaModel>
+  lte?: string | Prisma.StringFieldRefInput<$PrismaModel>
+  gt?: string | Prisma.StringFieldRefInput<$PrismaModel>
+  gte?: string | Prisma.StringFieldRefInput<$PrismaModel>
+  contains?: string | Prisma.StringFieldRefInput<$PrismaModel>
+  startsWith?: string | Prisma.StringFieldRefInput<$PrismaModel>
+  endsWith?: string | Prisma.StringFieldRefInput<$PrismaModel>
+  search?: string
+  not?: Prisma.NestedStringFilter<$PrismaModel> | string
+}
+
+export type Enumaccidents_accident_typeFilter<$PrismaModel = never> = {
+  equals?: $Enums.accidents_accident_type | Prisma.Enumaccidents_accident_typeFieldRefInput<$PrismaModel>
+  in?: $Enums.accidents_accident_type[]
+  notIn?: $Enums.accidents_accident_type[]
+  not?: Prisma.NestedEnumaccidents_accident_typeFilter<$PrismaModel> | $Enums.accidents_accident_type
+}
+
 export type StringNullableFilter<$PrismaModel = never> = {
   equals?: string | Prisma.StringFieldRefInput<$PrismaModel> | null
   in?: string[] | null
@@ -59,13 +81,6 @@ export type StringNullableFilter<$PrismaModel = never> = {
   endsWith?: string | Prisma.StringFieldRefInput<$PrismaModel>
   search?: string
   not?: Prisma.NestedStringNullableFilter<$PrismaModel> | string | null
-}
-
-export type Enumaccidents_accident_typeNullableFilter<$PrismaModel = never> = {
-  equals?: $Enums.accidents_accident_type | Prisma.Enumaccidents_accident_typeFieldRefInput<$PrismaModel> | null
-  in?: $Enums.accidents_accident_type[] | null
-  notIn?: $Enums.accidents_accident_type[] | null
-  not?: Prisma.NestedEnumaccidents_accident_typeNullableFilter<$PrismaModel> | $Enums.accidents_accident_type | null
 }
 
 export type BoolNullableFilter<$PrismaModel = never> = {
@@ -122,57 +137,6 @@ export type DateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
   _max?: Prisma.NestedDateTimeNullableFilter<$PrismaModel>
 }
 
-export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
-  equals?: string | Prisma.StringFieldRefInput<$PrismaModel> | null
-  in?: string[] | null
-  notIn?: string[] | null
-  lt?: string | Prisma.StringFieldRefInput<$PrismaModel>
-  lte?: string | Prisma.StringFieldRefInput<$PrismaModel>
-  gt?: string | Prisma.StringFieldRefInput<$PrismaModel>
-  gte?: string | Prisma.StringFieldRefInput<$PrismaModel>
-  contains?: string | Prisma.StringFieldRefInput<$PrismaModel>
-  startsWith?: string | Prisma.StringFieldRefInput<$PrismaModel>
-  endsWith?: string | Prisma.StringFieldRefInput<$PrismaModel>
-  search?: string
-  not?: Prisma.NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
-  _count?: Prisma.NestedIntNullableFilter<$PrismaModel>
-  _min?: Prisma.NestedStringNullableFilter<$PrismaModel>
-  _max?: Prisma.NestedStringNullableFilter<$PrismaModel>
-}
-
-export type Enumaccidents_accident_typeNullableWithAggregatesFilter<$PrismaModel = never> = {
-  equals?: $Enums.accidents_accident_type | Prisma.Enumaccidents_accident_typeFieldRefInput<$PrismaModel> | null
-  in?: $Enums.accidents_accident_type[] | null
-  notIn?: $Enums.accidents_accident_type[] | null
-  not?: Prisma.NestedEnumaccidents_accident_typeNullableWithAggregatesFilter<$PrismaModel> | $Enums.accidents_accident_type | null
-  _count?: Prisma.NestedIntNullableFilter<$PrismaModel>
-  _min?: Prisma.NestedEnumaccidents_accident_typeNullableFilter<$PrismaModel>
-  _max?: Prisma.NestedEnumaccidents_accident_typeNullableFilter<$PrismaModel>
-}
-
-export type BoolNullableWithAggregatesFilter<$PrismaModel = never> = {
-  equals?: boolean | Prisma.BooleanFieldRefInput<$PrismaModel> | null
-  not?: Prisma.NestedBoolNullableWithAggregatesFilter<$PrismaModel> | boolean | null
-  _count?: Prisma.NestedIntNullableFilter<$PrismaModel>
-  _min?: Prisma.NestedBoolNullableFilter<$PrismaModel>
-  _max?: Prisma.NestedBoolNullableFilter<$PrismaModel>
-}
-
-export type StringFilter<$PrismaModel = never> = {
-  equals?: string | Prisma.StringFieldRefInput<$PrismaModel>
-  in?: string[]
-  notIn?: string[]
-  lt?: string | Prisma.StringFieldRefInput<$PrismaModel>
-  lte?: string | Prisma.StringFieldRefInput<$PrismaModel>
-  gt?: string | Prisma.StringFieldRefInput<$PrismaModel>
-  gte?: string | Prisma.StringFieldRefInput<$PrismaModel>
-  contains?: string | Prisma.StringFieldRefInput<$PrismaModel>
-  startsWith?: string | Prisma.StringFieldRefInput<$PrismaModel>
-  endsWith?: string | Prisma.StringFieldRefInput<$PrismaModel>
-  search?: string
-  not?: Prisma.NestedStringFilter<$PrismaModel> | string
-}
-
 export type StringWithAggregatesFilter<$PrismaModel = never> = {
   equals?: string | Prisma.StringFieldRefInput<$PrismaModel>
   in?: string[]
@@ -191,6 +155,49 @@ export type StringWithAggregatesFilter<$PrismaModel = never> = {
   _max?: Prisma.NestedStringFilter<$PrismaModel>
 }
 
+export type Enumaccidents_accident_typeWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.accidents_accident_type | Prisma.Enumaccidents_accident_typeFieldRefInput<$PrismaModel>
+  in?: $Enums.accidents_accident_type[]
+  notIn?: $Enums.accidents_accident_type[]
+  not?: Prisma.NestedEnumaccidents_accident_typeWithAggregatesFilter<$PrismaModel> | $Enums.accidents_accident_type
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumaccidents_accident_typeFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumaccidents_accident_typeFilter<$PrismaModel>
+}
+
+export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: string | Prisma.StringFieldRefInput<$PrismaModel> | null
+  in?: string[] | null
+  notIn?: string[] | null
+  lt?: string | Prisma.StringFieldRefInput<$PrismaModel>
+  lte?: string | Prisma.StringFieldRefInput<$PrismaModel>
+  gt?: string | Prisma.StringFieldRefInput<$PrismaModel>
+  gte?: string | Prisma.StringFieldRefInput<$PrismaModel>
+  contains?: string | Prisma.StringFieldRefInput<$PrismaModel>
+  startsWith?: string | Prisma.StringFieldRefInput<$PrismaModel>
+  endsWith?: string | Prisma.StringFieldRefInput<$PrismaModel>
+  search?: string
+  not?: Prisma.NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
+  _count?: Prisma.NestedIntNullableFilter<$PrismaModel>
+  _min?: Prisma.NestedStringNullableFilter<$PrismaModel>
+  _max?: Prisma.NestedStringNullableFilter<$PrismaModel>
+}
+
+export type BoolNullableWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: boolean | Prisma.BooleanFieldRefInput<$PrismaModel> | null
+  not?: Prisma.NestedBoolNullableWithAggregatesFilter<$PrismaModel> | boolean | null
+  _count?: Prisma.NestedIntNullableFilter<$PrismaModel>
+  _min?: Prisma.NestedBoolNullableFilter<$PrismaModel>
+  _max?: Prisma.NestedBoolNullableFilter<$PrismaModel>
+}
+
+export type Enuminterventions_intervention_typeFilter<$PrismaModel = never> = {
+  equals?: $Enums.interventions_intervention_type | Prisma.Enuminterventions_intervention_typeFieldRefInput<$PrismaModel>
+  in?: $Enums.interventions_intervention_type[]
+  notIn?: $Enums.interventions_intervention_type[]
+  not?: Prisma.NestedEnuminterventions_intervention_typeFilter<$PrismaModel> | $Enums.interventions_intervention_type
+}
+
 export type IntNullableFilter<$PrismaModel = never> = {
   equals?: number | Prisma.IntFieldRefInput<$PrismaModel> | null
   in?: number[] | null
@@ -200,6 +207,16 @@ export type IntNullableFilter<$PrismaModel = never> = {
   gt?: number | Prisma.IntFieldRefInput<$PrismaModel>
   gte?: number | Prisma.IntFieldRefInput<$PrismaModel>
   not?: Prisma.NestedIntNullableFilter<$PrismaModel> | number | null
+}
+
+export type Enuminterventions_intervention_typeWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.interventions_intervention_type | Prisma.Enuminterventions_intervention_typeFieldRefInput<$PrismaModel>
+  in?: $Enums.interventions_intervention_type[]
+  notIn?: $Enums.interventions_intervention_type[]
+  not?: Prisma.NestedEnuminterventions_intervention_typeWithAggregatesFilter<$PrismaModel> | $Enums.interventions_intervention_type
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnuminterventions_intervention_typeFilter<$PrismaModel>
+  _max?: Prisma.NestedEnuminterventions_intervention_typeFilter<$PrismaModel>
 }
 
 export type IntNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -245,72 +262,72 @@ export type DecimalWithAggregatesFilter<$PrismaModel = never> = {
   _max?: Prisma.NestedDecimalFilter<$PrismaModel>
 }
 
-export type Enumstaff_accidents_roleFilter<$PrismaModel = never> = {
-  equals?: $Enums.staff_accidents_role | Prisma.Enumstaff_accidents_roleFieldRefInput<$PrismaModel>
-  in?: $Enums.staff_accidents_role[]
-  notIn?: $Enums.staff_accidents_role[]
-  not?: Prisma.NestedEnumstaff_accidents_roleFilter<$PrismaModel> | $Enums.staff_accidents_role
+export type Enumstaff_accidents_accident_roleFilter<$PrismaModel = never> = {
+  equals?: $Enums.staff_accidents_accident_role | Prisma.Enumstaff_accidents_accident_roleFieldRefInput<$PrismaModel>
+  in?: $Enums.staff_accidents_accident_role[]
+  notIn?: $Enums.staff_accidents_accident_role[]
+  not?: Prisma.NestedEnumstaff_accidents_accident_roleFilter<$PrismaModel> | $Enums.staff_accidents_accident_role
 }
 
-export type Enumstaff_accidents_roleWithAggregatesFilter<$PrismaModel = never> = {
-  equals?: $Enums.staff_accidents_role | Prisma.Enumstaff_accidents_roleFieldRefInput<$PrismaModel>
-  in?: $Enums.staff_accidents_role[]
-  notIn?: $Enums.staff_accidents_role[]
-  not?: Prisma.NestedEnumstaff_accidents_roleWithAggregatesFilter<$PrismaModel> | $Enums.staff_accidents_role
+export type Enumstaff_accidents_accident_roleWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.staff_accidents_accident_role | Prisma.Enumstaff_accidents_accident_roleFieldRefInput<$PrismaModel>
+  in?: $Enums.staff_accidents_accident_role[]
+  notIn?: $Enums.staff_accidents_accident_role[]
+  not?: Prisma.NestedEnumstaff_accidents_accident_roleWithAggregatesFilter<$PrismaModel> | $Enums.staff_accidents_accident_role
   _count?: Prisma.NestedIntFilter<$PrismaModel>
-  _min?: Prisma.NestedEnumstaff_accidents_roleFilter<$PrismaModel>
-  _max?: Prisma.NestedEnumstaff_accidents_roleFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumstaff_accidents_accident_roleFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumstaff_accidents_accident_roleFilter<$PrismaModel>
 }
 
-export type Enumvehicles_fuel_typeNullableFilter<$PrismaModel = never> = {
-  equals?: $Enums.vehicles_fuel_type | Prisma.Enumvehicles_fuel_typeFieldRefInput<$PrismaModel> | null
-  in?: $Enums.vehicles_fuel_type[] | null
-  notIn?: $Enums.vehicles_fuel_type[] | null
-  not?: Prisma.NestedEnumvehicles_fuel_typeNullableFilter<$PrismaModel> | $Enums.vehicles_fuel_type | null
+export type Enumvehicles_fuel_typeFilter<$PrismaModel = never> = {
+  equals?: $Enums.vehicles_fuel_type | Prisma.Enumvehicles_fuel_typeFieldRefInput<$PrismaModel>
+  in?: $Enums.vehicles_fuel_type[]
+  notIn?: $Enums.vehicles_fuel_type[]
+  not?: Prisma.NestedEnumvehicles_fuel_typeFilter<$PrismaModel> | $Enums.vehicles_fuel_type
 }
 
-export type Enumvehicles_license_typeNullableFilter<$PrismaModel = never> = {
-  equals?: $Enums.vehicles_license_type | Prisma.Enumvehicles_license_typeFieldRefInput<$PrismaModel> | null
-  in?: $Enums.vehicles_license_type[] | null
-  notIn?: $Enums.vehicles_license_type[] | null
-  not?: Prisma.NestedEnumvehicles_license_typeNullableFilter<$PrismaModel> | $Enums.vehicles_license_type | null
+export type Enumvehicles_license_typeFilter<$PrismaModel = never> = {
+  equals?: $Enums.vehicles_license_type | Prisma.Enumvehicles_license_typeFieldRefInput<$PrismaModel>
+  in?: $Enums.vehicles_license_type[]
+  notIn?: $Enums.vehicles_license_type[]
+  not?: Prisma.NestedEnumvehicles_license_typeFilter<$PrismaModel> | $Enums.vehicles_license_type
 }
 
-export type Enumvehicles_vehicle_configurationNullableFilter<$PrismaModel = never> = {
-  equals?: $Enums.vehicles_vehicle_configuration | Prisma.Enumvehicles_vehicle_configurationFieldRefInput<$PrismaModel> | null
-  in?: $Enums.vehicles_vehicle_configuration[] | null
-  notIn?: $Enums.vehicles_vehicle_configuration[] | null
-  not?: Prisma.NestedEnumvehicles_vehicle_configurationNullableFilter<$PrismaModel> | $Enums.vehicles_vehicle_configuration | null
+export type Enumvehicles_vehicle_configurationFilter<$PrismaModel = never> = {
+  equals?: $Enums.vehicles_vehicle_configuration | Prisma.Enumvehicles_vehicle_configurationFieldRefInput<$PrismaModel>
+  in?: $Enums.vehicles_vehicle_configuration[]
+  notIn?: $Enums.vehicles_vehicle_configuration[]
+  not?: Prisma.NestedEnumvehicles_vehicle_configurationFilter<$PrismaModel> | $Enums.vehicles_vehicle_configuration
 }
 
-export type Enumvehicles_fuel_typeNullableWithAggregatesFilter<$PrismaModel = never> = {
-  equals?: $Enums.vehicles_fuel_type | Prisma.Enumvehicles_fuel_typeFieldRefInput<$PrismaModel> | null
-  in?: $Enums.vehicles_fuel_type[] | null
-  notIn?: $Enums.vehicles_fuel_type[] | null
-  not?: Prisma.NestedEnumvehicles_fuel_typeNullableWithAggregatesFilter<$PrismaModel> | $Enums.vehicles_fuel_type | null
-  _count?: Prisma.NestedIntNullableFilter<$PrismaModel>
-  _min?: Prisma.NestedEnumvehicles_fuel_typeNullableFilter<$PrismaModel>
-  _max?: Prisma.NestedEnumvehicles_fuel_typeNullableFilter<$PrismaModel>
+export type Enumvehicles_fuel_typeWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.vehicles_fuel_type | Prisma.Enumvehicles_fuel_typeFieldRefInput<$PrismaModel>
+  in?: $Enums.vehicles_fuel_type[]
+  notIn?: $Enums.vehicles_fuel_type[]
+  not?: Prisma.NestedEnumvehicles_fuel_typeWithAggregatesFilter<$PrismaModel> | $Enums.vehicles_fuel_type
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumvehicles_fuel_typeFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumvehicles_fuel_typeFilter<$PrismaModel>
 }
 
-export type Enumvehicles_license_typeNullableWithAggregatesFilter<$PrismaModel = never> = {
-  equals?: $Enums.vehicles_license_type | Prisma.Enumvehicles_license_typeFieldRefInput<$PrismaModel> | null
-  in?: $Enums.vehicles_license_type[] | null
-  notIn?: $Enums.vehicles_license_type[] | null
-  not?: Prisma.NestedEnumvehicles_license_typeNullableWithAggregatesFilter<$PrismaModel> | $Enums.vehicles_license_type | null
-  _count?: Prisma.NestedIntNullableFilter<$PrismaModel>
-  _min?: Prisma.NestedEnumvehicles_license_typeNullableFilter<$PrismaModel>
-  _max?: Prisma.NestedEnumvehicles_license_typeNullableFilter<$PrismaModel>
+export type Enumvehicles_license_typeWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.vehicles_license_type | Prisma.Enumvehicles_license_typeFieldRefInput<$PrismaModel>
+  in?: $Enums.vehicles_license_type[]
+  notIn?: $Enums.vehicles_license_type[]
+  not?: Prisma.NestedEnumvehicles_license_typeWithAggregatesFilter<$PrismaModel> | $Enums.vehicles_license_type
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumvehicles_license_typeFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumvehicles_license_typeFilter<$PrismaModel>
 }
 
-export type Enumvehicles_vehicle_configurationNullableWithAggregatesFilter<$PrismaModel = never> = {
-  equals?: $Enums.vehicles_vehicle_configuration | Prisma.Enumvehicles_vehicle_configurationFieldRefInput<$PrismaModel> | null
-  in?: $Enums.vehicles_vehicle_configuration[] | null
-  notIn?: $Enums.vehicles_vehicle_configuration[] | null
-  not?: Prisma.NestedEnumvehicles_vehicle_configurationNullableWithAggregatesFilter<$PrismaModel> | $Enums.vehicles_vehicle_configuration | null
-  _count?: Prisma.NestedIntNullableFilter<$PrismaModel>
-  _min?: Prisma.NestedEnumvehicles_vehicle_configurationNullableFilter<$PrismaModel>
-  _max?: Prisma.NestedEnumvehicles_vehicle_configurationNullableFilter<$PrismaModel>
+export type Enumvehicles_vehicle_configurationWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.vehicles_vehicle_configuration | Prisma.Enumvehicles_vehicle_configurationFieldRefInput<$PrismaModel>
+  in?: $Enums.vehicles_vehicle_configuration[]
+  notIn?: $Enums.vehicles_vehicle_configuration[]
+  not?: Prisma.NestedEnumvehicles_vehicle_configurationWithAggregatesFilter<$PrismaModel> | $Enums.vehicles_vehicle_configuration
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumvehicles_vehicle_configurationFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumvehicles_vehicle_configurationFilter<$PrismaModel>
 }
 
 export type NestedIntFilter<$PrismaModel = never> = {
@@ -346,6 +363,28 @@ export type NestedDateTimeNullableFilter<$PrismaModel = never> = {
   not?: Prisma.NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
 }
 
+export type NestedStringFilter<$PrismaModel = never> = {
+  equals?: string | Prisma.StringFieldRefInput<$PrismaModel>
+  in?: string[]
+  notIn?: string[]
+  lt?: string | Prisma.StringFieldRefInput<$PrismaModel>
+  lte?: string | Prisma.StringFieldRefInput<$PrismaModel>
+  gt?: string | Prisma.StringFieldRefInput<$PrismaModel>
+  gte?: string | Prisma.StringFieldRefInput<$PrismaModel>
+  contains?: string | Prisma.StringFieldRefInput<$PrismaModel>
+  startsWith?: string | Prisma.StringFieldRefInput<$PrismaModel>
+  endsWith?: string | Prisma.StringFieldRefInput<$PrismaModel>
+  search?: string
+  not?: Prisma.NestedStringFilter<$PrismaModel> | string
+}
+
+export type NestedEnumaccidents_accident_typeFilter<$PrismaModel = never> = {
+  equals?: $Enums.accidents_accident_type | Prisma.Enumaccidents_accident_typeFieldRefInput<$PrismaModel>
+  in?: $Enums.accidents_accident_type[]
+  notIn?: $Enums.accidents_accident_type[]
+  not?: Prisma.NestedEnumaccidents_accident_typeFilter<$PrismaModel> | $Enums.accidents_accident_type
+}
+
 export type NestedStringNullableFilter<$PrismaModel = never> = {
   equals?: string | Prisma.StringFieldRefInput<$PrismaModel> | null
   in?: string[] | null
@@ -359,13 +398,6 @@ export type NestedStringNullableFilter<$PrismaModel = never> = {
   endsWith?: string | Prisma.StringFieldRefInput<$PrismaModel>
   search?: string
   not?: Prisma.NestedStringNullableFilter<$PrismaModel> | string | null
-}
-
-export type NestedEnumaccidents_accident_typeNullableFilter<$PrismaModel = never> = {
-  equals?: $Enums.accidents_accident_type | Prisma.Enumaccidents_accident_typeFieldRefInput<$PrismaModel> | null
-  in?: $Enums.accidents_accident_type[] | null
-  notIn?: $Enums.accidents_accident_type[] | null
-  not?: Prisma.NestedEnumaccidents_accident_typeNullableFilter<$PrismaModel> | $Enums.accidents_accident_type | null
 }
 
 export type NestedBoolNullableFilter<$PrismaModel = never> = {
@@ -439,6 +471,34 @@ export type NestedIntNullableFilter<$PrismaModel = never> = {
   not?: Prisma.NestedIntNullableFilter<$PrismaModel> | number | null
 }
 
+export type NestedStringWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: string | Prisma.StringFieldRefInput<$PrismaModel>
+  in?: string[]
+  notIn?: string[]
+  lt?: string | Prisma.StringFieldRefInput<$PrismaModel>
+  lte?: string | Prisma.StringFieldRefInput<$PrismaModel>
+  gt?: string | Prisma.StringFieldRefInput<$PrismaModel>
+  gte?: string | Prisma.StringFieldRefInput<$PrismaModel>
+  contains?: string | Prisma.StringFieldRefInput<$PrismaModel>
+  startsWith?: string | Prisma.StringFieldRefInput<$PrismaModel>
+  endsWith?: string | Prisma.StringFieldRefInput<$PrismaModel>
+  search?: string
+  not?: Prisma.NestedStringWithAggregatesFilter<$PrismaModel> | string
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedStringFilter<$PrismaModel>
+  _max?: Prisma.NestedStringFilter<$PrismaModel>
+}
+
+export type NestedEnumaccidents_accident_typeWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.accidents_accident_type | Prisma.Enumaccidents_accident_typeFieldRefInput<$PrismaModel>
+  in?: $Enums.accidents_accident_type[]
+  notIn?: $Enums.accidents_accident_type[]
+  not?: Prisma.NestedEnumaccidents_accident_typeWithAggregatesFilter<$PrismaModel> | $Enums.accidents_accident_type
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumaccidents_accident_typeFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumaccidents_accident_typeFilter<$PrismaModel>
+}
+
 export type NestedStringNullableWithAggregatesFilter<$PrismaModel = never> = {
   equals?: string | Prisma.StringFieldRefInput<$PrismaModel> | null
   in?: string[] | null
@@ -457,16 +517,6 @@ export type NestedStringNullableWithAggregatesFilter<$PrismaModel = never> = {
   _max?: Prisma.NestedStringNullableFilter<$PrismaModel>
 }
 
-export type NestedEnumaccidents_accident_typeNullableWithAggregatesFilter<$PrismaModel = never> = {
-  equals?: $Enums.accidents_accident_type | Prisma.Enumaccidents_accident_typeFieldRefInput<$PrismaModel> | null
-  in?: $Enums.accidents_accident_type[] | null
-  notIn?: $Enums.accidents_accident_type[] | null
-  not?: Prisma.NestedEnumaccidents_accident_typeNullableWithAggregatesFilter<$PrismaModel> | $Enums.accidents_accident_type | null
-  _count?: Prisma.NestedIntNullableFilter<$PrismaModel>
-  _min?: Prisma.NestedEnumaccidents_accident_typeNullableFilter<$PrismaModel>
-  _max?: Prisma.NestedEnumaccidents_accident_typeNullableFilter<$PrismaModel>
-}
-
 export type NestedBoolNullableWithAggregatesFilter<$PrismaModel = never> = {
   equals?: boolean | Prisma.BooleanFieldRefInput<$PrismaModel> | null
   not?: Prisma.NestedBoolNullableWithAggregatesFilter<$PrismaModel> | boolean | null
@@ -475,37 +525,21 @@ export type NestedBoolNullableWithAggregatesFilter<$PrismaModel = never> = {
   _max?: Prisma.NestedBoolNullableFilter<$PrismaModel>
 }
 
-export type NestedStringFilter<$PrismaModel = never> = {
-  equals?: string | Prisma.StringFieldRefInput<$PrismaModel>
-  in?: string[]
-  notIn?: string[]
-  lt?: string | Prisma.StringFieldRefInput<$PrismaModel>
-  lte?: string | Prisma.StringFieldRefInput<$PrismaModel>
-  gt?: string | Prisma.StringFieldRefInput<$PrismaModel>
-  gte?: string | Prisma.StringFieldRefInput<$PrismaModel>
-  contains?: string | Prisma.StringFieldRefInput<$PrismaModel>
-  startsWith?: string | Prisma.StringFieldRefInput<$PrismaModel>
-  endsWith?: string | Prisma.StringFieldRefInput<$PrismaModel>
-  search?: string
-  not?: Prisma.NestedStringFilter<$PrismaModel> | string
+export type NestedEnuminterventions_intervention_typeFilter<$PrismaModel = never> = {
+  equals?: $Enums.interventions_intervention_type | Prisma.Enuminterventions_intervention_typeFieldRefInput<$PrismaModel>
+  in?: $Enums.interventions_intervention_type[]
+  notIn?: $Enums.interventions_intervention_type[]
+  not?: Prisma.NestedEnuminterventions_intervention_typeFilter<$PrismaModel> | $Enums.interventions_intervention_type
 }
 
-export type NestedStringWithAggregatesFilter<$PrismaModel = never> = {
-  equals?: string | Prisma.StringFieldRefInput<$PrismaModel>
-  in?: string[]
-  notIn?: string[]
-  lt?: string | Prisma.StringFieldRefInput<$PrismaModel>
-  lte?: string | Prisma.StringFieldRefInput<$PrismaModel>
-  gt?: string | Prisma.StringFieldRefInput<$PrismaModel>
-  gte?: string | Prisma.StringFieldRefInput<$PrismaModel>
-  contains?: string | Prisma.StringFieldRefInput<$PrismaModel>
-  startsWith?: string | Prisma.StringFieldRefInput<$PrismaModel>
-  endsWith?: string | Prisma.StringFieldRefInput<$PrismaModel>
-  search?: string
-  not?: Prisma.NestedStringWithAggregatesFilter<$PrismaModel> | string
+export type NestedEnuminterventions_intervention_typeWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.interventions_intervention_type | Prisma.Enuminterventions_intervention_typeFieldRefInput<$PrismaModel>
+  in?: $Enums.interventions_intervention_type[]
+  notIn?: $Enums.interventions_intervention_type[]
+  not?: Prisma.NestedEnuminterventions_intervention_typeWithAggregatesFilter<$PrismaModel> | $Enums.interventions_intervention_type
   _count?: Prisma.NestedIntFilter<$PrismaModel>
-  _min?: Prisma.NestedStringFilter<$PrismaModel>
-  _max?: Prisma.NestedStringFilter<$PrismaModel>
+  _min?: Prisma.NestedEnuminterventions_intervention_typeFilter<$PrismaModel>
+  _max?: Prisma.NestedEnuminterventions_intervention_typeFilter<$PrismaModel>
 }
 
 export type NestedIntNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -562,72 +596,72 @@ export type NestedDecimalWithAggregatesFilter<$PrismaModel = never> = {
   _max?: Prisma.NestedDecimalFilter<$PrismaModel>
 }
 
-export type NestedEnumstaff_accidents_roleFilter<$PrismaModel = never> = {
-  equals?: $Enums.staff_accidents_role | Prisma.Enumstaff_accidents_roleFieldRefInput<$PrismaModel>
-  in?: $Enums.staff_accidents_role[]
-  notIn?: $Enums.staff_accidents_role[]
-  not?: Prisma.NestedEnumstaff_accidents_roleFilter<$PrismaModel> | $Enums.staff_accidents_role
+export type NestedEnumstaff_accidents_accident_roleFilter<$PrismaModel = never> = {
+  equals?: $Enums.staff_accidents_accident_role | Prisma.Enumstaff_accidents_accident_roleFieldRefInput<$PrismaModel>
+  in?: $Enums.staff_accidents_accident_role[]
+  notIn?: $Enums.staff_accidents_accident_role[]
+  not?: Prisma.NestedEnumstaff_accidents_accident_roleFilter<$PrismaModel> | $Enums.staff_accidents_accident_role
 }
 
-export type NestedEnumstaff_accidents_roleWithAggregatesFilter<$PrismaModel = never> = {
-  equals?: $Enums.staff_accidents_role | Prisma.Enumstaff_accidents_roleFieldRefInput<$PrismaModel>
-  in?: $Enums.staff_accidents_role[]
-  notIn?: $Enums.staff_accidents_role[]
-  not?: Prisma.NestedEnumstaff_accidents_roleWithAggregatesFilter<$PrismaModel> | $Enums.staff_accidents_role
+export type NestedEnumstaff_accidents_accident_roleWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.staff_accidents_accident_role | Prisma.Enumstaff_accidents_accident_roleFieldRefInput<$PrismaModel>
+  in?: $Enums.staff_accidents_accident_role[]
+  notIn?: $Enums.staff_accidents_accident_role[]
+  not?: Prisma.NestedEnumstaff_accidents_accident_roleWithAggregatesFilter<$PrismaModel> | $Enums.staff_accidents_accident_role
   _count?: Prisma.NestedIntFilter<$PrismaModel>
-  _min?: Prisma.NestedEnumstaff_accidents_roleFilter<$PrismaModel>
-  _max?: Prisma.NestedEnumstaff_accidents_roleFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumstaff_accidents_accident_roleFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumstaff_accidents_accident_roleFilter<$PrismaModel>
 }
 
-export type NestedEnumvehicles_fuel_typeNullableFilter<$PrismaModel = never> = {
-  equals?: $Enums.vehicles_fuel_type | Prisma.Enumvehicles_fuel_typeFieldRefInput<$PrismaModel> | null
-  in?: $Enums.vehicles_fuel_type[] | null
-  notIn?: $Enums.vehicles_fuel_type[] | null
-  not?: Prisma.NestedEnumvehicles_fuel_typeNullableFilter<$PrismaModel> | $Enums.vehicles_fuel_type | null
+export type NestedEnumvehicles_fuel_typeFilter<$PrismaModel = never> = {
+  equals?: $Enums.vehicles_fuel_type | Prisma.Enumvehicles_fuel_typeFieldRefInput<$PrismaModel>
+  in?: $Enums.vehicles_fuel_type[]
+  notIn?: $Enums.vehicles_fuel_type[]
+  not?: Prisma.NestedEnumvehicles_fuel_typeFilter<$PrismaModel> | $Enums.vehicles_fuel_type
 }
 
-export type NestedEnumvehicles_license_typeNullableFilter<$PrismaModel = never> = {
-  equals?: $Enums.vehicles_license_type | Prisma.Enumvehicles_license_typeFieldRefInput<$PrismaModel> | null
-  in?: $Enums.vehicles_license_type[] | null
-  notIn?: $Enums.vehicles_license_type[] | null
-  not?: Prisma.NestedEnumvehicles_license_typeNullableFilter<$PrismaModel> | $Enums.vehicles_license_type | null
+export type NestedEnumvehicles_license_typeFilter<$PrismaModel = never> = {
+  equals?: $Enums.vehicles_license_type | Prisma.Enumvehicles_license_typeFieldRefInput<$PrismaModel>
+  in?: $Enums.vehicles_license_type[]
+  notIn?: $Enums.vehicles_license_type[]
+  not?: Prisma.NestedEnumvehicles_license_typeFilter<$PrismaModel> | $Enums.vehicles_license_type
 }
 
-export type NestedEnumvehicles_vehicle_configurationNullableFilter<$PrismaModel = never> = {
-  equals?: $Enums.vehicles_vehicle_configuration | Prisma.Enumvehicles_vehicle_configurationFieldRefInput<$PrismaModel> | null
-  in?: $Enums.vehicles_vehicle_configuration[] | null
-  notIn?: $Enums.vehicles_vehicle_configuration[] | null
-  not?: Prisma.NestedEnumvehicles_vehicle_configurationNullableFilter<$PrismaModel> | $Enums.vehicles_vehicle_configuration | null
+export type NestedEnumvehicles_vehicle_configurationFilter<$PrismaModel = never> = {
+  equals?: $Enums.vehicles_vehicle_configuration | Prisma.Enumvehicles_vehicle_configurationFieldRefInput<$PrismaModel>
+  in?: $Enums.vehicles_vehicle_configuration[]
+  notIn?: $Enums.vehicles_vehicle_configuration[]
+  not?: Prisma.NestedEnumvehicles_vehicle_configurationFilter<$PrismaModel> | $Enums.vehicles_vehicle_configuration
 }
 
-export type NestedEnumvehicles_fuel_typeNullableWithAggregatesFilter<$PrismaModel = never> = {
-  equals?: $Enums.vehicles_fuel_type | Prisma.Enumvehicles_fuel_typeFieldRefInput<$PrismaModel> | null
-  in?: $Enums.vehicles_fuel_type[] | null
-  notIn?: $Enums.vehicles_fuel_type[] | null
-  not?: Prisma.NestedEnumvehicles_fuel_typeNullableWithAggregatesFilter<$PrismaModel> | $Enums.vehicles_fuel_type | null
-  _count?: Prisma.NestedIntNullableFilter<$PrismaModel>
-  _min?: Prisma.NestedEnumvehicles_fuel_typeNullableFilter<$PrismaModel>
-  _max?: Prisma.NestedEnumvehicles_fuel_typeNullableFilter<$PrismaModel>
+export type NestedEnumvehicles_fuel_typeWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.vehicles_fuel_type | Prisma.Enumvehicles_fuel_typeFieldRefInput<$PrismaModel>
+  in?: $Enums.vehicles_fuel_type[]
+  notIn?: $Enums.vehicles_fuel_type[]
+  not?: Prisma.NestedEnumvehicles_fuel_typeWithAggregatesFilter<$PrismaModel> | $Enums.vehicles_fuel_type
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumvehicles_fuel_typeFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumvehicles_fuel_typeFilter<$PrismaModel>
 }
 
-export type NestedEnumvehicles_license_typeNullableWithAggregatesFilter<$PrismaModel = never> = {
-  equals?: $Enums.vehicles_license_type | Prisma.Enumvehicles_license_typeFieldRefInput<$PrismaModel> | null
-  in?: $Enums.vehicles_license_type[] | null
-  notIn?: $Enums.vehicles_license_type[] | null
-  not?: Prisma.NestedEnumvehicles_license_typeNullableWithAggregatesFilter<$PrismaModel> | $Enums.vehicles_license_type | null
-  _count?: Prisma.NestedIntNullableFilter<$PrismaModel>
-  _min?: Prisma.NestedEnumvehicles_license_typeNullableFilter<$PrismaModel>
-  _max?: Prisma.NestedEnumvehicles_license_typeNullableFilter<$PrismaModel>
+export type NestedEnumvehicles_license_typeWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.vehicles_license_type | Prisma.Enumvehicles_license_typeFieldRefInput<$PrismaModel>
+  in?: $Enums.vehicles_license_type[]
+  notIn?: $Enums.vehicles_license_type[]
+  not?: Prisma.NestedEnumvehicles_license_typeWithAggregatesFilter<$PrismaModel> | $Enums.vehicles_license_type
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumvehicles_license_typeFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumvehicles_license_typeFilter<$PrismaModel>
 }
 
-export type NestedEnumvehicles_vehicle_configurationNullableWithAggregatesFilter<$PrismaModel = never> = {
-  equals?: $Enums.vehicles_vehicle_configuration | Prisma.Enumvehicles_vehicle_configurationFieldRefInput<$PrismaModel> | null
-  in?: $Enums.vehicles_vehicle_configuration[] | null
-  notIn?: $Enums.vehicles_vehicle_configuration[] | null
-  not?: Prisma.NestedEnumvehicles_vehicle_configurationNullableWithAggregatesFilter<$PrismaModel> | $Enums.vehicles_vehicle_configuration | null
-  _count?: Prisma.NestedIntNullableFilter<$PrismaModel>
-  _min?: Prisma.NestedEnumvehicles_vehicle_configurationNullableFilter<$PrismaModel>
-  _max?: Prisma.NestedEnumvehicles_vehicle_configurationNullableFilter<$PrismaModel>
+export type NestedEnumvehicles_vehicle_configurationWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.vehicles_vehicle_configuration | Prisma.Enumvehicles_vehicle_configurationFieldRefInput<$PrismaModel>
+  in?: $Enums.vehicles_vehicle_configuration[]
+  notIn?: $Enums.vehicles_vehicle_configuration[]
+  not?: Prisma.NestedEnumvehicles_vehicle_configurationWithAggregatesFilter<$PrismaModel> | $Enums.vehicles_vehicle_configuration
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumvehicles_vehicle_configurationFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumvehicles_vehicle_configurationFilter<$PrismaModel>
 }
 
 

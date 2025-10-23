@@ -36,7 +36,7 @@ export type AccidentsSumAggregateOutputType = {
 export type AccidentsMinAggregateOutputType = {
   accident_id: number | null
   accident_date: Date | null
-  time: Date | null
+  accident_time: Date | null
   street: string | null
   street_number: string | null
   postal_code: string | null
@@ -47,6 +47,7 @@ export type AccidentsMinAggregateOutputType = {
   circumstances: string | null
   report_number: string | null
   info_number: string | null
+  ref_insurance: string | null
   other_party_info: string | null
   documents: string | null
   repair_completed: boolean | null
@@ -55,7 +56,7 @@ export type AccidentsMinAggregateOutputType = {
 export type AccidentsMaxAggregateOutputType = {
   accident_id: number | null
   accident_date: Date | null
-  time: Date | null
+  accident_time: Date | null
   street: string | null
   street_number: string | null
   postal_code: string | null
@@ -66,6 +67,7 @@ export type AccidentsMaxAggregateOutputType = {
   circumstances: string | null
   report_number: string | null
   info_number: string | null
+  ref_insurance: string | null
   other_party_info: string | null
   documents: string | null
   repair_completed: boolean | null
@@ -74,7 +76,7 @@ export type AccidentsMaxAggregateOutputType = {
 export type AccidentsCountAggregateOutputType = {
   accident_id: number
   accident_date: number
-  time: number
+  accident_time: number
   street: number
   street_number: number
   postal_code: number
@@ -85,6 +87,7 @@ export type AccidentsCountAggregateOutputType = {
   circumstances: number
   report_number: number
   info_number: number
+  ref_insurance: number
   other_party_info: number
   documents: number
   repair_completed: number
@@ -103,7 +106,7 @@ export type AccidentsSumAggregateInputType = {
 export type AccidentsMinAggregateInputType = {
   accident_id?: true
   accident_date?: true
-  time?: true
+  accident_time?: true
   street?: true
   street_number?: true
   postal_code?: true
@@ -114,6 +117,7 @@ export type AccidentsMinAggregateInputType = {
   circumstances?: true
   report_number?: true
   info_number?: true
+  ref_insurance?: true
   other_party_info?: true
   documents?: true
   repair_completed?: true
@@ -122,7 +126,7 @@ export type AccidentsMinAggregateInputType = {
 export type AccidentsMaxAggregateInputType = {
   accident_id?: true
   accident_date?: true
-  time?: true
+  accident_time?: true
   street?: true
   street_number?: true
   postal_code?: true
@@ -133,6 +137,7 @@ export type AccidentsMaxAggregateInputType = {
   circumstances?: true
   report_number?: true
   info_number?: true
+  ref_insurance?: true
   other_party_info?: true
   documents?: true
   repair_completed?: true
@@ -141,7 +146,7 @@ export type AccidentsMaxAggregateInputType = {
 export type AccidentsCountAggregateInputType = {
   accident_id?: true
   accident_date?: true
-  time?: true
+  accident_time?: true
   street?: true
   street_number?: true
   postal_code?: true
@@ -152,6 +157,7 @@ export type AccidentsCountAggregateInputType = {
   circumstances?: true
   report_number?: true
   info_number?: true
+  ref_insurance?: true
   other_party_info?: true
   documents?: true
   repair_completed?: true
@@ -247,17 +253,18 @@ export type accidentsGroupByArgs<ExtArgs extends runtime.Types.Extensions.Intern
 export type AccidentsGroupByOutputType = {
   accident_id: number
   accident_date: Date
-  time: Date | null
-  street: string | null
-  street_number: string | null
-  postal_code: string | null
-  city: string | null
-  country: string | null
-  accident_type: $Enums.accidents_accident_type | null
-  damages: string | null
-  circumstances: string | null
+  accident_time: Date | null
+  street: string
+  street_number: string
+  postal_code: string
+  city: string
+  country: string
+  accident_type: $Enums.accidents_accident_type
+  damages: string
+  circumstances: string
   report_number: string | null
   info_number: string | null
+  ref_insurance: string | null
   other_party_info: string | null
   documents: string | null
   repair_completed: boolean | null
@@ -289,17 +296,18 @@ export type accidentsWhereInput = {
   NOT?: Prisma.accidentsWhereInput | Prisma.accidentsWhereInput[]
   accident_id?: Prisma.IntFilter<"accidents"> | number
   accident_date?: Prisma.DateTimeFilter<"accidents"> | Date | string
-  time?: Prisma.DateTimeNullableFilter<"accidents"> | Date | string | null
-  street?: Prisma.StringNullableFilter<"accidents"> | string | null
-  street_number?: Prisma.StringNullableFilter<"accidents"> | string | null
-  postal_code?: Prisma.StringNullableFilter<"accidents"> | string | null
-  city?: Prisma.StringNullableFilter<"accidents"> | string | null
-  country?: Prisma.StringNullableFilter<"accidents"> | string | null
-  accident_type?: Prisma.Enumaccidents_accident_typeNullableFilter<"accidents"> | $Enums.accidents_accident_type | null
-  damages?: Prisma.StringNullableFilter<"accidents"> | string | null
-  circumstances?: Prisma.StringNullableFilter<"accidents"> | string | null
+  accident_time?: Prisma.DateTimeNullableFilter<"accidents"> | Date | string | null
+  street?: Prisma.StringFilter<"accidents"> | string
+  street_number?: Prisma.StringFilter<"accidents"> | string
+  postal_code?: Prisma.StringFilter<"accidents"> | string
+  city?: Prisma.StringFilter<"accidents"> | string
+  country?: Prisma.StringFilter<"accidents"> | string
+  accident_type?: Prisma.Enumaccidents_accident_typeFilter<"accidents"> | $Enums.accidents_accident_type
+  damages?: Prisma.StringFilter<"accidents"> | string
+  circumstances?: Prisma.StringFilter<"accidents"> | string
   report_number?: Prisma.StringNullableFilter<"accidents"> | string | null
   info_number?: Prisma.StringNullableFilter<"accidents"> | string | null
+  ref_insurance?: Prisma.StringNullableFilter<"accidents"> | string | null
   other_party_info?: Prisma.StringNullableFilter<"accidents"> | string | null
   documents?: Prisma.StringNullableFilter<"accidents"> | string | null
   repair_completed?: Prisma.BoolNullableFilter<"accidents"> | boolean | null
@@ -310,17 +318,18 @@ export type accidentsWhereInput = {
 export type accidentsOrderByWithRelationInput = {
   accident_id?: Prisma.SortOrder
   accident_date?: Prisma.SortOrder
-  time?: Prisma.SortOrderInput | Prisma.SortOrder
-  street?: Prisma.SortOrderInput | Prisma.SortOrder
-  street_number?: Prisma.SortOrderInput | Prisma.SortOrder
-  postal_code?: Prisma.SortOrderInput | Prisma.SortOrder
-  city?: Prisma.SortOrderInput | Prisma.SortOrder
-  country?: Prisma.SortOrderInput | Prisma.SortOrder
-  accident_type?: Prisma.SortOrderInput | Prisma.SortOrder
-  damages?: Prisma.SortOrderInput | Prisma.SortOrder
-  circumstances?: Prisma.SortOrderInput | Prisma.SortOrder
+  accident_time?: Prisma.SortOrderInput | Prisma.SortOrder
+  street?: Prisma.SortOrder
+  street_number?: Prisma.SortOrder
+  postal_code?: Prisma.SortOrder
+  city?: Prisma.SortOrder
+  country?: Prisma.SortOrder
+  accident_type?: Prisma.SortOrder
+  damages?: Prisma.SortOrder
+  circumstances?: Prisma.SortOrder
   report_number?: Prisma.SortOrderInput | Prisma.SortOrder
   info_number?: Prisma.SortOrderInput | Prisma.SortOrder
+  ref_insurance?: Prisma.SortOrderInput | Prisma.SortOrder
   other_party_info?: Prisma.SortOrderInput | Prisma.SortOrder
   documents?: Prisma.SortOrderInput | Prisma.SortOrder
   repair_completed?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -335,17 +344,18 @@ export type accidentsWhereUniqueInput = Prisma.AtLeast<{
   OR?: Prisma.accidentsWhereInput[]
   NOT?: Prisma.accidentsWhereInput | Prisma.accidentsWhereInput[]
   accident_date?: Prisma.DateTimeFilter<"accidents"> | Date | string
-  time?: Prisma.DateTimeNullableFilter<"accidents"> | Date | string | null
-  street?: Prisma.StringNullableFilter<"accidents"> | string | null
-  street_number?: Prisma.StringNullableFilter<"accidents"> | string | null
-  postal_code?: Prisma.StringNullableFilter<"accidents"> | string | null
-  city?: Prisma.StringNullableFilter<"accidents"> | string | null
-  country?: Prisma.StringNullableFilter<"accidents"> | string | null
-  accident_type?: Prisma.Enumaccidents_accident_typeNullableFilter<"accidents"> | $Enums.accidents_accident_type | null
-  damages?: Prisma.StringNullableFilter<"accidents"> | string | null
-  circumstances?: Prisma.StringNullableFilter<"accidents"> | string | null
+  accident_time?: Prisma.DateTimeNullableFilter<"accidents"> | Date | string | null
+  street?: Prisma.StringFilter<"accidents"> | string
+  street_number?: Prisma.StringFilter<"accidents"> | string
+  postal_code?: Prisma.StringFilter<"accidents"> | string
+  city?: Prisma.StringFilter<"accidents"> | string
+  country?: Prisma.StringFilter<"accidents"> | string
+  accident_type?: Prisma.Enumaccidents_accident_typeFilter<"accidents"> | $Enums.accidents_accident_type
+  damages?: Prisma.StringFilter<"accidents"> | string
+  circumstances?: Prisma.StringFilter<"accidents"> | string
   report_number?: Prisma.StringNullableFilter<"accidents"> | string | null
   info_number?: Prisma.StringNullableFilter<"accidents"> | string | null
+  ref_insurance?: Prisma.StringNullableFilter<"accidents"> | string | null
   other_party_info?: Prisma.StringNullableFilter<"accidents"> | string | null
   documents?: Prisma.StringNullableFilter<"accidents"> | string | null
   repair_completed?: Prisma.BoolNullableFilter<"accidents"> | boolean | null
@@ -356,17 +366,18 @@ export type accidentsWhereUniqueInput = Prisma.AtLeast<{
 export type accidentsOrderByWithAggregationInput = {
   accident_id?: Prisma.SortOrder
   accident_date?: Prisma.SortOrder
-  time?: Prisma.SortOrderInput | Prisma.SortOrder
-  street?: Prisma.SortOrderInput | Prisma.SortOrder
-  street_number?: Prisma.SortOrderInput | Prisma.SortOrder
-  postal_code?: Prisma.SortOrderInput | Prisma.SortOrder
-  city?: Prisma.SortOrderInput | Prisma.SortOrder
-  country?: Prisma.SortOrderInput | Prisma.SortOrder
-  accident_type?: Prisma.SortOrderInput | Prisma.SortOrder
-  damages?: Prisma.SortOrderInput | Prisma.SortOrder
-  circumstances?: Prisma.SortOrderInput | Prisma.SortOrder
+  accident_time?: Prisma.SortOrderInput | Prisma.SortOrder
+  street?: Prisma.SortOrder
+  street_number?: Prisma.SortOrder
+  postal_code?: Prisma.SortOrder
+  city?: Prisma.SortOrder
+  country?: Prisma.SortOrder
+  accident_type?: Prisma.SortOrder
+  damages?: Prisma.SortOrder
+  circumstances?: Prisma.SortOrder
   report_number?: Prisma.SortOrderInput | Prisma.SortOrder
   info_number?: Prisma.SortOrderInput | Prisma.SortOrder
+  ref_insurance?: Prisma.SortOrderInput | Prisma.SortOrder
   other_party_info?: Prisma.SortOrderInput | Prisma.SortOrder
   documents?: Prisma.SortOrderInput | Prisma.SortOrder
   repair_completed?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -383,17 +394,18 @@ export type accidentsScalarWhereWithAggregatesInput = {
   NOT?: Prisma.accidentsScalarWhereWithAggregatesInput | Prisma.accidentsScalarWhereWithAggregatesInput[]
   accident_id?: Prisma.IntWithAggregatesFilter<"accidents"> | number
   accident_date?: Prisma.DateTimeWithAggregatesFilter<"accidents"> | Date | string
-  time?: Prisma.DateTimeNullableWithAggregatesFilter<"accidents"> | Date | string | null
-  street?: Prisma.StringNullableWithAggregatesFilter<"accidents"> | string | null
-  street_number?: Prisma.StringNullableWithAggregatesFilter<"accidents"> | string | null
-  postal_code?: Prisma.StringNullableWithAggregatesFilter<"accidents"> | string | null
-  city?: Prisma.StringNullableWithAggregatesFilter<"accidents"> | string | null
-  country?: Prisma.StringNullableWithAggregatesFilter<"accidents"> | string | null
-  accident_type?: Prisma.Enumaccidents_accident_typeNullableWithAggregatesFilter<"accidents"> | $Enums.accidents_accident_type | null
-  damages?: Prisma.StringNullableWithAggregatesFilter<"accidents"> | string | null
-  circumstances?: Prisma.StringNullableWithAggregatesFilter<"accidents"> | string | null
+  accident_time?: Prisma.DateTimeNullableWithAggregatesFilter<"accidents"> | Date | string | null
+  street?: Prisma.StringWithAggregatesFilter<"accidents"> | string
+  street_number?: Prisma.StringWithAggregatesFilter<"accidents"> | string
+  postal_code?: Prisma.StringWithAggregatesFilter<"accidents"> | string
+  city?: Prisma.StringWithAggregatesFilter<"accidents"> | string
+  country?: Prisma.StringWithAggregatesFilter<"accidents"> | string
+  accident_type?: Prisma.Enumaccidents_accident_typeWithAggregatesFilter<"accidents"> | $Enums.accidents_accident_type
+  damages?: Prisma.StringWithAggregatesFilter<"accidents"> | string
+  circumstances?: Prisma.StringWithAggregatesFilter<"accidents"> | string
   report_number?: Prisma.StringNullableWithAggregatesFilter<"accidents"> | string | null
   info_number?: Prisma.StringNullableWithAggregatesFilter<"accidents"> | string | null
+  ref_insurance?: Prisma.StringNullableWithAggregatesFilter<"accidents"> | string | null
   other_party_info?: Prisma.StringNullableWithAggregatesFilter<"accidents"> | string | null
   documents?: Prisma.StringNullableWithAggregatesFilter<"accidents"> | string | null
   repair_completed?: Prisma.BoolNullableWithAggregatesFilter<"accidents"> | boolean | null
@@ -401,17 +413,18 @@ export type accidentsScalarWhereWithAggregatesInput = {
 
 export type accidentsCreateInput = {
   accident_date: Date | string
-  time?: Date | string | null
-  street?: string | null
-  street_number?: string | null
-  postal_code?: string | null
-  city?: string | null
-  country?: string | null
-  accident_type?: $Enums.accidents_accident_type | null
-  damages?: string | null
-  circumstances?: string | null
+  accident_time?: Date | string | null
+  street: string
+  street_number: string
+  postal_code: string
+  city: string
+  country: string
+  accident_type: $Enums.accidents_accident_type
+  damages: string
+  circumstances: string
   report_number?: string | null
   info_number?: string | null
+  ref_insurance?: string | null
   other_party_info?: string | null
   documents?: string | null
   repair_completed?: boolean | null
@@ -422,17 +435,18 @@ export type accidentsCreateInput = {
 export type accidentsUncheckedCreateInput = {
   accident_id?: number
   accident_date: Date | string
-  time?: Date | string | null
-  street?: string | null
-  street_number?: string | null
-  postal_code?: string | null
-  city?: string | null
-  country?: string | null
-  accident_type?: $Enums.accidents_accident_type | null
-  damages?: string | null
-  circumstances?: string | null
+  accident_time?: Date | string | null
+  street: string
+  street_number: string
+  postal_code: string
+  city: string
+  country: string
+  accident_type: $Enums.accidents_accident_type
+  damages: string
+  circumstances: string
   report_number?: string | null
   info_number?: string | null
+  ref_insurance?: string | null
   other_party_info?: string | null
   documents?: string | null
   repair_completed?: boolean | null
@@ -442,17 +456,18 @@ export type accidentsUncheckedCreateInput = {
 
 export type accidentsUpdateInput = {
   accident_date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  time?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  street?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  street_number?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  postal_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  accident_type?: Prisma.NullableEnumaccidents_accident_typeFieldUpdateOperationsInput | $Enums.accidents_accident_type | null
-  damages?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  circumstances?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  accident_time?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  street?: Prisma.StringFieldUpdateOperationsInput | string
+  street_number?: Prisma.StringFieldUpdateOperationsInput | string
+  postal_code?: Prisma.StringFieldUpdateOperationsInput | string
+  city?: Prisma.StringFieldUpdateOperationsInput | string
+  country?: Prisma.StringFieldUpdateOperationsInput | string
+  accident_type?: Prisma.Enumaccidents_accident_typeFieldUpdateOperationsInput | $Enums.accidents_accident_type
+  damages?: Prisma.StringFieldUpdateOperationsInput | string
+  circumstances?: Prisma.StringFieldUpdateOperationsInput | string
   report_number?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   info_number?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  ref_insurance?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   other_party_info?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   documents?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   repair_completed?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
@@ -463,17 +478,18 @@ export type accidentsUpdateInput = {
 export type accidentsUncheckedUpdateInput = {
   accident_id?: Prisma.IntFieldUpdateOperationsInput | number
   accident_date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  time?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  street?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  street_number?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  postal_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  accident_type?: Prisma.NullableEnumaccidents_accident_typeFieldUpdateOperationsInput | $Enums.accidents_accident_type | null
-  damages?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  circumstances?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  accident_time?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  street?: Prisma.StringFieldUpdateOperationsInput | string
+  street_number?: Prisma.StringFieldUpdateOperationsInput | string
+  postal_code?: Prisma.StringFieldUpdateOperationsInput | string
+  city?: Prisma.StringFieldUpdateOperationsInput | string
+  country?: Prisma.StringFieldUpdateOperationsInput | string
+  accident_type?: Prisma.Enumaccidents_accident_typeFieldUpdateOperationsInput | $Enums.accidents_accident_type
+  damages?: Prisma.StringFieldUpdateOperationsInput | string
+  circumstances?: Prisma.StringFieldUpdateOperationsInput | string
   report_number?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   info_number?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  ref_insurance?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   other_party_info?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   documents?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   repair_completed?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
@@ -484,17 +500,18 @@ export type accidentsUncheckedUpdateInput = {
 export type accidentsCreateManyInput = {
   accident_id?: number
   accident_date: Date | string
-  time?: Date | string | null
-  street?: string | null
-  street_number?: string | null
-  postal_code?: string | null
-  city?: string | null
-  country?: string | null
-  accident_type?: $Enums.accidents_accident_type | null
-  damages?: string | null
-  circumstances?: string | null
+  accident_time?: Date | string | null
+  street: string
+  street_number: string
+  postal_code: string
+  city: string
+  country: string
+  accident_type: $Enums.accidents_accident_type
+  damages: string
+  circumstances: string
   report_number?: string | null
   info_number?: string | null
+  ref_insurance?: string | null
   other_party_info?: string | null
   documents?: string | null
   repair_completed?: boolean | null
@@ -502,17 +519,18 @@ export type accidentsCreateManyInput = {
 
 export type accidentsUpdateManyMutationInput = {
   accident_date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  time?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  street?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  street_number?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  postal_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  accident_type?: Prisma.NullableEnumaccidents_accident_typeFieldUpdateOperationsInput | $Enums.accidents_accident_type | null
-  damages?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  circumstances?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  accident_time?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  street?: Prisma.StringFieldUpdateOperationsInput | string
+  street_number?: Prisma.StringFieldUpdateOperationsInput | string
+  postal_code?: Prisma.StringFieldUpdateOperationsInput | string
+  city?: Prisma.StringFieldUpdateOperationsInput | string
+  country?: Prisma.StringFieldUpdateOperationsInput | string
+  accident_type?: Prisma.Enumaccidents_accident_typeFieldUpdateOperationsInput | $Enums.accidents_accident_type
+  damages?: Prisma.StringFieldUpdateOperationsInput | string
+  circumstances?: Prisma.StringFieldUpdateOperationsInput | string
   report_number?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   info_number?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  ref_insurance?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   other_party_info?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   documents?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   repair_completed?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
@@ -521,17 +539,18 @@ export type accidentsUpdateManyMutationInput = {
 export type accidentsUncheckedUpdateManyInput = {
   accident_id?: Prisma.IntFieldUpdateOperationsInput | number
   accident_date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  time?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  street?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  street_number?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  postal_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  accident_type?: Prisma.NullableEnumaccidents_accident_typeFieldUpdateOperationsInput | $Enums.accidents_accident_type | null
-  damages?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  circumstances?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  accident_time?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  street?: Prisma.StringFieldUpdateOperationsInput | string
+  street_number?: Prisma.StringFieldUpdateOperationsInput | string
+  postal_code?: Prisma.StringFieldUpdateOperationsInput | string
+  city?: Prisma.StringFieldUpdateOperationsInput | string
+  country?: Prisma.StringFieldUpdateOperationsInput | string
+  accident_type?: Prisma.Enumaccidents_accident_typeFieldUpdateOperationsInput | $Enums.accidents_accident_type
+  damages?: Prisma.StringFieldUpdateOperationsInput | string
+  circumstances?: Prisma.StringFieldUpdateOperationsInput | string
   report_number?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   info_number?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  ref_insurance?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   other_party_info?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   documents?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   repair_completed?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
@@ -546,7 +565,7 @@ export type accidentsOrderByRelevanceInput = {
 export type accidentsCountOrderByAggregateInput = {
   accident_id?: Prisma.SortOrder
   accident_date?: Prisma.SortOrder
-  time?: Prisma.SortOrder
+  accident_time?: Prisma.SortOrder
   street?: Prisma.SortOrder
   street_number?: Prisma.SortOrder
   postal_code?: Prisma.SortOrder
@@ -557,6 +576,7 @@ export type accidentsCountOrderByAggregateInput = {
   circumstances?: Prisma.SortOrder
   report_number?: Prisma.SortOrder
   info_number?: Prisma.SortOrder
+  ref_insurance?: Prisma.SortOrder
   other_party_info?: Prisma.SortOrder
   documents?: Prisma.SortOrder
   repair_completed?: Prisma.SortOrder
@@ -569,7 +589,7 @@ export type accidentsAvgOrderByAggregateInput = {
 export type accidentsMaxOrderByAggregateInput = {
   accident_id?: Prisma.SortOrder
   accident_date?: Prisma.SortOrder
-  time?: Prisma.SortOrder
+  accident_time?: Prisma.SortOrder
   street?: Prisma.SortOrder
   street_number?: Prisma.SortOrder
   postal_code?: Prisma.SortOrder
@@ -580,6 +600,7 @@ export type accidentsMaxOrderByAggregateInput = {
   circumstances?: Prisma.SortOrder
   report_number?: Prisma.SortOrder
   info_number?: Prisma.SortOrder
+  ref_insurance?: Prisma.SortOrder
   other_party_info?: Prisma.SortOrder
   documents?: Prisma.SortOrder
   repair_completed?: Prisma.SortOrder
@@ -588,7 +609,7 @@ export type accidentsMaxOrderByAggregateInput = {
 export type accidentsMinOrderByAggregateInput = {
   accident_id?: Prisma.SortOrder
   accident_date?: Prisma.SortOrder
-  time?: Prisma.SortOrder
+  accident_time?: Prisma.SortOrder
   street?: Prisma.SortOrder
   street_number?: Prisma.SortOrder
   postal_code?: Prisma.SortOrder
@@ -599,6 +620,7 @@ export type accidentsMinOrderByAggregateInput = {
   circumstances?: Prisma.SortOrder
   report_number?: Prisma.SortOrder
   info_number?: Prisma.SortOrder
+  ref_insurance?: Prisma.SortOrder
   other_party_info?: Prisma.SortOrder
   documents?: Prisma.SortOrder
   repair_completed?: Prisma.SortOrder
@@ -626,12 +648,16 @@ export type NullableDateTimeFieldUpdateOperationsInput = {
   set?: Date | string | null
 }
 
-export type NullableStringFieldUpdateOperationsInput = {
-  set?: string | null
+export type StringFieldUpdateOperationsInput = {
+  set?: string
 }
 
-export type NullableEnumaccidents_accident_typeFieldUpdateOperationsInput = {
-  set?: $Enums.accidents_accident_type | null
+export type Enumaccidents_accident_typeFieldUpdateOperationsInput = {
+  set?: $Enums.accidents_accident_type
+}
+
+export type NullableStringFieldUpdateOperationsInput = {
+  set?: string | null
 }
 
 export type NullableBoolFieldUpdateOperationsInput = {
@@ -678,17 +704,18 @@ export type accidentsUpdateOneRequiredWithoutStaff_accidentsNestedInput = {
 
 export type accidentsCreateWithoutInterventionsInput = {
   accident_date: Date | string
-  time?: Date | string | null
-  street?: string | null
-  street_number?: string | null
-  postal_code?: string | null
-  city?: string | null
-  country?: string | null
-  accident_type?: $Enums.accidents_accident_type | null
-  damages?: string | null
-  circumstances?: string | null
+  accident_time?: Date | string | null
+  street: string
+  street_number: string
+  postal_code: string
+  city: string
+  country: string
+  accident_type: $Enums.accidents_accident_type
+  damages: string
+  circumstances: string
   report_number?: string | null
   info_number?: string | null
+  ref_insurance?: string | null
   other_party_info?: string | null
   documents?: string | null
   repair_completed?: boolean | null
@@ -698,17 +725,18 @@ export type accidentsCreateWithoutInterventionsInput = {
 export type accidentsUncheckedCreateWithoutInterventionsInput = {
   accident_id?: number
   accident_date: Date | string
-  time?: Date | string | null
-  street?: string | null
-  street_number?: string | null
-  postal_code?: string | null
-  city?: string | null
-  country?: string | null
-  accident_type?: $Enums.accidents_accident_type | null
-  damages?: string | null
-  circumstances?: string | null
+  accident_time?: Date | string | null
+  street: string
+  street_number: string
+  postal_code: string
+  city: string
+  country: string
+  accident_type: $Enums.accidents_accident_type
+  damages: string
+  circumstances: string
   report_number?: string | null
   info_number?: string | null
+  ref_insurance?: string | null
   other_party_info?: string | null
   documents?: string | null
   repair_completed?: boolean | null
@@ -733,17 +761,18 @@ export type accidentsUpdateToOneWithWhereWithoutInterventionsInput = {
 
 export type accidentsUpdateWithoutInterventionsInput = {
   accident_date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  time?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  street?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  street_number?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  postal_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  accident_type?: Prisma.NullableEnumaccidents_accident_typeFieldUpdateOperationsInput | $Enums.accidents_accident_type | null
-  damages?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  circumstances?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  accident_time?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  street?: Prisma.StringFieldUpdateOperationsInput | string
+  street_number?: Prisma.StringFieldUpdateOperationsInput | string
+  postal_code?: Prisma.StringFieldUpdateOperationsInput | string
+  city?: Prisma.StringFieldUpdateOperationsInput | string
+  country?: Prisma.StringFieldUpdateOperationsInput | string
+  accident_type?: Prisma.Enumaccidents_accident_typeFieldUpdateOperationsInput | $Enums.accidents_accident_type
+  damages?: Prisma.StringFieldUpdateOperationsInput | string
+  circumstances?: Prisma.StringFieldUpdateOperationsInput | string
   report_number?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   info_number?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  ref_insurance?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   other_party_info?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   documents?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   repair_completed?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
@@ -753,17 +782,18 @@ export type accidentsUpdateWithoutInterventionsInput = {
 export type accidentsUncheckedUpdateWithoutInterventionsInput = {
   accident_id?: Prisma.IntFieldUpdateOperationsInput | number
   accident_date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  time?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  street?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  street_number?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  postal_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  accident_type?: Prisma.NullableEnumaccidents_accident_typeFieldUpdateOperationsInput | $Enums.accidents_accident_type | null
-  damages?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  circumstances?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  accident_time?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  street?: Prisma.StringFieldUpdateOperationsInput | string
+  street_number?: Prisma.StringFieldUpdateOperationsInput | string
+  postal_code?: Prisma.StringFieldUpdateOperationsInput | string
+  city?: Prisma.StringFieldUpdateOperationsInput | string
+  country?: Prisma.StringFieldUpdateOperationsInput | string
+  accident_type?: Prisma.Enumaccidents_accident_typeFieldUpdateOperationsInput | $Enums.accidents_accident_type
+  damages?: Prisma.StringFieldUpdateOperationsInput | string
+  circumstances?: Prisma.StringFieldUpdateOperationsInput | string
   report_number?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   info_number?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  ref_insurance?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   other_party_info?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   documents?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   repair_completed?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
@@ -772,17 +802,18 @@ export type accidentsUncheckedUpdateWithoutInterventionsInput = {
 
 export type accidentsCreateWithoutStaff_accidentsInput = {
   accident_date: Date | string
-  time?: Date | string | null
-  street?: string | null
-  street_number?: string | null
-  postal_code?: string | null
-  city?: string | null
-  country?: string | null
-  accident_type?: $Enums.accidents_accident_type | null
-  damages?: string | null
-  circumstances?: string | null
+  accident_time?: Date | string | null
+  street: string
+  street_number: string
+  postal_code: string
+  city: string
+  country: string
+  accident_type: $Enums.accidents_accident_type
+  damages: string
+  circumstances: string
   report_number?: string | null
   info_number?: string | null
+  ref_insurance?: string | null
   other_party_info?: string | null
   documents?: string | null
   repair_completed?: boolean | null
@@ -792,17 +823,18 @@ export type accidentsCreateWithoutStaff_accidentsInput = {
 export type accidentsUncheckedCreateWithoutStaff_accidentsInput = {
   accident_id?: number
   accident_date: Date | string
-  time?: Date | string | null
-  street?: string | null
-  street_number?: string | null
-  postal_code?: string | null
-  city?: string | null
-  country?: string | null
-  accident_type?: $Enums.accidents_accident_type | null
-  damages?: string | null
-  circumstances?: string | null
+  accident_time?: Date | string | null
+  street: string
+  street_number: string
+  postal_code: string
+  city: string
+  country: string
+  accident_type: $Enums.accidents_accident_type
+  damages: string
+  circumstances: string
   report_number?: string | null
   info_number?: string | null
+  ref_insurance?: string | null
   other_party_info?: string | null
   documents?: string | null
   repair_completed?: boolean | null
@@ -827,17 +859,18 @@ export type accidentsUpdateToOneWithWhereWithoutStaff_accidentsInput = {
 
 export type accidentsUpdateWithoutStaff_accidentsInput = {
   accident_date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  time?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  street?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  street_number?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  postal_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  accident_type?: Prisma.NullableEnumaccidents_accident_typeFieldUpdateOperationsInput | $Enums.accidents_accident_type | null
-  damages?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  circumstances?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  accident_time?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  street?: Prisma.StringFieldUpdateOperationsInput | string
+  street_number?: Prisma.StringFieldUpdateOperationsInput | string
+  postal_code?: Prisma.StringFieldUpdateOperationsInput | string
+  city?: Prisma.StringFieldUpdateOperationsInput | string
+  country?: Prisma.StringFieldUpdateOperationsInput | string
+  accident_type?: Prisma.Enumaccidents_accident_typeFieldUpdateOperationsInput | $Enums.accidents_accident_type
+  damages?: Prisma.StringFieldUpdateOperationsInput | string
+  circumstances?: Prisma.StringFieldUpdateOperationsInput | string
   report_number?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   info_number?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  ref_insurance?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   other_party_info?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   documents?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   repair_completed?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
@@ -847,17 +880,18 @@ export type accidentsUpdateWithoutStaff_accidentsInput = {
 export type accidentsUncheckedUpdateWithoutStaff_accidentsInput = {
   accident_id?: Prisma.IntFieldUpdateOperationsInput | number
   accident_date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  time?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  street?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  street_number?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  postal_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  accident_type?: Prisma.NullableEnumaccidents_accident_typeFieldUpdateOperationsInput | $Enums.accidents_accident_type | null
-  damages?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  circumstances?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  accident_time?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  street?: Prisma.StringFieldUpdateOperationsInput | string
+  street_number?: Prisma.StringFieldUpdateOperationsInput | string
+  postal_code?: Prisma.StringFieldUpdateOperationsInput | string
+  city?: Prisma.StringFieldUpdateOperationsInput | string
+  country?: Prisma.StringFieldUpdateOperationsInput | string
+  accident_type?: Prisma.Enumaccidents_accident_typeFieldUpdateOperationsInput | $Enums.accidents_accident_type
+  damages?: Prisma.StringFieldUpdateOperationsInput | string
+  circumstances?: Prisma.StringFieldUpdateOperationsInput | string
   report_number?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   info_number?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  ref_insurance?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   other_party_info?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   documents?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   repair_completed?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
@@ -907,7 +941,7 @@ export type AccidentsCountOutputTypeCountStaff_accidentsArgs<ExtArgs extends run
 export type accidentsSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   accident_id?: boolean
   accident_date?: boolean
-  time?: boolean
+  accident_time?: boolean
   street?: boolean
   street_number?: boolean
   postal_code?: boolean
@@ -918,6 +952,7 @@ export type accidentsSelect<ExtArgs extends runtime.Types.Extensions.InternalArg
   circumstances?: boolean
   report_number?: boolean
   info_number?: boolean
+  ref_insurance?: boolean
   other_party_info?: boolean
   documents?: boolean
   repair_completed?: boolean
@@ -931,7 +966,7 @@ export type accidentsSelect<ExtArgs extends runtime.Types.Extensions.InternalArg
 export type accidentsSelectScalar = {
   accident_id?: boolean
   accident_date?: boolean
-  time?: boolean
+  accident_time?: boolean
   street?: boolean
   street_number?: boolean
   postal_code?: boolean
@@ -942,12 +977,13 @@ export type accidentsSelectScalar = {
   circumstances?: boolean
   report_number?: boolean
   info_number?: boolean
+  ref_insurance?: boolean
   other_party_info?: boolean
   documents?: boolean
   repair_completed?: boolean
 }
 
-export type accidentsOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"accident_id" | "accident_date" | "time" | "street" | "street_number" | "postal_code" | "city" | "country" | "accident_type" | "damages" | "circumstances" | "report_number" | "info_number" | "other_party_info" | "documents" | "repair_completed", ExtArgs["result"]["accidents"]>
+export type accidentsOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"accident_id" | "accident_date" | "accident_time" | "street" | "street_number" | "postal_code" | "city" | "country" | "accident_type" | "damages" | "circumstances" | "report_number" | "info_number" | "ref_insurance" | "other_party_info" | "documents" | "repair_completed", ExtArgs["result"]["accidents"]>
 export type accidentsInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   interventions?: boolean | Prisma.accidents$interventionsArgs<ExtArgs>
   staff_accidents?: boolean | Prisma.accidents$staff_accidentsArgs<ExtArgs>
@@ -963,17 +999,18 @@ export type $accidentsPayload<ExtArgs extends runtime.Types.Extensions.InternalA
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     accident_id: number
     accident_date: Date
-    time: Date | null
-    street: string | null
-    street_number: string | null
-    postal_code: string | null
-    city: string | null
-    country: string | null
-    accident_type: $Enums.accidents_accident_type | null
-    damages: string | null
-    circumstances: string | null
+    accident_time: Date | null
+    street: string
+    street_number: string
+    postal_code: string
+    city: string
+    country: string
+    accident_type: $Enums.accidents_accident_type
+    damages: string
+    circumstances: string
     report_number: string | null
     info_number: string | null
+    ref_insurance: string | null
     other_party_info: string | null
     documents: string | null
     repair_completed: boolean | null
@@ -1350,7 +1387,7 @@ export interface Prisma__accidentsClient<T, Null = never, ExtArgs extends runtim
 export interface accidentsFieldRefs {
   readonly accident_id: Prisma.FieldRef<"accidents", 'Int'>
   readonly accident_date: Prisma.FieldRef<"accidents", 'DateTime'>
-  readonly time: Prisma.FieldRef<"accidents", 'DateTime'>
+  readonly accident_time: Prisma.FieldRef<"accidents", 'DateTime'>
   readonly street: Prisma.FieldRef<"accidents", 'String'>
   readonly street_number: Prisma.FieldRef<"accidents", 'String'>
   readonly postal_code: Prisma.FieldRef<"accidents", 'String'>
@@ -1361,6 +1398,7 @@ export interface accidentsFieldRefs {
   readonly circumstances: Prisma.FieldRef<"accidents", 'String'>
   readonly report_number: Prisma.FieldRef<"accidents", 'String'>
   readonly info_number: Prisma.FieldRef<"accidents", 'String'>
+  readonly ref_insurance: Prisma.FieldRef<"accidents", 'String'>
   readonly other_party_info: Prisma.FieldRef<"accidents", 'String'>
   readonly documents: Prisma.FieldRef<"accidents", 'String'>
   readonly repair_completed: Prisma.FieldRef<"accidents", 'Boolean'>

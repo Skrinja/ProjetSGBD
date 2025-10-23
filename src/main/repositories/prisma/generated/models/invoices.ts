@@ -196,7 +196,7 @@ export type InvoicesGroupByOutputType = {
   invoice_id: number
   amount: runtime.Decimal
   documents: string | null
-  invoice_number: string | null
+  invoice_number: string
   invoice_paid: boolean | null
   intervention_id: number
   _count: InvoicesCountAggregateOutputType | null
@@ -228,7 +228,7 @@ export type invoicesWhereInput = {
   invoice_id?: Prisma.IntFilter<"invoices"> | number
   amount?: Prisma.DecimalFilter<"invoices"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   documents?: Prisma.StringNullableFilter<"invoices"> | string | null
-  invoice_number?: Prisma.StringNullableFilter<"invoices"> | string | null
+  invoice_number?: Prisma.StringFilter<"invoices"> | string
   invoice_paid?: Prisma.BoolNullableFilter<"invoices"> | boolean | null
   intervention_id?: Prisma.IntFilter<"invoices"> | number
   interventions?: Prisma.XOR<Prisma.InterventionsScalarRelationFilter, Prisma.interventionsWhereInput>
@@ -238,7 +238,7 @@ export type invoicesOrderByWithRelationInput = {
   invoice_id?: Prisma.SortOrder
   amount?: Prisma.SortOrder
   documents?: Prisma.SortOrderInput | Prisma.SortOrder
-  invoice_number?: Prisma.SortOrderInput | Prisma.SortOrder
+  invoice_number?: Prisma.SortOrder
   invoice_paid?: Prisma.SortOrderInput | Prisma.SortOrder
   intervention_id?: Prisma.SortOrder
   interventions?: Prisma.interventionsOrderByWithRelationInput
@@ -262,7 +262,7 @@ export type invoicesOrderByWithAggregationInput = {
   invoice_id?: Prisma.SortOrder
   amount?: Prisma.SortOrder
   documents?: Prisma.SortOrderInput | Prisma.SortOrder
-  invoice_number?: Prisma.SortOrderInput | Prisma.SortOrder
+  invoice_number?: Prisma.SortOrder
   invoice_paid?: Prisma.SortOrderInput | Prisma.SortOrder
   intervention_id?: Prisma.SortOrder
   _count?: Prisma.invoicesCountOrderByAggregateInput
@@ -279,7 +279,7 @@ export type invoicesScalarWhereWithAggregatesInput = {
   invoice_id?: Prisma.IntWithAggregatesFilter<"invoices"> | number
   amount?: Prisma.DecimalWithAggregatesFilter<"invoices"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   documents?: Prisma.StringNullableWithAggregatesFilter<"invoices"> | string | null
-  invoice_number?: Prisma.StringNullableWithAggregatesFilter<"invoices"> | string | null
+  invoice_number?: Prisma.StringWithAggregatesFilter<"invoices"> | string
   invoice_paid?: Prisma.BoolNullableWithAggregatesFilter<"invoices"> | boolean | null
   intervention_id?: Prisma.IntWithAggregatesFilter<"invoices"> | number
 }
@@ -287,7 +287,7 @@ export type invoicesScalarWhereWithAggregatesInput = {
 export type invoicesCreateInput = {
   amount: runtime.Decimal | runtime.DecimalJsLike | number | string
   documents?: string | null
-  invoice_number?: string | null
+  invoice_number: string
   invoice_paid?: boolean | null
   interventions: Prisma.interventionsCreateNestedOneWithoutInvoicesInput
 }
@@ -296,7 +296,7 @@ export type invoicesUncheckedCreateInput = {
   invoice_id?: number
   amount: runtime.Decimal | runtime.DecimalJsLike | number | string
   documents?: string | null
-  invoice_number?: string | null
+  invoice_number: string
   invoice_paid?: boolean | null
   intervention_id: number
 }
@@ -304,7 +304,7 @@ export type invoicesUncheckedCreateInput = {
 export type invoicesUpdateInput = {
   amount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   documents?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  invoice_number?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  invoice_number?: Prisma.StringFieldUpdateOperationsInput | string
   invoice_paid?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
   interventions?: Prisma.interventionsUpdateOneRequiredWithoutInvoicesNestedInput
 }
@@ -313,7 +313,7 @@ export type invoicesUncheckedUpdateInput = {
   invoice_id?: Prisma.IntFieldUpdateOperationsInput | number
   amount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   documents?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  invoice_number?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  invoice_number?: Prisma.StringFieldUpdateOperationsInput | string
   invoice_paid?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
   intervention_id?: Prisma.IntFieldUpdateOperationsInput | number
 }
@@ -322,7 +322,7 @@ export type invoicesCreateManyInput = {
   invoice_id?: number
   amount: runtime.Decimal | runtime.DecimalJsLike | number | string
   documents?: string | null
-  invoice_number?: string | null
+  invoice_number: string
   invoice_paid?: boolean | null
   intervention_id: number
 }
@@ -330,7 +330,7 @@ export type invoicesCreateManyInput = {
 export type invoicesUpdateManyMutationInput = {
   amount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   documents?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  invoice_number?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  invoice_number?: Prisma.StringFieldUpdateOperationsInput | string
   invoice_paid?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
 }
 
@@ -338,7 +338,7 @@ export type invoicesUncheckedUpdateManyInput = {
   invoice_id?: Prisma.IntFieldUpdateOperationsInput | number
   amount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   documents?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  invoice_number?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  invoice_number?: Prisma.StringFieldUpdateOperationsInput | string
   invoice_paid?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
   intervention_id?: Prisma.IntFieldUpdateOperationsInput | number
 }
@@ -451,7 +451,7 @@ export type DecimalFieldUpdateOperationsInput = {
 export type invoicesCreateWithoutInterventionsInput = {
   amount: runtime.Decimal | runtime.DecimalJsLike | number | string
   documents?: string | null
-  invoice_number?: string | null
+  invoice_number: string
   invoice_paid?: boolean | null
 }
 
@@ -459,7 +459,7 @@ export type invoicesUncheckedCreateWithoutInterventionsInput = {
   invoice_id?: number
   amount: runtime.Decimal | runtime.DecimalJsLike | number | string
   documents?: string | null
-  invoice_number?: string | null
+  invoice_number: string
   invoice_paid?: boolean | null
 }
 
@@ -496,7 +496,7 @@ export type invoicesScalarWhereInput = {
   invoice_id?: Prisma.IntFilter<"invoices"> | number
   amount?: Prisma.DecimalFilter<"invoices"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   documents?: Prisma.StringNullableFilter<"invoices"> | string | null
-  invoice_number?: Prisma.StringNullableFilter<"invoices"> | string | null
+  invoice_number?: Prisma.StringFilter<"invoices"> | string
   invoice_paid?: Prisma.BoolNullableFilter<"invoices"> | boolean | null
   intervention_id?: Prisma.IntFilter<"invoices"> | number
 }
@@ -505,14 +505,14 @@ export type invoicesCreateManyInterventionsInput = {
   invoice_id?: number
   amount: runtime.Decimal | runtime.DecimalJsLike | number | string
   documents?: string | null
-  invoice_number?: string | null
+  invoice_number: string
   invoice_paid?: boolean | null
 }
 
 export type invoicesUpdateWithoutInterventionsInput = {
   amount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   documents?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  invoice_number?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  invoice_number?: Prisma.StringFieldUpdateOperationsInput | string
   invoice_paid?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
 }
 
@@ -520,7 +520,7 @@ export type invoicesUncheckedUpdateWithoutInterventionsInput = {
   invoice_id?: Prisma.IntFieldUpdateOperationsInput | number
   amount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   documents?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  invoice_number?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  invoice_number?: Prisma.StringFieldUpdateOperationsInput | string
   invoice_paid?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
 }
 
@@ -528,7 +528,7 @@ export type invoicesUncheckedUpdateManyWithoutInterventionsInput = {
   invoice_id?: Prisma.IntFieldUpdateOperationsInput | number
   amount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   documents?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  invoice_number?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  invoice_number?: Prisma.StringFieldUpdateOperationsInput | string
   invoice_paid?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
 }
 
@@ -569,7 +569,7 @@ export type $invoicesPayload<ExtArgs extends runtime.Types.Extensions.InternalAr
     invoice_id: number
     amount: runtime.Decimal
     documents: string | null
-    invoice_number: string | null
+    invoice_number: string
     invoice_paid: boolean | null
     intervention_id: number
   }, ExtArgs["result"]["invoices"]>

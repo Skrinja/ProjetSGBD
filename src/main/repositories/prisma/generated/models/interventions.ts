@@ -39,7 +39,7 @@ export type InterventionsSumAggregateOutputType = {
 
 export type InterventionsMinAggregateOutputType = {
   intervention_id: number | null
-  intervention_type: string | null
+  intervention_type: $Enums.interventions_intervention_type | null
   creation_date: Date | null
   details: string | null
   garage_entry_date: Date | null
@@ -53,7 +53,7 @@ export type InterventionsMinAggregateOutputType = {
 
 export type InterventionsMaxAggregateOutputType = {
   intervention_id: number | null
-  intervention_type: string | null
+  intervention_type: $Enums.interventions_intervention_type | null
   creation_date: Date | null
   details: string | null
   garage_entry_date: Date | null
@@ -224,9 +224,9 @@ export type interventionsGroupByArgs<ExtArgs extends runtime.Types.Extensions.In
 
 export type InterventionsGroupByOutputType = {
   intervention_id: number
-  intervention_type: string | null
+  intervention_type: $Enums.interventions_intervention_type
   creation_date: Date | null
-  details: string | null
+  details: string
   garage_entry_date: Date | null
   garage_exit_date: Date | null
   intervention_completed: boolean | null
@@ -261,9 +261,9 @@ export type interventionsWhereInput = {
   OR?: Prisma.interventionsWhereInput[]
   NOT?: Prisma.interventionsWhereInput | Prisma.interventionsWhereInput[]
   intervention_id?: Prisma.IntFilter<"interventions"> | number
-  intervention_type?: Prisma.StringNullableFilter<"interventions"> | string | null
+  intervention_type?: Prisma.Enuminterventions_intervention_typeFilter<"interventions"> | $Enums.interventions_intervention_type
   creation_date?: Prisma.DateTimeNullableFilter<"interventions"> | Date | string | null
-  details?: Prisma.StringNullableFilter<"interventions"> | string | null
+  details?: Prisma.StringFilter<"interventions"> | string
   garage_entry_date?: Prisma.DateTimeNullableFilter<"interventions"> | Date | string | null
   garage_exit_date?: Prisma.DateTimeNullableFilter<"interventions"> | Date | string | null
   intervention_completed?: Prisma.BoolNullableFilter<"interventions"> | boolean | null
@@ -280,9 +280,9 @@ export type interventionsWhereInput = {
 
 export type interventionsOrderByWithRelationInput = {
   intervention_id?: Prisma.SortOrder
-  intervention_type?: Prisma.SortOrderInput | Prisma.SortOrder
+  intervention_type?: Prisma.SortOrder
   creation_date?: Prisma.SortOrderInput | Prisma.SortOrder
-  details?: Prisma.SortOrderInput | Prisma.SortOrder
+  details?: Prisma.SortOrder
   garage_entry_date?: Prisma.SortOrderInput | Prisma.SortOrder
   garage_exit_date?: Prisma.SortOrderInput | Prisma.SortOrder
   intervention_completed?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -303,9 +303,9 @@ export type interventionsWhereUniqueInput = Prisma.AtLeast<{
   AND?: Prisma.interventionsWhereInput | Prisma.interventionsWhereInput[]
   OR?: Prisma.interventionsWhereInput[]
   NOT?: Prisma.interventionsWhereInput | Prisma.interventionsWhereInput[]
-  intervention_type?: Prisma.StringNullableFilter<"interventions"> | string | null
+  intervention_type?: Prisma.Enuminterventions_intervention_typeFilter<"interventions"> | $Enums.interventions_intervention_type
   creation_date?: Prisma.DateTimeNullableFilter<"interventions"> | Date | string | null
-  details?: Prisma.StringNullableFilter<"interventions"> | string | null
+  details?: Prisma.StringFilter<"interventions"> | string
   garage_entry_date?: Prisma.DateTimeNullableFilter<"interventions"> | Date | string | null
   garage_exit_date?: Prisma.DateTimeNullableFilter<"interventions"> | Date | string | null
   intervention_completed?: Prisma.BoolNullableFilter<"interventions"> | boolean | null
@@ -322,9 +322,9 @@ export type interventionsWhereUniqueInput = Prisma.AtLeast<{
 
 export type interventionsOrderByWithAggregationInput = {
   intervention_id?: Prisma.SortOrder
-  intervention_type?: Prisma.SortOrderInput | Prisma.SortOrder
+  intervention_type?: Prisma.SortOrder
   creation_date?: Prisma.SortOrderInput | Prisma.SortOrder
-  details?: Prisma.SortOrderInput | Prisma.SortOrder
+  details?: Prisma.SortOrder
   garage_entry_date?: Prisma.SortOrderInput | Prisma.SortOrder
   garage_exit_date?: Prisma.SortOrderInput | Prisma.SortOrder
   intervention_completed?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -344,9 +344,9 @@ export type interventionsScalarWhereWithAggregatesInput = {
   OR?: Prisma.interventionsScalarWhereWithAggregatesInput[]
   NOT?: Prisma.interventionsScalarWhereWithAggregatesInput | Prisma.interventionsScalarWhereWithAggregatesInput[]
   intervention_id?: Prisma.IntWithAggregatesFilter<"interventions"> | number
-  intervention_type?: Prisma.StringNullableWithAggregatesFilter<"interventions"> | string | null
+  intervention_type?: Prisma.Enuminterventions_intervention_typeWithAggregatesFilter<"interventions"> | $Enums.interventions_intervention_type
   creation_date?: Prisma.DateTimeNullableWithAggregatesFilter<"interventions"> | Date | string | null
-  details?: Prisma.StringNullableWithAggregatesFilter<"interventions"> | string | null
+  details?: Prisma.StringWithAggregatesFilter<"interventions"> | string
   garage_entry_date?: Prisma.DateTimeNullableWithAggregatesFilter<"interventions"> | Date | string | null
   garage_exit_date?: Prisma.DateTimeNullableWithAggregatesFilter<"interventions"> | Date | string | null
   intervention_completed?: Prisma.BoolNullableWithAggregatesFilter<"interventions"> | boolean | null
@@ -357,9 +357,9 @@ export type interventionsScalarWhereWithAggregatesInput = {
 }
 
 export type interventionsCreateInput = {
-  intervention_type?: string | null
+  intervention_type: $Enums.interventions_intervention_type
   creation_date?: Date | string | null
-  details?: string | null
+  details: string
   garage_entry_date?: Date | string | null
   garage_exit_date?: Date | string | null
   intervention_completed?: boolean | null
@@ -372,9 +372,9 @@ export type interventionsCreateInput = {
 
 export type interventionsUncheckedCreateInput = {
   intervention_id?: number
-  intervention_type?: string | null
+  intervention_type: $Enums.interventions_intervention_type
   creation_date?: Date | string | null
-  details?: string | null
+  details: string
   garage_entry_date?: Date | string | null
   garage_exit_date?: Date | string | null
   intervention_completed?: boolean | null
@@ -386,9 +386,9 @@ export type interventionsUncheckedCreateInput = {
 }
 
 export type interventionsUpdateInput = {
-  intervention_type?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  intervention_type?: Prisma.Enuminterventions_intervention_typeFieldUpdateOperationsInput | $Enums.interventions_intervention_type
   creation_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  details?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  details?: Prisma.StringFieldUpdateOperationsInput | string
   garage_entry_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   garage_exit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   intervention_completed?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
@@ -401,9 +401,9 @@ export type interventionsUpdateInput = {
 
 export type interventionsUncheckedUpdateInput = {
   intervention_id?: Prisma.IntFieldUpdateOperationsInput | number
-  intervention_type?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  intervention_type?: Prisma.Enuminterventions_intervention_typeFieldUpdateOperationsInput | $Enums.interventions_intervention_type
   creation_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  details?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  details?: Prisma.StringFieldUpdateOperationsInput | string
   garage_entry_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   garage_exit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   intervention_completed?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
@@ -416,9 +416,9 @@ export type interventionsUncheckedUpdateInput = {
 
 export type interventionsCreateManyInput = {
   intervention_id?: number
-  intervention_type?: string | null
+  intervention_type: $Enums.interventions_intervention_type
   creation_date?: Date | string | null
-  details?: string | null
+  details: string
   garage_entry_date?: Date | string | null
   garage_exit_date?: Date | string | null
   intervention_completed?: boolean | null
@@ -429,9 +429,9 @@ export type interventionsCreateManyInput = {
 }
 
 export type interventionsUpdateManyMutationInput = {
-  intervention_type?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  intervention_type?: Prisma.Enuminterventions_intervention_typeFieldUpdateOperationsInput | $Enums.interventions_intervention_type
   creation_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  details?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  details?: Prisma.StringFieldUpdateOperationsInput | string
   garage_entry_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   garage_exit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   intervention_completed?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
@@ -439,9 +439,9 @@ export type interventionsUpdateManyMutationInput = {
 
 export type interventionsUncheckedUpdateManyInput = {
   intervention_id?: Prisma.IntFieldUpdateOperationsInput | number
-  intervention_type?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  intervention_type?: Prisma.Enuminterventions_intervention_typeFieldUpdateOperationsInput | $Enums.interventions_intervention_type
   creation_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  details?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  details?: Prisma.StringFieldUpdateOperationsInput | string
   garage_entry_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   garage_exit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   intervention_completed?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
@@ -566,6 +566,10 @@ export type interventionsUncheckedUpdateManyWithoutAccidentsNestedInput = {
   update?: Prisma.interventionsUpdateWithWhereUniqueWithoutAccidentsInput | Prisma.interventionsUpdateWithWhereUniqueWithoutAccidentsInput[]
   updateMany?: Prisma.interventionsUpdateManyWithWhereWithoutAccidentsInput | Prisma.interventionsUpdateManyWithWhereWithoutAccidentsInput[]
   deleteMany?: Prisma.interventionsScalarWhereInput | Prisma.interventionsScalarWhereInput[]
+}
+
+export type Enuminterventions_intervention_typeFieldUpdateOperationsInput = {
+  set?: $Enums.interventions_intervention_type
 }
 
 export type NullableIntFieldUpdateOperationsInput = {
@@ -717,9 +721,9 @@ export type interventionsUncheckedUpdateManyWithoutVehiclesNestedInput = {
 }
 
 export type interventionsCreateWithoutAccidentsInput = {
-  intervention_type?: string | null
+  intervention_type: $Enums.interventions_intervention_type
   creation_date?: Date | string | null
-  details?: string | null
+  details: string
   garage_entry_date?: Date | string | null
   garage_exit_date?: Date | string | null
   intervention_completed?: boolean | null
@@ -731,9 +735,9 @@ export type interventionsCreateWithoutAccidentsInput = {
 
 export type interventionsUncheckedCreateWithoutAccidentsInput = {
   intervention_id?: number
-  intervention_type?: string | null
+  intervention_type: $Enums.interventions_intervention_type
   creation_date?: Date | string | null
-  details?: string | null
+  details: string
   garage_entry_date?: Date | string | null
   garage_exit_date?: Date | string | null
   intervention_completed?: boolean | null
@@ -774,9 +778,9 @@ export type interventionsScalarWhereInput = {
   OR?: Prisma.interventionsScalarWhereInput[]
   NOT?: Prisma.interventionsScalarWhereInput | Prisma.interventionsScalarWhereInput[]
   intervention_id?: Prisma.IntFilter<"interventions"> | number
-  intervention_type?: Prisma.StringNullableFilter<"interventions"> | string | null
+  intervention_type?: Prisma.Enuminterventions_intervention_typeFilter<"interventions"> | $Enums.interventions_intervention_type
   creation_date?: Prisma.DateTimeNullableFilter<"interventions"> | Date | string | null
-  details?: Prisma.StringNullableFilter<"interventions"> | string | null
+  details?: Prisma.StringFilter<"interventions"> | string
   garage_entry_date?: Prisma.DateTimeNullableFilter<"interventions"> | Date | string | null
   garage_exit_date?: Prisma.DateTimeNullableFilter<"interventions"> | Date | string | null
   intervention_completed?: Prisma.BoolNullableFilter<"interventions"> | boolean | null
@@ -787,9 +791,9 @@ export type interventionsScalarWhereInput = {
 }
 
 export type interventionsCreateWithoutInvoicesInput = {
-  intervention_type?: string | null
+  intervention_type: $Enums.interventions_intervention_type
   creation_date?: Date | string | null
-  details?: string | null
+  details: string
   garage_entry_date?: Date | string | null
   garage_exit_date?: Date | string | null
   intervention_completed?: boolean | null
@@ -801,9 +805,9 @@ export type interventionsCreateWithoutInvoicesInput = {
 
 export type interventionsUncheckedCreateWithoutInvoicesInput = {
   intervention_id?: number
-  intervention_type?: string | null
+  intervention_type: $Enums.interventions_intervention_type
   creation_date?: Date | string | null
-  details?: string | null
+  details: string
   garage_entry_date?: Date | string | null
   garage_exit_date?: Date | string | null
   intervention_completed?: boolean | null
@@ -830,9 +834,9 @@ export type interventionsUpdateToOneWithWhereWithoutInvoicesInput = {
 }
 
 export type interventionsUpdateWithoutInvoicesInput = {
-  intervention_type?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  intervention_type?: Prisma.Enuminterventions_intervention_typeFieldUpdateOperationsInput | $Enums.interventions_intervention_type
   creation_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  details?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  details?: Prisma.StringFieldUpdateOperationsInput | string
   garage_entry_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   garage_exit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   intervention_completed?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
@@ -844,9 +848,9 @@ export type interventionsUpdateWithoutInvoicesInput = {
 
 export type interventionsUncheckedUpdateWithoutInvoicesInput = {
   intervention_id?: Prisma.IntFieldUpdateOperationsInput | number
-  intervention_type?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  intervention_type?: Prisma.Enuminterventions_intervention_typeFieldUpdateOperationsInput | $Enums.interventions_intervention_type
   creation_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  details?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  details?: Prisma.StringFieldUpdateOperationsInput | string
   garage_entry_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   garage_exit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   intervention_completed?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
@@ -857,9 +861,9 @@ export type interventionsUncheckedUpdateWithoutInvoicesInput = {
 }
 
 export type interventionsCreateWithoutProvidersInput = {
-  intervention_type?: string | null
+  intervention_type: $Enums.interventions_intervention_type
   creation_date?: Date | string | null
-  details?: string | null
+  details: string
   garage_entry_date?: Date | string | null
   garage_exit_date?: Date | string | null
   intervention_completed?: boolean | null
@@ -871,9 +875,9 @@ export type interventionsCreateWithoutProvidersInput = {
 
 export type interventionsUncheckedCreateWithoutProvidersInput = {
   intervention_id?: number
-  intervention_type?: string | null
+  intervention_type: $Enums.interventions_intervention_type
   creation_date?: Date | string | null
-  details?: string | null
+  details: string
   garage_entry_date?: Date | string | null
   garage_exit_date?: Date | string | null
   intervention_completed?: boolean | null
@@ -910,9 +914,9 @@ export type interventionsUpdateManyWithWhereWithoutProvidersInput = {
 }
 
 export type interventionsCreateWithoutUsersInput = {
-  intervention_type?: string | null
+  intervention_type: $Enums.interventions_intervention_type
   creation_date?: Date | string | null
-  details?: string | null
+  details: string
   garage_entry_date?: Date | string | null
   garage_exit_date?: Date | string | null
   intervention_completed?: boolean | null
@@ -924,9 +928,9 @@ export type interventionsCreateWithoutUsersInput = {
 
 export type interventionsUncheckedCreateWithoutUsersInput = {
   intervention_id?: number
-  intervention_type?: string | null
+  intervention_type: $Enums.interventions_intervention_type
   creation_date?: Date | string | null
-  details?: string | null
+  details: string
   garage_entry_date?: Date | string | null
   garage_exit_date?: Date | string | null
   intervention_completed?: boolean | null
@@ -963,9 +967,9 @@ export type interventionsUpdateManyWithWhereWithoutUsersInput = {
 }
 
 export type interventionsCreateWithoutVehiclesInput = {
-  intervention_type?: string | null
+  intervention_type: $Enums.interventions_intervention_type
   creation_date?: Date | string | null
-  details?: string | null
+  details: string
   garage_entry_date?: Date | string | null
   garage_exit_date?: Date | string | null
   intervention_completed?: boolean | null
@@ -977,9 +981,9 @@ export type interventionsCreateWithoutVehiclesInput = {
 
 export type interventionsUncheckedCreateWithoutVehiclesInput = {
   intervention_id?: number
-  intervention_type?: string | null
+  intervention_type: $Enums.interventions_intervention_type
   creation_date?: Date | string | null
-  details?: string | null
+  details: string
   garage_entry_date?: Date | string | null
   garage_exit_date?: Date | string | null
   intervention_completed?: boolean | null
@@ -1017,9 +1021,9 @@ export type interventionsUpdateManyWithWhereWithoutVehiclesInput = {
 
 export type interventionsCreateManyAccidentsInput = {
   intervention_id?: number
-  intervention_type?: string | null
+  intervention_type: $Enums.interventions_intervention_type
   creation_date?: Date | string | null
-  details?: string | null
+  details: string
   garage_entry_date?: Date | string | null
   garage_exit_date?: Date | string | null
   intervention_completed?: boolean | null
@@ -1029,9 +1033,9 @@ export type interventionsCreateManyAccidentsInput = {
 }
 
 export type interventionsUpdateWithoutAccidentsInput = {
-  intervention_type?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  intervention_type?: Prisma.Enuminterventions_intervention_typeFieldUpdateOperationsInput | $Enums.interventions_intervention_type
   creation_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  details?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  details?: Prisma.StringFieldUpdateOperationsInput | string
   garage_entry_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   garage_exit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   intervention_completed?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
@@ -1043,9 +1047,9 @@ export type interventionsUpdateWithoutAccidentsInput = {
 
 export type interventionsUncheckedUpdateWithoutAccidentsInput = {
   intervention_id?: Prisma.IntFieldUpdateOperationsInput | number
-  intervention_type?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  intervention_type?: Prisma.Enuminterventions_intervention_typeFieldUpdateOperationsInput | $Enums.interventions_intervention_type
   creation_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  details?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  details?: Prisma.StringFieldUpdateOperationsInput | string
   garage_entry_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   garage_exit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   intervention_completed?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
@@ -1057,9 +1061,9 @@ export type interventionsUncheckedUpdateWithoutAccidentsInput = {
 
 export type interventionsUncheckedUpdateManyWithoutAccidentsInput = {
   intervention_id?: Prisma.IntFieldUpdateOperationsInput | number
-  intervention_type?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  intervention_type?: Prisma.Enuminterventions_intervention_typeFieldUpdateOperationsInput | $Enums.interventions_intervention_type
   creation_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  details?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  details?: Prisma.StringFieldUpdateOperationsInput | string
   garage_entry_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   garage_exit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   intervention_completed?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
@@ -1070,9 +1074,9 @@ export type interventionsUncheckedUpdateManyWithoutAccidentsInput = {
 
 export type interventionsCreateManyProvidersInput = {
   intervention_id?: number
-  intervention_type?: string | null
+  intervention_type: $Enums.interventions_intervention_type
   creation_date?: Date | string | null
-  details?: string | null
+  details: string
   garage_entry_date?: Date | string | null
   garage_exit_date?: Date | string | null
   intervention_completed?: boolean | null
@@ -1082,9 +1086,9 @@ export type interventionsCreateManyProvidersInput = {
 }
 
 export type interventionsUpdateWithoutProvidersInput = {
-  intervention_type?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  intervention_type?: Prisma.Enuminterventions_intervention_typeFieldUpdateOperationsInput | $Enums.interventions_intervention_type
   creation_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  details?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  details?: Prisma.StringFieldUpdateOperationsInput | string
   garage_entry_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   garage_exit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   intervention_completed?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
@@ -1096,9 +1100,9 @@ export type interventionsUpdateWithoutProvidersInput = {
 
 export type interventionsUncheckedUpdateWithoutProvidersInput = {
   intervention_id?: Prisma.IntFieldUpdateOperationsInput | number
-  intervention_type?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  intervention_type?: Prisma.Enuminterventions_intervention_typeFieldUpdateOperationsInput | $Enums.interventions_intervention_type
   creation_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  details?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  details?: Prisma.StringFieldUpdateOperationsInput | string
   garage_entry_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   garage_exit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   intervention_completed?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
@@ -1110,9 +1114,9 @@ export type interventionsUncheckedUpdateWithoutProvidersInput = {
 
 export type interventionsUncheckedUpdateManyWithoutProvidersInput = {
   intervention_id?: Prisma.IntFieldUpdateOperationsInput | number
-  intervention_type?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  intervention_type?: Prisma.Enuminterventions_intervention_typeFieldUpdateOperationsInput | $Enums.interventions_intervention_type
   creation_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  details?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  details?: Prisma.StringFieldUpdateOperationsInput | string
   garage_entry_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   garage_exit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   intervention_completed?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
@@ -1123,9 +1127,9 @@ export type interventionsUncheckedUpdateManyWithoutProvidersInput = {
 
 export type interventionsCreateManyUsersInput = {
   intervention_id?: number
-  intervention_type?: string | null
+  intervention_type: $Enums.interventions_intervention_type
   creation_date?: Date | string | null
-  details?: string | null
+  details: string
   garage_entry_date?: Date | string | null
   garage_exit_date?: Date | string | null
   intervention_completed?: boolean | null
@@ -1135,9 +1139,9 @@ export type interventionsCreateManyUsersInput = {
 }
 
 export type interventionsUpdateWithoutUsersInput = {
-  intervention_type?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  intervention_type?: Prisma.Enuminterventions_intervention_typeFieldUpdateOperationsInput | $Enums.interventions_intervention_type
   creation_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  details?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  details?: Prisma.StringFieldUpdateOperationsInput | string
   garage_entry_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   garage_exit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   intervention_completed?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
@@ -1149,9 +1153,9 @@ export type interventionsUpdateWithoutUsersInput = {
 
 export type interventionsUncheckedUpdateWithoutUsersInput = {
   intervention_id?: Prisma.IntFieldUpdateOperationsInput | number
-  intervention_type?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  intervention_type?: Prisma.Enuminterventions_intervention_typeFieldUpdateOperationsInput | $Enums.interventions_intervention_type
   creation_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  details?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  details?: Prisma.StringFieldUpdateOperationsInput | string
   garage_entry_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   garage_exit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   intervention_completed?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
@@ -1163,9 +1167,9 @@ export type interventionsUncheckedUpdateWithoutUsersInput = {
 
 export type interventionsUncheckedUpdateManyWithoutUsersInput = {
   intervention_id?: Prisma.IntFieldUpdateOperationsInput | number
-  intervention_type?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  intervention_type?: Prisma.Enuminterventions_intervention_typeFieldUpdateOperationsInput | $Enums.interventions_intervention_type
   creation_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  details?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  details?: Prisma.StringFieldUpdateOperationsInput | string
   garage_entry_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   garage_exit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   intervention_completed?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
@@ -1176,9 +1180,9 @@ export type interventionsUncheckedUpdateManyWithoutUsersInput = {
 
 export type interventionsCreateManyVehiclesInput = {
   intervention_id?: number
-  intervention_type?: string | null
+  intervention_type: $Enums.interventions_intervention_type
   creation_date?: Date | string | null
-  details?: string | null
+  details: string
   garage_entry_date?: Date | string | null
   garage_exit_date?: Date | string | null
   intervention_completed?: boolean | null
@@ -1188,9 +1192,9 @@ export type interventionsCreateManyVehiclesInput = {
 }
 
 export type interventionsUpdateWithoutVehiclesInput = {
-  intervention_type?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  intervention_type?: Prisma.Enuminterventions_intervention_typeFieldUpdateOperationsInput | $Enums.interventions_intervention_type
   creation_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  details?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  details?: Prisma.StringFieldUpdateOperationsInput | string
   garage_entry_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   garage_exit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   intervention_completed?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
@@ -1202,9 +1206,9 @@ export type interventionsUpdateWithoutVehiclesInput = {
 
 export type interventionsUncheckedUpdateWithoutVehiclesInput = {
   intervention_id?: Prisma.IntFieldUpdateOperationsInput | number
-  intervention_type?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  intervention_type?: Prisma.Enuminterventions_intervention_typeFieldUpdateOperationsInput | $Enums.interventions_intervention_type
   creation_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  details?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  details?: Prisma.StringFieldUpdateOperationsInput | string
   garage_entry_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   garage_exit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   intervention_completed?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
@@ -1216,9 +1220,9 @@ export type interventionsUncheckedUpdateWithoutVehiclesInput = {
 
 export type interventionsUncheckedUpdateManyWithoutVehiclesInput = {
   intervention_id?: Prisma.IntFieldUpdateOperationsInput | number
-  intervention_type?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  intervention_type?: Prisma.Enuminterventions_intervention_typeFieldUpdateOperationsInput | $Enums.interventions_intervention_type
   creation_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  details?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  details?: Prisma.StringFieldUpdateOperationsInput | string
   garage_entry_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   garage_exit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   intervention_completed?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
@@ -1315,9 +1319,9 @@ export type $interventionsPayload<ExtArgs extends runtime.Types.Extensions.Inter
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     intervention_id: number
-    intervention_type: string | null
+    intervention_type: $Enums.interventions_intervention_type
     creation_date: Date | null
-    details: string | null
+    details: string
     garage_entry_date: Date | null
     garage_exit_date: Date | null
     intervention_completed: boolean | null
@@ -1700,7 +1704,7 @@ export interface Prisma__interventionsClient<T, Null = never, ExtArgs extends ru
  */
 export interface interventionsFieldRefs {
   readonly intervention_id: Prisma.FieldRef<"interventions", 'Int'>
-  readonly intervention_type: Prisma.FieldRef<"interventions", 'String'>
+  readonly intervention_type: Prisma.FieldRef<"interventions", 'interventions_intervention_type'>
   readonly creation_date: Prisma.FieldRef<"interventions", 'DateTime'>
   readonly details: Prisma.FieldRef<"interventions", 'String'>
   readonly garage_entry_date: Prisma.FieldRef<"interventions", 'DateTime'>

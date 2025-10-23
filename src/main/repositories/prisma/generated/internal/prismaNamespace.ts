@@ -1186,7 +1186,7 @@ export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof
 export const AccidentsScalarFieldEnum = {
   accident_id: 'accident_id',
   accident_date: 'accident_date',
-  time: 'time',
+  accident_time: 'accident_time',
   street: 'street',
   street_number: 'street_number',
   postal_code: 'postal_code',
@@ -1197,6 +1197,7 @@ export const AccidentsScalarFieldEnum = {
   circumstances: 'circumstances',
   report_number: 'report_number',
   info_number: 'info_number',
+  ref_insurance: 'ref_insurance',
   other_party_info: 'other_party_info',
   documents: 'documents',
   repair_completed: 'repair_completed'
@@ -1219,7 +1220,7 @@ export type ContactsScalarFieldEnum = (typeof ContactsScalarFieldEnum)[keyof typ
 
 export const DepartmentsScalarFieldEnum = {
   department_id: 'department_id',
-  name: 'name',
+  department_name: 'department_name',
   service_address_id: 'service_address_id'
 } as const
 
@@ -1257,7 +1258,7 @@ export type InvoicesScalarFieldEnum = (typeof InvoicesScalarFieldEnum)[keyof typ
 
 export const ProvidersScalarFieldEnum = {
   provider_id: 'provider_id',
-  name: 'name',
+  provider_name: 'provider_name',
   street: 'street',
   street_number: 'street_number',
   postal_code: 'postal_code',
@@ -1292,7 +1293,7 @@ export type StaffScalarFieldEnum = (typeof StaffScalarFieldEnum)[keyof typeof St
 export const Staff_accidentsScalarFieldEnum = {
   employee_id: 'employee_id',
   accident_id: 'accident_id',
-  role: 'role'
+  accident_role: 'accident_role'
 } as const
 
 export type Staff_accidentsScalarFieldEnum = (typeof Staff_accidentsScalarFieldEnum)[keyof typeof Staff_accidentsScalarFieldEnum]
@@ -1311,20 +1312,21 @@ export const VehiclesScalarFieldEnum = {
   vin: 'vin',
   vehicle_number: 'vehicle_number',
   license_plate: 'license_plate',
-  make: 'make',
+  brand: 'brand',
   model: 'model',
   manufacture_date: 'manufacture_date',
   fuel_type: 'fuel_type',
   license_type: 'license_type',
   vehicle_configuration: 'vehicle_configuration',
-  inspection_expiry_date: 'inspection_expiry_date',
+  technical_inspection_expiry_date: 'technical_inspection_expiry_date',
   tire_size: 'tire_size',
   insurance_number: 'insurance_number',
-  comprehensive_insurance: 'comprehensive_insurance',
+  omnium: 'omnium',
   maintenance_contract: 'maintenance_contract',
   maintenance_contract_end_km: 'maintenance_contract_end_km',
   maintenance_contract_end_date: 'maintenance_contract_end_date',
   maintenance_contract_number: 'maintenance_contract_number',
+  decommissioned_vehicle: 'decommissioned_vehicle',
   other_info: 'other_info',
   documents: 'documents',
   department_id: 'department_id'
@@ -1359,6 +1361,7 @@ export const accidentsOrderByRelevanceFieldEnum = {
   circumstances: 'circumstances',
   report_number: 'report_number',
   info_number: 'info_number',
+  ref_insurance: 'ref_insurance',
   other_party_info: 'other_party_info',
   documents: 'documents'
 } as const
@@ -1377,14 +1380,13 @@ export type contactsOrderByRelevanceFieldEnum = (typeof contactsOrderByRelevance
 
 
 export const departmentsOrderByRelevanceFieldEnum = {
-  name: 'name'
+  department_name: 'department_name'
 } as const
 
 export type departmentsOrderByRelevanceFieldEnum = (typeof departmentsOrderByRelevanceFieldEnum)[keyof typeof departmentsOrderByRelevanceFieldEnum]
 
 
 export const interventionsOrderByRelevanceFieldEnum = {
-  intervention_type: 'intervention_type',
   details: 'details',
   vehicle_vin: 'vehicle_vin',
   user_id: 'user_id'
@@ -1402,7 +1404,7 @@ export type invoicesOrderByRelevanceFieldEnum = (typeof invoicesOrderByRelevance
 
 
 export const providersOrderByRelevanceFieldEnum = {
-  name: 'name',
+  provider_name: 'provider_name',
   street: 'street',
   street_number: 'street_number',
   postal_code: 'postal_code',
@@ -1444,7 +1446,7 @@ export type usersOrderByRelevanceFieldEnum = (typeof usersOrderByRelevanceFieldE
 export const vehiclesOrderByRelevanceFieldEnum = {
   vin: 'vin',
   license_plate: 'license_plate',
-  make: 'make',
+  brand: 'brand',
   model: 'model',
   tire_size: 'tire_size',
   insurance_number: 'insurance_number',
@@ -1498,6 +1500,13 @@ export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel,
 
 
 /**
+ * Reference to a field of type 'interventions_intervention_type'
+ */
+export type Enuminterventions_intervention_typeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'interventions_intervention_type'>
+    
+
+
+/**
  * Reference to a field of type 'Decimal'
  */
 export type DecimalFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Decimal'>
@@ -1505,9 +1514,9 @@ export type DecimalFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel,
 
 
 /**
- * Reference to a field of type 'staff_accidents_role'
+ * Reference to a field of type 'staff_accidents_accident_role'
  */
-export type Enumstaff_accidents_roleFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'staff_accidents_role'>
+export type Enumstaff_accidents_accident_roleFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'staff_accidents_accident_role'>
     
 
 

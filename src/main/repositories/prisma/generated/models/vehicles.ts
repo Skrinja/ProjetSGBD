@@ -41,20 +41,21 @@ export type VehiclesMinAggregateOutputType = {
   vin: string | null
   vehicle_number: number | null
   license_plate: string | null
-  make: string | null
+  brand: string | null
   model: string | null
   manufacture_date: Date | null
   fuel_type: $Enums.vehicles_fuel_type | null
   license_type: $Enums.vehicles_license_type | null
   vehicle_configuration: $Enums.vehicles_vehicle_configuration | null
-  inspection_expiry_date: Date | null
+  technical_inspection_expiry_date: Date | null
   tire_size: string | null
   insurance_number: string | null
-  comprehensive_insurance: boolean | null
+  omnium: boolean | null
   maintenance_contract: boolean | null
   maintenance_contract_end_km: number | null
   maintenance_contract_end_date: Date | null
   maintenance_contract_number: string | null
+  decommissioned_vehicle: boolean | null
   other_info: string | null
   documents: string | null
   department_id: number | null
@@ -64,20 +65,21 @@ export type VehiclesMaxAggregateOutputType = {
   vin: string | null
   vehicle_number: number | null
   license_plate: string | null
-  make: string | null
+  brand: string | null
   model: string | null
   manufacture_date: Date | null
   fuel_type: $Enums.vehicles_fuel_type | null
   license_type: $Enums.vehicles_license_type | null
   vehicle_configuration: $Enums.vehicles_vehicle_configuration | null
-  inspection_expiry_date: Date | null
+  technical_inspection_expiry_date: Date | null
   tire_size: string | null
   insurance_number: string | null
-  comprehensive_insurance: boolean | null
+  omnium: boolean | null
   maintenance_contract: boolean | null
   maintenance_contract_end_km: number | null
   maintenance_contract_end_date: Date | null
   maintenance_contract_number: string | null
+  decommissioned_vehicle: boolean | null
   other_info: string | null
   documents: string | null
   department_id: number | null
@@ -87,20 +89,21 @@ export type VehiclesCountAggregateOutputType = {
   vin: number
   vehicle_number: number
   license_plate: number
-  make: number
+  brand: number
   model: number
   manufacture_date: number
   fuel_type: number
   license_type: number
   vehicle_configuration: number
-  inspection_expiry_date: number
+  technical_inspection_expiry_date: number
   tire_size: number
   insurance_number: number
-  comprehensive_insurance: number
+  omnium: number
   maintenance_contract: number
   maintenance_contract_end_km: number
   maintenance_contract_end_date: number
   maintenance_contract_number: number
+  decommissioned_vehicle: number
   other_info: number
   documents: number
   department_id: number
@@ -124,20 +127,21 @@ export type VehiclesMinAggregateInputType = {
   vin?: true
   vehicle_number?: true
   license_plate?: true
-  make?: true
+  brand?: true
   model?: true
   manufacture_date?: true
   fuel_type?: true
   license_type?: true
   vehicle_configuration?: true
-  inspection_expiry_date?: true
+  technical_inspection_expiry_date?: true
   tire_size?: true
   insurance_number?: true
-  comprehensive_insurance?: true
+  omnium?: true
   maintenance_contract?: true
   maintenance_contract_end_km?: true
   maintenance_contract_end_date?: true
   maintenance_contract_number?: true
+  decommissioned_vehicle?: true
   other_info?: true
   documents?: true
   department_id?: true
@@ -147,20 +151,21 @@ export type VehiclesMaxAggregateInputType = {
   vin?: true
   vehicle_number?: true
   license_plate?: true
-  make?: true
+  brand?: true
   model?: true
   manufacture_date?: true
   fuel_type?: true
   license_type?: true
   vehicle_configuration?: true
-  inspection_expiry_date?: true
+  technical_inspection_expiry_date?: true
   tire_size?: true
   insurance_number?: true
-  comprehensive_insurance?: true
+  omnium?: true
   maintenance_contract?: true
   maintenance_contract_end_km?: true
   maintenance_contract_end_date?: true
   maintenance_contract_number?: true
+  decommissioned_vehicle?: true
   other_info?: true
   documents?: true
   department_id?: true
@@ -170,20 +175,21 @@ export type VehiclesCountAggregateInputType = {
   vin?: true
   vehicle_number?: true
   license_plate?: true
-  make?: true
+  brand?: true
   model?: true
   manufacture_date?: true
   fuel_type?: true
   license_type?: true
   vehicle_configuration?: true
-  inspection_expiry_date?: true
+  technical_inspection_expiry_date?: true
   tire_size?: true
   insurance_number?: true
-  comprehensive_insurance?: true
+  omnium?: true
   maintenance_contract?: true
   maintenance_contract_end_km?: true
   maintenance_contract_end_date?: true
   maintenance_contract_number?: true
+  decommissioned_vehicle?: true
   other_info?: true
   documents?: true
   department_id?: true
@@ -278,22 +284,23 @@ export type vehiclesGroupByArgs<ExtArgs extends runtime.Types.Extensions.Interna
 
 export type VehiclesGroupByOutputType = {
   vin: string
-  vehicle_number: number | null
+  vehicle_number: number
   license_plate: string
-  make: string | null
-  model: string | null
-  manufacture_date: Date | null
-  fuel_type: $Enums.vehicles_fuel_type | null
-  license_type: $Enums.vehicles_license_type | null
-  vehicle_configuration: $Enums.vehicles_vehicle_configuration | null
-  inspection_expiry_date: Date | null
+  brand: string
+  model: string
+  manufacture_date: Date
+  fuel_type: $Enums.vehicles_fuel_type
+  license_type: $Enums.vehicles_license_type
+  vehicle_configuration: $Enums.vehicles_vehicle_configuration
+  technical_inspection_expiry_date: Date
   tire_size: string | null
   insurance_number: string | null
-  comprehensive_insurance: boolean | null
+  omnium: boolean | null
   maintenance_contract: boolean | null
   maintenance_contract_end_km: number | null
   maintenance_contract_end_date: Date | null
   maintenance_contract_number: string | null
+  decommissioned_vehicle: boolean | null
   other_info: string | null
   documents: string | null
   department_id: number
@@ -324,22 +331,23 @@ export type vehiclesWhereInput = {
   OR?: Prisma.vehiclesWhereInput[]
   NOT?: Prisma.vehiclesWhereInput | Prisma.vehiclesWhereInput[]
   vin?: Prisma.StringFilter<"vehicles"> | string
-  vehicle_number?: Prisma.IntNullableFilter<"vehicles"> | number | null
+  vehicle_number?: Prisma.IntFilter<"vehicles"> | number
   license_plate?: Prisma.StringFilter<"vehicles"> | string
-  make?: Prisma.StringNullableFilter<"vehicles"> | string | null
-  model?: Prisma.StringNullableFilter<"vehicles"> | string | null
-  manufacture_date?: Prisma.DateTimeNullableFilter<"vehicles"> | Date | string | null
-  fuel_type?: Prisma.Enumvehicles_fuel_typeNullableFilter<"vehicles"> | $Enums.vehicles_fuel_type | null
-  license_type?: Prisma.Enumvehicles_license_typeNullableFilter<"vehicles"> | $Enums.vehicles_license_type | null
-  vehicle_configuration?: Prisma.Enumvehicles_vehicle_configurationNullableFilter<"vehicles"> | $Enums.vehicles_vehicle_configuration | null
-  inspection_expiry_date?: Prisma.DateTimeNullableFilter<"vehicles"> | Date | string | null
+  brand?: Prisma.StringFilter<"vehicles"> | string
+  model?: Prisma.StringFilter<"vehicles"> | string
+  manufacture_date?: Prisma.DateTimeFilter<"vehicles"> | Date | string
+  fuel_type?: Prisma.Enumvehicles_fuel_typeFilter<"vehicles"> | $Enums.vehicles_fuel_type
+  license_type?: Prisma.Enumvehicles_license_typeFilter<"vehicles"> | $Enums.vehicles_license_type
+  vehicle_configuration?: Prisma.Enumvehicles_vehicle_configurationFilter<"vehicles"> | $Enums.vehicles_vehicle_configuration
+  technical_inspection_expiry_date?: Prisma.DateTimeFilter<"vehicles"> | Date | string
   tire_size?: Prisma.StringNullableFilter<"vehicles"> | string | null
   insurance_number?: Prisma.StringNullableFilter<"vehicles"> | string | null
-  comprehensive_insurance?: Prisma.BoolNullableFilter<"vehicles"> | boolean | null
+  omnium?: Prisma.BoolNullableFilter<"vehicles"> | boolean | null
   maintenance_contract?: Prisma.BoolNullableFilter<"vehicles"> | boolean | null
   maintenance_contract_end_km?: Prisma.IntNullableFilter<"vehicles"> | number | null
   maintenance_contract_end_date?: Prisma.DateTimeNullableFilter<"vehicles"> | Date | string | null
   maintenance_contract_number?: Prisma.StringNullableFilter<"vehicles"> | string | null
+  decommissioned_vehicle?: Prisma.BoolNullableFilter<"vehicles"> | boolean | null
   other_info?: Prisma.StringNullableFilter<"vehicles"> | string | null
   documents?: Prisma.StringNullableFilter<"vehicles"> | string | null
   department_id?: Prisma.IntFilter<"vehicles"> | number
@@ -349,22 +357,23 @@ export type vehiclesWhereInput = {
 
 export type vehiclesOrderByWithRelationInput = {
   vin?: Prisma.SortOrder
-  vehicle_number?: Prisma.SortOrderInput | Prisma.SortOrder
+  vehicle_number?: Prisma.SortOrder
   license_plate?: Prisma.SortOrder
-  make?: Prisma.SortOrderInput | Prisma.SortOrder
-  model?: Prisma.SortOrderInput | Prisma.SortOrder
-  manufacture_date?: Prisma.SortOrderInput | Prisma.SortOrder
-  fuel_type?: Prisma.SortOrderInput | Prisma.SortOrder
-  license_type?: Prisma.SortOrderInput | Prisma.SortOrder
-  vehicle_configuration?: Prisma.SortOrderInput | Prisma.SortOrder
-  inspection_expiry_date?: Prisma.SortOrderInput | Prisma.SortOrder
+  brand?: Prisma.SortOrder
+  model?: Prisma.SortOrder
+  manufacture_date?: Prisma.SortOrder
+  fuel_type?: Prisma.SortOrder
+  license_type?: Prisma.SortOrder
+  vehicle_configuration?: Prisma.SortOrder
+  technical_inspection_expiry_date?: Prisma.SortOrder
   tire_size?: Prisma.SortOrderInput | Prisma.SortOrder
   insurance_number?: Prisma.SortOrderInput | Prisma.SortOrder
-  comprehensive_insurance?: Prisma.SortOrderInput | Prisma.SortOrder
+  omnium?: Prisma.SortOrderInput | Prisma.SortOrder
   maintenance_contract?: Prisma.SortOrderInput | Prisma.SortOrder
   maintenance_contract_end_km?: Prisma.SortOrderInput | Prisma.SortOrder
   maintenance_contract_end_date?: Prisma.SortOrderInput | Prisma.SortOrder
   maintenance_contract_number?: Prisma.SortOrderInput | Prisma.SortOrder
+  decommissioned_vehicle?: Prisma.SortOrderInput | Prisma.SortOrder
   other_info?: Prisma.SortOrderInput | Prisma.SortOrder
   documents?: Prisma.SortOrderInput | Prisma.SortOrder
   department_id?: Prisma.SortOrder
@@ -380,20 +389,21 @@ export type vehiclesWhereUniqueInput = Prisma.AtLeast<{
   AND?: Prisma.vehiclesWhereInput | Prisma.vehiclesWhereInput[]
   OR?: Prisma.vehiclesWhereInput[]
   NOT?: Prisma.vehiclesWhereInput | Prisma.vehiclesWhereInput[]
-  make?: Prisma.StringNullableFilter<"vehicles"> | string | null
-  model?: Prisma.StringNullableFilter<"vehicles"> | string | null
-  manufacture_date?: Prisma.DateTimeNullableFilter<"vehicles"> | Date | string | null
-  fuel_type?: Prisma.Enumvehicles_fuel_typeNullableFilter<"vehicles"> | $Enums.vehicles_fuel_type | null
-  license_type?: Prisma.Enumvehicles_license_typeNullableFilter<"vehicles"> | $Enums.vehicles_license_type | null
-  vehicle_configuration?: Prisma.Enumvehicles_vehicle_configurationNullableFilter<"vehicles"> | $Enums.vehicles_vehicle_configuration | null
-  inspection_expiry_date?: Prisma.DateTimeNullableFilter<"vehicles"> | Date | string | null
+  brand?: Prisma.StringFilter<"vehicles"> | string
+  model?: Prisma.StringFilter<"vehicles"> | string
+  manufacture_date?: Prisma.DateTimeFilter<"vehicles"> | Date | string
+  fuel_type?: Prisma.Enumvehicles_fuel_typeFilter<"vehicles"> | $Enums.vehicles_fuel_type
+  license_type?: Prisma.Enumvehicles_license_typeFilter<"vehicles"> | $Enums.vehicles_license_type
+  vehicle_configuration?: Prisma.Enumvehicles_vehicle_configurationFilter<"vehicles"> | $Enums.vehicles_vehicle_configuration
+  technical_inspection_expiry_date?: Prisma.DateTimeFilter<"vehicles"> | Date | string
   tire_size?: Prisma.StringNullableFilter<"vehicles"> | string | null
   insurance_number?: Prisma.StringNullableFilter<"vehicles"> | string | null
-  comprehensive_insurance?: Prisma.BoolNullableFilter<"vehicles"> | boolean | null
+  omnium?: Prisma.BoolNullableFilter<"vehicles"> | boolean | null
   maintenance_contract?: Prisma.BoolNullableFilter<"vehicles"> | boolean | null
   maintenance_contract_end_km?: Prisma.IntNullableFilter<"vehicles"> | number | null
   maintenance_contract_end_date?: Prisma.DateTimeNullableFilter<"vehicles"> | Date | string | null
   maintenance_contract_number?: Prisma.StringNullableFilter<"vehicles"> | string | null
+  decommissioned_vehicle?: Prisma.BoolNullableFilter<"vehicles"> | boolean | null
   other_info?: Prisma.StringNullableFilter<"vehicles"> | string | null
   documents?: Prisma.StringNullableFilter<"vehicles"> | string | null
   department_id?: Prisma.IntFilter<"vehicles"> | number
@@ -403,22 +413,23 @@ export type vehiclesWhereUniqueInput = Prisma.AtLeast<{
 
 export type vehiclesOrderByWithAggregationInput = {
   vin?: Prisma.SortOrder
-  vehicle_number?: Prisma.SortOrderInput | Prisma.SortOrder
+  vehicle_number?: Prisma.SortOrder
   license_plate?: Prisma.SortOrder
-  make?: Prisma.SortOrderInput | Prisma.SortOrder
-  model?: Prisma.SortOrderInput | Prisma.SortOrder
-  manufacture_date?: Prisma.SortOrderInput | Prisma.SortOrder
-  fuel_type?: Prisma.SortOrderInput | Prisma.SortOrder
-  license_type?: Prisma.SortOrderInput | Prisma.SortOrder
-  vehicle_configuration?: Prisma.SortOrderInput | Prisma.SortOrder
-  inspection_expiry_date?: Prisma.SortOrderInput | Prisma.SortOrder
+  brand?: Prisma.SortOrder
+  model?: Prisma.SortOrder
+  manufacture_date?: Prisma.SortOrder
+  fuel_type?: Prisma.SortOrder
+  license_type?: Prisma.SortOrder
+  vehicle_configuration?: Prisma.SortOrder
+  technical_inspection_expiry_date?: Prisma.SortOrder
   tire_size?: Prisma.SortOrderInput | Prisma.SortOrder
   insurance_number?: Prisma.SortOrderInput | Prisma.SortOrder
-  comprehensive_insurance?: Prisma.SortOrderInput | Prisma.SortOrder
+  omnium?: Prisma.SortOrderInput | Prisma.SortOrder
   maintenance_contract?: Prisma.SortOrderInput | Prisma.SortOrder
   maintenance_contract_end_km?: Prisma.SortOrderInput | Prisma.SortOrder
   maintenance_contract_end_date?: Prisma.SortOrderInput | Prisma.SortOrder
   maintenance_contract_number?: Prisma.SortOrderInput | Prisma.SortOrder
+  decommissioned_vehicle?: Prisma.SortOrderInput | Prisma.SortOrder
   other_info?: Prisma.SortOrderInput | Prisma.SortOrder
   documents?: Prisma.SortOrderInput | Prisma.SortOrder
   department_id?: Prisma.SortOrder
@@ -434,22 +445,23 @@ export type vehiclesScalarWhereWithAggregatesInput = {
   OR?: Prisma.vehiclesScalarWhereWithAggregatesInput[]
   NOT?: Prisma.vehiclesScalarWhereWithAggregatesInput | Prisma.vehiclesScalarWhereWithAggregatesInput[]
   vin?: Prisma.StringWithAggregatesFilter<"vehicles"> | string
-  vehicle_number?: Prisma.IntNullableWithAggregatesFilter<"vehicles"> | number | null
+  vehicle_number?: Prisma.IntWithAggregatesFilter<"vehicles"> | number
   license_plate?: Prisma.StringWithAggregatesFilter<"vehicles"> | string
-  make?: Prisma.StringNullableWithAggregatesFilter<"vehicles"> | string | null
-  model?: Prisma.StringNullableWithAggregatesFilter<"vehicles"> | string | null
-  manufacture_date?: Prisma.DateTimeNullableWithAggregatesFilter<"vehicles"> | Date | string | null
-  fuel_type?: Prisma.Enumvehicles_fuel_typeNullableWithAggregatesFilter<"vehicles"> | $Enums.vehicles_fuel_type | null
-  license_type?: Prisma.Enumvehicles_license_typeNullableWithAggregatesFilter<"vehicles"> | $Enums.vehicles_license_type | null
-  vehicle_configuration?: Prisma.Enumvehicles_vehicle_configurationNullableWithAggregatesFilter<"vehicles"> | $Enums.vehicles_vehicle_configuration | null
-  inspection_expiry_date?: Prisma.DateTimeNullableWithAggregatesFilter<"vehicles"> | Date | string | null
+  brand?: Prisma.StringWithAggregatesFilter<"vehicles"> | string
+  model?: Prisma.StringWithAggregatesFilter<"vehicles"> | string
+  manufacture_date?: Prisma.DateTimeWithAggregatesFilter<"vehicles"> | Date | string
+  fuel_type?: Prisma.Enumvehicles_fuel_typeWithAggregatesFilter<"vehicles"> | $Enums.vehicles_fuel_type
+  license_type?: Prisma.Enumvehicles_license_typeWithAggregatesFilter<"vehicles"> | $Enums.vehicles_license_type
+  vehicle_configuration?: Prisma.Enumvehicles_vehicle_configurationWithAggregatesFilter<"vehicles"> | $Enums.vehicles_vehicle_configuration
+  technical_inspection_expiry_date?: Prisma.DateTimeWithAggregatesFilter<"vehicles"> | Date | string
   tire_size?: Prisma.StringNullableWithAggregatesFilter<"vehicles"> | string | null
   insurance_number?: Prisma.StringNullableWithAggregatesFilter<"vehicles"> | string | null
-  comprehensive_insurance?: Prisma.BoolNullableWithAggregatesFilter<"vehicles"> | boolean | null
+  omnium?: Prisma.BoolNullableWithAggregatesFilter<"vehicles"> | boolean | null
   maintenance_contract?: Prisma.BoolNullableWithAggregatesFilter<"vehicles"> | boolean | null
   maintenance_contract_end_km?: Prisma.IntNullableWithAggregatesFilter<"vehicles"> | number | null
   maintenance_contract_end_date?: Prisma.DateTimeNullableWithAggregatesFilter<"vehicles"> | Date | string | null
   maintenance_contract_number?: Prisma.StringNullableWithAggregatesFilter<"vehicles"> | string | null
+  decommissioned_vehicle?: Prisma.BoolNullableWithAggregatesFilter<"vehicles"> | boolean | null
   other_info?: Prisma.StringNullableWithAggregatesFilter<"vehicles"> | string | null
   documents?: Prisma.StringNullableWithAggregatesFilter<"vehicles"> | string | null
   department_id?: Prisma.IntWithAggregatesFilter<"vehicles"> | number
@@ -457,22 +469,23 @@ export type vehiclesScalarWhereWithAggregatesInput = {
 
 export type vehiclesCreateInput = {
   vin: string
-  vehicle_number?: number | null
+  vehicle_number: number
   license_plate: string
-  make?: string | null
-  model?: string | null
-  manufacture_date?: Date | string | null
-  fuel_type?: $Enums.vehicles_fuel_type | null
-  license_type?: $Enums.vehicles_license_type | null
-  vehicle_configuration?: $Enums.vehicles_vehicle_configuration | null
-  inspection_expiry_date?: Date | string | null
+  brand: string
+  model: string
+  manufacture_date: Date | string
+  fuel_type: $Enums.vehicles_fuel_type
+  license_type: $Enums.vehicles_license_type
+  vehicle_configuration: $Enums.vehicles_vehicle_configuration
+  technical_inspection_expiry_date: Date | string
   tire_size?: string | null
   insurance_number?: string | null
-  comprehensive_insurance?: boolean | null
+  omnium?: boolean | null
   maintenance_contract?: boolean | null
   maintenance_contract_end_km?: number | null
   maintenance_contract_end_date?: Date | string | null
   maintenance_contract_number?: string | null
+  decommissioned_vehicle?: boolean | null
   other_info?: string | null
   documents?: string | null
   interventions?: Prisma.interventionsCreateNestedManyWithoutVehiclesInput
@@ -481,22 +494,23 @@ export type vehiclesCreateInput = {
 
 export type vehiclesUncheckedCreateInput = {
   vin: string
-  vehicle_number?: number | null
+  vehicle_number: number
   license_plate: string
-  make?: string | null
-  model?: string | null
-  manufacture_date?: Date | string | null
-  fuel_type?: $Enums.vehicles_fuel_type | null
-  license_type?: $Enums.vehicles_license_type | null
-  vehicle_configuration?: $Enums.vehicles_vehicle_configuration | null
-  inspection_expiry_date?: Date | string | null
+  brand: string
+  model: string
+  manufacture_date: Date | string
+  fuel_type: $Enums.vehicles_fuel_type
+  license_type: $Enums.vehicles_license_type
+  vehicle_configuration: $Enums.vehicles_vehicle_configuration
+  technical_inspection_expiry_date: Date | string
   tire_size?: string | null
   insurance_number?: string | null
-  comprehensive_insurance?: boolean | null
+  omnium?: boolean | null
   maintenance_contract?: boolean | null
   maintenance_contract_end_km?: number | null
   maintenance_contract_end_date?: Date | string | null
   maintenance_contract_number?: string | null
+  decommissioned_vehicle?: boolean | null
   other_info?: string | null
   documents?: string | null
   department_id: number
@@ -505,22 +519,23 @@ export type vehiclesUncheckedCreateInput = {
 
 export type vehiclesUpdateInput = {
   vin?: Prisma.StringFieldUpdateOperationsInput | string
-  vehicle_number?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  vehicle_number?: Prisma.IntFieldUpdateOperationsInput | number
   license_plate?: Prisma.StringFieldUpdateOperationsInput | string
-  make?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  model?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  manufacture_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  fuel_type?: Prisma.NullableEnumvehicles_fuel_typeFieldUpdateOperationsInput | $Enums.vehicles_fuel_type | null
-  license_type?: Prisma.NullableEnumvehicles_license_typeFieldUpdateOperationsInput | $Enums.vehicles_license_type | null
-  vehicle_configuration?: Prisma.NullableEnumvehicles_vehicle_configurationFieldUpdateOperationsInput | $Enums.vehicles_vehicle_configuration | null
-  inspection_expiry_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  brand?: Prisma.StringFieldUpdateOperationsInput | string
+  model?: Prisma.StringFieldUpdateOperationsInput | string
+  manufacture_date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  fuel_type?: Prisma.Enumvehicles_fuel_typeFieldUpdateOperationsInput | $Enums.vehicles_fuel_type
+  license_type?: Prisma.Enumvehicles_license_typeFieldUpdateOperationsInput | $Enums.vehicles_license_type
+  vehicle_configuration?: Prisma.Enumvehicles_vehicle_configurationFieldUpdateOperationsInput | $Enums.vehicles_vehicle_configuration
+  technical_inspection_expiry_date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   tire_size?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   insurance_number?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  comprehensive_insurance?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  omnium?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
   maintenance_contract?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
   maintenance_contract_end_km?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   maintenance_contract_end_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   maintenance_contract_number?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  decommissioned_vehicle?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
   other_info?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   documents?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   interventions?: Prisma.interventionsUpdateManyWithoutVehiclesNestedInput
@@ -529,22 +544,23 @@ export type vehiclesUpdateInput = {
 
 export type vehiclesUncheckedUpdateInput = {
   vin?: Prisma.StringFieldUpdateOperationsInput | string
-  vehicle_number?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  vehicle_number?: Prisma.IntFieldUpdateOperationsInput | number
   license_plate?: Prisma.StringFieldUpdateOperationsInput | string
-  make?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  model?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  manufacture_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  fuel_type?: Prisma.NullableEnumvehicles_fuel_typeFieldUpdateOperationsInput | $Enums.vehicles_fuel_type | null
-  license_type?: Prisma.NullableEnumvehicles_license_typeFieldUpdateOperationsInput | $Enums.vehicles_license_type | null
-  vehicle_configuration?: Prisma.NullableEnumvehicles_vehicle_configurationFieldUpdateOperationsInput | $Enums.vehicles_vehicle_configuration | null
-  inspection_expiry_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  brand?: Prisma.StringFieldUpdateOperationsInput | string
+  model?: Prisma.StringFieldUpdateOperationsInput | string
+  manufacture_date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  fuel_type?: Prisma.Enumvehicles_fuel_typeFieldUpdateOperationsInput | $Enums.vehicles_fuel_type
+  license_type?: Prisma.Enumvehicles_license_typeFieldUpdateOperationsInput | $Enums.vehicles_license_type
+  vehicle_configuration?: Prisma.Enumvehicles_vehicle_configurationFieldUpdateOperationsInput | $Enums.vehicles_vehicle_configuration
+  technical_inspection_expiry_date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   tire_size?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   insurance_number?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  comprehensive_insurance?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  omnium?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
   maintenance_contract?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
   maintenance_contract_end_km?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   maintenance_contract_end_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   maintenance_contract_number?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  decommissioned_vehicle?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
   other_info?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   documents?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   department_id?: Prisma.IntFieldUpdateOperationsInput | number
@@ -553,22 +569,23 @@ export type vehiclesUncheckedUpdateInput = {
 
 export type vehiclesCreateManyInput = {
   vin: string
-  vehicle_number?: number | null
+  vehicle_number: number
   license_plate: string
-  make?: string | null
-  model?: string | null
-  manufacture_date?: Date | string | null
-  fuel_type?: $Enums.vehicles_fuel_type | null
-  license_type?: $Enums.vehicles_license_type | null
-  vehicle_configuration?: $Enums.vehicles_vehicle_configuration | null
-  inspection_expiry_date?: Date | string | null
+  brand: string
+  model: string
+  manufacture_date: Date | string
+  fuel_type: $Enums.vehicles_fuel_type
+  license_type: $Enums.vehicles_license_type
+  vehicle_configuration: $Enums.vehicles_vehicle_configuration
+  technical_inspection_expiry_date: Date | string
   tire_size?: string | null
   insurance_number?: string | null
-  comprehensive_insurance?: boolean | null
+  omnium?: boolean | null
   maintenance_contract?: boolean | null
   maintenance_contract_end_km?: number | null
   maintenance_contract_end_date?: Date | string | null
   maintenance_contract_number?: string | null
+  decommissioned_vehicle?: boolean | null
   other_info?: string | null
   documents?: string | null
   department_id: number
@@ -576,44 +593,46 @@ export type vehiclesCreateManyInput = {
 
 export type vehiclesUpdateManyMutationInput = {
   vin?: Prisma.StringFieldUpdateOperationsInput | string
-  vehicle_number?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  vehicle_number?: Prisma.IntFieldUpdateOperationsInput | number
   license_plate?: Prisma.StringFieldUpdateOperationsInput | string
-  make?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  model?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  manufacture_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  fuel_type?: Prisma.NullableEnumvehicles_fuel_typeFieldUpdateOperationsInput | $Enums.vehicles_fuel_type | null
-  license_type?: Prisma.NullableEnumvehicles_license_typeFieldUpdateOperationsInput | $Enums.vehicles_license_type | null
-  vehicle_configuration?: Prisma.NullableEnumvehicles_vehicle_configurationFieldUpdateOperationsInput | $Enums.vehicles_vehicle_configuration | null
-  inspection_expiry_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  brand?: Prisma.StringFieldUpdateOperationsInput | string
+  model?: Prisma.StringFieldUpdateOperationsInput | string
+  manufacture_date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  fuel_type?: Prisma.Enumvehicles_fuel_typeFieldUpdateOperationsInput | $Enums.vehicles_fuel_type
+  license_type?: Prisma.Enumvehicles_license_typeFieldUpdateOperationsInput | $Enums.vehicles_license_type
+  vehicle_configuration?: Prisma.Enumvehicles_vehicle_configurationFieldUpdateOperationsInput | $Enums.vehicles_vehicle_configuration
+  technical_inspection_expiry_date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   tire_size?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   insurance_number?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  comprehensive_insurance?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  omnium?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
   maintenance_contract?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
   maintenance_contract_end_km?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   maintenance_contract_end_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   maintenance_contract_number?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  decommissioned_vehicle?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
   other_info?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   documents?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type vehiclesUncheckedUpdateManyInput = {
   vin?: Prisma.StringFieldUpdateOperationsInput | string
-  vehicle_number?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  vehicle_number?: Prisma.IntFieldUpdateOperationsInput | number
   license_plate?: Prisma.StringFieldUpdateOperationsInput | string
-  make?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  model?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  manufacture_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  fuel_type?: Prisma.NullableEnumvehicles_fuel_typeFieldUpdateOperationsInput | $Enums.vehicles_fuel_type | null
-  license_type?: Prisma.NullableEnumvehicles_license_typeFieldUpdateOperationsInput | $Enums.vehicles_license_type | null
-  vehicle_configuration?: Prisma.NullableEnumvehicles_vehicle_configurationFieldUpdateOperationsInput | $Enums.vehicles_vehicle_configuration | null
-  inspection_expiry_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  brand?: Prisma.StringFieldUpdateOperationsInput | string
+  model?: Prisma.StringFieldUpdateOperationsInput | string
+  manufacture_date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  fuel_type?: Prisma.Enumvehicles_fuel_typeFieldUpdateOperationsInput | $Enums.vehicles_fuel_type
+  license_type?: Prisma.Enumvehicles_license_typeFieldUpdateOperationsInput | $Enums.vehicles_license_type
+  vehicle_configuration?: Prisma.Enumvehicles_vehicle_configurationFieldUpdateOperationsInput | $Enums.vehicles_vehicle_configuration
+  technical_inspection_expiry_date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   tire_size?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   insurance_number?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  comprehensive_insurance?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  omnium?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
   maintenance_contract?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
   maintenance_contract_end_km?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   maintenance_contract_end_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   maintenance_contract_number?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  decommissioned_vehicle?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
   other_info?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   documents?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   department_id?: Prisma.IntFieldUpdateOperationsInput | number
@@ -644,20 +663,21 @@ export type vehiclesCountOrderByAggregateInput = {
   vin?: Prisma.SortOrder
   vehicle_number?: Prisma.SortOrder
   license_plate?: Prisma.SortOrder
-  make?: Prisma.SortOrder
+  brand?: Prisma.SortOrder
   model?: Prisma.SortOrder
   manufacture_date?: Prisma.SortOrder
   fuel_type?: Prisma.SortOrder
   license_type?: Prisma.SortOrder
   vehicle_configuration?: Prisma.SortOrder
-  inspection_expiry_date?: Prisma.SortOrder
+  technical_inspection_expiry_date?: Prisma.SortOrder
   tire_size?: Prisma.SortOrder
   insurance_number?: Prisma.SortOrder
-  comprehensive_insurance?: Prisma.SortOrder
+  omnium?: Prisma.SortOrder
   maintenance_contract?: Prisma.SortOrder
   maintenance_contract_end_km?: Prisma.SortOrder
   maintenance_contract_end_date?: Prisma.SortOrder
   maintenance_contract_number?: Prisma.SortOrder
+  decommissioned_vehicle?: Prisma.SortOrder
   other_info?: Prisma.SortOrder
   documents?: Prisma.SortOrder
   department_id?: Prisma.SortOrder
@@ -673,20 +693,21 @@ export type vehiclesMaxOrderByAggregateInput = {
   vin?: Prisma.SortOrder
   vehicle_number?: Prisma.SortOrder
   license_plate?: Prisma.SortOrder
-  make?: Prisma.SortOrder
+  brand?: Prisma.SortOrder
   model?: Prisma.SortOrder
   manufacture_date?: Prisma.SortOrder
   fuel_type?: Prisma.SortOrder
   license_type?: Prisma.SortOrder
   vehicle_configuration?: Prisma.SortOrder
-  inspection_expiry_date?: Prisma.SortOrder
+  technical_inspection_expiry_date?: Prisma.SortOrder
   tire_size?: Prisma.SortOrder
   insurance_number?: Prisma.SortOrder
-  comprehensive_insurance?: Prisma.SortOrder
+  omnium?: Prisma.SortOrder
   maintenance_contract?: Prisma.SortOrder
   maintenance_contract_end_km?: Prisma.SortOrder
   maintenance_contract_end_date?: Prisma.SortOrder
   maintenance_contract_number?: Prisma.SortOrder
+  decommissioned_vehicle?: Prisma.SortOrder
   other_info?: Prisma.SortOrder
   documents?: Prisma.SortOrder
   department_id?: Prisma.SortOrder
@@ -696,20 +717,21 @@ export type vehiclesMinOrderByAggregateInput = {
   vin?: Prisma.SortOrder
   vehicle_number?: Prisma.SortOrder
   license_plate?: Prisma.SortOrder
-  make?: Prisma.SortOrder
+  brand?: Prisma.SortOrder
   model?: Prisma.SortOrder
   manufacture_date?: Prisma.SortOrder
   fuel_type?: Prisma.SortOrder
   license_type?: Prisma.SortOrder
   vehicle_configuration?: Prisma.SortOrder
-  inspection_expiry_date?: Prisma.SortOrder
+  technical_inspection_expiry_date?: Prisma.SortOrder
   tire_size?: Prisma.SortOrder
   insurance_number?: Prisma.SortOrder
-  comprehensive_insurance?: Prisma.SortOrder
+  omnium?: Prisma.SortOrder
   maintenance_contract?: Prisma.SortOrder
   maintenance_contract_end_km?: Prisma.SortOrder
   maintenance_contract_end_date?: Prisma.SortOrder
   maintenance_contract_number?: Prisma.SortOrder
+  decommissioned_vehicle?: Prisma.SortOrder
   other_info?: Prisma.SortOrder
   documents?: Prisma.SortOrder
   department_id?: Prisma.SortOrder
@@ -777,36 +799,37 @@ export type vehiclesUpdateOneRequiredWithoutInterventionsNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.vehiclesUpdateToOneWithWhereWithoutInterventionsInput, Prisma.vehiclesUpdateWithoutInterventionsInput>, Prisma.vehiclesUncheckedUpdateWithoutInterventionsInput>
 }
 
-export type NullableEnumvehicles_fuel_typeFieldUpdateOperationsInput = {
-  set?: $Enums.vehicles_fuel_type | null
+export type Enumvehicles_fuel_typeFieldUpdateOperationsInput = {
+  set?: $Enums.vehicles_fuel_type
 }
 
-export type NullableEnumvehicles_license_typeFieldUpdateOperationsInput = {
-  set?: $Enums.vehicles_license_type | null
+export type Enumvehicles_license_typeFieldUpdateOperationsInput = {
+  set?: $Enums.vehicles_license_type
 }
 
-export type NullableEnumvehicles_vehicle_configurationFieldUpdateOperationsInput = {
-  set?: $Enums.vehicles_vehicle_configuration | null
+export type Enumvehicles_vehicle_configurationFieldUpdateOperationsInput = {
+  set?: $Enums.vehicles_vehicle_configuration
 }
 
 export type vehiclesCreateWithoutDepartmentsInput = {
   vin: string
-  vehicle_number?: number | null
+  vehicle_number: number
   license_plate: string
-  make?: string | null
-  model?: string | null
-  manufacture_date?: Date | string | null
-  fuel_type?: $Enums.vehicles_fuel_type | null
-  license_type?: $Enums.vehicles_license_type | null
-  vehicle_configuration?: $Enums.vehicles_vehicle_configuration | null
-  inspection_expiry_date?: Date | string | null
+  brand: string
+  model: string
+  manufacture_date: Date | string
+  fuel_type: $Enums.vehicles_fuel_type
+  license_type: $Enums.vehicles_license_type
+  vehicle_configuration: $Enums.vehicles_vehicle_configuration
+  technical_inspection_expiry_date: Date | string
   tire_size?: string | null
   insurance_number?: string | null
-  comprehensive_insurance?: boolean | null
+  omnium?: boolean | null
   maintenance_contract?: boolean | null
   maintenance_contract_end_km?: number | null
   maintenance_contract_end_date?: Date | string | null
   maintenance_contract_number?: string | null
+  decommissioned_vehicle?: boolean | null
   other_info?: string | null
   documents?: string | null
   interventions?: Prisma.interventionsCreateNestedManyWithoutVehiclesInput
@@ -814,22 +837,23 @@ export type vehiclesCreateWithoutDepartmentsInput = {
 
 export type vehiclesUncheckedCreateWithoutDepartmentsInput = {
   vin: string
-  vehicle_number?: number | null
+  vehicle_number: number
   license_plate: string
-  make?: string | null
-  model?: string | null
-  manufacture_date?: Date | string | null
-  fuel_type?: $Enums.vehicles_fuel_type | null
-  license_type?: $Enums.vehicles_license_type | null
-  vehicle_configuration?: $Enums.vehicles_vehicle_configuration | null
-  inspection_expiry_date?: Date | string | null
+  brand: string
+  model: string
+  manufacture_date: Date | string
+  fuel_type: $Enums.vehicles_fuel_type
+  license_type: $Enums.vehicles_license_type
+  vehicle_configuration: $Enums.vehicles_vehicle_configuration
+  technical_inspection_expiry_date: Date | string
   tire_size?: string | null
   insurance_number?: string | null
-  comprehensive_insurance?: boolean | null
+  omnium?: boolean | null
   maintenance_contract?: boolean | null
   maintenance_contract_end_km?: number | null
   maintenance_contract_end_date?: Date | string | null
   maintenance_contract_number?: string | null
+  decommissioned_vehicle?: boolean | null
   other_info?: string | null
   documents?: string | null
   interventions?: Prisma.interventionsUncheckedCreateNestedManyWithoutVehiclesInput
@@ -866,22 +890,23 @@ export type vehiclesScalarWhereInput = {
   OR?: Prisma.vehiclesScalarWhereInput[]
   NOT?: Prisma.vehiclesScalarWhereInput | Prisma.vehiclesScalarWhereInput[]
   vin?: Prisma.StringFilter<"vehicles"> | string
-  vehicle_number?: Prisma.IntNullableFilter<"vehicles"> | number | null
+  vehicle_number?: Prisma.IntFilter<"vehicles"> | number
   license_plate?: Prisma.StringFilter<"vehicles"> | string
-  make?: Prisma.StringNullableFilter<"vehicles"> | string | null
-  model?: Prisma.StringNullableFilter<"vehicles"> | string | null
-  manufacture_date?: Prisma.DateTimeNullableFilter<"vehicles"> | Date | string | null
-  fuel_type?: Prisma.Enumvehicles_fuel_typeNullableFilter<"vehicles"> | $Enums.vehicles_fuel_type | null
-  license_type?: Prisma.Enumvehicles_license_typeNullableFilter<"vehicles"> | $Enums.vehicles_license_type | null
-  vehicle_configuration?: Prisma.Enumvehicles_vehicle_configurationNullableFilter<"vehicles"> | $Enums.vehicles_vehicle_configuration | null
-  inspection_expiry_date?: Prisma.DateTimeNullableFilter<"vehicles"> | Date | string | null
+  brand?: Prisma.StringFilter<"vehicles"> | string
+  model?: Prisma.StringFilter<"vehicles"> | string
+  manufacture_date?: Prisma.DateTimeFilter<"vehicles"> | Date | string
+  fuel_type?: Prisma.Enumvehicles_fuel_typeFilter<"vehicles"> | $Enums.vehicles_fuel_type
+  license_type?: Prisma.Enumvehicles_license_typeFilter<"vehicles"> | $Enums.vehicles_license_type
+  vehicle_configuration?: Prisma.Enumvehicles_vehicle_configurationFilter<"vehicles"> | $Enums.vehicles_vehicle_configuration
+  technical_inspection_expiry_date?: Prisma.DateTimeFilter<"vehicles"> | Date | string
   tire_size?: Prisma.StringNullableFilter<"vehicles"> | string | null
   insurance_number?: Prisma.StringNullableFilter<"vehicles"> | string | null
-  comprehensive_insurance?: Prisma.BoolNullableFilter<"vehicles"> | boolean | null
+  omnium?: Prisma.BoolNullableFilter<"vehicles"> | boolean | null
   maintenance_contract?: Prisma.BoolNullableFilter<"vehicles"> | boolean | null
   maintenance_contract_end_km?: Prisma.IntNullableFilter<"vehicles"> | number | null
   maintenance_contract_end_date?: Prisma.DateTimeNullableFilter<"vehicles"> | Date | string | null
   maintenance_contract_number?: Prisma.StringNullableFilter<"vehicles"> | string | null
+  decommissioned_vehicle?: Prisma.BoolNullableFilter<"vehicles"> | boolean | null
   other_info?: Prisma.StringNullableFilter<"vehicles"> | string | null
   documents?: Prisma.StringNullableFilter<"vehicles"> | string | null
   department_id?: Prisma.IntFilter<"vehicles"> | number
@@ -889,22 +914,23 @@ export type vehiclesScalarWhereInput = {
 
 export type vehiclesCreateWithoutInterventionsInput = {
   vin: string
-  vehicle_number?: number | null
+  vehicle_number: number
   license_plate: string
-  make?: string | null
-  model?: string | null
-  manufacture_date?: Date | string | null
-  fuel_type?: $Enums.vehicles_fuel_type | null
-  license_type?: $Enums.vehicles_license_type | null
-  vehicle_configuration?: $Enums.vehicles_vehicle_configuration | null
-  inspection_expiry_date?: Date | string | null
+  brand: string
+  model: string
+  manufacture_date: Date | string
+  fuel_type: $Enums.vehicles_fuel_type
+  license_type: $Enums.vehicles_license_type
+  vehicle_configuration: $Enums.vehicles_vehicle_configuration
+  technical_inspection_expiry_date: Date | string
   tire_size?: string | null
   insurance_number?: string | null
-  comprehensive_insurance?: boolean | null
+  omnium?: boolean | null
   maintenance_contract?: boolean | null
   maintenance_contract_end_km?: number | null
   maintenance_contract_end_date?: Date | string | null
   maintenance_contract_number?: string | null
+  decommissioned_vehicle?: boolean | null
   other_info?: string | null
   documents?: string | null
   departments: Prisma.departmentsCreateNestedOneWithoutVehiclesInput
@@ -912,22 +938,23 @@ export type vehiclesCreateWithoutInterventionsInput = {
 
 export type vehiclesUncheckedCreateWithoutInterventionsInput = {
   vin: string
-  vehicle_number?: number | null
+  vehicle_number: number
   license_plate: string
-  make?: string | null
-  model?: string | null
-  manufacture_date?: Date | string | null
-  fuel_type?: $Enums.vehicles_fuel_type | null
-  license_type?: $Enums.vehicles_license_type | null
-  vehicle_configuration?: $Enums.vehicles_vehicle_configuration | null
-  inspection_expiry_date?: Date | string | null
+  brand: string
+  model: string
+  manufacture_date: Date | string
+  fuel_type: $Enums.vehicles_fuel_type
+  license_type: $Enums.vehicles_license_type
+  vehicle_configuration: $Enums.vehicles_vehicle_configuration
+  technical_inspection_expiry_date: Date | string
   tire_size?: string | null
   insurance_number?: string | null
-  comprehensive_insurance?: boolean | null
+  omnium?: boolean | null
   maintenance_contract?: boolean | null
   maintenance_contract_end_km?: number | null
   maintenance_contract_end_date?: Date | string | null
   maintenance_contract_number?: string | null
+  decommissioned_vehicle?: boolean | null
   other_info?: string | null
   documents?: string | null
   department_id: number
@@ -951,22 +978,23 @@ export type vehiclesUpdateToOneWithWhereWithoutInterventionsInput = {
 
 export type vehiclesUpdateWithoutInterventionsInput = {
   vin?: Prisma.StringFieldUpdateOperationsInput | string
-  vehicle_number?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  vehicle_number?: Prisma.IntFieldUpdateOperationsInput | number
   license_plate?: Prisma.StringFieldUpdateOperationsInput | string
-  make?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  model?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  manufacture_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  fuel_type?: Prisma.NullableEnumvehicles_fuel_typeFieldUpdateOperationsInput | $Enums.vehicles_fuel_type | null
-  license_type?: Prisma.NullableEnumvehicles_license_typeFieldUpdateOperationsInput | $Enums.vehicles_license_type | null
-  vehicle_configuration?: Prisma.NullableEnumvehicles_vehicle_configurationFieldUpdateOperationsInput | $Enums.vehicles_vehicle_configuration | null
-  inspection_expiry_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  brand?: Prisma.StringFieldUpdateOperationsInput | string
+  model?: Prisma.StringFieldUpdateOperationsInput | string
+  manufacture_date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  fuel_type?: Prisma.Enumvehicles_fuel_typeFieldUpdateOperationsInput | $Enums.vehicles_fuel_type
+  license_type?: Prisma.Enumvehicles_license_typeFieldUpdateOperationsInput | $Enums.vehicles_license_type
+  vehicle_configuration?: Prisma.Enumvehicles_vehicle_configurationFieldUpdateOperationsInput | $Enums.vehicles_vehicle_configuration
+  technical_inspection_expiry_date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   tire_size?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   insurance_number?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  comprehensive_insurance?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  omnium?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
   maintenance_contract?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
   maintenance_contract_end_km?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   maintenance_contract_end_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   maintenance_contract_number?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  decommissioned_vehicle?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
   other_info?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   documents?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   departments?: Prisma.departmentsUpdateOneRequiredWithoutVehiclesNestedInput
@@ -974,22 +1002,23 @@ export type vehiclesUpdateWithoutInterventionsInput = {
 
 export type vehiclesUncheckedUpdateWithoutInterventionsInput = {
   vin?: Prisma.StringFieldUpdateOperationsInput | string
-  vehicle_number?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  vehicle_number?: Prisma.IntFieldUpdateOperationsInput | number
   license_plate?: Prisma.StringFieldUpdateOperationsInput | string
-  make?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  model?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  manufacture_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  fuel_type?: Prisma.NullableEnumvehicles_fuel_typeFieldUpdateOperationsInput | $Enums.vehicles_fuel_type | null
-  license_type?: Prisma.NullableEnumvehicles_license_typeFieldUpdateOperationsInput | $Enums.vehicles_license_type | null
-  vehicle_configuration?: Prisma.NullableEnumvehicles_vehicle_configurationFieldUpdateOperationsInput | $Enums.vehicles_vehicle_configuration | null
-  inspection_expiry_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  brand?: Prisma.StringFieldUpdateOperationsInput | string
+  model?: Prisma.StringFieldUpdateOperationsInput | string
+  manufacture_date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  fuel_type?: Prisma.Enumvehicles_fuel_typeFieldUpdateOperationsInput | $Enums.vehicles_fuel_type
+  license_type?: Prisma.Enumvehicles_license_typeFieldUpdateOperationsInput | $Enums.vehicles_license_type
+  vehicle_configuration?: Prisma.Enumvehicles_vehicle_configurationFieldUpdateOperationsInput | $Enums.vehicles_vehicle_configuration
+  technical_inspection_expiry_date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   tire_size?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   insurance_number?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  comprehensive_insurance?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  omnium?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
   maintenance_contract?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
   maintenance_contract_end_km?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   maintenance_contract_end_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   maintenance_contract_number?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  decommissioned_vehicle?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
   other_info?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   documents?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   department_id?: Prisma.IntFieldUpdateOperationsInput | number
@@ -997,44 +1026,46 @@ export type vehiclesUncheckedUpdateWithoutInterventionsInput = {
 
 export type vehiclesCreateManyDepartmentsInput = {
   vin: string
-  vehicle_number?: number | null
+  vehicle_number: number
   license_plate: string
-  make?: string | null
-  model?: string | null
-  manufacture_date?: Date | string | null
-  fuel_type?: $Enums.vehicles_fuel_type | null
-  license_type?: $Enums.vehicles_license_type | null
-  vehicle_configuration?: $Enums.vehicles_vehicle_configuration | null
-  inspection_expiry_date?: Date | string | null
+  brand: string
+  model: string
+  manufacture_date: Date | string
+  fuel_type: $Enums.vehicles_fuel_type
+  license_type: $Enums.vehicles_license_type
+  vehicle_configuration: $Enums.vehicles_vehicle_configuration
+  technical_inspection_expiry_date: Date | string
   tire_size?: string | null
   insurance_number?: string | null
-  comprehensive_insurance?: boolean | null
+  omnium?: boolean | null
   maintenance_contract?: boolean | null
   maintenance_contract_end_km?: number | null
   maintenance_contract_end_date?: Date | string | null
   maintenance_contract_number?: string | null
+  decommissioned_vehicle?: boolean | null
   other_info?: string | null
   documents?: string | null
 }
 
 export type vehiclesUpdateWithoutDepartmentsInput = {
   vin?: Prisma.StringFieldUpdateOperationsInput | string
-  vehicle_number?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  vehicle_number?: Prisma.IntFieldUpdateOperationsInput | number
   license_plate?: Prisma.StringFieldUpdateOperationsInput | string
-  make?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  model?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  manufacture_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  fuel_type?: Prisma.NullableEnumvehicles_fuel_typeFieldUpdateOperationsInput | $Enums.vehicles_fuel_type | null
-  license_type?: Prisma.NullableEnumvehicles_license_typeFieldUpdateOperationsInput | $Enums.vehicles_license_type | null
-  vehicle_configuration?: Prisma.NullableEnumvehicles_vehicle_configurationFieldUpdateOperationsInput | $Enums.vehicles_vehicle_configuration | null
-  inspection_expiry_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  brand?: Prisma.StringFieldUpdateOperationsInput | string
+  model?: Prisma.StringFieldUpdateOperationsInput | string
+  manufacture_date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  fuel_type?: Prisma.Enumvehicles_fuel_typeFieldUpdateOperationsInput | $Enums.vehicles_fuel_type
+  license_type?: Prisma.Enumvehicles_license_typeFieldUpdateOperationsInput | $Enums.vehicles_license_type
+  vehicle_configuration?: Prisma.Enumvehicles_vehicle_configurationFieldUpdateOperationsInput | $Enums.vehicles_vehicle_configuration
+  technical_inspection_expiry_date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   tire_size?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   insurance_number?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  comprehensive_insurance?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  omnium?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
   maintenance_contract?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
   maintenance_contract_end_km?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   maintenance_contract_end_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   maintenance_contract_number?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  decommissioned_vehicle?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
   other_info?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   documents?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   interventions?: Prisma.interventionsUpdateManyWithoutVehiclesNestedInput
@@ -1042,22 +1073,23 @@ export type vehiclesUpdateWithoutDepartmentsInput = {
 
 export type vehiclesUncheckedUpdateWithoutDepartmentsInput = {
   vin?: Prisma.StringFieldUpdateOperationsInput | string
-  vehicle_number?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  vehicle_number?: Prisma.IntFieldUpdateOperationsInput | number
   license_plate?: Prisma.StringFieldUpdateOperationsInput | string
-  make?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  model?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  manufacture_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  fuel_type?: Prisma.NullableEnumvehicles_fuel_typeFieldUpdateOperationsInput | $Enums.vehicles_fuel_type | null
-  license_type?: Prisma.NullableEnumvehicles_license_typeFieldUpdateOperationsInput | $Enums.vehicles_license_type | null
-  vehicle_configuration?: Prisma.NullableEnumvehicles_vehicle_configurationFieldUpdateOperationsInput | $Enums.vehicles_vehicle_configuration | null
-  inspection_expiry_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  brand?: Prisma.StringFieldUpdateOperationsInput | string
+  model?: Prisma.StringFieldUpdateOperationsInput | string
+  manufacture_date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  fuel_type?: Prisma.Enumvehicles_fuel_typeFieldUpdateOperationsInput | $Enums.vehicles_fuel_type
+  license_type?: Prisma.Enumvehicles_license_typeFieldUpdateOperationsInput | $Enums.vehicles_license_type
+  vehicle_configuration?: Prisma.Enumvehicles_vehicle_configurationFieldUpdateOperationsInput | $Enums.vehicles_vehicle_configuration
+  technical_inspection_expiry_date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   tire_size?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   insurance_number?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  comprehensive_insurance?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  omnium?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
   maintenance_contract?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
   maintenance_contract_end_km?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   maintenance_contract_end_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   maintenance_contract_number?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  decommissioned_vehicle?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
   other_info?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   documents?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   interventions?: Prisma.interventionsUncheckedUpdateManyWithoutVehiclesNestedInput
@@ -1065,22 +1097,23 @@ export type vehiclesUncheckedUpdateWithoutDepartmentsInput = {
 
 export type vehiclesUncheckedUpdateManyWithoutDepartmentsInput = {
   vin?: Prisma.StringFieldUpdateOperationsInput | string
-  vehicle_number?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  vehicle_number?: Prisma.IntFieldUpdateOperationsInput | number
   license_plate?: Prisma.StringFieldUpdateOperationsInput | string
-  make?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  model?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  manufacture_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  fuel_type?: Prisma.NullableEnumvehicles_fuel_typeFieldUpdateOperationsInput | $Enums.vehicles_fuel_type | null
-  license_type?: Prisma.NullableEnumvehicles_license_typeFieldUpdateOperationsInput | $Enums.vehicles_license_type | null
-  vehicle_configuration?: Prisma.NullableEnumvehicles_vehicle_configurationFieldUpdateOperationsInput | $Enums.vehicles_vehicle_configuration | null
-  inspection_expiry_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  brand?: Prisma.StringFieldUpdateOperationsInput | string
+  model?: Prisma.StringFieldUpdateOperationsInput | string
+  manufacture_date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  fuel_type?: Prisma.Enumvehicles_fuel_typeFieldUpdateOperationsInput | $Enums.vehicles_fuel_type
+  license_type?: Prisma.Enumvehicles_license_typeFieldUpdateOperationsInput | $Enums.vehicles_license_type
+  vehicle_configuration?: Prisma.Enumvehicles_vehicle_configurationFieldUpdateOperationsInput | $Enums.vehicles_vehicle_configuration
+  technical_inspection_expiry_date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   tire_size?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   insurance_number?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  comprehensive_insurance?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  omnium?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
   maintenance_contract?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
   maintenance_contract_end_km?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   maintenance_contract_end_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   maintenance_contract_number?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  decommissioned_vehicle?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
   other_info?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   documents?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
@@ -1120,20 +1153,21 @@ export type vehiclesSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs
   vin?: boolean
   vehicle_number?: boolean
   license_plate?: boolean
-  make?: boolean
+  brand?: boolean
   model?: boolean
   manufacture_date?: boolean
   fuel_type?: boolean
   license_type?: boolean
   vehicle_configuration?: boolean
-  inspection_expiry_date?: boolean
+  technical_inspection_expiry_date?: boolean
   tire_size?: boolean
   insurance_number?: boolean
-  comprehensive_insurance?: boolean
+  omnium?: boolean
   maintenance_contract?: boolean
   maintenance_contract_end_km?: boolean
   maintenance_contract_end_date?: boolean
   maintenance_contract_number?: boolean
+  decommissioned_vehicle?: boolean
   other_info?: boolean
   documents?: boolean
   department_id?: boolean
@@ -1148,26 +1182,27 @@ export type vehiclesSelectScalar = {
   vin?: boolean
   vehicle_number?: boolean
   license_plate?: boolean
-  make?: boolean
+  brand?: boolean
   model?: boolean
   manufacture_date?: boolean
   fuel_type?: boolean
   license_type?: boolean
   vehicle_configuration?: boolean
-  inspection_expiry_date?: boolean
+  technical_inspection_expiry_date?: boolean
   tire_size?: boolean
   insurance_number?: boolean
-  comprehensive_insurance?: boolean
+  omnium?: boolean
   maintenance_contract?: boolean
   maintenance_contract_end_km?: boolean
   maintenance_contract_end_date?: boolean
   maintenance_contract_number?: boolean
+  decommissioned_vehicle?: boolean
   other_info?: boolean
   documents?: boolean
   department_id?: boolean
 }
 
-export type vehiclesOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"vin" | "vehicle_number" | "license_plate" | "make" | "model" | "manufacture_date" | "fuel_type" | "license_type" | "vehicle_configuration" | "inspection_expiry_date" | "tire_size" | "insurance_number" | "comprehensive_insurance" | "maintenance_contract" | "maintenance_contract_end_km" | "maintenance_contract_end_date" | "maintenance_contract_number" | "other_info" | "documents" | "department_id", ExtArgs["result"]["vehicles"]>
+export type vehiclesOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"vin" | "vehicle_number" | "license_plate" | "brand" | "model" | "manufacture_date" | "fuel_type" | "license_type" | "vehicle_configuration" | "technical_inspection_expiry_date" | "tire_size" | "insurance_number" | "omnium" | "maintenance_contract" | "maintenance_contract_end_km" | "maintenance_contract_end_date" | "maintenance_contract_number" | "decommissioned_vehicle" | "other_info" | "documents" | "department_id", ExtArgs["result"]["vehicles"]>
 export type vehiclesInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   interventions?: boolean | Prisma.vehicles$interventionsArgs<ExtArgs>
   departments?: boolean | Prisma.departmentsDefaultArgs<ExtArgs>
@@ -1182,22 +1217,23 @@ export type $vehiclesPayload<ExtArgs extends runtime.Types.Extensions.InternalAr
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     vin: string
-    vehicle_number: number | null
+    vehicle_number: number
     license_plate: string
-    make: string | null
-    model: string | null
-    manufacture_date: Date | null
-    fuel_type: $Enums.vehicles_fuel_type | null
-    license_type: $Enums.vehicles_license_type | null
-    vehicle_configuration: $Enums.vehicles_vehicle_configuration | null
-    inspection_expiry_date: Date | null
+    brand: string
+    model: string
+    manufacture_date: Date
+    fuel_type: $Enums.vehicles_fuel_type
+    license_type: $Enums.vehicles_license_type
+    vehicle_configuration: $Enums.vehicles_vehicle_configuration
+    technical_inspection_expiry_date: Date
     tire_size: string | null
     insurance_number: string | null
-    comprehensive_insurance: boolean | null
+    omnium: boolean | null
     maintenance_contract: boolean | null
     maintenance_contract_end_km: number | null
     maintenance_contract_end_date: Date | null
     maintenance_contract_number: string | null
+    decommissioned_vehicle: boolean | null
     other_info: string | null
     documents: string | null
     department_id: number
@@ -1575,20 +1611,21 @@ export interface vehiclesFieldRefs {
   readonly vin: Prisma.FieldRef<"vehicles", 'String'>
   readonly vehicle_number: Prisma.FieldRef<"vehicles", 'Int'>
   readonly license_plate: Prisma.FieldRef<"vehicles", 'String'>
-  readonly make: Prisma.FieldRef<"vehicles", 'String'>
+  readonly brand: Prisma.FieldRef<"vehicles", 'String'>
   readonly model: Prisma.FieldRef<"vehicles", 'String'>
   readonly manufacture_date: Prisma.FieldRef<"vehicles", 'DateTime'>
   readonly fuel_type: Prisma.FieldRef<"vehicles", 'vehicles_fuel_type'>
   readonly license_type: Prisma.FieldRef<"vehicles", 'vehicles_license_type'>
   readonly vehicle_configuration: Prisma.FieldRef<"vehicles", 'vehicles_vehicle_configuration'>
-  readonly inspection_expiry_date: Prisma.FieldRef<"vehicles", 'DateTime'>
+  readonly technical_inspection_expiry_date: Prisma.FieldRef<"vehicles", 'DateTime'>
   readonly tire_size: Prisma.FieldRef<"vehicles", 'String'>
   readonly insurance_number: Prisma.FieldRef<"vehicles", 'String'>
-  readonly comprehensive_insurance: Prisma.FieldRef<"vehicles", 'Boolean'>
+  readonly omnium: Prisma.FieldRef<"vehicles", 'Boolean'>
   readonly maintenance_contract: Prisma.FieldRef<"vehicles", 'Boolean'>
   readonly maintenance_contract_end_km: Prisma.FieldRef<"vehicles", 'Int'>
   readonly maintenance_contract_end_date: Prisma.FieldRef<"vehicles", 'DateTime'>
   readonly maintenance_contract_number: Prisma.FieldRef<"vehicles", 'String'>
+  readonly decommissioned_vehicle: Prisma.FieldRef<"vehicles", 'Boolean'>
   readonly other_info: Prisma.FieldRef<"vehicles", 'String'>
   readonly documents: Prisma.FieldRef<"vehicles", 'String'>
   readonly department_id: Prisma.FieldRef<"vehicles", 'Int'>

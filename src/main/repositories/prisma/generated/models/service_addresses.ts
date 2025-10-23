@@ -186,10 +186,10 @@ export type service_addressesGroupByArgs<ExtArgs extends runtime.Types.Extension
 
 export type Service_addressesGroupByOutputType = {
   service_address_id: number
-  street: string | null
+  street: string
   street_number: string | null
   postal_code: string | null
-  city: string | null
+  city: string
   country: string | null
   _count: Service_addressesCountAggregateOutputType | null
   _avg: Service_addressesAvgAggregateOutputType | null
@@ -218,20 +218,20 @@ export type service_addressesWhereInput = {
   OR?: Prisma.service_addressesWhereInput[]
   NOT?: Prisma.service_addressesWhereInput | Prisma.service_addressesWhereInput[]
   service_address_id?: Prisma.IntFilter<"service_addresses"> | number
-  street?: Prisma.StringNullableFilter<"service_addresses"> | string | null
+  street?: Prisma.StringFilter<"service_addresses"> | string
   street_number?: Prisma.StringNullableFilter<"service_addresses"> | string | null
   postal_code?: Prisma.StringNullableFilter<"service_addresses"> | string | null
-  city?: Prisma.StringNullableFilter<"service_addresses"> | string | null
+  city?: Prisma.StringFilter<"service_addresses"> | string
   country?: Prisma.StringNullableFilter<"service_addresses"> | string | null
   departments?: Prisma.DepartmentsListRelationFilter
 }
 
 export type service_addressesOrderByWithRelationInput = {
   service_address_id?: Prisma.SortOrder
-  street?: Prisma.SortOrderInput | Prisma.SortOrder
+  street?: Prisma.SortOrder
   street_number?: Prisma.SortOrderInput | Prisma.SortOrder
   postal_code?: Prisma.SortOrderInput | Prisma.SortOrder
-  city?: Prisma.SortOrderInput | Prisma.SortOrder
+  city?: Prisma.SortOrder
   country?: Prisma.SortOrderInput | Prisma.SortOrder
   departments?: Prisma.departmentsOrderByRelationAggregateInput
   _relevance?: Prisma.service_addressesOrderByRelevanceInput
@@ -242,20 +242,20 @@ export type service_addressesWhereUniqueInput = Prisma.AtLeast<{
   AND?: Prisma.service_addressesWhereInput | Prisma.service_addressesWhereInput[]
   OR?: Prisma.service_addressesWhereInput[]
   NOT?: Prisma.service_addressesWhereInput | Prisma.service_addressesWhereInput[]
-  street?: Prisma.StringNullableFilter<"service_addresses"> | string | null
+  street?: Prisma.StringFilter<"service_addresses"> | string
   street_number?: Prisma.StringNullableFilter<"service_addresses"> | string | null
   postal_code?: Prisma.StringNullableFilter<"service_addresses"> | string | null
-  city?: Prisma.StringNullableFilter<"service_addresses"> | string | null
+  city?: Prisma.StringFilter<"service_addresses"> | string
   country?: Prisma.StringNullableFilter<"service_addresses"> | string | null
   departments?: Prisma.DepartmentsListRelationFilter
 }, "service_address_id">
 
 export type service_addressesOrderByWithAggregationInput = {
   service_address_id?: Prisma.SortOrder
-  street?: Prisma.SortOrderInput | Prisma.SortOrder
+  street?: Prisma.SortOrder
   street_number?: Prisma.SortOrderInput | Prisma.SortOrder
   postal_code?: Prisma.SortOrderInput | Prisma.SortOrder
-  city?: Prisma.SortOrderInput | Prisma.SortOrder
+  city?: Prisma.SortOrder
   country?: Prisma.SortOrderInput | Prisma.SortOrder
   _count?: Prisma.service_addressesCountOrderByAggregateInput
   _avg?: Prisma.service_addressesAvgOrderByAggregateInput
@@ -269,74 +269,74 @@ export type service_addressesScalarWhereWithAggregatesInput = {
   OR?: Prisma.service_addressesScalarWhereWithAggregatesInput[]
   NOT?: Prisma.service_addressesScalarWhereWithAggregatesInput | Prisma.service_addressesScalarWhereWithAggregatesInput[]
   service_address_id?: Prisma.IntWithAggregatesFilter<"service_addresses"> | number
-  street?: Prisma.StringNullableWithAggregatesFilter<"service_addresses"> | string | null
+  street?: Prisma.StringWithAggregatesFilter<"service_addresses"> | string
   street_number?: Prisma.StringNullableWithAggregatesFilter<"service_addresses"> | string | null
   postal_code?: Prisma.StringNullableWithAggregatesFilter<"service_addresses"> | string | null
-  city?: Prisma.StringNullableWithAggregatesFilter<"service_addresses"> | string | null
+  city?: Prisma.StringWithAggregatesFilter<"service_addresses"> | string
   country?: Prisma.StringNullableWithAggregatesFilter<"service_addresses"> | string | null
 }
 
 export type service_addressesCreateInput = {
-  street?: string | null
+  street: string
   street_number?: string | null
   postal_code?: string | null
-  city?: string | null
+  city: string
   country?: string | null
   departments?: Prisma.departmentsCreateNestedManyWithoutService_addressesInput
 }
 
 export type service_addressesUncheckedCreateInput = {
   service_address_id?: number
-  street?: string | null
+  street: string
   street_number?: string | null
   postal_code?: string | null
-  city?: string | null
+  city: string
   country?: string | null
   departments?: Prisma.departmentsUncheckedCreateNestedManyWithoutService_addressesInput
 }
 
 export type service_addressesUpdateInput = {
-  street?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  street?: Prisma.StringFieldUpdateOperationsInput | string
   street_number?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   postal_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.StringFieldUpdateOperationsInput | string
   country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   departments?: Prisma.departmentsUpdateManyWithoutService_addressesNestedInput
 }
 
 export type service_addressesUncheckedUpdateInput = {
   service_address_id?: Prisma.IntFieldUpdateOperationsInput | number
-  street?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  street?: Prisma.StringFieldUpdateOperationsInput | string
   street_number?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   postal_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.StringFieldUpdateOperationsInput | string
   country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   departments?: Prisma.departmentsUncheckedUpdateManyWithoutService_addressesNestedInput
 }
 
 export type service_addressesCreateManyInput = {
   service_address_id?: number
-  street?: string | null
+  street: string
   street_number?: string | null
   postal_code?: string | null
-  city?: string | null
+  city: string
   country?: string | null
 }
 
 export type service_addressesUpdateManyMutationInput = {
-  street?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  street?: Prisma.StringFieldUpdateOperationsInput | string
   street_number?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   postal_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.StringFieldUpdateOperationsInput | string
   country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type service_addressesUncheckedUpdateManyInput = {
   service_address_id?: Prisma.IntFieldUpdateOperationsInput | number
-  street?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  street?: Prisma.StringFieldUpdateOperationsInput | string
   street_number?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   postal_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.StringFieldUpdateOperationsInput | string
   country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
@@ -401,19 +401,19 @@ export type service_addressesUpdateOneRequiredWithoutDepartmentsNestedInput = {
 }
 
 export type service_addressesCreateWithoutDepartmentsInput = {
-  street?: string | null
+  street: string
   street_number?: string | null
   postal_code?: string | null
-  city?: string | null
+  city: string
   country?: string | null
 }
 
 export type service_addressesUncheckedCreateWithoutDepartmentsInput = {
   service_address_id?: number
-  street?: string | null
+  street: string
   street_number?: string | null
   postal_code?: string | null
-  city?: string | null
+  city: string
   country?: string | null
 }
 
@@ -434,19 +434,19 @@ export type service_addressesUpdateToOneWithWhereWithoutDepartmentsInput = {
 }
 
 export type service_addressesUpdateWithoutDepartmentsInput = {
-  street?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  street?: Prisma.StringFieldUpdateOperationsInput | string
   street_number?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   postal_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.StringFieldUpdateOperationsInput | string
   country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type service_addressesUncheckedUpdateWithoutDepartmentsInput = {
   service_address_id?: Prisma.IntFieldUpdateOperationsInput | number
-  street?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  street?: Prisma.StringFieldUpdateOperationsInput | string
   street_number?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   postal_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.StringFieldUpdateOperationsInput | string
   country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
@@ -516,10 +516,10 @@ export type $service_addressesPayload<ExtArgs extends runtime.Types.Extensions.I
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     service_address_id: number
-    street: string | null
+    street: string
     street_number: string | null
     postal_code: string | null
-    city: string | null
+    city: string
     country: string | null
   }, ExtArgs["result"]["service_addresses"]>
   composites: {}
@@ -1115,7 +1115,7 @@ export type service_addressesCreateArgs<ExtArgs extends runtime.Types.Extensions
   /**
    * The data needed to create a service_addresses.
    */
-  data?: Prisma.XOR<Prisma.service_addressesCreateInput, Prisma.service_addressesUncheckedCreateInput>
+  data: Prisma.XOR<Prisma.service_addressesCreateInput, Prisma.service_addressesUncheckedCreateInput>
 }
 
 /**

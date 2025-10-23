@@ -10,22 +10,23 @@ datasource db {
 }
 
 model accidents {
-  accident_id      Int                      @id @default(autoincrement())
-  accident_date    DateTime                 @db.Date
-  time             DateTime?                @db.Time(0)
-  street           String?                  @db.VarChar(255)
-  street_number    String?                  @db.VarChar(10)
-  postal_code      String?                  @db.VarChar(10)
-  city             String?                  @db.VarChar(100)
-  country          String?                  @db.VarChar(50)
-  accident_type    accidents_accident_type?
-  damages          String?                  @db.Text
-  circumstances    String?                  @db.Text
-  report_number    String?                  @db.VarChar(50)
-  info_number      String?                  @db.VarChar(50)
-  other_party_info String?                  @db.Text
-  documents        String?                  @db.VarChar(255)
-  repair_completed Boolean?                 @default(false)
+  accident_id      Int                     @id @default(autoincrement())
+  accident_date    DateTime                @db.Date
+  accident_time    DateTime?               @db.Time(0)
+  street           String                  @db.VarChar(255)
+  street_number    String                  @db.VarChar(10)
+  postal_code      String                  @db.VarChar(10)
+  city             String                  @db.VarChar(100)
+  country          String                  @db.VarChar(50)
+  accident_type    accidents_accident_type
+  damages          String                  @db.Text
+  circumstances    String                  @db.Text
+  report_number    String?                 @db.VarChar(50)
+  info_number      String?                 @db.VarChar(50)
+  ref_insurance    String?                 @db.VarChar(50)
+  other_party_info String?                 @db.Text
+  documents        String?                 @db.VarChar(255)
+  repair_completed Boolean?                @default(false)
   interventions    interventions[]
   staff_accidents  staff_accidents[]
 }
@@ -44,7 +45,7 @@ model contacts {
 
 model departments {
   department_id      Int               @id @default(autoincrement())
-  name               String            @unique(map: "name") @db.VarChar(100)
+  department_name    String            @unique(map: "department_name") @db.VarChar(100)
   service_address_id Int
   service_addresses  service_addresses @relation(fields: [service_address_id], references: [service_address_id], map: "departments_ibfk_1")
   vehicles           vehicles[]
@@ -53,21 +54,21 @@ model departments {
 }
 
 model interventions {
-  intervention_id        Int        @id @default(autoincrement())
-  intervention_type      String?    @db.VarChar(100)
-  creation_date          DateTime?  @default(now()) @db.DateTime(0)
-  details                String?    @db.Text
-  garage_entry_date      DateTime?  @db.DateTime(0)
-  garage_exit_date       DateTime?  @db.DateTime(0)
-  intervention_completed Boolean?   @default(false)
-  vehicle_vin            String     @db.VarChar(50)
-  user_id                String     @db.VarChar(36)
+  intervention_id        Int                             @id @default(autoincrement())
+  intervention_type      interventions_intervention_type
+  creation_date          DateTime?                       @default(now()) @db.DateTime(0)
+  details                String                          @db.Text
+  garage_entry_date      DateTime?                       @db.DateTime(0)
+  garage_exit_date       DateTime?                       @db.DateTime(0)
+  intervention_completed Boolean?                        @default(false)
+  vehicle_vin            String                          @db.VarChar(50)
+  user_id                String                          @db.VarChar(36)
   accident_id            Int?
   provider_id            Int
-  vehicles               vehicles   @relation(fields: [vehicle_vin], references: [vin], map: "interventions_ibfk_1")
-  users                  users      @relation(fields: [user_id], references: [user_id], map: "interventions_ibfk_2")
-  accidents              accidents? @relation(fields: [accident_id], references: [accident_id], map: "interventions_ibfk_3")
-  providers              providers  @relation(fields: [provider_id], references: [provider_id], map: "interventions_ibfk_4")
+  vehicles               vehicles                        @relation(fields: [vehicle_vin], references: [vin], map: "interventions_ibfk_1")
+  users                  users                           @relation(fields: [user_id], references: [user_id], map: "interventions_ibfk_2")
+  accidents              accidents?                      @relation(fields: [accident_id], references: [accident_id], map: "interventions_ibfk_3")
+  providers              providers                       @relation(fields: [provider_id], references: [provider_id], map: "interventions_ibfk_4")
   invoices               invoices[]
 
   @@index([accident_id], map: "accident_id")
@@ -80,7 +81,7 @@ model invoices {
   invoice_id      Int           @id @default(autoincrement())
   amount          Decimal       @db.Decimal(10, 2)
   documents       String?       @db.VarChar(255)
-  invoice_number  String?       @unique(map: "invoice_number") @db.VarChar(50)
+  invoice_number  String        @unique(map: "invoice_number") @db.VarChar(50)
   invoice_paid    Boolean?      @default(false)
   intervention_id Int
   interventions   interventions @relation(fields: [intervention_id], references: [intervention_id], map: "invoices_ibfk_1")
@@ -90,7 +91,7 @@ model invoices {
 
 model providers {
   provider_id   Int             @id @default(autoincrement())
-  name          String          @db.VarChar(100)
+  provider_name String          @db.VarChar(100)
   street        String?         @db.VarChar(255)
   street_number String?         @db.VarChar(10)
   postal_code   String?         @db.VarChar(10)
@@ -102,10 +103,10 @@ model providers {
 
 model service_addresses {
   service_address_id Int           @id @default(autoincrement())
-  street             String?       @db.VarChar(255)
+  street             String        @db.VarChar(255)
   street_number      String?       @db.VarChar(10)
   postal_code        String?       @db.VarChar(10)
-  city               String?       @db.VarChar(100)
+  city               String        @db.VarChar(100)
   country            String?       @db.VarChar(50)
   departments        departments[]
 }
@@ -118,11 +119,11 @@ model staff {
 }
 
 model staff_accidents {
-  employee_id Int
-  accident_id Int
-  role        staff_accidents_role
-  staff       staff                @relation(fields: [employee_id], references: [employee_id], onDelete: Cascade, map: "staff_accidents_ibfk_1")
-  accidents   accidents            @relation(fields: [accident_id], references: [accident_id], onDelete: Cascade, map: "staff_accidents_ibfk_2")
+  employee_id   Int
+  accident_id   Int
+  accident_role staff_accidents_accident_role
+  staff         staff                         @relation(fields: [employee_id], references: [employee_id], onDelete: Cascade, map: "staff_accidents_ibfk_1")
+  accidents     accidents                     @relation(fields: [accident_id], references: [accident_id], onDelete: Cascade, map: "staff_accidents_ibfk_2")
 
   @@id([employee_id, accident_id])
   @@index([accident_id], map: "accident_id")
@@ -138,36 +139,31 @@ model users {
 
 /// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
 model vehicles {
-  vin                           String                          @id @db.VarChar(50)
-  vehicle_number                Int?                            @unique(map: "vehicle_number")
-  license_plate                 String                          @unique(map: "license_plate") @db.VarChar(20)
-  make                          String?                         @db.VarChar(50)
-  model                         String?                         @db.VarChar(50)
-  manufacture_date              DateTime?                       @db.Date
-  fuel_type                     vehicles_fuel_type?
-  license_type                  vehicles_license_type?
-  vehicle_configuration         vehicles_vehicle_configuration?
-  inspection_expiry_date        DateTime?                       @db.Date
-  tire_size                     String?                         @db.VarChar(50)
-  insurance_number              String?                         @db.VarChar(75)
-  comprehensive_insurance       Boolean?                        @default(false)
-  maintenance_contract          Boolean?                        @default(false)
-  maintenance_contract_end_km   Int?
-  maintenance_contract_end_date DateTime?                       @db.Date
-  maintenance_contract_number   String?                         @db.VarChar(75)
-  other_info                    String?                         @db.Text
-  documents                     String?                         @db.VarChar(255)
-  department_id                 Int
-  interventions                 interventions[]
-  departments                   departments                     @relation(fields: [department_id], references: [department_id], map: "vehicles_ibfk_1")
+  vin                              String                         @id @db.VarChar(50)
+  vehicle_number                   Int                            @unique(map: "vehicle_number")
+  license_plate                    String                         @unique(map: "license_plate") @db.VarChar(20)
+  brand                            String                         @db.VarChar(50)
+  model                            String                         @db.VarChar(50)
+  manufacture_date                 DateTime                       @db.Date
+  fuel_type                        vehicles_fuel_type
+  license_type                     vehicles_license_type
+  vehicle_configuration            vehicles_vehicle_configuration
+  technical_inspection_expiry_date DateTime                       @db.Date
+  tire_size                        String?                        @db.VarChar(50)
+  insurance_number                 String?                        @db.VarChar(75)
+  omnium                           Boolean?                       @default(false)
+  maintenance_contract             Boolean?                       @default(false)
+  maintenance_contract_end_km      Int?
+  maintenance_contract_end_date    DateTime?                      @db.Date
+  maintenance_contract_number      String?                        @db.VarChar(75)
+  decommissioned_vehicle           Boolean?                       @default(false)
+  other_info                       String?                        @db.Text
+  documents                        String?                        @db.VarChar(255)
+  department_id                    Int
+  interventions                    interventions[]
+  departments                      departments                    @relation(fields: [department_id], references: [department_id], map: "vehicles_ibfk_1")
 
   @@index([department_id], map: "department_id")
-}
-
-enum staff_accidents_role {
-  Conducteur
-  Passager
-  T_moin     @map("Témoin")
 }
 
 enum vehicles_fuel_type {
@@ -204,4 +200,19 @@ enum vehicles_vehicle_configuration {
   Battenburg
   Banalis_   @map("Banalisé")
   Civil
+}
+
+enum interventions_intervention_type {
+  Pneu
+  R_paration_sous_contrat @map("Réparation sous contrat")
+  R_paration_hors_contrat @map("Réparation hors contrat")
+  D_pannage               @map("Dépannage")
+  Carrosserie
+  Pr_t                    @map("Prêt")
+}
+
+enum staff_accidents_accident_role {
+  Conducteur
+  Passager
+  T_moin     @map("Témoin")
 }

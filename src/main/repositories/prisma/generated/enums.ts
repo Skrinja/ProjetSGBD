@@ -8,15 +8,6 @@
 * 🟢 You can import this file directly.
 */
 
-export const staff_accidents_role = {
-  Conducteur: 'Conducteur',
-  Passager: 'Passager',
-  T_moin: 'T_moin'
-} as const
-
-export type staff_accidents_role = (typeof staff_accidents_role)[keyof typeof staff_accidents_role]
-
-
 export const vehicles_fuel_type = {
   Essence: 'Essence',
   Diesel: 'Diesel',
@@ -63,3 +54,24 @@ export const vehicles_vehicle_configuration = {
 } as const
 
 export type vehicles_vehicle_configuration = (typeof vehicles_vehicle_configuration)[keyof typeof vehicles_vehicle_configuration]
+
+
+export const interventions_intervention_type = {
+  Pneu: 'Pneu',
+  R_paration_sous_contrat: 'R_paration_sous_contrat',
+  R_paration_hors_contrat: 'R_paration_hors_contrat',
+  D_pannage: 'D_pannage',
+  Carrosserie: 'Carrosserie',
+  Pr_t: 'Pr_t'
+} as const
+
+export type interventions_intervention_type = (typeof interventions_intervention_type)[keyof typeof interventions_intervention_type]
+
+
+export const staff_accidents_accident_role = {
+  Conducteur: 'Conducteur',
+  Passager: 'Passager',
+  T_moin: 'T_moin'
+} as const
+
+export type staff_accidents_accident_role = (typeof staff_accidents_accident_role)[keyof typeof staff_accidents_accident_role]

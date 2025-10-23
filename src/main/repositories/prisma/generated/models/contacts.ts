@@ -392,10 +392,6 @@ export type contactsOrderByRelationAggregateInput = {
   _count?: Prisma.SortOrder
 }
 
-export type StringFieldUpdateOperationsInput = {
-  set?: string
-}
-
 export type contactsCreateNestedManyWithoutProvidersInput = {
   create?: Prisma.XOR<Prisma.contactsCreateWithoutProvidersInput, Prisma.contactsUncheckedCreateWithoutProvidersInput> | Prisma.contactsCreateWithoutProvidersInput[] | Prisma.contactsUncheckedCreateWithoutProvidersInput[]
   connectOrCreate?: Prisma.contactsCreateOrConnectWithoutProvidersInput | Prisma.contactsCreateOrConnectWithoutProvidersInput[]
