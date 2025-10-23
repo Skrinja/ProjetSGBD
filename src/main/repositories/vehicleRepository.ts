@@ -1,6 +1,6 @@
 import { FuelType } from "../../shared/enums/fuelType"; 
 import Vehicle from "../../shared/vehicle";
-import { PrismaClient } from "./prisma/generated/client";
+import { PrismaClient, vehicles } from "./prisma/generated/client";
 import { PrismaMariaDb } from "@prisma/adapter-mariadb";
 
 export default class VehicleRepository {
@@ -10,7 +10,7 @@ export default class VehicleRepository {
     this.dbclient = new PrismaClient({ adapter });
   }
 
-  vehicles: Vehicle[] = [
+  vehicless: Vehicle[] = [
 {
       vin: "VF123ABCDEF456789",
       numPlate: "1AAA222",
@@ -31,16 +31,28 @@ export default class VehicleRepository {
     },
   ];
 
-  getAllVehicles(): Vehicle[]{
+  async getAllVehicles(): Promise<Vehicle[]>{
     this.dbclient.vehicles.findFirst().then(x => console.log(x));
-    return this.vehicles;
+    let vehicles = await this.dbclient.vehicles.findMany();
+    
+    return vehicles.map((v) => {
+      return {
+          vin: v.vin, // MAPPAGE
+          numPlate: v.license_plate,       
+          numVehicle: v.vehicle_number,    
+          brand: v.brand,                  
+          model: v.model,                  
+          year: v.manufacture_date,        
+          fuel: v.fuel_type as FuelType,
+      }; // si je rajoute as vehicles; il faut que ca corresponde a 100% ? 
+    })
   }
 
   addVehicle(vehicle: Vehicle): void{
-    this.vehicles.push(vehicle);
+    this.vehicless.push(vehicle);
   }
 
   getVehicleByVin(vin:string): Vehicle{
-    return this.vehicles.find(vehicle => vehicle.vin === vin)
+    return this.vehicless.find(vehicle => vehicle.vin === vin)
   }
 }
