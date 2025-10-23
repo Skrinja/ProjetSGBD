@@ -23,17 +23,17 @@ CREATE TABLE Users (
 
 CREATE TABLE Service_Addresses (
     service_address_id INT AUTO_INCREMENT PRIMARY KEY,
-    street VARCHAR(255),
+    street VARCHAR(255) NOT NULL,
     street_number VARCHAR(10),
     postal_code VARCHAR(10),
-    city VARCHAR(100),
+    city VARCHAR(100) NOT NULL,
     country VARCHAR(50)
 ) ENGINE=InnoDB;
 
 
 CREATE TABLE Departments (
     department_id INT AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(100) NOT NULL UNIQUE,
+    department_name VARCHAR(100) NOT NULL UNIQUE,
     service_address_id INT NOT NULL,
     FOREIGN KEY (service_address_id) REFERENCES Service_Addresses(service_address_id) ON DELETE RESTRICT ON UPDATE CASCADE
 ) ENGINE=InnoDB;
@@ -41,7 +41,7 @@ CREATE TABLE Departments (
 
 CREATE TABLE Providers (
     provider_id INT AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(100) NOT NULL,
+    provider_name VARCHAR(100) NOT NULL,
     street VARCHAR(255),
     street_number VARCHAR(10),
     postal_code VARCHAR(10),
@@ -60,17 +60,18 @@ CREATE TABLE Staff (
 CREATE TABLE Accidents (
     accident_id INT AUTO_INCREMENT PRIMARY KEY,
     accident_date DATE NOT NULL,
-    time TIME,
-    street VARCHAR(255),
-    street_number VARCHAR(10),
-    postal_code VARCHAR(10),
-    city VARCHAR(100),
-    country VARCHAR(50),
-    accident_type ENUM('Accident en faute', 'Accident en droit', 'Accident indécis', 'Vandalisme', 'Dégâts en faute', 'Dégâts en droit'),
-    damages TEXT,
-    circumstances TEXT,
+    accident_time TIME,
+    street VARCHAR(255) NOT NULL,
+    street_number VARCHAR(10) NOT NULL,
+    postal_code VARCHAR(10) NOT NULL,
+    city VARCHAR(100) NOT NULL,
+    country VARCHAR(50) NOT NULL,
+    accident_type ENUM('Accident en faute', 'Accident en droit', 'Accident indécis', 'Vandalisme', 'Dégâts en faute', 'Dégâts en droit') NOT NULL,
+    damages TEXT NOT NULL,
+    circumstances TEXT NOT NULL,
     report_number VARCHAR(50),
     info_number VARCHAR(50),
+    ref_insurance VARCHAR(50),
     other_party_info TEXT,
     documents VARCHAR(255),
     repair_completed BOOLEAN DEFAULT FALSE
@@ -83,22 +84,23 @@ CREATE TABLE Accidents (
 
 CREATE TABLE Vehicles (
     vin VARCHAR(50) PRIMARY KEY COMMENT 'Vehicle Identification Number',
-    vehicle_number INT UNIQUE,
+    vehicle_number INT NOT NULL UNIQUE,
     license_plate VARCHAR(20) NOT NULL UNIQUE,
-    make VARCHAR(50),
-    model VARCHAR(50),
-    manufacture_date DATE,
-    fuel_type ENUM('Essence', 'Diesel', 'Hybride', 'Electrique'),
-    license_type ENUM('AM', 'A1', 'A2', 'A', 'B', 'C1', 'C', 'D1', 'D', 'E'),
-    vehicle_configuration ENUM('Stripping', 'Battenburg', 'Banalisé', 'Civil'),
-    inspection_expiry_date DATE,
+    brand VARCHAR(50) NOT NULL,
+    model VARCHAR(50) NOT NULL,
+    manufacture_date DATE NOT NULL,
+    fuel_type ENUM('Essence', 'Diesel', 'Hybride', 'Electrique') NOT NULL,
+    license_type ENUM('AM', 'A1', 'A2', 'A', 'B', 'C1', 'C', 'D1', 'D', 'E') NOT NULL,
+    vehicle_configuration ENUM('Stripping', 'Battenburg', 'Banalisé', 'Civil') NOT NULL,
+    technical_inspection_expiry_date DATE NOT NULL,
     tire_size VARCHAR(50),
     insurance_number VARCHAR(75),
-    comprehensive_insurance BOOLEAN DEFAULT FALSE,
+    omnium BOOLEAN DEFAULT FALSE,
     maintenance_contract BOOLEAN DEFAULT FALSE,
     maintenance_contract_end_km INT,
     maintenance_contract_end_date DATE,
     maintenance_contract_number VARCHAR(75),
+    decommissioned_vehicle BOOLEAN DEFAULT FALSE,
     other_info TEXT,
     documents VARCHAR(255),
     department_id INT NOT NULL,
@@ -120,7 +122,7 @@ CREATE TABLE Contacts (
 CREATE TABLE Staff_Accidents (
     employee_id INT,
     accident_id INT,
-    role ENUM('Conducteur', 'Passager', 'Témoin') NOT NULL,
+    accident_role ENUM('Conducteur', 'Passager', 'Témoin') NOT NULL,
     PRIMARY KEY (employee_id, accident_id),
     FOREIGN KEY (employee_id) REFERENCES Staff(employee_id) ON DELETE CASCADE ON UPDATE CASCADE,
     FOREIGN KEY (accident_id) REFERENCES Accidents(accident_id) ON DELETE CASCADE ON UPDATE CASCADE
@@ -129,9 +131,9 @@ CREATE TABLE Staff_Accidents (
 
 CREATE TABLE Interventions (
     intervention_id INT AUTO_INCREMENT PRIMARY KEY,
-    intervention_type VARCHAR(100),
+    intervention_type ENUM('Pneu', 'Réparation sous contrat', 'Réparation hors contrat', 'Dépannage', 'Carrosserie', 'Prêt') NOT NULL,
     creation_date DATETIME DEFAULT CURRENT_TIMESTAMP,
-    details TEXT,
+    details TEXT NOT NULL,
     garage_entry_date DATETIME,
     garage_exit_date DATETIME,
     intervention_completed BOOLEAN DEFAULT FALSE,
@@ -150,7 +152,7 @@ CREATE TABLE Invoices (
     invoice_id INT AUTO_INCREMENT PRIMARY KEY,
     amount DECIMAL(10, 2) NOT NULL,
     documents VARCHAR(255),
-    invoice_number VARCHAR(50) UNIQUE,
+    invoice_number VARCHAR(50) NOT NULL UNIQUE,
     invoice_paid BOOLEAN DEFAULT FALSE,
     intervention_id INT NOT NULL,
     FOREIGN KEY (intervention_id) REFERENCES Interventions(intervention_id) ON DELETE RESTRICT ON UPDATE CASCADE
