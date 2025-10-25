@@ -52,7 +52,22 @@ export default class VehicleRepository {
     this.vehicless.push(vehicle);
   }
 
-  getVehicleByVin(vin:string): Vehicle{
-    return this.vehicless.find(vehicle => vehicle.vin === vin)
+async getVehicleByVin(vin:string): Promise<Vehicle>{
+    let vehicleFromDb = await this.dbclient.vehicles.findUnique({
+      where: {
+        vin: vin,
+      }
+    });
+
+    return {
+        vin: vehicleFromDb.vin,
+        numPlate: vehicleFromDb.license_plate,
+        numVehicle: vehicleFromDb.vehicle_number,
+        brand: vehicleFromDb.brand,
+        model: vehicleFromDb.model,
+        year: vehicleFromDb.manufacture_date,
+        fuel: vehicleFromDb.fuel_type as FuelType,
+        // ...
+      };
   }
 }
