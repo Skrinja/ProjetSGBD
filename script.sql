@@ -102,7 +102,7 @@ CREATE TABLE Vehicles (
     maintenance_contract_number VARCHAR(75),
     decommissioned_vehicle BOOLEAN DEFAULT FALSE,
     other_info TEXT,
-    documents VARCHAR(255),
+    documents JSON,
     department_id INT NOT NULL,
     FOREIGN KEY (department_id) REFERENCES Departments(department_id) ON DELETE RESTRICT ON UPDATE CASCADE
 ) ENGINE=InnoDB;
@@ -151,7 +151,7 @@ CREATE TABLE Interventions (
 CREATE TABLE Invoices (
     invoice_id INT AUTO_INCREMENT PRIMARY KEY,
     amount DECIMAL(10, 2) NOT NULL,
-    documents VARCHAR(255),
+    documents JSON,
     invoice_number VARCHAR(50) NOT NULL UNIQUE,
     invoice_paid BOOLEAN DEFAULT FALSE,
     intervention_id INT NOT NULL,

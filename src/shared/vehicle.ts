@@ -1,4 +1,4 @@
-import { FuelType } from "./enums/fuelType";
+import * as vehicleEnum from "./enums/vehicleEnum";
 
 export default interface Vehicle {
     vin: string;
@@ -7,5 +7,18 @@ export default interface Vehicle {
     brand: string;
     model: string;
     year: Date;
-    fuel: FuelType;
+    fuel: vehicleEnum.FuelType;
+    licenseType: vehicleEnum.LicenseType;
+    configuration : vehicleEnum.VehicleConfiguration;
+    technicalInspectionDate: Date;
+    tireSize: string;
+    innsuranceNumber: string;
+    omnium: boolean;
+    maintenanceContract: boolean;
+    maintenanceContractEndDate: Date;
+    maintenanceContractEndKm: number;
+    maintenanceContractNumber: string;
+    decommissioned: boolean;
+    otherInformation: string;
+    departmentId?: number;
 }

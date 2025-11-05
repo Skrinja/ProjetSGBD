@@ -80,7 +80,7 @@ model interventions {
 model invoices {
   invoice_id      Int           @id @default(autoincrement())
   amount          Decimal       @db.Decimal(10, 2)
-  documents       String?       @db.VarChar(255)
+  documents       Json?       @db.VarChar(255)
   invoice_number  String        @unique(map: "invoice_number") @db.VarChar(50)
   invoice_paid    Boolean?      @default(false)
   intervention_id Int
@@ -158,7 +158,7 @@ model vehicles {
   maintenance_contract_number      String?                        @db.VarChar(75)
   decommissioned_vehicle           Boolean?                       @default(false)
   other_info                       String?                        @db.Text
-  documents                        String?                        @db.VarChar(255)
+  documents                        Json?                        @db.VarChar(255)
   department_id                    Int
   interventions                    interventions[]
   departments                      departments                    @relation(fields: [department_id], references: [department_id], map: "vehicles_ibfk_1")

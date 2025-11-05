@@ -38,7 +38,7 @@
 import { ref } from 'vue';
 import useVehicleService from '../composables/vehicleService';
 import useSetMessageService from '../composables/setMessageService';
-import { FuelType } from '../../shared/enums/fuelType';
+import { FuelType } from '../../shared/enums/vehicleEnum';
 
 const vin = ref('');
 const numPlate = ref('');
