@@ -11,6 +11,20 @@
             <p><strong>Marque :</strong> {{ vehicle.brand }}</p>
             <p><strong>Modèle :</strong> {{ vehicle.model }}</p>
             <p><strong>Mise en circulation :</strong> {{ new Date(vehicle.year).toLocaleDateString('fr-FR') }}</p>
+            <p><strong>Type de carburant :</strong> {{ vehicle.fuel }}</p>
+            <p><strong>Type de permis :</strong> {{ vehicle.licenseType }}</p>
+            <p><strong>Configuration :</strong> {{ vehicle.configuration }}</p>
+            <p><strong>Date du contrôle technique :</strong> {{ new Date(vehicle.technicalInspectionDate).toLocaleDateString('fr-FR') }}</p>
+            <p><strong>ID Département :</strong> {{ vehicle.departmentId }}</p>
+            <p><strong>taille des pneus :</strong> {{ vehicle.tireSize }}</p>
+            <p><strong>Numéro d'assurance :</strong> {{ vehicle.insuranceNumber }}</p>
+            <p><strong>Omnium :</strong> {{ vehicle.omnium ? 'Oui' : 'Non' }}</p>
+            <p><strong>Contrat d'entretien :</strong> {{ vehicle.maintenanceContract ? 'Oui' : 'Non' }}</p>
+            <p><strong>Date de fin de contrat d'entretien :</strong> {{ new Date(vehicle.maintenanceContractEndDate).toLocaleDateString('fr-FR') }}</p>
+            <p><strong>Kilométrage de fin de contrat d'entretien :</strong> {{ vehicle.maintenanceContractEndKm }}</p>
+            <p><strong>Numéro de contrat d'entretien :</strong> {{ vehicle.maintenanceContractNumber }}</p>
+            <p><strong>Véhicule déclassé :</strong> {{ vehicle.decommissioned ? 'Oui' : 'Non' }}</p>
+            <p><strong>Autres informations :</strong> {{ vehicle.otherInformation }}</p>
         </BaseCard>
     </div>
     <div v-else>

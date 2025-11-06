@@ -53,7 +53,7 @@ async getVehicleByVin(vin:string): Promise<Vehicle>{
         configuration: vehicleFromDb.vehicle_configuration as any,
         technicalInspectionDate: vehicleFromDb.technical_inspection_expiry_date,
         tireSize: vehicleFromDb.tire_size,
-        innsuranceNumber: vehicleFromDb.insurance_number,
+        insuranceNumber: vehicleFromDb.insurance_number,
         omnium: vehicleFromDb.omnium,
         maintenanceContract: vehicleFromDb.maintenance_contract,
         maintenanceContractEndDate: vehicleFromDb.maintenance_contract_end_date,
@@ -62,7 +62,7 @@ async getVehicleByVin(vin:string): Promise<Vehicle>{
         decommissioned: vehicleFromDb.decommissioned_vehicle,
         otherInformation: vehicleFromDb.other_info,
         departmentId: vehicleFromDb.department_id,
-        // documents à ajouter plus tard
+        // documents à ajouter plus tard quand je saurais le faire
       };
   }
 }

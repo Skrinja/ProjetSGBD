@@ -12,7 +12,7 @@ export default interface Vehicle {
     configuration : vehicleEnum.VehicleConfiguration;
     technicalInspectionDate: Date;
     tireSize?: string;
-    innsuranceNumber?: string;
+    insuranceNumber?: string;
     omnium?: boolean;
     maintenanceContract?: boolean;
     maintenanceContractEndDate?: Date;
