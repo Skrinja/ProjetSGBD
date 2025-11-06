@@ -8,9 +8,11 @@ export default function useSetMessageService() {
     if (type === "success") {
       successMessage.value = message;
       errorMessage.value = null;
+    } 
+    else {
+      errorMessage.value = message;
+      successMessage.value = null;
     }
-    errorMessage.value = message;
-    successMessage.value = null;
   };
 
   return {

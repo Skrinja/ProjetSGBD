@@ -139,7 +139,7 @@ const resetForm = () => {
     licenseType.value = LicenseType.B;
     vehicleConfiguration.value = VehicleConfiguration.Stripping;
     technicalInspectionDate.value = '';
-    departmentId.value = undefined;
+    departmentId.value = undefined; // undefined pour stocker Null dans la DB si non rempli
     tireSize.value = '';
     insuranceNumber.value = '';
     otherInformation.value = '';
