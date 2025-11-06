@@ -30,8 +30,32 @@ export default class VehicleRepository {
     })
   }
 
-  addVehicle(vehicle: Vehicle): void{
-    // this.vehicless.push(vehicle);
+  async addVehicle(vehicle: Vehicle): Promise<void>{
+    await this.dbclient.vehicles.create({
+      data: {
+        vin: vehicle.vin,
+        license_plate: vehicle.numPlate,
+        vehicle_number: vehicle.numVehicle,
+        brand: vehicle.brand,
+        model: vehicle.model,
+        manufacture_date: vehicle.year,
+        fuel_type: vehicle.fuel,
+        license_type: vehicle.licenseType,
+        vehicle_configuration: vehicle.configuration === "Banalisé"  ? "Banalis_" : vehicle.configuration as any,
+        technical_inspection_expiry_date: vehicle.technicalInspectionDate,
+        department_id: vehicle.departmentId,
+        tire_size: vehicle.tireSize,
+        insurance_number: vehicle.insuranceNumber,
+        omnium: vehicle.omnium,
+        maintenance_contract: vehicle.maintenanceContract,
+        maintenance_contract_end_date: vehicle.maintenanceContractEndDate,
+        maintenance_contract_end_km: vehicle.maintenanceContractEndKm,
+        maintenance_contract_number: vehicle.maintenanceContractNumber,
+        decommissioned_vehicle: vehicle.decommissioned,
+        other_info: vehicle.otherInformation,
+        documents: vehicle.documents as any,
+      }
+    });
   }
 
 async getVehicleByVin(vin:string): Promise<Vehicle>{

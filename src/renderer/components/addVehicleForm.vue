@@ -28,6 +28,67 @@
                 </option>
             </select>
         </div>
+        <div>
+            <label for="license-type">Permis nécessaire</label>
+            <select id="license-type" v-model="licenseType" required>
+                <option v-for="licenseType in licenseTypes" :key="licenseType" :value="licenseType">
+                    {{ licenseType }}
+                </option>
+            </select>
+        </div>
+        <div>
+            <label for="vehicle-configuration">Configuration du véhicule</label>
+            <select id="vehicle-configuration" v-model="vehicleConfiguration" required>
+                <option v-for="configuration in vehicleConfigurations" :key="configuration" :value="configuration">
+                    {{ configuration }}
+                </option>
+            </select>
+        </div>
+        <div>
+            <label for="tech-date">Date prochain contrôle technique *</label>
+            <input id="tech-date" v-model="technicalInspectionDate" type="date" required />
+        </div>
+        <div>
+            <input v-model.number="departmentId" type="number" required placeholder="ID du département *" />
+        </div>
+
+        <div>
+            <input v-model="tireSize" placeholder="Taille des pneus" />
+        </div>
+        <div>
+            <input v-model="insuranceNumber" placeholder="N° d'assurance" />
+        </div>
+        <div>
+            <textarea v-model="otherInformation" placeholder="Autres informations"></textarea>
+        </div>
+        <div>
+            <input v-model="maintenanceContractNumber" placeholder="N° contrat maintenance" />
+        </div>
+        <div>
+            <label for="maintenance-date">Date fin contrat maint.</label>
+            <input id="maintenance-date" v-model="maintenanceContractEndDate" type="date" />
+        </div>
+        <div>
+            <input v-model.number="maintenanceContractEndKm" type="number" placeholder="KM fin contrat maint." />
+        </div>
+        <div>
+            <label>
+                <input v-model="omnium" type="checkbox" />
+                Omnium
+            </label>
+        </div>
+        <div>
+            <label>
+                <input v-model="maintenanceContract" type="checkbox" />
+                Contrat de maintenance
+            </label>
+        </div>
+        <div>
+            <label>
+                <input v-model="decommissioned" type="checkbox" />
+                Véhicule déclassé
+            </label>
+        </div>
         <button type="submit">Sauvegarder</button>
     </form>
     <p v-if="successMessage" style="color: green;">{{ successMessage }}</p>
@@ -38,17 +99,32 @@
 import { ref } from 'vue';
 import useVehicleService from '../composables/vehicleService';
 import useSetMessageService from '../composables/setMessageService';
-import { FuelType } from '../../shared/enums/vehicleEnum';
+import { FuelType, LicenseType, VehicleConfiguration } from '../../shared/enums/vehicleEnum';
 
 const vin = ref('');
 const numPlate = ref('');
 const numVehicle = ref<number>();
 const brand = ref('');
 const model = ref('');
-const year = ref(''); 
-const fuel = ref<FuelType>(FuelType.Petrol); 
+const year = ref('');
+const fuel = ref<FuelType>(FuelType.Petrol);
+const licenseType = ref<LicenseType>(LicenseType.B);
+const vehicleConfiguration = ref<VehicleConfiguration>(VehicleConfiguration.Stripping);
+const technicalInspectionDate = ref('');
+const departmentId = ref<number>();
+const tireSize = ref('');
+const insuranceNumber = ref('');
+const otherInformation = ref('');
+const maintenanceContractNumber = ref('');
+const maintenanceContractEndDate = ref('');
+const maintenanceContractEndKm = ref<number>();
+const omnium = ref(false);
+const maintenanceContract = ref(false);
+const decommissioned = ref(false);
 
 const fuelTypes = ref(Object.values(FuelType));
+const licenseTypes = ref(Object.values(LicenseType));
+const vehicleConfigurations = ref(Object.values(VehicleConfiguration));
 const { addVehicle } = useVehicleService();
 const { successMessage, errorMessage, setMessage } = useSetMessageService();
 
@@ -60,6 +136,19 @@ const resetForm = () => {
     model.value = '';
     year.value = '';
     fuel.value = FuelType.Petrol;
+    licenseType.value = LicenseType.B;
+    vehicleConfiguration.value = VehicleConfiguration.Stripping;
+    technicalInspectionDate.value = '';
+    departmentId.value = undefined;
+    tireSize.value = '';
+    insuranceNumber.value = '';
+    otherInformation.value = '';
+    maintenanceContractNumber.value = '';
+    maintenanceContractEndDate.value = '';
+    maintenanceContractEndKm.value = undefined;
+    omnium.value = false;
+    maintenanceContract.value = false;
+    decommissioned.value = false;
 };
 
 const handleSubmit = async () => {
@@ -74,8 +163,21 @@ const handleSubmit = async () => {
             numVehicle: numVehicle.value,
             brand: brand.value,
             model: model.value,
-            year: new Date(year.value), 
+            year: new Date(year.value),
             fuel: fuel.value,
+            licenseType: licenseType.value,
+            configuration: vehicleConfiguration.value,
+            technicalInspectionDate: new Date(technicalInspectionDate.value),
+            departmentId: departmentId.value,
+            tireSize: tireSize.value || undefined,
+            insuranceNumber: insuranceNumber.value || undefined,
+            otherInformation: otherInformation.value || undefined,
+            maintenanceContractNumber: maintenanceContractNumber.value || undefined,
+            maintenanceContractEndDate: maintenanceContractEndDate.value ? new Date(maintenanceContractEndDate.value) : undefined,
+            maintenanceContractEndKm: maintenanceContractEndKm.value || undefined,
+            omnium: omnium.value,
+            maintenanceContract: maintenanceContract.value,
+            decommissioned: decommissioned.value,
         });
         setMessage('success', "Véhicule sauvegardé !");
         resetForm();
