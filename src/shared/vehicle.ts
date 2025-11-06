@@ -11,14 +11,15 @@ export default interface Vehicle {
     licenseType: vehicleEnum.LicenseType;
     configuration : vehicleEnum.VehicleConfiguration;
     technicalInspectionDate: Date;
-    tireSize: string;
-    innsuranceNumber: string;
-    omnium: boolean;
-    maintenanceContract: boolean;
-    maintenanceContractEndDate: Date;
-    maintenanceContractEndKm: number;
-    maintenanceContractNumber: string;
-    decommissioned: boolean;
-    otherInformation: string;
-    departmentId?: number;
+    tireSize?: string;
+    innsuranceNumber?: string;
+    omnium?: boolean;
+    maintenanceContract?: boolean;
+    maintenanceContractEndDate?: Date;
+    maintenanceContractEndKm?: number;
+    maintenanceContractNumber?: string;
+    decommissioned?: boolean;
+    otherInformation?: string;
+    departmentId: number;
+    documents?: string[];
 }

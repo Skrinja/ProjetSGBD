@@ -25,17 +25,8 @@ export default class VehicleRepository {
           licenseType: v.license_type as any,
           configuration: v.vehicle_configuration as any,
           technicalInspectionDate: v.technical_inspection_expiry_date,
-          tireSize: v.tire_size,
-          innsuranceNumber: v.insurance_number,
-          omnium: v.omnium,
-          maintenanceContract: v.maintenance_contract,
-          maintenanceContractEndDate: v.maintenance_contract_end_date,
-          maintenanceContractEndKm: v.maintenance_contract_end_km,
-          maintenanceContractNumber: v.maintenance_contract_number,
-          decommissioned: v.decommissioned_vehicle,
-          otherInformation: v.other_info,
           departmentId: v.department_id,
-      }; // si je rajoute as vehicles; il faut que ca corresponde a 100% ? 
+      }; // si je rajoute as vehicles il faut que ca corresponde a 100% ? 
     })
   }
 
@@ -71,7 +62,7 @@ async getVehicleByVin(vin:string): Promise<Vehicle>{
         decommissioned: vehicleFromDb.decommissioned_vehicle,
         otherInformation: vehicleFromDb.other_info,
         departmentId: vehicleFromDb.department_id,
-        // ...
+        // documents à ajouter plus tard
       };
   }
 }
