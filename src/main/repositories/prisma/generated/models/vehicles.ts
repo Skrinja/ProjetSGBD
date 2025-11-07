@@ -57,7 +57,6 @@ export type VehiclesMinAggregateOutputType = {
   maintenance_contract_number: string | null
   decommissioned_vehicle: boolean | null
   other_info: string | null
-  documents: string | null
   department_id: number | null
 }
 
@@ -81,7 +80,6 @@ export type VehiclesMaxAggregateOutputType = {
   maintenance_contract_number: string | null
   decommissioned_vehicle: boolean | null
   other_info: string | null
-  documents: string | null
   department_id: number | null
 }
 
@@ -143,7 +141,6 @@ export type VehiclesMinAggregateInputType = {
   maintenance_contract_number?: true
   decommissioned_vehicle?: true
   other_info?: true
-  documents?: true
   department_id?: true
 }
 
@@ -167,7 +164,6 @@ export type VehiclesMaxAggregateInputType = {
   maintenance_contract_number?: true
   decommissioned_vehicle?: true
   other_info?: true
-  documents?: true
   department_id?: true
 }
 
@@ -302,7 +298,7 @@ export type VehiclesGroupByOutputType = {
   maintenance_contract_number: string | null
   decommissioned_vehicle: boolean | null
   other_info: string | null
-  documents: string | null
+  documents: runtime.JsonValue | null
   department_id: number
   _count: VehiclesCountAggregateOutputType | null
   _avg: VehiclesAvgAggregateOutputType | null
@@ -349,7 +345,7 @@ export type vehiclesWhereInput = {
   maintenance_contract_number?: Prisma.StringNullableFilter<"vehicles"> | string | null
   decommissioned_vehicle?: Prisma.BoolNullableFilter<"vehicles"> | boolean | null
   other_info?: Prisma.StringNullableFilter<"vehicles"> | string | null
-  documents?: Prisma.StringNullableFilter<"vehicles"> | string | null
+  documents?: Prisma.JsonNullableFilter<"vehicles">
   department_id?: Prisma.IntFilter<"vehicles"> | number
   interventions?: Prisma.InterventionsListRelationFilter
   departments?: Prisma.XOR<Prisma.DepartmentsScalarRelationFilter, Prisma.departmentsWhereInput>
@@ -405,7 +401,7 @@ export type vehiclesWhereUniqueInput = Prisma.AtLeast<{
   maintenance_contract_number?: Prisma.StringNullableFilter<"vehicles"> | string | null
   decommissioned_vehicle?: Prisma.BoolNullableFilter<"vehicles"> | boolean | null
   other_info?: Prisma.StringNullableFilter<"vehicles"> | string | null
-  documents?: Prisma.StringNullableFilter<"vehicles"> | string | null
+  documents?: Prisma.JsonNullableFilter<"vehicles">
   department_id?: Prisma.IntFilter<"vehicles"> | number
   interventions?: Prisma.InterventionsListRelationFilter
   departments?: Prisma.XOR<Prisma.DepartmentsScalarRelationFilter, Prisma.departmentsWhereInput>
@@ -463,7 +459,7 @@ export type vehiclesScalarWhereWithAggregatesInput = {
   maintenance_contract_number?: Prisma.StringNullableWithAggregatesFilter<"vehicles"> | string | null
   decommissioned_vehicle?: Prisma.BoolNullableWithAggregatesFilter<"vehicles"> | boolean | null
   other_info?: Prisma.StringNullableWithAggregatesFilter<"vehicles"> | string | null
-  documents?: Prisma.StringNullableWithAggregatesFilter<"vehicles"> | string | null
+  documents?: Prisma.JsonNullableWithAggregatesFilter<"vehicles">
   department_id?: Prisma.IntWithAggregatesFilter<"vehicles"> | number
 }
 
@@ -487,7 +483,7 @@ export type vehiclesCreateInput = {
   maintenance_contract_number?: string | null
   decommissioned_vehicle?: boolean | null
   other_info?: string | null
-  documents?: string | null
+  documents?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   interventions?: Prisma.interventionsCreateNestedManyWithoutVehiclesInput
   departments: Prisma.departmentsCreateNestedOneWithoutVehiclesInput
 }
@@ -512,7 +508,7 @@ export type vehiclesUncheckedCreateInput = {
   maintenance_contract_number?: string | null
   decommissioned_vehicle?: boolean | null
   other_info?: string | null
-  documents?: string | null
+  documents?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   department_id: number
   interventions?: Prisma.interventionsUncheckedCreateNestedManyWithoutVehiclesInput
 }
@@ -537,7 +533,7 @@ export type vehiclesUpdateInput = {
   maintenance_contract_number?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   decommissioned_vehicle?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
   other_info?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  documents?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  documents?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   interventions?: Prisma.interventionsUpdateManyWithoutVehiclesNestedInput
   departments?: Prisma.departmentsUpdateOneRequiredWithoutVehiclesNestedInput
 }
@@ -562,7 +558,7 @@ export type vehiclesUncheckedUpdateInput = {
   maintenance_contract_number?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   decommissioned_vehicle?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
   other_info?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  documents?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  documents?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   department_id?: Prisma.IntFieldUpdateOperationsInput | number
   interventions?: Prisma.interventionsUncheckedUpdateManyWithoutVehiclesNestedInput
 }
@@ -587,7 +583,7 @@ export type vehiclesCreateManyInput = {
   maintenance_contract_number?: string | null
   decommissioned_vehicle?: boolean | null
   other_info?: string | null
-  documents?: string | null
+  documents?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   department_id: number
 }
 
@@ -611,7 +607,7 @@ export type vehiclesUpdateManyMutationInput = {
   maintenance_contract_number?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   decommissioned_vehicle?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
   other_info?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  documents?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  documents?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
 }
 
 export type vehiclesUncheckedUpdateManyInput = {
@@ -634,7 +630,7 @@ export type vehiclesUncheckedUpdateManyInput = {
   maintenance_contract_number?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   decommissioned_vehicle?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
   other_info?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  documents?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  documents?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   department_id?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
@@ -709,7 +705,6 @@ export type vehiclesMaxOrderByAggregateInput = {
   maintenance_contract_number?: Prisma.SortOrder
   decommissioned_vehicle?: Prisma.SortOrder
   other_info?: Prisma.SortOrder
-  documents?: Prisma.SortOrder
   department_id?: Prisma.SortOrder
 }
 
@@ -733,7 +728,6 @@ export type vehiclesMinOrderByAggregateInput = {
   maintenance_contract_number?: Prisma.SortOrder
   decommissioned_vehicle?: Prisma.SortOrder
   other_info?: Prisma.SortOrder
-  documents?: Prisma.SortOrder
   department_id?: Prisma.SortOrder
 }
 
@@ -831,7 +825,7 @@ export type vehiclesCreateWithoutDepartmentsInput = {
   maintenance_contract_number?: string | null
   decommissioned_vehicle?: boolean | null
   other_info?: string | null
-  documents?: string | null
+  documents?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   interventions?: Prisma.interventionsCreateNestedManyWithoutVehiclesInput
 }
 
@@ -855,7 +849,7 @@ export type vehiclesUncheckedCreateWithoutDepartmentsInput = {
   maintenance_contract_number?: string | null
   decommissioned_vehicle?: boolean | null
   other_info?: string | null
-  documents?: string | null
+  documents?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   interventions?: Prisma.interventionsUncheckedCreateNestedManyWithoutVehiclesInput
 }
 
@@ -908,7 +902,7 @@ export type vehiclesScalarWhereInput = {
   maintenance_contract_number?: Prisma.StringNullableFilter<"vehicles"> | string | null
   decommissioned_vehicle?: Prisma.BoolNullableFilter<"vehicles"> | boolean | null
   other_info?: Prisma.StringNullableFilter<"vehicles"> | string | null
-  documents?: Prisma.StringNullableFilter<"vehicles"> | string | null
+  documents?: Prisma.JsonNullableFilter<"vehicles">
   department_id?: Prisma.IntFilter<"vehicles"> | number
 }
 
@@ -932,7 +926,7 @@ export type vehiclesCreateWithoutInterventionsInput = {
   maintenance_contract_number?: string | null
   decommissioned_vehicle?: boolean | null
   other_info?: string | null
-  documents?: string | null
+  documents?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   departments: Prisma.departmentsCreateNestedOneWithoutVehiclesInput
 }
 
@@ -956,7 +950,7 @@ export type vehiclesUncheckedCreateWithoutInterventionsInput = {
   maintenance_contract_number?: string | null
   decommissioned_vehicle?: boolean | null
   other_info?: string | null
-  documents?: string | null
+  documents?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   department_id: number
 }
 
@@ -996,7 +990,7 @@ export type vehiclesUpdateWithoutInterventionsInput = {
   maintenance_contract_number?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   decommissioned_vehicle?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
   other_info?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  documents?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  documents?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   departments?: Prisma.departmentsUpdateOneRequiredWithoutVehiclesNestedInput
 }
 
@@ -1020,7 +1014,7 @@ export type vehiclesUncheckedUpdateWithoutInterventionsInput = {
   maintenance_contract_number?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   decommissioned_vehicle?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
   other_info?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  documents?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  documents?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   department_id?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
@@ -1044,7 +1038,7 @@ export type vehiclesCreateManyDepartmentsInput = {
   maintenance_contract_number?: string | null
   decommissioned_vehicle?: boolean | null
   other_info?: string | null
-  documents?: string | null
+  documents?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
 }
 
 export type vehiclesUpdateWithoutDepartmentsInput = {
@@ -1067,7 +1061,7 @@ export type vehiclesUpdateWithoutDepartmentsInput = {
   maintenance_contract_number?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   decommissioned_vehicle?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
   other_info?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  documents?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  documents?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   interventions?: Prisma.interventionsUpdateManyWithoutVehiclesNestedInput
 }
 
@@ -1091,7 +1085,7 @@ export type vehiclesUncheckedUpdateWithoutDepartmentsInput = {
   maintenance_contract_number?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   decommissioned_vehicle?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
   other_info?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  documents?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  documents?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   interventions?: Prisma.interventionsUncheckedUpdateManyWithoutVehiclesNestedInput
 }
 
@@ -1115,7 +1109,7 @@ export type vehiclesUncheckedUpdateManyWithoutDepartmentsInput = {
   maintenance_contract_number?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   decommissioned_vehicle?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
   other_info?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  documents?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  documents?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
 }
 
 
@@ -1235,7 +1229,7 @@ export type $vehiclesPayload<ExtArgs extends runtime.Types.Extensions.InternalAr
     maintenance_contract_number: string | null
     decommissioned_vehicle: boolean | null
     other_info: string | null
-    documents: string | null
+    documents: runtime.JsonValue | null
     department_id: number
   }, ExtArgs["result"]["vehicles"]>
   composites: {}
@@ -1627,7 +1621,7 @@ export interface vehiclesFieldRefs {
   readonly maintenance_contract_number: Prisma.FieldRef<"vehicles", 'String'>
   readonly decommissioned_vehicle: Prisma.FieldRef<"vehicles", 'Boolean'>
   readonly other_info: Prisma.FieldRef<"vehicles", 'String'>
-  readonly documents: Prisma.FieldRef<"vehicles", 'String'>
+  readonly documents: Prisma.FieldRef<"vehicles", 'Json'>
   readonly department_id: Prisma.FieldRef<"vehicles", 'Int'>
 }
     

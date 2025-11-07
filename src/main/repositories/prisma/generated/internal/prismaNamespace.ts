@@ -1238,7 +1238,8 @@ export const InterventionsScalarFieldEnum = {
   vehicle_vin: 'vehicle_vin',
   user_id: 'user_id',
   accident_id: 'accident_id',
-  provider_id: 'provider_id'
+  provider_id: 'provider_id',
+  documents: 'documents'
 } as const
 
 export type InterventionsScalarFieldEnum = (typeof InterventionsScalarFieldEnum)[keyof typeof InterventionsScalarFieldEnum]
@@ -1343,6 +1344,31 @@ export const SortOrder = {
 export type SortOrder = (typeof SortOrder)[keyof typeof SortOrder]
 
 
+export const NullableJsonNullValueInput = {
+  DbNull: DbNull,
+  JsonNull: JsonNull
+} as const
+
+export type NullableJsonNullValueInput = (typeof NullableJsonNullValueInput)[keyof typeof NullableJsonNullValueInput]
+
+
+export const JsonNullValueFilter = {
+  DbNull: DbNull,
+  JsonNull: JsonNull,
+  AnyNull: AnyNull
+} as const
+
+export type JsonNullValueFilter = (typeof JsonNullValueFilter)[keyof typeof JsonNullValueFilter]
+
+
+export const QueryMode = {
+  default: 'default',
+  insensitive: 'insensitive'
+} as const
+
+export type QueryMode = (typeof QueryMode)[keyof typeof QueryMode]
+
+
 export const NullsOrder = {
   first: 'first',
   last: 'last'
@@ -1362,8 +1388,7 @@ export const accidentsOrderByRelevanceFieldEnum = {
   report_number: 'report_number',
   info_number: 'info_number',
   ref_insurance: 'ref_insurance',
-  other_party_info: 'other_party_info',
-  documents: 'documents'
+  other_party_info: 'other_party_info'
 } as const
 
 export type accidentsOrderByRelevanceFieldEnum = (typeof accidentsOrderByRelevanceFieldEnum)[keyof typeof accidentsOrderByRelevanceFieldEnum]
@@ -1396,7 +1421,6 @@ export type interventionsOrderByRelevanceFieldEnum = (typeof interventionsOrderB
 
 
 export const invoicesOrderByRelevanceFieldEnum = {
-  documents: 'documents',
   invoice_number: 'invoice_number'
 } as const
 
@@ -1451,8 +1475,7 @@ export const vehiclesOrderByRelevanceFieldEnum = {
   tire_size: 'tire_size',
   insurance_number: 'insurance_number',
   maintenance_contract_number: 'maintenance_contract_number',
-  other_info: 'other_info',
-  documents: 'documents'
+  other_info: 'other_info'
 } as const
 
 export type vehiclesOrderByRelevanceFieldEnum = (typeof vehiclesOrderByRelevanceFieldEnum)[keyof typeof vehiclesOrderByRelevanceFieldEnum]
@@ -1489,6 +1512,20 @@ export type StringFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 
  * Reference to a field of type 'accidents_accident_type'
  */
 export type Enumaccidents_accident_typeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'accidents_accident_type'>
+    
+
+
+/**
+ * Reference to a field of type 'Json'
+ */
+export type JsonFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Json'>
+    
+
+
+/**
+ * Reference to a field of type 'QueryMode'
+ */
+export type EnumQueryModeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'QueryMode'>
     
 
 

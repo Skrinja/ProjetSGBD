@@ -73,7 +73,7 @@ CREATE TABLE Accidents (
     info_number VARCHAR(50),
     ref_insurance VARCHAR(50),
     other_party_info TEXT,
-    documents VARCHAR(255),
+    documents JSON,
     repair_completed BOOLEAN DEFAULT FALSE
 ) ENGINE=InnoDB;
 
@@ -141,6 +141,7 @@ CREATE TABLE Interventions (
     user_id VARCHAR(36) NOT NULL,
     accident_id INT NULL,
     provider_id INT NOT NULL,
+    documents JSON,
     FOREIGN KEY (vehicle_vin) REFERENCES Vehicles(vin) ON DELETE RESTRICT ON UPDATE CASCADE,
     FOREIGN KEY (user_id) REFERENCES Users(user_id) ON DELETE RESTRICT ON UPDATE CASCADE,
     FOREIGN KEY (accident_id) REFERENCES Accidents(accident_id) ON DELETE SET NULL ON UPDATE CASCADE,

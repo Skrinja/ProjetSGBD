@@ -49,7 +49,6 @@ export type AccidentsMinAggregateOutputType = {
   info_number: string | null
   ref_insurance: string | null
   other_party_info: string | null
-  documents: string | null
   repair_completed: boolean | null
 }
 
@@ -69,7 +68,6 @@ export type AccidentsMaxAggregateOutputType = {
   info_number: string | null
   ref_insurance: string | null
   other_party_info: string | null
-  documents: string | null
   repair_completed: boolean | null
 }
 
@@ -119,7 +117,6 @@ export type AccidentsMinAggregateInputType = {
   info_number?: true
   ref_insurance?: true
   other_party_info?: true
-  documents?: true
   repair_completed?: true
 }
 
@@ -139,7 +136,6 @@ export type AccidentsMaxAggregateInputType = {
   info_number?: true
   ref_insurance?: true
   other_party_info?: true
-  documents?: true
   repair_completed?: true
 }
 
@@ -266,7 +262,7 @@ export type AccidentsGroupByOutputType = {
   info_number: string | null
   ref_insurance: string | null
   other_party_info: string | null
-  documents: string | null
+  documents: runtime.JsonValue | null
   repair_completed: boolean | null
   _count: AccidentsCountAggregateOutputType | null
   _avg: AccidentsAvgAggregateOutputType | null
@@ -309,7 +305,7 @@ export type accidentsWhereInput = {
   info_number?: Prisma.StringNullableFilter<"accidents"> | string | null
   ref_insurance?: Prisma.StringNullableFilter<"accidents"> | string | null
   other_party_info?: Prisma.StringNullableFilter<"accidents"> | string | null
-  documents?: Prisma.StringNullableFilter<"accidents"> | string | null
+  documents?: Prisma.JsonNullableFilter<"accidents">
   repair_completed?: Prisma.BoolNullableFilter<"accidents"> | boolean | null
   interventions?: Prisma.InterventionsListRelationFilter
   staff_accidents?: Prisma.Staff_accidentsListRelationFilter
@@ -357,7 +353,7 @@ export type accidentsWhereUniqueInput = Prisma.AtLeast<{
   info_number?: Prisma.StringNullableFilter<"accidents"> | string | null
   ref_insurance?: Prisma.StringNullableFilter<"accidents"> | string | null
   other_party_info?: Prisma.StringNullableFilter<"accidents"> | string | null
-  documents?: Prisma.StringNullableFilter<"accidents"> | string | null
+  documents?: Prisma.JsonNullableFilter<"accidents">
   repair_completed?: Prisma.BoolNullableFilter<"accidents"> | boolean | null
   interventions?: Prisma.InterventionsListRelationFilter
   staff_accidents?: Prisma.Staff_accidentsListRelationFilter
@@ -407,7 +403,7 @@ export type accidentsScalarWhereWithAggregatesInput = {
   info_number?: Prisma.StringNullableWithAggregatesFilter<"accidents"> | string | null
   ref_insurance?: Prisma.StringNullableWithAggregatesFilter<"accidents"> | string | null
   other_party_info?: Prisma.StringNullableWithAggregatesFilter<"accidents"> | string | null
-  documents?: Prisma.StringNullableWithAggregatesFilter<"accidents"> | string | null
+  documents?: Prisma.JsonNullableWithAggregatesFilter<"accidents">
   repair_completed?: Prisma.BoolNullableWithAggregatesFilter<"accidents"> | boolean | null
 }
 
@@ -426,7 +422,7 @@ export type accidentsCreateInput = {
   info_number?: string | null
   ref_insurance?: string | null
   other_party_info?: string | null
-  documents?: string | null
+  documents?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   repair_completed?: boolean | null
   interventions?: Prisma.interventionsCreateNestedManyWithoutAccidentsInput
   staff_accidents?: Prisma.staff_accidentsCreateNestedManyWithoutAccidentsInput
@@ -448,7 +444,7 @@ export type accidentsUncheckedCreateInput = {
   info_number?: string | null
   ref_insurance?: string | null
   other_party_info?: string | null
-  documents?: string | null
+  documents?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   repair_completed?: boolean | null
   interventions?: Prisma.interventionsUncheckedCreateNestedManyWithoutAccidentsInput
   staff_accidents?: Prisma.staff_accidentsUncheckedCreateNestedManyWithoutAccidentsInput
@@ -469,7 +465,7 @@ export type accidentsUpdateInput = {
   info_number?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   ref_insurance?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   other_party_info?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  documents?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  documents?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   repair_completed?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
   interventions?: Prisma.interventionsUpdateManyWithoutAccidentsNestedInput
   staff_accidents?: Prisma.staff_accidentsUpdateManyWithoutAccidentsNestedInput
@@ -491,7 +487,7 @@ export type accidentsUncheckedUpdateInput = {
   info_number?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   ref_insurance?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   other_party_info?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  documents?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  documents?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   repair_completed?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
   interventions?: Prisma.interventionsUncheckedUpdateManyWithoutAccidentsNestedInput
   staff_accidents?: Prisma.staff_accidentsUncheckedUpdateManyWithoutAccidentsNestedInput
@@ -513,7 +509,7 @@ export type accidentsCreateManyInput = {
   info_number?: string | null
   ref_insurance?: string | null
   other_party_info?: string | null
-  documents?: string | null
+  documents?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   repair_completed?: boolean | null
 }
 
@@ -532,7 +528,7 @@ export type accidentsUpdateManyMutationInput = {
   info_number?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   ref_insurance?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   other_party_info?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  documents?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  documents?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   repair_completed?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
 }
 
@@ -552,7 +548,7 @@ export type accidentsUncheckedUpdateManyInput = {
   info_number?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   ref_insurance?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   other_party_info?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  documents?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  documents?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   repair_completed?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
 }
 
@@ -602,7 +598,6 @@ export type accidentsMaxOrderByAggregateInput = {
   info_number?: Prisma.SortOrder
   ref_insurance?: Prisma.SortOrder
   other_party_info?: Prisma.SortOrder
-  documents?: Prisma.SortOrder
   repair_completed?: Prisma.SortOrder
 }
 
@@ -622,7 +617,6 @@ export type accidentsMinOrderByAggregateInput = {
   info_number?: Prisma.SortOrder
   ref_insurance?: Prisma.SortOrder
   other_party_info?: Prisma.SortOrder
-  documents?: Prisma.SortOrder
   repair_completed?: Prisma.SortOrder
 }
 
@@ -717,7 +711,7 @@ export type accidentsCreateWithoutInterventionsInput = {
   info_number?: string | null
   ref_insurance?: string | null
   other_party_info?: string | null
-  documents?: string | null
+  documents?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   repair_completed?: boolean | null
   staff_accidents?: Prisma.staff_accidentsCreateNestedManyWithoutAccidentsInput
 }
@@ -738,7 +732,7 @@ export type accidentsUncheckedCreateWithoutInterventionsInput = {
   info_number?: string | null
   ref_insurance?: string | null
   other_party_info?: string | null
-  documents?: string | null
+  documents?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   repair_completed?: boolean | null
   staff_accidents?: Prisma.staff_accidentsUncheckedCreateNestedManyWithoutAccidentsInput
 }
@@ -774,7 +768,7 @@ export type accidentsUpdateWithoutInterventionsInput = {
   info_number?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   ref_insurance?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   other_party_info?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  documents?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  documents?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   repair_completed?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
   staff_accidents?: Prisma.staff_accidentsUpdateManyWithoutAccidentsNestedInput
 }
@@ -795,7 +789,7 @@ export type accidentsUncheckedUpdateWithoutInterventionsInput = {
   info_number?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   ref_insurance?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   other_party_info?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  documents?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  documents?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   repair_completed?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
   staff_accidents?: Prisma.staff_accidentsUncheckedUpdateManyWithoutAccidentsNestedInput
 }
@@ -815,7 +809,7 @@ export type accidentsCreateWithoutStaff_accidentsInput = {
   info_number?: string | null
   ref_insurance?: string | null
   other_party_info?: string | null
-  documents?: string | null
+  documents?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   repair_completed?: boolean | null
   interventions?: Prisma.interventionsCreateNestedManyWithoutAccidentsInput
 }
@@ -836,7 +830,7 @@ export type accidentsUncheckedCreateWithoutStaff_accidentsInput = {
   info_number?: string | null
   ref_insurance?: string | null
   other_party_info?: string | null
-  documents?: string | null
+  documents?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   repair_completed?: boolean | null
   interventions?: Prisma.interventionsUncheckedCreateNestedManyWithoutAccidentsInput
 }
@@ -872,7 +866,7 @@ export type accidentsUpdateWithoutStaff_accidentsInput = {
   info_number?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   ref_insurance?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   other_party_info?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  documents?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  documents?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   repair_completed?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
   interventions?: Prisma.interventionsUpdateManyWithoutAccidentsNestedInput
 }
@@ -893,7 +887,7 @@ export type accidentsUncheckedUpdateWithoutStaff_accidentsInput = {
   info_number?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   ref_insurance?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   other_party_info?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  documents?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  documents?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   repair_completed?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
   interventions?: Prisma.interventionsUncheckedUpdateManyWithoutAccidentsNestedInput
 }
@@ -1012,7 +1006,7 @@ export type $accidentsPayload<ExtArgs extends runtime.Types.Extensions.InternalA
     info_number: string | null
     ref_insurance: string | null
     other_party_info: string | null
-    documents: string | null
+    documents: runtime.JsonValue | null
     repair_completed: boolean | null
   }, ExtArgs["result"]["accidents"]>
   composites: {}
@@ -1400,7 +1394,7 @@ export interface accidentsFieldRefs {
   readonly info_number: Prisma.FieldRef<"accidents", 'String'>
   readonly ref_insurance: Prisma.FieldRef<"accidents", 'String'>
   readonly other_party_info: Prisma.FieldRef<"accidents", 'String'>
-  readonly documents: Prisma.FieldRef<"accidents", 'String'>
+  readonly documents: Prisma.FieldRef<"accidents", 'Json'>
   readonly repair_completed: Prisma.FieldRef<"accidents", 'Boolean'>
 }
     
