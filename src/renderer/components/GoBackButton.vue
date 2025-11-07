@@ -1,5 +1,5 @@
 <template>
-    <button @click="goBack">↤</button>
+    <button @click="goBack">⟵</button>
 </template>
 
 <script setup lang="ts">
