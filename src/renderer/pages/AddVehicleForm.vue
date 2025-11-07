@@ -1,4 +1,5 @@
 <template>
+    <GoBackButton/>
     <h2>Ajouter un Nouveau Véhicule</h2>
     <form @submit.prevent="handleSubmit">
         <div>
@@ -100,6 +101,7 @@ import { ref } from 'vue';
 import useVehicleService from '../composables/vehicleService';
 import useSetMessageService from '../composables/setMessageService';
 import { FuelType, LicenseType, VehicleConfiguration } from '../../shared/enums/vehicleEnum';
+import GoBackButton from '../components/GoBackButton.vue';
 
 const vin = ref('');
 const numPlate = ref('');
