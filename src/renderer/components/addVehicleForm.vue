@@ -45,7 +45,7 @@
             </select>
         </div>
         <div>
-            <label for="tech-date">Date prochain contrôle technique *</label>
+            <label for="tech-date">Date prochain contrôle technique</label>
             <input id="tech-date" v-model="technicalInspectionDate" type="date" required />
         </div>
         <div>
@@ -65,7 +65,7 @@
             <input v-model="maintenanceContractNumber" placeholder="N° contrat maintenance" />
         </div>
         <div>
-            <label for="maintenance-date">Date fin contrat maint.</label>
+            <label for="maintenance-date">Date fin contrat d'entretien</label>
             <input id="maintenance-date" v-model="maintenanceContractEndDate" type="date" />
         </div>
         <div>
@@ -80,7 +80,7 @@
         <div>
             <label>
                 <input v-model="maintenanceContract" type="checkbox" />
-                Contrat de maintenance
+                Contrat d'entretien
             </label>
         </div>
         <div>
