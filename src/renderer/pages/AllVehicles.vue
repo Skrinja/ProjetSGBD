@@ -3,6 +3,7 @@
     <BaseCard class="vehicle" v-for="vehicle in vehicles" :key="vehicle.vin" @click="goToDetails(vehicle.vin)">
         <span>VRM : {{ vehicle.numVehicle }}</span>
         <span>Plaque : {{ vehicle.numPlate }}</span>
+        <button @click="handleDeleteClick(vehicle.vin)">❌</button>
     </BaseCard>
     <router-link to="/add-vehicle">
         <button>Ajouter un véhicule</button>
@@ -16,7 +17,7 @@ import BaseCard from '../components/BaseCard.vue';
 import { useRouter } from 'vue-router';
 import GoBackButton from '../components/GoBackButton.vue';
 
-const { vehicles, getAllVehicles } = useVehicleService();
+const { vehicles, getAllVehicles, deleteVehicle } = useVehicleService();
 const router = useRouter();
 
 const goToDetails = (vin:string) => {
@@ -26,6 +27,14 @@ const goToDetails = (vin:string) => {
 onMounted(async () =>{
     await getAllVehicles();
 })
+
+const handleDeleteClick = async (vin: string) => {
+    if (confirm('Êtes-vous sûr de vouloir supprimer ce véhicule ?')) {
+        await deleteVehicle(vin);
+    }
+
+}
+
 </script>
 <style scoped>
 .vehicle{

@@ -8,13 +8,17 @@ export function registerVehicleHandlers() {
         
     ipcMain.handle('vehicleRepo:getAll', () =>{
         return vehicleRepository.getAllVehicles();
-    })
+    });
 
     ipcMain.handle('vehicleRepo:addVehicle', (event, vehicle: Vehicle) => {
         vehicleRepository.addVehicle(vehicle);
-    })
+    });
 
     ipcMain.handle('vehicleRepo:getByVin', (event, vin: string) => {
         return vehicleRepository.getVehicleByVin(vin);
-    })
+    });
+
+    ipcMain.handle('vehicleRepo:deleteVehicle', (event, vin: string) => {
+        return vehicleRepository.deleteVehicle(vin);
+    });
 }

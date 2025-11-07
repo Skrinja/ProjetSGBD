@@ -89,4 +89,12 @@ async getVehicleByVin(vin:string): Promise<Vehicle>{
         // documents à ajouter plus tard quand je saurais le faire
       };
   }
+
+  async deleteVehicle(vin: string): Promise<void>{
+    await this.dbclient.vehicles.delete({
+      where: {
+        vin: vin,
+      }
+    });
+  }
 }

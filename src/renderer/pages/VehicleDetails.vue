@@ -1,9 +1,7 @@
 <template>
     <div v-if="vehicle">
         <h1>Détails du Véhicule {{ vehicle.numVehicle }}</h1>
-        <router-link to="/vehicles">
-            <button>Retour à la liste</button>
-        </router-link>
+        <GoBackButton/>
         <BaseCard>
             <p><strong>N° de Châssis :</strong> {{ vehicle.vin }}</p>
             <p><strong>Plaque :</strong> {{ vehicle.numPlate }}</p>
@@ -25,6 +23,7 @@
             <p><strong>Numéro de contrat d'entretien :</strong> {{ vehicle.maintenanceContractNumber }}</p>
             <p><strong>Véhicule déclassé :</strong> {{ vehicle.decommissioned ? 'Oui' : 'Non' }}</p>
             <p><strong>Autres informations :</strong> {{ vehicle.otherInformation }}</p>
+            <button @click="handleDeleteClick(vehicle.vin)">❌</button>
         </BaseCard>
     </div>
     <div v-else>
@@ -40,9 +39,10 @@ import useVehicleService from '../composables/vehicleService';
 import BaseCard from '../components/BaseCard.vue';
 import Vehicle from 'src/shared/vehicle';
 import BackHomeButton from '../components/BackHomeButton.vue';
+import GoBackButton from '../components/GoBackButton.vue';
 
 const route = useRoute();
-const { getVehicleByVin } = useVehicleService();
+const { getVehicleByVin, deleteVehicle } = useVehicleService();
 const vehicle = ref<Vehicle>();
 
 onMounted(async () => {
@@ -51,6 +51,12 @@ onMounted(async () => {
         vehicle.value = await getVehicleByVin(vin);
     }
 });
+
+const handleDeleteClick = async (vin: string) => {
+    if (confirm('Êtes-vous sûr de vouloir supprimer ce véhicule ?')) {
+        await deleteVehicle(vin);
+    }
+}
 </script>
 
 <style scoped>

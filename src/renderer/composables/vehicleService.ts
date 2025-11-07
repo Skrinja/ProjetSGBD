@@ -17,11 +17,17 @@ export default function useVehicleService() {
         return await (window as any).electronService.vehicle.getVehicleByVin(vin);
     }
 
+    const deleteVehicle = async (vin: string) => {
+        await (window as any).electronService.vehicle.deleteVehicle(vin);
+        await getAllVehicles();
+    }
+
     return {
         vehicles,
         getAllVehicles,
         getVehicleByVin,
-        addVehicle
+        addVehicle,
+        deleteVehicle,
     }
 }
 
