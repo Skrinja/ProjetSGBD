@@ -1,13 +1,14 @@
 <template>
     <GoBackButton/>
+    <router-link to="/add-vehicle">
+        <button>Ajouter un véhicule</button>
+    </router-link>
     <BaseCard class="vehicle" v-for="vehicle in vehicles" :key="vehicle.vin" @click="goToDetails(vehicle.vin)">
         <span>VRM : {{ vehicle.numVehicle }}</span>
         <span>Plaque : {{ vehicle.numPlate }}</span>
         <button @click.stop="handleDeleteClick(vehicle.vin)">❌</button> <!-- .stop pour empêcher la propagation du clic au parent et ne faire que celui-ci -->
     </BaseCard>
-    <router-link to="/add-vehicle">
-        <button>Ajouter un véhicule</button>
-    </router-link>
+
 </template>
 
 <script setup lang="ts">

@@ -5,4 +5,5 @@ export default interface IVehicleService {
     addVehicle:(vehicle: Vehicle) => Promise<void>
     getVehicleByVin:(vin: string) => Promise<Vehicle>
     deleteVehicle:(vin: string) => Promise<void>
+    updateVehicle:(vehicle: Vehicle) => Promise<void>
 }

@@ -21,4 +21,8 @@ export function registerVehicleHandlers() {
     ipcMain.handle('vehicleRepo:deleteVehicle', (event, vin: string) => {
         return vehicleRepository.deleteVehicle(vin);
     });
+
+    ipcMain.handle('vehicleRepo:updateVehicle', (event, vehicle: Vehicle) => {
+        return vehicleRepository.updateVehicle(vehicle);
+    });
 }

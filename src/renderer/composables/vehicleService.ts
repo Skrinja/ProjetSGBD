@@ -22,12 +22,18 @@ export default function useVehicleService() {
         await getAllVehicles();
     }
 
+    const updateVehicle = async (vehicle: Vehicle) => {
+        await (window as any).electronService.vehicle.updateVehicle(vehicle);
+        await getAllVehicles();
+    }
+
     return {
         vehicles,
         getAllVehicles,
         getVehicleByVin,
         addVehicle,
         deleteVehicle,
+        updateVehicle,
     }
 }
 
