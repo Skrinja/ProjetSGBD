@@ -133,7 +133,7 @@ const { successMessage, errorMessage, setMessage } = useSetMessageService();
 const resetForm = () => {
     vin.value = '';
     numPlate.value = '';
-    numVehicle.value = null;
+    numVehicle.value = undefined;
     brand.value = '';
     model.value = '';
     year.value = '';
