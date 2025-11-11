@@ -189,7 +189,7 @@ const resetForm = () => {
 };
 
 const handleSubmit = async () => {
-    if (!vin.value || !numPlate.value || !numVehicle.value) {
+    if (!vin.value || !numPlate.value || !numVehicle.value) { // Ajouter d'autres champs si néc
         setMessage('error', "Veuillez remplir tous les champs.");
         return;
     }
