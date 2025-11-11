@@ -23,6 +23,7 @@
             <p><strong>Numéro de contrat d'entretien :</strong> {{ vehicle.maintenanceContractNumber }}</p>
             <p><strong>Véhicule déclassé :</strong> {{ vehicle.decommissioned ? 'Oui' : 'Non' }}</p>
             <p><strong>Autres informations :</strong> {{ vehicle.otherInformation }}</p>
+            <button @click="goToEdit(vehicle.vin)">✏️</button>
             <button @click="handleDeleteClick(vehicle.vin)">❌</button>
         </BaseCard>
     </div>
@@ -59,6 +60,11 @@ const handleDeleteClick = async (vin: string) => {
         router.push('/vehicles');
     }
 }
+
+const goToEdit = (vin: string) => {
+    router.push(`/vehicle/edit/${vin}`);
+}
+
 </script>
 
 <style scoped>

@@ -1,6 +1,7 @@
 <template>
     <GoBackButton/>
-    <h2>Ajouter un Nouveau Véhicule</h2>
+    <h2 v-if="!vinParam">Ajouter un Nouveau Véhicule</h2>
+    <h2 v-else>Modifier le Véhicule {{ numVehicle }}</h2>
     <form @submit.prevent="handleSubmit">
         <div>
             <input v-model="vin" required placeholder="N° de châssis (VIN)" />
@@ -97,7 +98,8 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref, onMounted } from 'vue';
+import { useRouter, useRoute } from 'vue-router';
 import useVehicleService from '../composables/vehicleService';
 import useSetMessageService from '../composables/setMessageService';
 import { FuelType, LicenseType, VehicleConfiguration } from '../../shared/enums/vehicleEnum';
@@ -124,11 +126,44 @@ const omnium = ref(false);
 const maintenanceContract = ref(false);
 const decommissioned = ref(false);
 
+const router = useRouter();
+const route = useRoute();
+const vinParam = ref(route.params.vin as string);
+
 const fuelTypes = ref(Object.values(FuelType));
 const licenseTypes = ref(Object.values(LicenseType));
 const vehicleConfigurations = ref(Object.values(VehicleConfiguration));
-const { addVehicle } = useVehicleService();
+const { addVehicle, updateVehicle, getVehicleByVin } = useVehicleService();
 const { successMessage, errorMessage, setMessage } = useSetMessageService();
+
+
+onMounted(async () => {
+    if (vinParam.value) {
+        const vehicle = await getVehicleByVin(vinParam.value);
+        if (vehicle) {
+            vin.value = vehicle.vin;
+            numPlate.value = vehicle.numPlate;
+            numVehicle.value = vehicle.numVehicle;
+            brand.value = vehicle.brand;
+            model.value = vehicle.model;
+            year.value = vehicle.year.toISOString().substring(0, 10);
+            fuel.value = vehicle.fuel;
+            licenseType.value = vehicle.licenseType;
+            vehicleConfiguration.value = vehicle.configuration;
+            technicalInspectionDate.value = vehicle.technicalInspectionDate.toISOString().substring(0, 10);
+            departmentId.value = vehicle.departmentId || undefined;
+            tireSize.value = vehicle.tireSize || '';
+            insuranceNumber.value = vehicle.insuranceNumber || '';
+            otherInformation.value = vehicle.otherInformation || '';
+            maintenanceContractNumber.value = vehicle.maintenanceContractNumber || '';
+            maintenanceContractEndDate.value = vehicle.maintenanceContractEndDate ? vehicle.maintenanceContractEndDate.toISOString().substring(0, 10) : '';
+            maintenanceContractEndKm.value = vehicle.maintenanceContractEndKm || undefined;
+            omnium.value = vehicle.omnium;
+            maintenanceContract.value = vehicle.maintenanceContract;
+            decommissioned.value = vehicle.decommissioned;
+        }
+    }
+});
 
 const resetForm = () => {
     vin.value = '';
@@ -158,8 +193,8 @@ const handleSubmit = async () => {
         setMessage('error', "Veuillez remplir tous les champs.");
         return;
     }
-    try {
-        await addVehicle({
+
+    const vehicleData = {
             vin: vin.value,
             numPlate: numPlate.value,
             numVehicle: numVehicle.value,
@@ -180,14 +215,22 @@ const handleSubmit = async () => {
             omnium: omnium.value,
             maintenanceContract: maintenanceContract.value,
             decommissioned: decommissioned.value,
-        });
-        setMessage('success', "Véhicule sauvegardé !");
-        resetForm();
+        };
+
+    try {
+        if (vinParam.value) {
+            await updateVehicle(vehicleData);
+            router.push(`/vehicle/${vinParam.value}`);
+        } else {
+            await addVehicle(vehicleData);
+            setMessage('success', 'Véhicule ajouté avec succès.');
+            resetForm();
+        }
     } catch (error) {
-        console.error("Erreur lors de l'ajout du véhicule:", error);
-        setMessage('error', "Un problème est survenu");
+        setMessage('error', `Erreur lors de la sauvegarde du véhicule : ${(error as Error).message}`);
     }
 };
+
 </script>
 
 <style scoped>

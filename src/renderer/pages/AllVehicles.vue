@@ -1,12 +1,11 @@
 <template>
     <GoBackButton/>
-    <router-link to="/add-vehicle">
+    <router-link to="/vehicle/add">
         <button>Ajouter un véhicule</button>
     </router-link>
     <BaseCard class="vehicle" v-for="vehicle in vehicles" :key="vehicle.vin" @click="goToDetails(vehicle.vin)">
         <span>VRM : {{ vehicle.numVehicle }}</span>
         <span>Plaque : {{ vehicle.numPlate }}</span>
-        <button @click.stop="handleDeleteClick(vehicle.vin)">❌</button> <!-- .stop pour empêcher la propagation du clic au parent et ne faire que celui-ci -->
     </BaseCard>
 
 </template>
@@ -28,13 +27,6 @@ const goToDetails = (vin:string) => {
 onMounted(async () =>{
     await getAllVehicles();
 })
-
-const handleDeleteClick = async (vin: string) => {
-    if (confirm('Êtes-vous sûr de vouloir supprimer ce véhicule ?')) {
-        await deleteVehicle(vin);
-    }
-
-}
 
 </script>
 <style scoped>

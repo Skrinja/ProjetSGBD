@@ -9,7 +9,8 @@ const routes = [
     {path: '/', component: Home},
     {path: '/vehicles', component: AllVehicles},
     {path: '/vehicle/:vin', component: VehicleDetails},
-    {path: '/add-vehicle', component: AddVehicleForm}
+    {path: '/vehicle/add', component: AddVehicleForm},
+    {path: '/vehicle/edit/:vin', component: AddVehicleForm},
 ]
 
 export const router = createRouter({routes, history: createMemoryHistory()});
