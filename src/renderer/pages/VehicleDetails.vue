@@ -34,7 +34,7 @@
 
 <script setup lang="ts">
 import { onMounted, ref } from 'vue';
-import { useRoute } from 'vue-router';
+import { useRoute, useRouter } from 'vue-router';
 import useVehicleService from '../composables/vehicleService';
 import BaseCard from '../components/BaseCard.vue';
 import Vehicle from 'src/shared/vehicle';
@@ -42,6 +42,7 @@ import BackHomeButton from '../components/BackHomeButton.vue';
 import GoBackButton from '../components/GoBackButton.vue';
 
 const route = useRoute();
+const router = useRouter();
 const { getVehicleByVin, deleteVehicle } = useVehicleService();
 const vehicle = ref<Vehicle>();
 
@@ -55,6 +56,7 @@ onMounted(async () => {
 const handleDeleteClick = async (vin: string) => {
     if (confirm('Êtes-vous sûr de vouloir supprimer ce véhicule ?')) {
         await deleteVehicle(vin);
+        router.push('/vehicles');
     }
 }
 </script>
