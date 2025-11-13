@@ -27,56 +27,66 @@ export type AggregateStaff = {
 
 export type StaffAvgAggregateOutputType = {
   employee_id: number | null
+  badge_number: number | null
 }
 
 export type StaffSumAggregateOutputType = {
   employee_id: number | null
+  badge_number: number | null
 }
 
 export type StaffMinAggregateOutputType = {
   employee_id: number | null
   last_name: string | null
   first_name: string | null
+  badge_number: number | null
 }
 
 export type StaffMaxAggregateOutputType = {
   employee_id: number | null
   last_name: string | null
   first_name: string | null
+  badge_number: number | null
 }
 
 export type StaffCountAggregateOutputType = {
   employee_id: number
   last_name: number
   first_name: number
+  badge_number: number
   _all: number
 }
 
 
 export type StaffAvgAggregateInputType = {
   employee_id?: true
+  badge_number?: true
 }
 
 export type StaffSumAggregateInputType = {
   employee_id?: true
+  badge_number?: true
 }
 
 export type StaffMinAggregateInputType = {
   employee_id?: true
   last_name?: true
   first_name?: true
+  badge_number?: true
 }
 
 export type StaffMaxAggregateInputType = {
   employee_id?: true
   last_name?: true
   first_name?: true
+  badge_number?: true
 }
 
 export type StaffCountAggregateInputType = {
   employee_id?: true
   last_name?: true
   first_name?: true
+  badge_number?: true
   _all?: true
 }
 
@@ -170,6 +180,7 @@ export type StaffGroupByOutputType = {
   employee_id: number
   last_name: string
   first_name: string
+  badge_number: number
   _count: StaffCountAggregateOutputType | null
   _avg: StaffAvgAggregateOutputType | null
   _sum: StaffSumAggregateOutputType | null
@@ -199,6 +210,7 @@ export type staffWhereInput = {
   employee_id?: Prisma.IntFilter<"staff"> | number
   last_name?: Prisma.StringFilter<"staff"> | string
   first_name?: Prisma.StringFilter<"staff"> | string
+  badge_number?: Prisma.IntFilter<"staff"> | number
   staff_accidents?: Prisma.Staff_accidentsListRelationFilter
 }
 
@@ -206,6 +218,7 @@ export type staffOrderByWithRelationInput = {
   employee_id?: Prisma.SortOrder
   last_name?: Prisma.SortOrder
   first_name?: Prisma.SortOrder
+  badge_number?: Prisma.SortOrder
   staff_accidents?: Prisma.staff_accidentsOrderByRelationAggregateInput
   _relevance?: Prisma.staffOrderByRelevanceInput
 }
@@ -217,6 +230,7 @@ export type staffWhereUniqueInput = Prisma.AtLeast<{
   NOT?: Prisma.staffWhereInput | Prisma.staffWhereInput[]
   last_name?: Prisma.StringFilter<"staff"> | string
   first_name?: Prisma.StringFilter<"staff"> | string
+  badge_number?: Prisma.IntFilter<"staff"> | number
   staff_accidents?: Prisma.Staff_accidentsListRelationFilter
 }, "employee_id">
 
@@ -224,6 +238,7 @@ export type staffOrderByWithAggregationInput = {
   employee_id?: Prisma.SortOrder
   last_name?: Prisma.SortOrder
   first_name?: Prisma.SortOrder
+  badge_number?: Prisma.SortOrder
   _count?: Prisma.staffCountOrderByAggregateInput
   _avg?: Prisma.staffAvgOrderByAggregateInput
   _max?: Prisma.staffMaxOrderByAggregateInput
@@ -238,12 +253,14 @@ export type staffScalarWhereWithAggregatesInput = {
   employee_id?: Prisma.IntWithAggregatesFilter<"staff"> | number
   last_name?: Prisma.StringWithAggregatesFilter<"staff"> | string
   first_name?: Prisma.StringWithAggregatesFilter<"staff"> | string
+  badge_number?: Prisma.IntWithAggregatesFilter<"staff"> | number
 }
 
 export type staffCreateInput = {
   employee_id: number
   last_name: string
   first_name: string
+  badge_number: number
   staff_accidents?: Prisma.staff_accidentsCreateNestedManyWithoutStaffInput
 }
 
@@ -251,6 +268,7 @@ export type staffUncheckedCreateInput = {
   employee_id: number
   last_name: string
   first_name: string
+  badge_number: number
   staff_accidents?: Prisma.staff_accidentsUncheckedCreateNestedManyWithoutStaffInput
 }
 
@@ -258,6 +276,7 @@ export type staffUpdateInput = {
   employee_id?: Prisma.IntFieldUpdateOperationsInput | number
   last_name?: Prisma.StringFieldUpdateOperationsInput | string
   first_name?: Prisma.StringFieldUpdateOperationsInput | string
+  badge_number?: Prisma.IntFieldUpdateOperationsInput | number
   staff_accidents?: Prisma.staff_accidentsUpdateManyWithoutStaffNestedInput
 }
 
@@ -265,6 +284,7 @@ export type staffUncheckedUpdateInput = {
   employee_id?: Prisma.IntFieldUpdateOperationsInput | number
   last_name?: Prisma.StringFieldUpdateOperationsInput | string
   first_name?: Prisma.StringFieldUpdateOperationsInput | string
+  badge_number?: Prisma.IntFieldUpdateOperationsInput | number
   staff_accidents?: Prisma.staff_accidentsUncheckedUpdateManyWithoutStaffNestedInput
 }
 
@@ -272,18 +292,21 @@ export type staffCreateManyInput = {
   employee_id: number
   last_name: string
   first_name: string
+  badge_number: number
 }
 
 export type staffUpdateManyMutationInput = {
   employee_id?: Prisma.IntFieldUpdateOperationsInput | number
   last_name?: Prisma.StringFieldUpdateOperationsInput | string
   first_name?: Prisma.StringFieldUpdateOperationsInput | string
+  badge_number?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
 export type staffUncheckedUpdateManyInput = {
   employee_id?: Prisma.IntFieldUpdateOperationsInput | number
   last_name?: Prisma.StringFieldUpdateOperationsInput | string
   first_name?: Prisma.StringFieldUpdateOperationsInput | string
+  badge_number?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
 export type staffOrderByRelevanceInput = {
@@ -296,26 +319,31 @@ export type staffCountOrderByAggregateInput = {
   employee_id?: Prisma.SortOrder
   last_name?: Prisma.SortOrder
   first_name?: Prisma.SortOrder
+  badge_number?: Prisma.SortOrder
 }
 
 export type staffAvgOrderByAggregateInput = {
   employee_id?: Prisma.SortOrder
+  badge_number?: Prisma.SortOrder
 }
 
 export type staffMaxOrderByAggregateInput = {
   employee_id?: Prisma.SortOrder
   last_name?: Prisma.SortOrder
   first_name?: Prisma.SortOrder
+  badge_number?: Prisma.SortOrder
 }
 
 export type staffMinOrderByAggregateInput = {
   employee_id?: Prisma.SortOrder
   last_name?: Prisma.SortOrder
   first_name?: Prisma.SortOrder
+  badge_number?: Prisma.SortOrder
 }
 
 export type staffSumOrderByAggregateInput = {
   employee_id?: Prisma.SortOrder
+  badge_number?: Prisma.SortOrder
 }
 
 export type StaffScalarRelationFilter = {
@@ -341,12 +369,14 @@ export type staffCreateWithoutStaff_accidentsInput = {
   employee_id: number
   last_name: string
   first_name: string
+  badge_number: number
 }
 
 export type staffUncheckedCreateWithoutStaff_accidentsInput = {
   employee_id: number
   last_name: string
   first_name: string
+  badge_number: number
 }
 
 export type staffCreateOrConnectWithoutStaff_accidentsInput = {
@@ -369,12 +399,14 @@ export type staffUpdateWithoutStaff_accidentsInput = {
   employee_id?: Prisma.IntFieldUpdateOperationsInput | number
   last_name?: Prisma.StringFieldUpdateOperationsInput | string
   first_name?: Prisma.StringFieldUpdateOperationsInput | string
+  badge_number?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
 export type staffUncheckedUpdateWithoutStaff_accidentsInput = {
   employee_id?: Prisma.IntFieldUpdateOperationsInput | number
   last_name?: Prisma.StringFieldUpdateOperationsInput | string
   first_name?: Prisma.StringFieldUpdateOperationsInput | string
+  badge_number?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
 
@@ -412,6 +444,7 @@ export type staffSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   employee_id?: boolean
   last_name?: boolean
   first_name?: boolean
+  badge_number?: boolean
   staff_accidents?: boolean | Prisma.staff$staff_accidentsArgs<ExtArgs>
   _count?: boolean | Prisma.StaffCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["staff"]>
@@ -422,9 +455,10 @@ export type staffSelectScalar = {
   employee_id?: boolean
   last_name?: boolean
   first_name?: boolean
+  badge_number?: boolean
 }
 
-export type staffOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"employee_id" | "last_name" | "first_name", ExtArgs["result"]["staff"]>
+export type staffOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"employee_id" | "last_name" | "first_name" | "badge_number", ExtArgs["result"]["staff"]>
 export type staffInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   staff_accidents?: boolean | Prisma.staff$staff_accidentsArgs<ExtArgs>
   _count?: boolean | Prisma.StaffCountOutputTypeDefaultArgs<ExtArgs>
@@ -439,6 +473,7 @@ export type $staffPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs 
     employee_id: number
     last_name: string
     first_name: string
+    badge_number: number
   }, ExtArgs["result"]["staff"]>
   composites: {}
 }
@@ -812,6 +847,7 @@ export interface staffFieldRefs {
   readonly employee_id: Prisma.FieldRef<"staff", 'Int'>
   readonly last_name: Prisma.FieldRef<"staff", 'String'>
   readonly first_name: Prisma.FieldRef<"staff", 'String'>
+  readonly badge_number: Prisma.FieldRef<"staff", 'Int'>
 }
     
 

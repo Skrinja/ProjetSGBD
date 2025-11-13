@@ -116,6 +116,7 @@ model staff {
   employee_id     Int               @id
   last_name       String            @db.VarChar(100)
   first_name      String            @db.VarChar(100)
+  badge_number    Int
   staff_accidents staff_accidents[]
 }
 

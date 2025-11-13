@@ -1285,7 +1285,8 @@ export type Service_addressesScalarFieldEnum = (typeof Service_addressesScalarFi
 export const StaffScalarFieldEnum = {
   employee_id: 'employee_id',
   last_name: 'last_name',
-  first_name: 'first_name'
+  first_name: 'first_name',
+  badge_number: 'badge_number'
 } as const
 
 export type StaffScalarFieldEnum = (typeof StaffScalarFieldEnum)[keyof typeof StaffScalarFieldEnum]

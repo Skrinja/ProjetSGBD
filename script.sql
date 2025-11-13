@@ -55,6 +55,7 @@ CREATE TABLE Providers (
 
 CREATE TABLE Staff (
     employee_id INT PRIMARY KEY,
+    badge_number VARCHAR(50) UNIQUE NOT NULL,
     last_name VARCHAR(100) NOT NULL,
     first_name VARCHAR(100) NOT NULL
 ) ENGINE=InnoDB;
