@@ -1,6 +1,6 @@
 <template>
     <GoBackButton/>
-    <h2 v-if="!vinParam">Ajouter un Nouveau Véhicule</h2>
+    <h2 v-if="!idParam">Ajouter un Nouveau Véhicule</h2>
     <h2 v-else>Modifier le Véhicule {{ numVehicle }}</h2>
     <form @submit.prevent="handleSubmit">
         <div>
@@ -128,18 +128,18 @@ const decommissioned = ref(false);
 
 const router = useRouter();
 const route = useRoute();
-const vinParam = ref(route.params.vin as string);
+const idParam = ref(Number(route.params.id)); // On récupère le paramètre id de la route et on le convertit en nombre
 
 const fuelTypes = ref(Object.values(FuelType));
 const licenseTypes = ref(Object.values(LicenseType));
 const vehicleConfigurations = ref(Object.values(VehicleConfiguration));
-const { addVehicle, updateVehicle, getVehicleByVin } = useVehicleService();
+const { addVehicle, updateVehicle, getVehicleById } = useVehicleService();
 const { successMessage, errorMessage, setMessage } = useSetMessageService();
 
 
 onMounted(async () => {
-    if (vinParam.value) {
-        const vehicle = await getVehicleByVin(vinParam.value);
+    if (idParam.value) {
+        const vehicle = await getVehicleById(idParam.value);
         if (vehicle) {
             vin.value = vehicle.vin;
             numPlate.value = vehicle.numPlate;
@@ -195,6 +195,7 @@ const handleSubmit = async () => {
     }
 
     const vehicleData = {
+            id: Number(idParam.value) || undefined,
             vin: vin.value,
             numPlate: numPlate.value,
             numVehicle: numVehicle.value,
@@ -218,9 +219,9 @@ const handleSubmit = async () => {
         };
 
     try {
-        if (vinParam.value) {
+        if (idParam.value) {
             await updateVehicle(vehicleData);
-            router.push(`/vehicle/${vinParam.value}`);
+            router.push(`/vehicle/${idParam.value}`);
         } else {
             await addVehicle(vehicleData);
             setMessage('success', 'Véhicule ajouté avec succès.');

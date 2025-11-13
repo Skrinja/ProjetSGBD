@@ -3,7 +3,7 @@
     <router-link to="/vehicle/add">
         <button>Ajouter un véhicule</button>
     </router-link>
-    <BaseCard class="vehicle" v-for="vehicle in vehicles" :key="vehicle.vin" @click="goToDetails(vehicle.vin)">
+    <BaseCard class="vehicle" v-for="vehicle in vehicles" :key="vehicle.id" @click="goToDetails(vehicle.id)">
         <span>VRM : {{ vehicle.numVehicle }}</span>
         <span>Plaque : {{ vehicle.numPlate }}</span>
     </BaseCard>
@@ -17,11 +17,11 @@ import BaseCard from '../components/BaseCard.vue';
 import { useRouter } from 'vue-router';
 import GoBackButton from '../components/GoBackButton.vue';
 
-const { vehicles, getAllVehicles, deleteVehicle } = useVehicleService();
+const { vehicles, getAllVehicles } = useVehicleService();
 const router = useRouter();
 
-const goToDetails = (vin:string) => {
-    router.push(`/vehicle/${vin}`)
+const goToDetails = (id: number) => {
+    router.push(`/vehicle/${id}`)
 }
 
 onMounted(async () =>{

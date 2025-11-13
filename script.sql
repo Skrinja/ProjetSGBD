@@ -1,14 +1,17 @@
 -- #################################################################
--- # DATABASE CREATION SCRIPT FOR FLEET_MANAGEMENT
--- # (Tables and Triggers only)
+-- # SCRIPT DE CRÉATION ET D'INSERTION COMPLET
+-- # (Corrigé pour utiliser 'id' comme PK et 'Banalis_')
 -- #################################################################
 
+-- 0. Nettoyage et Création de la DB
+DROP DATABASE IF EXISTS fleet_management;
 CREATE DATABASE IF NOT EXISTS fleet_management
 CHARACTER SET utf8mb4
 COLLATE utf8mb4_unicode_ci;
 
 USE fleet_management;
 
+SET FOREIGN_KEY_CHECKS=0; -- Désactivation temporaire pour la création
 
 -- =================================================================
 -- 1. BASE TABLES CREATION
@@ -83,7 +86,8 @@ CREATE TABLE Accidents (
 -- =================================================================
 
 CREATE TABLE Vehicles (
-    vin VARCHAR(50) PRIMARY KEY COMMENT 'Vehicle Identification Number',
+    id INT AUTO_INCREMENT PRIMARY KEY, -- <<< MODIFIÉ : Nouvelle Clé Primaire
+    vin VARCHAR(50) NOT NULL UNIQUE COMMENT 'Vehicle Identification Number', -- <<< MODIFIÉ : N''est plus PK, mais est UNIQUE
     vehicle_number INT NOT NULL UNIQUE,
     license_plate VARCHAR(20) NOT NULL UNIQUE,
     brand VARCHAR(50) NOT NULL,
@@ -91,7 +95,10 @@ CREATE TABLE Vehicles (
     manufacture_date DATE NOT NULL,
     fuel_type ENUM('Essence', 'Diesel', 'Hybride', 'Electrique') NOT NULL,
     license_type ENUM('AM', 'A1', 'A2', 'A', 'B', 'C1', 'C', 'D1', 'D', 'E') NOT NULL,
-    vehicle_configuration ENUM('Stripping', 'Battenburg', 'Banalisé', 'Civil') NOT NULL,
+    
+    -- <<< CORRIGÉ ICI : L'ENUM doit être 'Banalis_' pour correspondre au schema.prisma
+    vehicle_configuration ENUM('Stripping', 'Battenburg', 'Banalis_', 'Civil') NOT NULL,
+    
     technical_inspection_expiry_date DATE NOT NULL,
     tire_size VARCHAR(50),
     insurance_number VARCHAR(75),
@@ -137,12 +144,12 @@ CREATE TABLE Interventions (
     garage_entry_date DATETIME,
     garage_exit_date DATETIME,
     intervention_completed BOOLEAN DEFAULT FALSE,
-    vehicle_vin VARCHAR(50) NOT NULL,
+    vehicle_id INT NOT NULL, -- <<< MODIFIÉ (remplace vehicle_vin)
     user_id VARCHAR(36) NOT NULL,
     accident_id INT NULL,
     provider_id INT NOT NULL,
     documents JSON,
-    FOREIGN KEY (vehicle_vin) REFERENCES Vehicles(vin) ON DELETE RESTRICT ON UPDATE CASCADE,
+    FOREIGN KEY (vehicle_id) REFERENCES Vehicles(id) ON DELETE RESTRICT ON UPDATE CASCADE, -- <<< MODIFIÉ (pointe vers Vehicles.id)
     FOREIGN KEY (user_id) REFERENCES Users(user_id) ON DELETE RESTRICT ON UPDATE CASCADE,
     FOREIGN KEY (accident_id) REFERENCES Accidents(accident_id) ON DELETE SET NULL ON UPDATE CASCADE,
     FOREIGN KEY (provider_id) REFERENCES Providers(provider_id) ON DELETE RESTRICT ON UPDATE CASCADE
@@ -159,15 +166,14 @@ CREATE TABLE Invoices (
     FOREIGN KEY (intervention_id) REFERENCES Interventions(intervention_id) ON DELETE RESTRICT ON UPDATE CASCADE
 ) ENGINE=InnoDB;
 
+SET FOREIGN_KEY_CHECKS=1; -- Réactivation des vérifications
 
 -- =================================================================
 -- 3. TRIGGERS CREATION
--- (Requires DELIMITER as it contains internal semicolons)
 -- =================================================================
 
 DELIMITER //
 
--- Trigger 1A: Normalize License Plate BEFORE INSERT
 CREATE TRIGGER before_vehicle_insert_normalize_plate
 BEFORE INSERT ON Vehicles
 FOR EACH ROW
@@ -179,7 +185,6 @@ BEGIN
 END;
 //
 
--- Trigger 1B: Normalize License Plate BEFORE UPDATE
 CREATE TRIGGER before_vehicle_update_normalize_plate
 BEFORE UPDATE ON Vehicles
 FOR EACH ROW
@@ -191,12 +196,10 @@ BEGIN
 END;
 //
 
--- Trigger 2: Automatic update of Repair status
 CREATE TRIGGER after_intervention_update_update_accident
 AFTER UPDATE ON Interventions
 FOR EACH ROW
 BEGIN
-    -- Updates repair_completed to TRUE if the intervention was just finished AND it was linked to an accident.
     IF NEW.intervention_completed = TRUE AND OLD.intervention_completed = FALSE AND NEW.accident_id IS NOT NULL THEN
         UPDATE Accidents
         SET repair_completed = TRUE

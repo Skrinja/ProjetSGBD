@@ -1,6 +1,7 @@
 import * as vehicleEnum from "./enums/vehicleEnum";
 
 export default interface Vehicle {
+    id: number;
     vin: string;
     numPlate: string;
     numVehicle: number;

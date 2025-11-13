@@ -46,16 +46,6 @@ export const accidents_accident_type = {
 export type accidents_accident_type = (typeof accidents_accident_type)[keyof typeof accidents_accident_type]
 
 
-export const vehicles_vehicle_configuration = {
-  Stripping: 'Stripping',
-  Battenburg: 'Battenburg',
-  Banalis_: 'Banalis_',
-  Civil: 'Civil'
-} as const
-
-export type vehicles_vehicle_configuration = (typeof vehicles_vehicle_configuration)[keyof typeof vehicles_vehicle_configuration]
-
-
 export const interventions_intervention_type = {
   Pneu: 'Pneu',
   R_paration_sous_contrat: 'R_paration_sous_contrat',
@@ -75,3 +65,13 @@ export const staff_accidents_accident_role = {
 } as const
 
 export type staff_accidents_accident_role = (typeof staff_accidents_accident_role)[keyof typeof staff_accidents_accident_role]
+
+
+export const vehicles_vehicle_configuration = {
+  Stripping: 'Stripping',
+  Battenburg: 'Battenburg',
+  Banalis_: 'Banalis_',
+  Civil: 'Civil'
+} as const
+
+export type vehicles_vehicle_configuration = (typeof vehicles_vehicle_configuration)[keyof typeof vehicles_vehicle_configuration]

@@ -13,12 +13,12 @@ export default function useVehicleService() {
         await getAllVehicles();
     }
 
-    const getVehicleByVin = async (vin: string) => {
-        return await (window as any).electronService.vehicle.getVehicleByVin(vin);
+    const getVehicleById = async (id: number) => {
+        return await (window as any).electronService.vehicle.getVehicleById(id);
     }
 
-    const deleteVehicle = async (vin: string) => {
-        await (window as any).electronService.vehicle.deleteVehicle(vin);
+    const deleteVehicle = async (id: number) => {
+        await (window as any).electronService.vehicle.deleteVehicle(id);
         await getAllVehicles();
     }
 
@@ -30,7 +30,7 @@ export default function useVehicleService() {
     return {
         vehicles,
         getAllVehicles,
-        getVehicleByVin,
+        getVehicleById,
         addVehicle,
         deleteVehicle,
         updateVehicle,

@@ -6,8 +6,8 @@ export function vehicleService(): IVehicleService {
     return {
         getAllVehicles: () => ipcRenderer.invoke('vehicleRepo:getAll'),
         addVehicle: (vehicle: Vehicle) => ipcRenderer.invoke('vehicleRepo:addVehicle', vehicle),
-        getVehicleByVin: (vin: string) => ipcRenderer.invoke('vehicleRepo:getByVin', vin),
-        deleteVehicle: (vin: string) => ipcRenderer.invoke('vehicleRepo:deleteVehicle', vin),
+        getVehicleById: (id: number) => ipcRenderer.invoke('vehicleRepo:getById', id),
+        deleteVehicle: (id: number) => ipcRenderer.invoke('vehicleRepo:deleteVehicle', id),
         updateVehicle: (vehicle: Vehicle) => ipcRenderer.invoke('vehicleRepo:updateVehicle', vehicle),
     }
 }

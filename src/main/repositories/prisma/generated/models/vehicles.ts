@@ -26,18 +26,21 @@ export type AggregateVehicles = {
 }
 
 export type VehiclesAvgAggregateOutputType = {
+  id: number | null
   vehicle_number: number | null
   maintenance_contract_end_km: number | null
   department_id: number | null
 }
 
 export type VehiclesSumAggregateOutputType = {
+  id: number | null
   vehicle_number: number | null
   maintenance_contract_end_km: number | null
   department_id: number | null
 }
 
 export type VehiclesMinAggregateOutputType = {
+  id: number | null
   vin: string | null
   vehicle_number: number | null
   license_plate: string | null
@@ -61,6 +64,7 @@ export type VehiclesMinAggregateOutputType = {
 }
 
 export type VehiclesMaxAggregateOutputType = {
+  id: number | null
   vin: string | null
   vehicle_number: number | null
   license_plate: string | null
@@ -84,6 +88,7 @@ export type VehiclesMaxAggregateOutputType = {
 }
 
 export type VehiclesCountAggregateOutputType = {
+  id: number
   vin: number
   vehicle_number: number
   license_plate: number
@@ -110,18 +115,21 @@ export type VehiclesCountAggregateOutputType = {
 
 
 export type VehiclesAvgAggregateInputType = {
+  id?: true
   vehicle_number?: true
   maintenance_contract_end_km?: true
   department_id?: true
 }
 
 export type VehiclesSumAggregateInputType = {
+  id?: true
   vehicle_number?: true
   maintenance_contract_end_km?: true
   department_id?: true
 }
 
 export type VehiclesMinAggregateInputType = {
+  id?: true
   vin?: true
   vehicle_number?: true
   license_plate?: true
@@ -145,6 +153,7 @@ export type VehiclesMinAggregateInputType = {
 }
 
 export type VehiclesMaxAggregateInputType = {
+  id?: true
   vin?: true
   vehicle_number?: true
   license_plate?: true
@@ -168,6 +177,7 @@ export type VehiclesMaxAggregateInputType = {
 }
 
 export type VehiclesCountAggregateInputType = {
+  id?: true
   vin?: true
   vehicle_number?: true
   license_plate?: true
@@ -279,6 +289,7 @@ export type vehiclesGroupByArgs<ExtArgs extends runtime.Types.Extensions.Interna
 }
 
 export type VehiclesGroupByOutputType = {
+  id: number
   vin: string
   vehicle_number: number
   license_plate: string
@@ -326,6 +337,7 @@ export type vehiclesWhereInput = {
   AND?: Prisma.vehiclesWhereInput | Prisma.vehiclesWhereInput[]
   OR?: Prisma.vehiclesWhereInput[]
   NOT?: Prisma.vehiclesWhereInput | Prisma.vehiclesWhereInput[]
+  id?: Prisma.IntFilter<"vehicles"> | number
   vin?: Prisma.StringFilter<"vehicles"> | string
   vehicle_number?: Prisma.IntFilter<"vehicles"> | number
   license_plate?: Prisma.StringFilter<"vehicles"> | string
@@ -352,6 +364,7 @@ export type vehiclesWhereInput = {
 }
 
 export type vehiclesOrderByWithRelationInput = {
+  id?: Prisma.SortOrder
   vin?: Prisma.SortOrder
   vehicle_number?: Prisma.SortOrder
   license_plate?: Prisma.SortOrder
@@ -379,6 +392,7 @@ export type vehiclesOrderByWithRelationInput = {
 }
 
 export type vehiclesWhereUniqueInput = Prisma.AtLeast<{
+  id?: number
   vin?: string
   vehicle_number?: number
   license_plate?: string
@@ -405,9 +419,10 @@ export type vehiclesWhereUniqueInput = Prisma.AtLeast<{
   department_id?: Prisma.IntFilter<"vehicles"> | number
   interventions?: Prisma.InterventionsListRelationFilter
   departments?: Prisma.XOR<Prisma.DepartmentsScalarRelationFilter, Prisma.departmentsWhereInput>
-}, "vin" | "vehicle_number" | "license_plate">
+}, "id" | "vin" | "vehicle_number" | "license_plate">
 
 export type vehiclesOrderByWithAggregationInput = {
+  id?: Prisma.SortOrder
   vin?: Prisma.SortOrder
   vehicle_number?: Prisma.SortOrder
   license_plate?: Prisma.SortOrder
@@ -440,6 +455,7 @@ export type vehiclesScalarWhereWithAggregatesInput = {
   AND?: Prisma.vehiclesScalarWhereWithAggregatesInput | Prisma.vehiclesScalarWhereWithAggregatesInput[]
   OR?: Prisma.vehiclesScalarWhereWithAggregatesInput[]
   NOT?: Prisma.vehiclesScalarWhereWithAggregatesInput | Prisma.vehiclesScalarWhereWithAggregatesInput[]
+  id?: Prisma.IntWithAggregatesFilter<"vehicles"> | number
   vin?: Prisma.StringWithAggregatesFilter<"vehicles"> | string
   vehicle_number?: Prisma.IntWithAggregatesFilter<"vehicles"> | number
   license_plate?: Prisma.StringWithAggregatesFilter<"vehicles"> | string
@@ -489,6 +505,7 @@ export type vehiclesCreateInput = {
 }
 
 export type vehiclesUncheckedCreateInput = {
+  id?: number
   vin: string
   vehicle_number: number
   license_plate: string
@@ -539,6 +556,7 @@ export type vehiclesUpdateInput = {
 }
 
 export type vehiclesUncheckedUpdateInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
   vin?: Prisma.StringFieldUpdateOperationsInput | string
   vehicle_number?: Prisma.IntFieldUpdateOperationsInput | number
   license_plate?: Prisma.StringFieldUpdateOperationsInput | string
@@ -564,6 +582,7 @@ export type vehiclesUncheckedUpdateInput = {
 }
 
 export type vehiclesCreateManyInput = {
+  id?: number
   vin: string
   vehicle_number: number
   license_plate: string
@@ -611,6 +630,7 @@ export type vehiclesUpdateManyMutationInput = {
 }
 
 export type vehiclesUncheckedUpdateManyInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
   vin?: Prisma.StringFieldUpdateOperationsInput | string
   vehicle_number?: Prisma.IntFieldUpdateOperationsInput | number
   license_plate?: Prisma.StringFieldUpdateOperationsInput | string
@@ -656,6 +676,7 @@ export type vehiclesOrderByRelevanceInput = {
 }
 
 export type vehiclesCountOrderByAggregateInput = {
+  id?: Prisma.SortOrder
   vin?: Prisma.SortOrder
   vehicle_number?: Prisma.SortOrder
   license_plate?: Prisma.SortOrder
@@ -680,12 +701,14 @@ export type vehiclesCountOrderByAggregateInput = {
 }
 
 export type vehiclesAvgOrderByAggregateInput = {
+  id?: Prisma.SortOrder
   vehicle_number?: Prisma.SortOrder
   maintenance_contract_end_km?: Prisma.SortOrder
   department_id?: Prisma.SortOrder
 }
 
 export type vehiclesMaxOrderByAggregateInput = {
+  id?: Prisma.SortOrder
   vin?: Prisma.SortOrder
   vehicle_number?: Prisma.SortOrder
   license_plate?: Prisma.SortOrder
@@ -709,6 +732,7 @@ export type vehiclesMaxOrderByAggregateInput = {
 }
 
 export type vehiclesMinOrderByAggregateInput = {
+  id?: Prisma.SortOrder
   vin?: Prisma.SortOrder
   vehicle_number?: Prisma.SortOrder
   license_plate?: Prisma.SortOrder
@@ -732,6 +756,7 @@ export type vehiclesMinOrderByAggregateInput = {
 }
 
 export type vehiclesSumOrderByAggregateInput = {
+  id?: Prisma.SortOrder
   vehicle_number?: Prisma.SortOrder
   maintenance_contract_end_km?: Prisma.SortOrder
   department_id?: Prisma.SortOrder
@@ -830,6 +855,7 @@ export type vehiclesCreateWithoutDepartmentsInput = {
 }
 
 export type vehiclesUncheckedCreateWithoutDepartmentsInput = {
+  id?: number
   vin: string
   vehicle_number: number
   license_plate: string
@@ -883,6 +909,7 @@ export type vehiclesScalarWhereInput = {
   AND?: Prisma.vehiclesScalarWhereInput | Prisma.vehiclesScalarWhereInput[]
   OR?: Prisma.vehiclesScalarWhereInput[]
   NOT?: Prisma.vehiclesScalarWhereInput | Prisma.vehiclesScalarWhereInput[]
+  id?: Prisma.IntFilter<"vehicles"> | number
   vin?: Prisma.StringFilter<"vehicles"> | string
   vehicle_number?: Prisma.IntFilter<"vehicles"> | number
   license_plate?: Prisma.StringFilter<"vehicles"> | string
@@ -931,6 +958,7 @@ export type vehiclesCreateWithoutInterventionsInput = {
 }
 
 export type vehiclesUncheckedCreateWithoutInterventionsInput = {
+  id?: number
   vin: string
   vehicle_number: number
   license_plate: string
@@ -995,6 +1023,7 @@ export type vehiclesUpdateWithoutInterventionsInput = {
 }
 
 export type vehiclesUncheckedUpdateWithoutInterventionsInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
   vin?: Prisma.StringFieldUpdateOperationsInput | string
   vehicle_number?: Prisma.IntFieldUpdateOperationsInput | number
   license_plate?: Prisma.StringFieldUpdateOperationsInput | string
@@ -1019,6 +1048,7 @@ export type vehiclesUncheckedUpdateWithoutInterventionsInput = {
 }
 
 export type vehiclesCreateManyDepartmentsInput = {
+  id?: number
   vin: string
   vehicle_number: number
   license_plate: string
@@ -1066,6 +1096,7 @@ export type vehiclesUpdateWithoutDepartmentsInput = {
 }
 
 export type vehiclesUncheckedUpdateWithoutDepartmentsInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
   vin?: Prisma.StringFieldUpdateOperationsInput | string
   vehicle_number?: Prisma.IntFieldUpdateOperationsInput | number
   license_plate?: Prisma.StringFieldUpdateOperationsInput | string
@@ -1090,6 +1121,7 @@ export type vehiclesUncheckedUpdateWithoutDepartmentsInput = {
 }
 
 export type vehiclesUncheckedUpdateManyWithoutDepartmentsInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
   vin?: Prisma.StringFieldUpdateOperationsInput | string
   vehicle_number?: Prisma.IntFieldUpdateOperationsInput | number
   license_plate?: Prisma.StringFieldUpdateOperationsInput | string
@@ -1144,6 +1176,7 @@ export type VehiclesCountOutputTypeCountInterventionsArgs<ExtArgs extends runtim
 
 
 export type vehiclesSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
+  id?: boolean
   vin?: boolean
   vehicle_number?: boolean
   license_plate?: boolean
@@ -1173,6 +1206,7 @@ export type vehiclesSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs
 
 
 export type vehiclesSelectScalar = {
+  id?: boolean
   vin?: boolean
   vehicle_number?: boolean
   license_plate?: boolean
@@ -1196,7 +1230,7 @@ export type vehiclesSelectScalar = {
   department_id?: boolean
 }
 
-export type vehiclesOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"vin" | "vehicle_number" | "license_plate" | "brand" | "model" | "manufacture_date" | "fuel_type" | "license_type" | "vehicle_configuration" | "technical_inspection_expiry_date" | "tire_size" | "insurance_number" | "omnium" | "maintenance_contract" | "maintenance_contract_end_km" | "maintenance_contract_end_date" | "maintenance_contract_number" | "decommissioned_vehicle" | "other_info" | "documents" | "department_id", ExtArgs["result"]["vehicles"]>
+export type vehiclesOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "vin" | "vehicle_number" | "license_plate" | "brand" | "model" | "manufacture_date" | "fuel_type" | "license_type" | "vehicle_configuration" | "technical_inspection_expiry_date" | "tire_size" | "insurance_number" | "omnium" | "maintenance_contract" | "maintenance_contract_end_km" | "maintenance_contract_end_date" | "maintenance_contract_number" | "decommissioned_vehicle" | "other_info" | "documents" | "department_id", ExtArgs["result"]["vehicles"]>
 export type vehiclesInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   interventions?: boolean | Prisma.vehicles$interventionsArgs<ExtArgs>
   departments?: boolean | Prisma.departmentsDefaultArgs<ExtArgs>
@@ -1210,6 +1244,7 @@ export type $vehiclesPayload<ExtArgs extends runtime.Types.Extensions.InternalAr
     departments: Prisma.$departmentsPayload<ExtArgs>
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
+    id: number
     vin: string
     vehicle_number: number
     license_plate: string
@@ -1314,8 +1349,8 @@ export interface vehiclesDelegate<ExtArgs extends runtime.Types.Extensions.Inter
    * // Get first 10 Vehicles
    * const vehicles = await prisma.vehicles.findMany({ take: 10 })
    * 
-   * // Only select the `vin`
-   * const vehiclesWithVinOnly = await prisma.vehicles.findMany({ select: { vin: true } })
+   * // Only select the `id`
+   * const vehiclesWithIdOnly = await prisma.vehicles.findMany({ select: { id: true } })
    * 
    */
   findMany<T extends vehiclesFindManyArgs>(args?: Prisma.SelectSubset<T, vehiclesFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$vehiclesPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
@@ -1602,6 +1637,7 @@ export interface Prisma__vehiclesClient<T, Null = never, ExtArgs extends runtime
  * Fields of the vehicles model
  */
 export interface vehiclesFieldRefs {
+  readonly id: Prisma.FieldRef<"vehicles", 'Int'>
   readonly vin: Prisma.FieldRef<"vehicles", 'String'>
   readonly vehicle_number: Prisma.FieldRef<"vehicles", 'Int'>
   readonly license_plate: Prisma.FieldRef<"vehicles", 'String'>

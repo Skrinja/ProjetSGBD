@@ -27,12 +27,14 @@ export type AggregateInterventions = {
 
 export type InterventionsAvgAggregateOutputType = {
   intervention_id: number | null
+  vehicle_id: number | null
   accident_id: number | null
   provider_id: number | null
 }
 
 export type InterventionsSumAggregateOutputType = {
   intervention_id: number | null
+  vehicle_id: number | null
   accident_id: number | null
   provider_id: number | null
 }
@@ -45,7 +47,7 @@ export type InterventionsMinAggregateOutputType = {
   garage_entry_date: Date | null
   garage_exit_date: Date | null
   intervention_completed: boolean | null
-  vehicle_vin: string | null
+  vehicle_id: number | null
   user_id: string | null
   accident_id: number | null
   provider_id: number | null
@@ -59,7 +61,7 @@ export type InterventionsMaxAggregateOutputType = {
   garage_entry_date: Date | null
   garage_exit_date: Date | null
   intervention_completed: boolean | null
-  vehicle_vin: string | null
+  vehicle_id: number | null
   user_id: string | null
   accident_id: number | null
   provider_id: number | null
@@ -73,7 +75,7 @@ export type InterventionsCountAggregateOutputType = {
   garage_entry_date: number
   garage_exit_date: number
   intervention_completed: number
-  vehicle_vin: number
+  vehicle_id: number
   user_id: number
   accident_id: number
   provider_id: number
@@ -84,12 +86,14 @@ export type InterventionsCountAggregateOutputType = {
 
 export type InterventionsAvgAggregateInputType = {
   intervention_id?: true
+  vehicle_id?: true
   accident_id?: true
   provider_id?: true
 }
 
 export type InterventionsSumAggregateInputType = {
   intervention_id?: true
+  vehicle_id?: true
   accident_id?: true
   provider_id?: true
 }
@@ -102,7 +106,7 @@ export type InterventionsMinAggregateInputType = {
   garage_entry_date?: true
   garage_exit_date?: true
   intervention_completed?: true
-  vehicle_vin?: true
+  vehicle_id?: true
   user_id?: true
   accident_id?: true
   provider_id?: true
@@ -116,7 +120,7 @@ export type InterventionsMaxAggregateInputType = {
   garage_entry_date?: true
   garage_exit_date?: true
   intervention_completed?: true
-  vehicle_vin?: true
+  vehicle_id?: true
   user_id?: true
   accident_id?: true
   provider_id?: true
@@ -130,7 +134,7 @@ export type InterventionsCountAggregateInputType = {
   garage_entry_date?: true
   garage_exit_date?: true
   intervention_completed?: true
-  vehicle_vin?: true
+  vehicle_id?: true
   user_id?: true
   accident_id?: true
   provider_id?: true
@@ -232,7 +236,7 @@ export type InterventionsGroupByOutputType = {
   garage_entry_date: Date | null
   garage_exit_date: Date | null
   intervention_completed: boolean | null
-  vehicle_vin: string
+  vehicle_id: number
   user_id: string
   accident_id: number | null
   provider_id: number
@@ -270,7 +274,7 @@ export type interventionsWhereInput = {
   garage_entry_date?: Prisma.DateTimeNullableFilter<"interventions"> | Date | string | null
   garage_exit_date?: Prisma.DateTimeNullableFilter<"interventions"> | Date | string | null
   intervention_completed?: Prisma.BoolNullableFilter<"interventions"> | boolean | null
-  vehicle_vin?: Prisma.StringFilter<"interventions"> | string
+  vehicle_id?: Prisma.IntFilter<"interventions"> | number
   user_id?: Prisma.StringFilter<"interventions"> | string
   accident_id?: Prisma.IntNullableFilter<"interventions"> | number | null
   provider_id?: Prisma.IntFilter<"interventions"> | number
@@ -290,7 +294,7 @@ export type interventionsOrderByWithRelationInput = {
   garage_entry_date?: Prisma.SortOrderInput | Prisma.SortOrder
   garage_exit_date?: Prisma.SortOrderInput | Prisma.SortOrder
   intervention_completed?: Prisma.SortOrderInput | Prisma.SortOrder
-  vehicle_vin?: Prisma.SortOrder
+  vehicle_id?: Prisma.SortOrder
   user_id?: Prisma.SortOrder
   accident_id?: Prisma.SortOrderInput | Prisma.SortOrder
   provider_id?: Prisma.SortOrder
@@ -314,7 +318,7 @@ export type interventionsWhereUniqueInput = Prisma.AtLeast<{
   garage_entry_date?: Prisma.DateTimeNullableFilter<"interventions"> | Date | string | null
   garage_exit_date?: Prisma.DateTimeNullableFilter<"interventions"> | Date | string | null
   intervention_completed?: Prisma.BoolNullableFilter<"interventions"> | boolean | null
-  vehicle_vin?: Prisma.StringFilter<"interventions"> | string
+  vehicle_id?: Prisma.IntFilter<"interventions"> | number
   user_id?: Prisma.StringFilter<"interventions"> | string
   accident_id?: Prisma.IntNullableFilter<"interventions"> | number | null
   provider_id?: Prisma.IntFilter<"interventions"> | number
@@ -334,7 +338,7 @@ export type interventionsOrderByWithAggregationInput = {
   garage_entry_date?: Prisma.SortOrderInput | Prisma.SortOrder
   garage_exit_date?: Prisma.SortOrderInput | Prisma.SortOrder
   intervention_completed?: Prisma.SortOrderInput | Prisma.SortOrder
-  vehicle_vin?: Prisma.SortOrder
+  vehicle_id?: Prisma.SortOrder
   user_id?: Prisma.SortOrder
   accident_id?: Prisma.SortOrderInput | Prisma.SortOrder
   provider_id?: Prisma.SortOrder
@@ -357,7 +361,7 @@ export type interventionsScalarWhereWithAggregatesInput = {
   garage_entry_date?: Prisma.DateTimeNullableWithAggregatesFilter<"interventions"> | Date | string | null
   garage_exit_date?: Prisma.DateTimeNullableWithAggregatesFilter<"interventions"> | Date | string | null
   intervention_completed?: Prisma.BoolNullableWithAggregatesFilter<"interventions"> | boolean | null
-  vehicle_vin?: Prisma.StringWithAggregatesFilter<"interventions"> | string
+  vehicle_id?: Prisma.IntWithAggregatesFilter<"interventions"> | number
   user_id?: Prisma.StringWithAggregatesFilter<"interventions"> | string
   accident_id?: Prisma.IntNullableWithAggregatesFilter<"interventions"> | number | null
   provider_id?: Prisma.IntWithAggregatesFilter<"interventions"> | number
@@ -387,7 +391,7 @@ export type interventionsUncheckedCreateInput = {
   garage_entry_date?: Date | string | null
   garage_exit_date?: Date | string | null
   intervention_completed?: boolean | null
-  vehicle_vin: string
+  vehicle_id: number
   user_id: string
   accident_id?: number | null
   provider_id: number
@@ -418,7 +422,7 @@ export type interventionsUncheckedUpdateInput = {
   garage_entry_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   garage_exit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   intervention_completed?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
-  vehicle_vin?: Prisma.StringFieldUpdateOperationsInput | string
+  vehicle_id?: Prisma.IntFieldUpdateOperationsInput | number
   user_id?: Prisma.StringFieldUpdateOperationsInput | string
   accident_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   provider_id?: Prisma.IntFieldUpdateOperationsInput | number
@@ -434,7 +438,7 @@ export type interventionsCreateManyInput = {
   garage_entry_date?: Date | string | null
   garage_exit_date?: Date | string | null
   intervention_completed?: boolean | null
-  vehicle_vin: string
+  vehicle_id: number
   user_id: string
   accident_id?: number | null
   provider_id: number
@@ -459,7 +463,7 @@ export type interventionsUncheckedUpdateManyInput = {
   garage_entry_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   garage_exit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   intervention_completed?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
-  vehicle_vin?: Prisma.StringFieldUpdateOperationsInput | string
+  vehicle_id?: Prisma.IntFieldUpdateOperationsInput | number
   user_id?: Prisma.StringFieldUpdateOperationsInput | string
   accident_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   provider_id?: Prisma.IntFieldUpdateOperationsInput | number
@@ -490,7 +494,7 @@ export type interventionsCountOrderByAggregateInput = {
   garage_entry_date?: Prisma.SortOrder
   garage_exit_date?: Prisma.SortOrder
   intervention_completed?: Prisma.SortOrder
-  vehicle_vin?: Prisma.SortOrder
+  vehicle_id?: Prisma.SortOrder
   user_id?: Prisma.SortOrder
   accident_id?: Prisma.SortOrder
   provider_id?: Prisma.SortOrder
@@ -499,6 +503,7 @@ export type interventionsCountOrderByAggregateInput = {
 
 export type interventionsAvgOrderByAggregateInput = {
   intervention_id?: Prisma.SortOrder
+  vehicle_id?: Prisma.SortOrder
   accident_id?: Prisma.SortOrder
   provider_id?: Prisma.SortOrder
 }
@@ -511,7 +516,7 @@ export type interventionsMaxOrderByAggregateInput = {
   garage_entry_date?: Prisma.SortOrder
   garage_exit_date?: Prisma.SortOrder
   intervention_completed?: Prisma.SortOrder
-  vehicle_vin?: Prisma.SortOrder
+  vehicle_id?: Prisma.SortOrder
   user_id?: Prisma.SortOrder
   accident_id?: Prisma.SortOrder
   provider_id?: Prisma.SortOrder
@@ -525,7 +530,7 @@ export type interventionsMinOrderByAggregateInput = {
   garage_entry_date?: Prisma.SortOrder
   garage_exit_date?: Prisma.SortOrder
   intervention_completed?: Prisma.SortOrder
-  vehicle_vin?: Prisma.SortOrder
+  vehicle_id?: Prisma.SortOrder
   user_id?: Prisma.SortOrder
   accident_id?: Prisma.SortOrder
   provider_id?: Prisma.SortOrder
@@ -533,6 +538,7 @@ export type interventionsMinOrderByAggregateInput = {
 
 export type interventionsSumOrderByAggregateInput = {
   intervention_id?: Prisma.SortOrder
+  vehicle_id?: Prisma.SortOrder
   accident_id?: Prisma.SortOrder
   provider_id?: Prisma.SortOrder
 }
@@ -758,7 +764,7 @@ export type interventionsUncheckedCreateWithoutAccidentsInput = {
   garage_entry_date?: Date | string | null
   garage_exit_date?: Date | string | null
   intervention_completed?: boolean | null
-  vehicle_vin: string
+  vehicle_id: number
   user_id: string
   provider_id: number
   documents?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
@@ -802,7 +808,7 @@ export type interventionsScalarWhereInput = {
   garage_entry_date?: Prisma.DateTimeNullableFilter<"interventions"> | Date | string | null
   garage_exit_date?: Prisma.DateTimeNullableFilter<"interventions"> | Date | string | null
   intervention_completed?: Prisma.BoolNullableFilter<"interventions"> | boolean | null
-  vehicle_vin?: Prisma.StringFilter<"interventions"> | string
+  vehicle_id?: Prisma.IntFilter<"interventions"> | number
   user_id?: Prisma.StringFilter<"interventions"> | string
   accident_id?: Prisma.IntNullableFilter<"interventions"> | number | null
   provider_id?: Prisma.IntFilter<"interventions"> | number
@@ -831,7 +837,7 @@ export type interventionsUncheckedCreateWithoutInvoicesInput = {
   garage_entry_date?: Date | string | null
   garage_exit_date?: Date | string | null
   intervention_completed?: boolean | null
-  vehicle_vin: string
+  vehicle_id: number
   user_id: string
   accident_id?: number | null
   provider_id: number
@@ -876,7 +882,7 @@ export type interventionsUncheckedUpdateWithoutInvoicesInput = {
   garage_entry_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   garage_exit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   intervention_completed?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
-  vehicle_vin?: Prisma.StringFieldUpdateOperationsInput | string
+  vehicle_id?: Prisma.IntFieldUpdateOperationsInput | number
   user_id?: Prisma.StringFieldUpdateOperationsInput | string
   accident_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   provider_id?: Prisma.IntFieldUpdateOperationsInput | number
@@ -905,7 +911,7 @@ export type interventionsUncheckedCreateWithoutProvidersInput = {
   garage_entry_date?: Date | string | null
   garage_exit_date?: Date | string | null
   intervention_completed?: boolean | null
-  vehicle_vin: string
+  vehicle_id: number
   user_id: string
   accident_id?: number | null
   documents?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
@@ -960,7 +966,7 @@ export type interventionsUncheckedCreateWithoutUsersInput = {
   garage_entry_date?: Date | string | null
   garage_exit_date?: Date | string | null
   intervention_completed?: boolean | null
-  vehicle_vin: string
+  vehicle_id: number
   accident_id?: number | null
   provider_id: number
   documents?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
@@ -1056,7 +1062,7 @@ export type interventionsCreateManyAccidentsInput = {
   garage_entry_date?: Date | string | null
   garage_exit_date?: Date | string | null
   intervention_completed?: boolean | null
-  vehicle_vin: string
+  vehicle_id: number
   user_id: string
   provider_id: number
   documents?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
@@ -1084,7 +1090,7 @@ export type interventionsUncheckedUpdateWithoutAccidentsInput = {
   garage_entry_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   garage_exit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   intervention_completed?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
-  vehicle_vin?: Prisma.StringFieldUpdateOperationsInput | string
+  vehicle_id?: Prisma.IntFieldUpdateOperationsInput | number
   user_id?: Prisma.StringFieldUpdateOperationsInput | string
   provider_id?: Prisma.IntFieldUpdateOperationsInput | number
   documents?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
@@ -1099,7 +1105,7 @@ export type interventionsUncheckedUpdateManyWithoutAccidentsInput = {
   garage_entry_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   garage_exit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   intervention_completed?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
-  vehicle_vin?: Prisma.StringFieldUpdateOperationsInput | string
+  vehicle_id?: Prisma.IntFieldUpdateOperationsInput | number
   user_id?: Prisma.StringFieldUpdateOperationsInput | string
   provider_id?: Prisma.IntFieldUpdateOperationsInput | number
   documents?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
@@ -1113,7 +1119,7 @@ export type interventionsCreateManyProvidersInput = {
   garage_entry_date?: Date | string | null
   garage_exit_date?: Date | string | null
   intervention_completed?: boolean | null
-  vehicle_vin: string
+  vehicle_id: number
   user_id: string
   accident_id?: number | null
   documents?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
@@ -1141,7 +1147,7 @@ export type interventionsUncheckedUpdateWithoutProvidersInput = {
   garage_entry_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   garage_exit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   intervention_completed?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
-  vehicle_vin?: Prisma.StringFieldUpdateOperationsInput | string
+  vehicle_id?: Prisma.IntFieldUpdateOperationsInput | number
   user_id?: Prisma.StringFieldUpdateOperationsInput | string
   accident_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   documents?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
@@ -1156,7 +1162,7 @@ export type interventionsUncheckedUpdateManyWithoutProvidersInput = {
   garage_entry_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   garage_exit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   intervention_completed?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
-  vehicle_vin?: Prisma.StringFieldUpdateOperationsInput | string
+  vehicle_id?: Prisma.IntFieldUpdateOperationsInput | number
   user_id?: Prisma.StringFieldUpdateOperationsInput | string
   accident_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   documents?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
@@ -1170,7 +1176,7 @@ export type interventionsCreateManyUsersInput = {
   garage_entry_date?: Date | string | null
   garage_exit_date?: Date | string | null
   intervention_completed?: boolean | null
-  vehicle_vin: string
+  vehicle_id: number
   accident_id?: number | null
   provider_id: number
   documents?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
@@ -1198,7 +1204,7 @@ export type interventionsUncheckedUpdateWithoutUsersInput = {
   garage_entry_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   garage_exit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   intervention_completed?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
-  vehicle_vin?: Prisma.StringFieldUpdateOperationsInput | string
+  vehicle_id?: Prisma.IntFieldUpdateOperationsInput | number
   accident_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   provider_id?: Prisma.IntFieldUpdateOperationsInput | number
   documents?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
@@ -1213,7 +1219,7 @@ export type interventionsUncheckedUpdateManyWithoutUsersInput = {
   garage_entry_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   garage_exit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   intervention_completed?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
-  vehicle_vin?: Prisma.StringFieldUpdateOperationsInput | string
+  vehicle_id?: Prisma.IntFieldUpdateOperationsInput | number
   accident_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   provider_id?: Prisma.IntFieldUpdateOperationsInput | number
   documents?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
@@ -1315,7 +1321,7 @@ export type interventionsSelect<ExtArgs extends runtime.Types.Extensions.Interna
   garage_entry_date?: boolean
   garage_exit_date?: boolean
   intervention_completed?: boolean
-  vehicle_vin?: boolean
+  vehicle_id?: boolean
   user_id?: boolean
   accident_id?: boolean
   provider_id?: boolean
@@ -1338,14 +1344,14 @@ export type interventionsSelectScalar = {
   garage_entry_date?: boolean
   garage_exit_date?: boolean
   intervention_completed?: boolean
-  vehicle_vin?: boolean
+  vehicle_id?: boolean
   user_id?: boolean
   accident_id?: boolean
   provider_id?: boolean
   documents?: boolean
 }
 
-export type interventionsOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"intervention_id" | "intervention_type" | "creation_date" | "details" | "garage_entry_date" | "garage_exit_date" | "intervention_completed" | "vehicle_vin" | "user_id" | "accident_id" | "provider_id" | "documents", ExtArgs["result"]["interventions"]>
+export type interventionsOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"intervention_id" | "intervention_type" | "creation_date" | "details" | "garage_entry_date" | "garage_exit_date" | "intervention_completed" | "vehicle_id" | "user_id" | "accident_id" | "provider_id" | "documents", ExtArgs["result"]["interventions"]>
 export type interventionsInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   vehicles?: boolean | Prisma.vehiclesDefaultArgs<ExtArgs>
   users?: boolean | Prisma.usersDefaultArgs<ExtArgs>
@@ -1372,7 +1378,7 @@ export type $interventionsPayload<ExtArgs extends runtime.Types.Extensions.Inter
     garage_entry_date: Date | null
     garage_exit_date: Date | null
     intervention_completed: boolean | null
-    vehicle_vin: string
+    vehicle_id: number
     user_id: string
     accident_id: number | null
     provider_id: number
@@ -1758,7 +1764,7 @@ export interface interventionsFieldRefs {
   readonly garage_entry_date: Prisma.FieldRef<"interventions", 'DateTime'>
   readonly garage_exit_date: Prisma.FieldRef<"interventions", 'DateTime'>
   readonly intervention_completed: Prisma.FieldRef<"interventions", 'Boolean'>
-  readonly vehicle_vin: Prisma.FieldRef<"interventions", 'String'>
+  readonly vehicle_id: Prisma.FieldRef<"interventions", 'Int'>
   readonly user_id: Prisma.FieldRef<"interventions", 'String'>
   readonly accident_id: Prisma.FieldRef<"interventions", 'Int'>
   readonly provider_id: Prisma.FieldRef<"interventions", 'Int'>

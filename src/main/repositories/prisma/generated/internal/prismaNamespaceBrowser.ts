@@ -129,7 +129,7 @@ export const InterventionsScalarFieldEnum = {
   garage_entry_date: 'garage_entry_date',
   garage_exit_date: 'garage_exit_date',
   intervention_completed: 'intervention_completed',
-  vehicle_vin: 'vehicle_vin',
+  vehicle_id: 'vehicle_id',
   user_id: 'user_id',
   accident_id: 'accident_id',
   provider_id: 'provider_id',
@@ -204,6 +204,7 @@ export type UsersScalarFieldEnum = (typeof UsersScalarFieldEnum)[keyof typeof Us
 
 
 export const VehiclesScalarFieldEnum = {
+  id: 'id',
   vin: 'vin',
   vehicle_number: 'vehicle_number',
   license_plate: 'license_plate',
@@ -307,7 +308,6 @@ export type departmentsOrderByRelevanceFieldEnum = (typeof departmentsOrderByRel
 
 export const interventionsOrderByRelevanceFieldEnum = {
   details: 'details',
-  vehicle_vin: 'vehicle_vin',
   user_id: 'user_id'
 } as const
 

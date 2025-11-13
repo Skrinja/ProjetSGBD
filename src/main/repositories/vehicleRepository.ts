@@ -16,6 +16,7 @@ export default class VehicleRepository {
     return vehicles.map((v) => {
       return {
         // MAPPAGE
+        id: v.id,
         vin: v.vin,
         numPlate: v.license_plate,
         numVehicle: v.vehicle_number,
@@ -65,9 +66,10 @@ export default class VehicleRepository {
   async updateVehicle(vehicle: Vehicle): Promise<void> {
     await this.dbclient.vehicles.update({
       where: {
-        vin: vehicle.vin,
+        id: vehicle.id,
       },
       data: {
+        vin: vehicle.vin,
         license_plate: vehicle.numPlate,
         vehicle_number: vehicle.numVehicle,
         brand: vehicle.brand,
@@ -95,14 +97,15 @@ export default class VehicleRepository {
     });
   }
 
-  async getVehicleByVin(vin: string): Promise<Vehicle> {
+  async getVehicleById(id: number): Promise<Vehicle> {
     let vehicleFromDb = await this.dbclient.vehicles.findUnique({
       where: {
-        vin: vin,
+        id: id,
       },
     });
 
     return {
+      id: vehicleFromDb.id,
       vin: vehicleFromDb.vin,
       numPlate: vehicleFromDb.license_plate,
       numVehicle: vehicleFromDb.vehicle_number,
@@ -127,10 +130,10 @@ export default class VehicleRepository {
     };
   }
 
-  async deleteVehicle(vin: string): Promise<void> {
+  async deleteVehicle(id: number): Promise<void> {
     await this.dbclient.vehicles.delete({
       where: {
-        vin: vin,
+        id: id,
       },
     });
   }

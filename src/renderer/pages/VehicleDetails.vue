@@ -23,8 +23,8 @@
             <p><strong>Numéro de contrat d'entretien :</strong> {{ vehicle.maintenanceContractNumber }}</p>
             <p><strong>Véhicule déclassé :</strong> {{ vehicle.decommissioned ? 'Oui' : 'Non' }}</p>
             <p><strong>Autres informations :</strong> {{ vehicle.otherInformation }}</p>
-            <button @click="goToEdit(vehicle.vin)">✏️</button>
-            <button @click="handleDeleteClick(vehicle.vin)">❌</button>
+            <button @click="goToEdit(vehicle.id)">✏️</button>
+            <button @click="handleDeleteClick(vehicle.id)">❌</button>
         </BaseCard>
     </div>
     <div v-else>
@@ -44,25 +44,25 @@ import GoBackButton from '../components/GoBackButton.vue';
 
 const route = useRoute();
 const router = useRouter();
-const { getVehicleByVin, deleteVehicle } = useVehicleService();
+const { getVehicleById, deleteVehicle } = useVehicleService();
 const vehicle = ref<Vehicle>();
 
 onMounted(async () => {
-    const vin = route.params.vin as string;
-    if (vin) {
-        vehicle.value = await getVehicleByVin(vin);
+    const id = Number(route.params.id); // on convertit en nombre le paramètre id de la route :id
+    if (id) {
+        vehicle.value = await getVehicleById(id);
     }
 });
 
-const handleDeleteClick = async (vin: string) => {
+const handleDeleteClick = async (id: number) => {
     if (confirm('Êtes-vous sûr de vouloir supprimer ce véhicule ?')) {
-        await deleteVehicle(vin);
+        await deleteVehicle(id);
         router.push('/vehicles');
     }
 }
 
-const goToEdit = (vin: string) => {
-    router.push(`/vehicle/edit/${vin}`);
+const goToEdit = (id: number) => {
+    router.push(`/vehicle/edit/${id}`);
 }
 
 </script>
