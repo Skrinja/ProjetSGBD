@@ -21,10 +21,10 @@ INSERT INTO `providers` (`provider_id`, `provider_name`, `street`, `postal_code`
 (3, 'Carrosserie L\'Etoile', 'Rue de la Pépinière', '1000', 'Bruxelles');
 
 -- 4. Staff
-INSERT INTO `staff` (`employee_id`, `last_name`, `first_name`) VALUES
-(101, 'Dupont', 'Jean'),
-(102, 'Martin', 'Sophie'),
-(103, 'Lambert', 'Michel');
+INSERT INTO `staff` (`employee_id`, `last_name`, `first_name`, `badge_number`) VALUES
+(101, 'Dupont', 'Jean', '425'),
+(102, 'Martin', 'Sophie', '876'),
+(103, 'Lambert', 'Michel', '927');
 
 -- 5. Accidents
 INSERT INTO `accidents` (`accident_id`, `accident_date`, `street`, `street_number`, `postal_code`, `city`, `country`, `accident_type`, `damages`, `circumstances`) VALUES
