@@ -50,8 +50,14 @@
             <label for="tech-date">Date prochain contrôle technique</label>
             <input id="tech-date" v-model="technicalInspectionDate" type="date" required />
         </div>
-        <div>
-            <input v-model.number="departmentId" type="number" required placeholder="ID du département *" />
+<div>
+            <label for="department">Département *</label>
+            <select id="department" v-model.number="departmentId" required>
+                <option :value="undefined" disabled>Sélectionnez un département</option>
+                <option v-for="dept in departments" :key="dept.id" :value="dept.id">
+                    {{ dept.name }}
+                </option>
+            </select>
         </div>
 
         <div>
@@ -104,6 +110,7 @@ import useVehicleService from '../composables/vehicleService';
 import useSetMessageService from '../composables/setMessageService';
 import { FuelType, LicenseType, VehicleConfiguration } from '../../shared/enums/vehicleEnum';
 import GoBackButton from '../components/GoBackButton.vue';
+import useDepartmentService from '../composables/departmentService';
 
 const vin = ref('');
 const numPlate = ref('');
@@ -135,9 +142,12 @@ const licenseTypes = ref(Object.values(LicenseType));
 const vehicleConfigurations = ref(Object.values(VehicleConfiguration));
 const { addVehicle, updateVehicle, getVehicleById } = useVehicleService();
 const { successMessage, errorMessage, setMessage } = useSetMessageService();
+const { departments, getAllDepartments } = useDepartmentService();
 
 
 onMounted(async () => {
+    await getAllDepartments();
+    
     if (idParam.value) {
         const vehicle = await getVehicleById(idParam.value);
         if (vehicle) {
