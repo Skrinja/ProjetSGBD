@@ -2,7 +2,7 @@
     <GoBackButton/>
     <BaseCard class="department" v-for="department in departments" :key="department.id">
         <span>{{ department.name }}</span>
-        <span>{{ department.serviceAddressId }}</span> <!-- A changer avec l'adresse qui correspond à l'ID -->
+        <span>{{ department.serviceAddressNumber + ', ' + department.serviceAddressStreet }}</span>
     </BaseCard>
 </template>
 

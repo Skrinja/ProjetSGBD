@@ -10,13 +10,19 @@ export default class DepartmentRepository {
     }
 
     async getAllDepartments() : Promise<Department[]> {
-        const departmentsFromDb = await this.dbclient.departments.findMany();
+        const departmentsFromDb = await this.dbclient.departments.findMany({
+            include: {
+                service_addresses: true,
+            }
+        });
 
         return departmentsFromDb.map((d) => {
             return {
                 id: d.department_id,
                 name: d.department_name,
                 serviceAddressId: d.service_address_id,
+                serviceAddressStreet: d.service_addresses.street,
+                serviceAddressNumber: d.service_addresses.street_number, 
             };
         });
     }
