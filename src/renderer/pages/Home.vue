@@ -1,7 +1,7 @@
 <template>
     <div class="home-bar">
         <BaseCard>
-            <button class="go-to-vehicles" @click="handleClick">Véhicules</button>
+            <button class="go-to-vehicles" @click="handleClickVehicle">Véhicules</button>
             <p>{{ vehicles.length }}</p> 
         </BaseCard>
         <BaseCard>
@@ -12,6 +12,10 @@
             <button class="go-to-accidents">Accidents</button>
             <p>(Nbr accidents)</p>
         </BaseCard>
+        <BaseCard>
+            <button class="go-to-department" @click="handleClickDepartment">Services</button>
+            <p>{{ departments.length }}</p>
+        </BaseCard>
     </div>
 </template>
 
@@ -20,16 +24,23 @@
     import BaseCard from '../components/BaseCard.vue';
     import useVehicleService from '../composables/vehicleService';
     import { onMounted } from 'vue';
+    import useDepartmentService from '../composables/departmentService';
 
     const { vehicles, getAllVehicles } = useVehicleService();
+    const { departments, getAllDepartments } = useDepartmentService();
     const router = useRouter();
 
-    const handleClick = () => {
+    const handleClickVehicle = () => {
         router.push('/vehicles');
+    }
+
+    const handleClickDepartment = () => {
+        router.push('/departments')
     }
 
     onMounted(async () => {
         await getAllVehicles();
+        await getAllDepartments();
     });
 </script>
 
