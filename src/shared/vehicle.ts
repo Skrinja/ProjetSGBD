@@ -22,5 +22,6 @@ export default interface Vehicle {
     decommissioned?: boolean;
     otherInformation?: string;
     departmentId: number;
+    departmentName: string,
     documents?: string[];
 }

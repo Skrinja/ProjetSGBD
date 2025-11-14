@@ -13,7 +13,7 @@
             <p><strong>Type de permis :</strong> {{ vehicle.licenseType }}</p>
             <p><strong>Configuration :</strong> {{ vehicle.configuration }}</p>
             <p><strong>Date du contrôle technique :</strong> {{ new Date(vehicle.technicalInspectionDate).toLocaleDateString('fr-FR') }}</p>
-            <p><strong>ID Département :</strong> {{ vehicle.departmentId }}</p>
+            <p><strong>Service :</strong> {{ vehicle.departmentName }}</p>
             <p><strong>taille des pneus :</strong> {{ vehicle.tireSize }}</p>
             <p><strong>Numéro d'assurance :</strong> {{ vehicle.insuranceNumber }}</p>
             <p><strong>Omnium :</strong> {{ vehicle.omnium ? 'Oui' : 'Non' }}</p>

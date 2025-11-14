@@ -11,7 +11,11 @@ export default class VehicleRepository {
 
   async getAllVehicles(): Promise<Vehicle[]> {
     this.dbclient.vehicles.findFirst().then((x) => console.log(x));
-    let vehicles = await this.dbclient.vehicles.findMany();
+    let vehicles = await this.dbclient.vehicles.findMany({
+      include: {
+        departments: true,
+      }
+    });
 
     return vehicles.map((v) => {
       return {
@@ -28,6 +32,7 @@ export default class VehicleRepository {
         configuration: v.vehicle_configuration as any,
         technicalInspectionDate: v.technical_inspection_expiry_date,
         departmentId: v.department_id,
+        departmentName: v.departments.department_name,
       }; // si je rajoute as vehicles il faut que ca corresponde a 100% ?
     });
   }
@@ -102,6 +107,9 @@ export default class VehicleRepository {
       where: {
         id: id,
       },
+      include: {
+        departments: true,
+      }
     });
 
     return {
@@ -126,6 +134,7 @@ export default class VehicleRepository {
       decommissioned: vehicleFromDb.decommissioned_vehicle,
       otherInformation: vehicleFromDb.other_info,
       departmentId: vehicleFromDb.department_id,
+      departmentName: vehicleFromDb.departments.department_name
       // documents à ajouter plus tard quand je saurais le faire
     };
   }
