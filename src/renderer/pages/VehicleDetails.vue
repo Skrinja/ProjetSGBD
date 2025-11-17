@@ -1,30 +1,37 @@
 <template>
     <div v-if="vehicle">
-        <h1>Détails du Véhicule {{ vehicle.numVehicle }}</h1>
+        <div class="page-header">
+            <h1>Détails du Véhicule (VRM : {{ vehicle.numVehicle }})</h1>
+            <div class="action-buttons">
+                <button class="secondary" @click="goToEdit(vehicle.id)">✏️ Modifier</button>
+                <button class="danger" @click="handleDeleteClick(vehicle.id)">❌ Supprimer</button>
+            </div>
+        </div>
         <GoBackButton/>
-        <BaseCard>
-            <p><strong>N° de Châssis :</strong> {{ vehicle.vin }}</p>
-            <p><strong>Plaque :</strong> {{ vehicle.numPlate }}</p>
-            <p><strong>VRM :</strong> {{ vehicle.numVehicle }}</p>
-            <p><strong>Marque :</strong> {{ vehicle.brand }}</p>
-            <p><strong>Modèle :</strong> {{ vehicle.model }}</p>
-            <p><strong>Mise en circulation :</strong> {{ new Date(vehicle.year).toLocaleDateString('fr-FR') }}</p>
-            <p><strong>Type de carburant :</strong> {{ vehicle.fuel }}</p>
-            <p><strong>Type de permis :</strong> {{ vehicle.licenseType }}</p>
-            <p><strong>Configuration :</strong> {{ vehicle.configuration }}</p>
-            <p><strong>Date du contrôle technique :</strong> {{ new Date(vehicle.technicalInspectionDate).toLocaleDateString('fr-FR') }}</p>
-            <p><strong>Service :</strong> {{ vehicle.departmentName }}</p>
-            <p><strong>taille des pneus :</strong> {{ vehicle.tireSize }}</p>
-            <p><strong>Numéro d'assurance :</strong> {{ vehicle.insuranceNumber }}</p>
-            <p><strong>Omnium :</strong> {{ vehicle.omnium ? 'Oui' : 'Non' }}</p>
-            <p><strong>Contrat d'entretien :</strong> {{ vehicle.maintenanceContract ? 'Oui' : 'Non' }}</p>
-            <p><strong>Date de fin de contrat d'entretien :</strong> {{ new Date(vehicle.maintenanceContractEndDate).toLocaleDateString('fr-FR') }}</p>
-            <p><strong>Kilométrage de fin de contrat d'entretien :</strong> {{ vehicle.maintenanceContractEndKm }}</p>
-            <p><strong>Numéro de contrat d'entretien :</strong> {{ vehicle.maintenanceContractNumber }}</p>
-            <p><strong>Véhicule déclassé :</strong> {{ vehicle.decommissioned ? 'Oui' : 'Non' }}</p>
-            <p><strong>Autres informations :</strong> {{ vehicle.otherInformation }}</p>
-            <button @click="goToEdit(vehicle.id)">✏️</button>
-            <button @click="handleDeleteClick(vehicle.id)">❌</button>
+        
+        <BaseCard class="details-card">
+            <div class="details-grid">
+                <p><strong>N° de Châssis :</strong> {{ vehicle.vin }}</p>
+                <p><strong>Plaque :</strong> {{ vehicle.numPlate }}</p>
+                <p><strong>VRM :</strong> {{ vehicle.numVehicle }}</p>
+                <p><strong>Marque :</strong> {{ vehicle.brand }}</p>
+                <p><strong>Modèle :</strong> {{ vehicle.model }}</p>
+                <p><strong>Mise en circulation :</strong> {{ new Date(vehicle.year).toLocaleDateString('fr-FR') }}</p>
+                <p><strong>Carburant :</strong> {{ vehicle.fuel }}</p>
+                <p><strong>Type de permis :</strong> {{ vehicle.licenseType }}</p>
+                <p><strong>Configuration :</strong> {{ vehicle.configuration }}</p>
+                <p><strong>Prochain C.T. :</strong> {{ new Date(vehicle.technicalInspectionDate).toLocaleDateString('fr-FR') }}</p>
+                <p><strong>Service :</strong> {{ vehicle.departmentName }}</p>
+                <p><strong>Taille pneus :</strong> {{ vehicle.tireSize || 'N/A' }}</p>
+                <p><strong>N° assurance :</strong> {{ vehicle.insuranceNumber || 'N/A' }}</p>
+                <p><strong>Omnium :</strong> {{ vehicle.omnium ? 'Oui' : 'Non' }}</p>
+                <p><strong>Contrat entretien :</strong> {{ vehicle.maintenanceContract ? 'Oui' : 'Non' }}</p>
+                <p><strong>Fin contrat (date) :</strong> {{ vehicle.maintenanceContractEndDate ? new Date(vehicle.maintenanceContractEndDate).toLocaleDateString('fr-FR') : 'N/A' }}</p>
+                <p><strong>Fin contrat (km) :</strong> {{ vehicle.maintenanceContractEndKm || 'N/A' }}</p>
+                <p><strong>N° contrat :</strong> {{ vehicle.maintenanceContractNumber || 'N/A' }}</p>
+                <p><strong>Déclassé :</strong> {{ vehicle.decommissioned ? 'Oui' : 'Non' }}</p>
+                <p class="full-width"><strong>Autres informations :</strong> {{ vehicle.otherInformation || 'Aucune' }}</p>
+            </div>
         </BaseCard>
     </div>
     <div v-else>
@@ -48,7 +55,7 @@ const { getVehicleById, deleteVehicle } = useVehicleService();
 const vehicle = ref<Vehicle>();
 
 onMounted(async () => {
-    const id = Number(route.params.id); // on convertit en nombre le paramètre id de la route :id
+    const id = Number(route.params.id);
     if (id) {
         vehicle.value = await getVehicleById(id);
     }
@@ -68,12 +75,41 @@ const goToEdit = (id: number) => {
 </script>
 
 <style scoped>
-button {
-    margin-top: 1rem;
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
 }
 
-p {
-    text-align: left;
+.action-buttons {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.details-card {
+    background-color: #ffffff;
+}
+
+.details-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* 2 colonnes */
+    gap: 1rem 1.5rem; /* Espacement vertical et horizontal */
     width: 100%;
+}
+
+.details-grid p {
+    margin: 0;
+    padding: 0.5rem;
+    border-bottom: 1px solid #f1f5f9; /* Ligne de séparation légère */
+}
+
+.details-grid p strong {
+    color: #475569; /* Couleur plus douce pour les labels */
+    margin-right: 0.5rem;
+}
+
+.full-width {
+    grid-column: 1 / -1; /* Prend toute la largeur */
 }
 </style>

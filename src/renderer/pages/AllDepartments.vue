@@ -1,9 +1,16 @@
 <template>
+    <div class="page-header">
+        <h1>Gestion des Services</h1>
+        </div>
+    
     <GoBackButton/>
-    <BaseCard class="department" v-for="department in departments" :key="department.id">
-        <span>{{ department.name }}</span>
-        <span>{{ department.serviceAddressNumber + ', ' + department.serviceAddressStreet }}</span>
-    </BaseCard>
+
+    <div class="department-list">
+        <BaseCard class="department-card" v-for="department in departments" :key="department.id">
+            <span class="department-name">{{ department.name }}</span>
+            <span class="department-address">{{ department.serviceAddressNumber + ', ' + department.serviceAddressStreet }}</span>
+        </BaseCard>
+    </div>
 </template>
 
 <script setup lang="ts">
@@ -20,6 +27,33 @@ onMounted(async () =>{
 
 </script>
 
-<style>
+<style scoped>
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
 
+.department-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1rem;
+}
+
+.department-card {
+    align-items: flex-start; /* Aligne le contenu à gauche */
+}
+
+.department-name {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #1e293b;
+    margin-bottom: 0.25rem;
+}
+
+.department-address {
+    font-size: 0.95rem;
+    color: #475569;
+}
 </style>
