@@ -41,7 +41,7 @@
         router.push('/departments')
     }
 
-    onMounted(async () => {
+    onMounted(async () => { // A OPTI POUR NE PAS TOUT CHARGER A CHAQUE FOIS
         await getAllVehicles();
         await getAllDepartments();
     });

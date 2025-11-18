@@ -1,5 +1,5 @@
 import Vehicle from "../../shared/vehicle";
-import { PrismaClient, vehicles } from "./prisma/generated/client";
+import { PrismaClient } from "./prisma/generated/client";
 import { PrismaMariaDb } from "@prisma/adapter-mariadb";
 
 export default class VehicleRepository {
@@ -10,7 +10,6 @@ export default class VehicleRepository {
   }
 
   async getAllVehicles(): Promise<Vehicle[]> {
-    this.dbclient.vehicles.findFirst().then((x) => console.log(x));
     let vehicles = await this.dbclient.vehicles.findMany({
       include: {
         departments: true,
