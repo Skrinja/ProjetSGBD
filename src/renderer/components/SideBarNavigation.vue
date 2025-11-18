@@ -1,7 +1,7 @@
 <template>
     <nav class="sidebar">
         <div class="sidebar-header">
-            <h3>Navigation</h3>
+            <h3>LOG/V</h3>
         </div>
         <ul class="nav-list">
             <li><router-link to="/">Accueil</router-link></li>
@@ -16,7 +16,6 @@
   width: 240px;
   flex-shrink: 0; /* Empêche le menu de rétrécir */
   background-color: #1e293b; /* Un bleu/gris foncé */
-  color: #e2e8f0;
   height: 100vh;
   display: flex;
   flex-direction: column;
@@ -31,6 +30,7 @@
 .sidebar-header h3 {
   margin: 0;
   font-size: 1.25rem;
+  color: #e2e8f0;
 }
 
 .nav-list {
