@@ -1,6 +1,6 @@
 <template>
     <div class="page-header">
-        <h1>Gestion des Services</h1>
+        <h1>Services</h1>
         </div>
     
     <GoBackButton/>

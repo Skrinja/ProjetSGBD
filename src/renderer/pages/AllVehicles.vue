@@ -1,6 +1,6 @@
 <template>
     <div class="page-header">
-        <h1>Gestion des Véhicules</h1>
+        <h1>Véhicules</h1>
         <router-link to="/vehicle/add" class="button-link">
             Ajouter un véhicule
         </router-link>
