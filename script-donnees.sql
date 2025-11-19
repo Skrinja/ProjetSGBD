@@ -4,9 +4,9 @@
 
 -- 1. Adresses de service
 INSERT INTO `service_addresses` (`service_address_id`, `street`, `street_number`, `postal_code`, `city`, `country`) VALUES
-(1, 'Rue de la Station', '10', '7000', 'Mons', 'Belgique'),
-(2, 'Boulevard Tirou', '150', '6000', 'Charleroi', 'Belgique'),
-(3, 'Avenue Louise', '54', '1050', 'Bruxelles', 'Belgique');
+(1, 'Rue de la Station', '10', '1000', 'Bruxelles', 'Belgique'),
+(2, 'Boulevard Tir', '150', '1000', 'Bruxelles', 'Belgique'),
+(3, 'Avenue Louise', '54', '1050', 'Ixelles', 'Belgique');
 
 -- 2. Utilisateurs
 INSERT INTO `users` (`user_id`, `email`, `password`) VALUES
@@ -34,9 +34,9 @@ INSERT INTO `accidents` (`accident_id`, `accident_date`, `street`, `street_numbe
 
 -- 6. Départements
 INSERT INTO `departments` (`department_id`, `department_name`, `service_address_id`) VALUES
-(1, 'IT Mons', 1),
-(2, 'Direction Charleroi', 2),
-(3, 'Ventes Bruxelles', 3);
+(1, 'ICT', 1),
+(2, 'INT', 2),
+(3, 'LOG', 3);
 
 -- 7. Contacts
 INSERT INTO `contacts` (`contact_id`, `last_name`, `first_name`, `email`, `provider_id`) VALUES
