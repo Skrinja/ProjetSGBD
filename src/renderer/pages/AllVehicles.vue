@@ -9,16 +9,23 @@
     <GoBackButton/>
     
     <div class="vehicle-list">
+        <div class="list-header">
+            <span class="header-vrm">VRM</span>
+            <span class="header-plate">Plaque</span>
+            <span class="header-brand-model">Marque / Modèle</span>
+            <span class="header-department">Service</span>
+            <span class="header-config">Configuration</span>
+            <span class="header-license">Permis</span>
+            <span class="header-details"></span>
+        </div>
+        
         <BaseCard class="vehicle-card" v-for="vehicle in vehicles" :key="vehicle.id" @click="goToDetails(vehicle.id)">
-            <div class="vehicle-info">
-                <span class="vehicle-vrm">VRM : {{ vehicle.numVehicle }}</span>
-                <span class="vehicle-plate">Plaque : {{ vehicle.numPlate }}</span>
-                <span class="vehicle-department">Service : {{ vehicle.departmentName }}</span>
-                <span class="vehicle-configuration">Configuration : {{ vehicle.configuration }}</span>
-                <span class="vehicle-license">Permis : {{ vehicle.licenseType }}</span>
-                <span class="vehicle-brand">Marque : {{ vehicle.brand }}</span>
-                <span class="vehicle-model">Modèle : {{ vehicle.model }}</span>
-            </div>
+            <span class="vehicle-vrm">{{ vehicle.numVehicle }}</span>
+            <span class="vehicle-plate">{{ vehicle.numPlate }}</span>
+            <span class="vehicle-brand-model">{{ vehicle.brand }} {{ vehicle.model }}</span>
+            <span class="vehicle-department">{{ vehicle.departmentName }}</span>
+            <span class="vehicle-configuration">{{ vehicle.configuration }}</span>
+            <span class="vehicle-license">{{ vehicle.licenseType }}</span>
             <span class="vehicle-details-link">Détails ➔</span>
         </BaseCard>
     </div>
@@ -43,6 +50,7 @@ onMounted(async () =>{
 })
 
 </script>
+
 <style scoped>
 .page-header {
     display: flex;
@@ -51,34 +59,39 @@ onMounted(async () =>{
     margin-bottom: 1rem;
 }
 
+/* Style de base pour la liste: colonnes empilées (mobile-first) */
 .vehicle-list {
-    display: grid;
-    grid-template-columns: 1fr; /* Une colonne par défaut */
-    gap: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
 }
 
-/* Pour les écrans plus larges, on peut passer à 2 colonnes */
-@media (min-width: 768px) {
-    .vehicle-list {
-        grid-template-columns: repeat(2, 1fr);
-    }
+/* L'en-tête de la grille est masqué sur les petits écrans */
+.list-header {
+    display: none;
 }
 
+/* Styles de la carte sur les petits écrans (BaseCard utilise display: flex; flex-direction: column) */
 .vehicle-card {
     cursor: pointer;
-    flex-direction: row; /* Met les infos et le lien côte à côte */
-    justify-content: space-between;
-    align-items: center;
+    /* Reset BaseCard properties to allow customization */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1rem 1.5rem; 
     transition: background-color 0.2s ease;
 }
 
 .vehicle-card:hover {
-    background-color: #f8fafc; /* Léger fond au survol */
+    background-color: #f8fafc;
 }
 
-.vehicle-info {
-    display: flex;
-    flex-direction: column;
+/* Affichage des champs en bloc sur les petits écrans */
+.vehicle-card > span {
+    display: block; 
+    margin-bottom: 0.25rem;
+    font-size: 0.9rem;
+    color: #475569;
 }
 
 .vehicle-vrm {
@@ -87,14 +100,75 @@ onMounted(async () =>{
     color: #1e293b;
 }
 
-.vehicle-plate {
-    font-size: 0.9rem;
-    color: #475569;
+/* Rapproche le lien de détail du bas sur les petits écrans */
+.vehicle-details-link {
+    margin-top: 0.5rem;
+    color: #2563eb;
+    align-self: flex-end; /* Pousse le lien à droite */
 }
 
-.vehicle-details-link {
-    font-size: 0.9rem;
-    font-weight: 500;
-    color: #2563eb;
+/* --- Vue Tabulaire (Tablette / Desktop) --- */
+@media (min-width: 768px) {
+    .vehicle-list {
+        /* Supprime les marges individuelles pour grouper les cartes dans la grille */
+        gap: 0;
+        border: 1px solid #e2e8f0;
+        border-radius: 8px;
+        overflow: hidden;
+    }
+
+    /* Mise en page de la grille pour l'en-tête et les lignes (les cartes) */
+    .list-header, .vehicle-card {
+        display: grid;
+        /* Définition des colonnes: la taille doit correspondre exactement entre l'en-tête et les lignes */
+        grid-template-columns: minmax(70px, 0.5fr) minmax(100px, 1fr) minmax(150px, 1.5fr) minmax(120px, 1fr) minmax(120px, 1fr) minmax(70px, 0.5fr) 70px;
+        gap: 1rem;
+        align-items: center;
+        padding: 0.75rem 1.5rem;
+    }
+    
+    /* Style de l'en-tête */
+    .list-header {
+        display: grid;
+        background-color: #e2e8f0;
+        font-weight: 600;
+        color: #475569;
+        font-size: 0.9rem;
+    }
+
+    /* Style des lignes de véhicule (BaseCard) */
+    .vehicle-card {
+        border: none;
+        border-radius: 0;
+        border-bottom: 1px solid #f1f5f9;
+        box-shadow: none;
+        flex-direction: initial; /* Annule flex-direction: column de BaseCard */
+        
+    }
+
+    .vehicle-card:last-child {
+        border-bottom: none;
+    }
+    
+    /* Affichage des champs dans la grille - alignement */
+    .vehicle-card > span {
+        margin: 0;
+        font-size: 1rem;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .vehicle-vrm {
+        font-weight: 600;
+        color: #1e293b;
+    }
+
+    .vehicle-details-link {
+        text-align: right;
+        font-size: 0.95rem;
+        align-self: center;
+        margin: 0;
+    }
 }
 </style>
