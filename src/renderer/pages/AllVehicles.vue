@@ -203,5 +203,11 @@ const handleSearch = async () => { // Je vais mettre toutes les recherches ici a
         align-self: center;
         margin: 0;
     }
+
+    .search-box {
+        display: flex;
+        gap: 0.5rem;
+        margin-bottom: 1rem;
+    }
 }
 </style>
