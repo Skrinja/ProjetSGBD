@@ -13,6 +13,11 @@
             <div class="vehicle-info">
                 <span class="vehicle-vrm">VRM : {{ vehicle.numVehicle }}</span>
                 <span class="vehicle-plate">Plaque : {{ vehicle.numPlate }}</span>
+                <span class="vehicle-department">Service : {{ vehicle.departmentName }}</span>
+                <span class="vehicle-configuration">Configuration : {{ vehicle.configuration }}</span>
+                <span class="vehicle-license">Permis : {{ vehicle.licenseType }}</span>
+                <span class="vehicle-brand">Marque : {{ vehicle.brand }}</span>
+                <span class="vehicle-model">Modèle : {{ vehicle.model }}</span>
             </div>
             <span class="vehicle-details-link">Détails ➔</span>
         </BaseCard>
