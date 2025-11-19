@@ -41,7 +41,7 @@
         router.push('/departments')
     }
 
-    onMounted(async () => { // A OPTI POUR NE PAS TOUT CHARGER A CHAQUE FOIS
+    onMounted(async () => { // A OPTI POUR NE PAS TOUT CHARGER A CHAQUE FOIS (On veut juste le nombre)
         await getAllVehicles();
         await getAllDepartments();
     });
