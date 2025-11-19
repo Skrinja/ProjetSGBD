@@ -7,6 +7,10 @@
     </div>
     
     <GoBackButton/>
+
+    <div class="search-box">
+        <input type="text" placeholder="Rechercher..." v-model="searchQuery" @keyup.enter="handleSearch"/>
+    </div>
     
     <div class="vehicle-list">
         <div class="list-header">
@@ -37,8 +41,9 @@ import useVehicleService from '../composables/vehicleService';
 import BaseCard from '../components/BaseCard.vue';
 import { useRouter } from 'vue-router';
 import GoBackButton from '../components/GoBackButton.vue';
+import { ref } from 'vue';
 
-const { vehicles, getAllVehicles } = useVehicleService();
+const { vehicles, getAllVehicles, searchByNumVehicle} = useVehicleService();
 const router = useRouter();
 
 const goToDetails = (id: number) => {
@@ -48,6 +53,12 @@ const goToDetails = (id: number) => {
 onMounted(async () =>{
     await getAllVehicles();
 })
+
+const searchQuery = ref('');
+const handleSearch = async () => {
+    const num = Number(searchQuery.value);
+    searchByNumVehicle(num);
+}
 
 </script>
 

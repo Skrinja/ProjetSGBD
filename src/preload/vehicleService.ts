@@ -9,5 +9,6 @@ export function vehicleService(): IVehicleService {
         getVehicleById: (id: number) => ipcRenderer.invoke('vehicleRepo:getById', id),
         deleteVehicle: (id: number) => ipcRenderer.invoke('vehicleRepo:deleteVehicle', id),
         updateVehicle: (vehicle: Vehicle) => ipcRenderer.invoke('vehicleRepo:updateVehicle', vehicle),
+        searchByNumVehicle: (numVehicle: number) => ipcRenderer.invoke('vehicleRepo:searchByNumVehicle', numVehicle),
     }
 }

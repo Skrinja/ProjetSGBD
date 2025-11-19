@@ -9,16 +9,8 @@ export default class VehicleRepository {
     this.dbclient = new PrismaClient({ adapter });
   }
 
-  async getAllVehicles(): Promise<Vehicle[]> {
-    let vehicles = await this.dbclient.vehicles.findMany({
-      include: {
-        departments: true,
-      }
-    });
-
-    return vehicles.map((v) => {
-      return {
-        // MAPPAGE
+  private mapToVehicle(v:any): Vehicle {
+    return {
         id: v.id,
         vin: v.vin,
         numPlate: v.license_plate,
@@ -32,8 +24,16 @@ export default class VehicleRepository {
         technicalInspectionDate: v.technical_inspection_expiry_date,
         departmentId: v.department_id,
         departmentName: v.departments.department_name,
-      }; // si je rajoute as vehicles il faut que ca corresponde a 100% ?
+    };
+  }
+
+  async getAllVehicles(): Promise<Vehicle[]> {
+    let vehiclesFromDb = await this.dbclient.vehicles.findMany({
+      include: {
+        departments: true,
+      }
     });
+    return vehiclesFromDb.map((v) => this.mapToVehicle(v));
   }
 
   async addVehicle(vehicle: Vehicle): Promise<void> {
@@ -144,5 +144,15 @@ export default class VehicleRepository {
         id: id,
       },
     });
+  }
+
+  async searchByNumVehilce(numVehicle: number): Promise<Vehicle[]> {
+    let vehiclesFromDb = await this.dbclient.vehicles.findMany({
+      where : {
+        vehicle_number: {equals: numVehicle}
+      },
+      include: {departments: true},
+    });
+    return vehiclesFromDb.map((v) => this.mapToVehicle(v));
   }
 }

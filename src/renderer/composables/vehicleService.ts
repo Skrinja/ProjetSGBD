@@ -27,6 +27,10 @@ export default function useVehicleService() {
         await getAllVehicles();
     }
 
+    const searchByNumVehicle = async (NumVehicle: number) => {
+        vehicles.value = await (window as any).electronService.vehicle.searchByNumVehicle(NumVehicle);
+    }
+
     return {
         vehicles,
         getAllVehicles,
@@ -34,6 +38,7 @@ export default function useVehicleService() {
         addVehicle,
         deleteVehicle,
         updateVehicle,
+        searchByNumVehicle,
     }
 }
 

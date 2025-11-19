@@ -25,4 +25,8 @@ export function registerVehicleHandlers() {
     ipcMain.handle('vehicleRepo:updateVehicle', (event, vehicle: Vehicle) => {
         return vehicleRepository.updateVehicle(vehicle);
     });
+
+    ipcMain.handle('vehicleRepo:searchByNumVehicle', (event, numVehicle: number) =>{
+        return vehicleRepository.searchByNumVehilce(numVehicle);
+    })
 }
