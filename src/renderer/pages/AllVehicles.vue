@@ -55,7 +55,7 @@ onMounted(async () =>{
 })
 
 const searchQuery = ref('');
-const handleSearch = async () => {
+const handleSearch = async () => { // Je vais mettre toutes les recherches ici avec un switch case
     const num = Number(searchQuery.value);
     searchByNumVehicle(num);
     if (!searchQuery.value) {
