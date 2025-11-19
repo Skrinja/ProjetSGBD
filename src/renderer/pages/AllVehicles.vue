@@ -58,6 +58,9 @@ const searchQuery = ref('');
 const handleSearch = async () => {
     const num = Number(searchQuery.value);
     searchByNumVehicle(num);
+    if (!searchQuery.value) {
+        await getAllVehicles();
+    }
 }
 
 </script>
