@@ -159,7 +159,7 @@ export default class VehicleRepository {
   async searchByNumPlate(numPlate: string): Promise<Vehicle[]> {
     let vehiclesFromDb = await this.dbclient.vehicles.findMany({
       where : {
-        license_plate: {contains: numPlate.trim()} // .trim pour retirer les espaces innutiles
+        license_plate: {contains: numPlate.replace(/[ -]/g, '').toUpperCase()} // On remplace les espaces et - par '' (Le g pour que ce soit global, pas juste le premier espace/-)
       },
       include: {departments: true},
     });
