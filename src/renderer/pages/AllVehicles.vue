@@ -10,6 +10,11 @@
 
     <div class="search-box">
         <input type="text" placeholder="Rechercher..." v-model="searchQuery" @keyup.enter="handleSearch"/>
+        <select v-model="searchColumn">
+            <option v-for="column in seartchableColumns" :key="column.value" :value="column.value">
+                {{ column.label }}
+            </option>
+        </select>
     </div>
     
     <div class="vehicle-list">
@@ -43,7 +48,7 @@ import { useRouter } from 'vue-router';
 import GoBackButton from '../components/GoBackButton.vue';
 import { ref } from 'vue';
 
-const { vehicles, getAllVehicles, searchByNumVehicle} = useVehicleService();
+const { vehicles, getAllVehicles, searchByNumVehicle, searchByNumPlate} = useVehicleService();
 const router = useRouter();
 
 const goToDetails = (id: number) => {
@@ -55,11 +60,25 @@ onMounted(async () =>{
 })
 
 const searchQuery = ref('');
+const searchColumn = ref('numVehicle');
+const seartchableColumns = [
+    {label: 'VRM', value: 'numVehicle'},
+    {label: 'Plaque', value: 'numPlate'},
+]; 
+
 const handleSearch = async () => { // Je vais mettre toutes les recherches ici avec un switch case
-    const num = Number(searchQuery.value);
-    searchByNumVehicle(num);
     if (!searchQuery.value) {
         await getAllVehicles();
+        return;
+    }
+    switch (searchColumn.value) {
+        case 'numVehicle':
+            const numValue = Number(searchQuery.value);
+            searchByNumVehicle(numValue);
+            break;
+        case 'numPlate':
+            searchByNumPlate(searchQuery.value);
+            break;
     }
 }
 

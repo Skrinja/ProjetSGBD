@@ -146,10 +146,20 @@ export default class VehicleRepository {
     });
   }
 
-  async searchByNumVehilce(numVehicle: number): Promise<Vehicle[]> {
-    let vehiclesFromDb = await this.dbclient.vehicles.findMany({
+  async searchByNumVehilce(numVehicle: number): Promise<Vehicle | null> {
+    let vehiclesFromDb = await this.dbclient.vehicles.findFirst({
       where : {
         vehicle_number: {equals: numVehicle}
+      },
+      include: {departments: true},
+    });
+    return vehiclesFromDb ? this.mapToVehicle(vehiclesFromDb) : null;
+  }
+
+  async searchByNumPlate(numPlate: string): Promise<Vehicle[]> {
+    let vehiclesFromDb = await this.dbclient.vehicles.findMany({
+      where : {
+        license_plate: {contains: numPlate.trim()} // .trim pour retirer les espaces innutiles
       },
       include: {departments: true},
     });

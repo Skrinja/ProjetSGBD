@@ -28,5 +28,9 @@ export function registerVehicleHandlers() {
 
     ipcMain.handle('vehicleRepo:searchByNumVehicle', (event, numVehicle: number) =>{
         return vehicleRepository.searchByNumVehilce(numVehicle);
-    })
+    });
+
+    ipcMain.handle('vehicleRepo:searchByNumPlate', (event, numPlate:string) =>{
+        return vehicleRepository.searchByNumPlate(numPlate);
+    });
 }

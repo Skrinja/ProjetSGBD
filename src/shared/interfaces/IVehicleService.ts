@@ -6,5 +6,6 @@ export default interface IVehicleService {
     getVehicleById:(id: number) => Promise<Vehicle>
     deleteVehicle:(id: number) => Promise<void>
     updateVehicle:(vehicle: Vehicle) => Promise<void>
-    searchByNumVehicle: (numVehicle: number) => Promise<Vehicle[]>
+    searchByNumVehicle: (numVehicle: number) => Promise<Vehicle | null>
+    searchByNumPlate: (numPlate: string) => Promise<Vehicle[]>
 }
