@@ -94,6 +94,7 @@ const handleSearch = async () => { // Je vais mettre toutes les recherches ici a
 const decommissionedFilter = ref<'all' | 'decommissioned' | 'not-decommissioned'>('all');
 
 const handleFilterByDecommissioned = async () => {
+    searchQuery.value = '';
     await filterByDecommissioned(decommissionedFilter.value);
 }
 
