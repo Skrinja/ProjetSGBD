@@ -8,4 +8,5 @@ export default interface IVehicleService {
     updateVehicle:(vehicle: Vehicle) => Promise<void>
     searchByNumVehicle: (numVehicle: number) => Promise<Vehicle | null>
     searchByNumPlate: (numPlate: string) => Promise<Vehicle[]>
+    filterByDecommissioned: (decommissionedStatus: 'all' | 'decommissioned' | 'not-decommissioned') => Promise<Vehicle[]>
 }

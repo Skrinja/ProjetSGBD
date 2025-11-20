@@ -10,6 +10,7 @@ export function vehicleService(): IVehicleService {
         deleteVehicle: (id: number) => ipcRenderer.invoke('vehicleRepo:deleteVehicle', id),
         updateVehicle: (vehicle: Vehicle) => ipcRenderer.invoke('vehicleRepo:updateVehicle', vehicle),
         searchByNumVehicle: (numVehicle: number) => ipcRenderer.invoke('vehicleRepo:searchByNumVehicle', numVehicle),
-        searchByNumPlate: (NumPlate: string) => ipcRenderer.invoke('vehicleRepo:searchByNumPlate', NumPlate)
+        searchByNumPlate: (NumPlate: string) => ipcRenderer.invoke('vehicleRepo:searchByNumPlate', NumPlate),
+        filterByDecommissioned: (decommissionedStatus: 'all' | 'decommissioned' | 'not-decommissioned') => ipcRenderer.invoke('vehicleRepo:filterByDecommissioned', decommissionedStatus)
     }
 }

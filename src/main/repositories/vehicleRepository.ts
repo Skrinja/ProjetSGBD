@@ -23,6 +23,7 @@ export default class VehicleRepository {
         configuration: v.vehicle_configuration as any,
         technicalInspectionDate: v.technical_inspection_expiry_date,
         departmentId: v.department_id,
+        decommissioned: v.decommissioned_vehicle,
         departmentName: v.departments.department_name,
     };
   }
@@ -163,6 +164,26 @@ export default class VehicleRepository {
       },
       include: {departments: true},
     });
+    return vehiclesFromDb.map((v) => this.mapToVehicle(v));
+  }
+
+  async filterByDecommissioned(decommissionedStatus: 'all' | 'decommissioned' | 'not-decommissioned'): Promise<Vehicle[]>{
+    let status = {};
+
+    if (decommissionedStatus === 'decommissioned') {
+      status = {decommissioned_vehicle: { equals: true}};
+    }
+    else if (decommissionedStatus === 'not-decommissioned'){
+      status = {decommissioned_vehicle: { equals: false}}
+    }
+
+    const vehiclesFromDb = await this.dbclient.vehicles.findMany({
+      where: status,
+      include: {
+        departments: true,
+      }
+    });
+
     return vehiclesFromDb.map((v) => this.mapToVehicle(v));
   }
 }

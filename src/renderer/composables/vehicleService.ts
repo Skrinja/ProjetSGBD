@@ -36,6 +36,10 @@ export default function useVehicleService() {
         vehicles.value = await (window as any).electronService.vehicle.searchByNumPlate(numPlate);
     }
 
+    const filterByDecommissioned = async (DecompressionedStatus: 'all' | 'decommissioned' | 'not-decommissioned') =>{
+        vehicles.value = await (window as any).electronService.vehicle.filterByDecommissioned(DecompressionedStatus);
+    }
+
     return {
         vehicles,
         getAllVehicles,
@@ -45,6 +49,7 @@ export default function useVehicleService() {
         updateVehicle,
         searchByNumVehicle,
         searchByNumPlate,
+        filterByDecommissioned,
     }
 }
 

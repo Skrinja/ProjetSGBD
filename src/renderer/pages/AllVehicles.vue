@@ -16,6 +16,15 @@
             </option>
         </select>
     </div>
+
+    <div class="filter-box">
+        <label for="decommissioned-filter">Statut Déclassé :</label>
+        <select id="decommissioned-filter" v-model="decommissionedFilter" @change="handleFilterByDecommissioned">
+            <option value="all">Tous</option>
+            <option value="decommissioned">Oui</option>
+            <option value="not-decommissioned">Non</option>
+        </select>
+    </div>
     
     <div class="vehicle-list">
         <div class="list-header">
@@ -25,7 +34,7 @@
             <span class="header-department">Service</span>
             <span class="header-config">Configuration</span>
             <span class="header-license">Permis</span>
-            <span class="header-details"></span>
+            <span class="header-decommissioned">Déclassé</span>
         </div>
         
         <BaseCard class="vehicle-card" v-for="vehicle in vehicles" :key="vehicle.id" @click="goToDetails(vehicle.id)">
@@ -35,7 +44,7 @@
             <span class="vehicle-department">{{ vehicle.departmentName }}</span>
             <span class="vehicle-configuration">{{ vehicle.configuration }}</span>
             <span class="vehicle-license">{{ vehicle.licenseType }}</span>
-            <span class="vehicle-details-link">Détails ➔</span>
+            <span class="vehicle-decommissioned">{{ vehicle.decommissioned ? 'Oui' : 'Non' }}</span>
         </BaseCard>
     </div>
 </template>
@@ -48,7 +57,7 @@ import { useRouter } from 'vue-router';
 import GoBackButton from '../components/GoBackButton.vue';
 import { ref } from 'vue';
 
-const { vehicles, getAllVehicles, searchByNumVehicle, searchByNumPlate} = useVehicleService();
+const { vehicles, getAllVehicles, searchByNumVehicle, searchByNumPlate, filterByDecommissioned} = useVehicleService();
 const router = useRouter();
 
 const goToDetails = (id: number) => {
@@ -80,6 +89,12 @@ const handleSearch = async () => { // Je vais mettre toutes les recherches ici a
             searchByNumPlate(searchQuery.value);
             break;
     }
+}
+
+const decommissionedFilter = ref<'all' | 'decommissioned' | 'not-decommissioned'>('all');
+
+const handleFilterByDecommissioned = async () => {
+    await filterByDecommissioned(decommissionedFilter.value);
 }
 
 </script>
@@ -153,8 +168,8 @@ const handleSearch = async () => { // Je vais mettre toutes les recherches ici a
     /* Mise en page de la grille pour l'en-tête et les lignes (les cartes) */
     .list-header, .vehicle-card {
         display: grid;
-        /* Définition des colonnes: la taille doit correspondre exactement entre l'en-tête et les lignes */
-        grid-template-columns: minmax(70px, 0.5fr) minmax(100px, 1fr) minmax(150px, 1.5fr) minmax(120px, 1fr) minmax(120px, 1fr) minmax(70px, 0.5fr) 70px;
+        /* 8 colonnes : VRM | Plaque | Marque/Modèle | Service | Config | Permis | Déclassé | Détails */
+        grid-template-columns: minmax(70px, 0.5fr) minmax(100px, 1fr) minmax(150px, 1.5fr) minmax(100px, 1fr) minmax(100px, 1fr) 70px 70px 70px;
         gap: 1rem;
         align-items: center;
         padding: 0.75rem 1.5rem;
@@ -209,5 +224,27 @@ const handleSearch = async () => { // Je vais mettre toutes les recherches ici a
         gap: 0.5rem;
         margin-bottom: 1rem;
     }
+}
+
+/* Styles pour le filtre de statut déclassé */
+.filter-box {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+    padding: 0.5rem 0;
+}
+
+.filter-box label {
+    font-weight: 500;
+    color: #475569;
+}
+
+.filter-box select {
+    padding: 0.2rem;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    font-size: 1rem;
+    transition: border-color 0.2s, box-shadow 0.2s;
 }
 </style>

@@ -33,4 +33,8 @@ export function registerVehicleHandlers() {
     ipcMain.handle('vehicleRepo:searchByNumPlate', (event, numPlate:string) =>{
         return vehicleRepository.searchByNumPlate(numPlate);
     });
+
+    ipcMain.handle('vehicleRepo:filterByDecommissioned', (event, decommissionedStatus: 'all' | 'decommissioned' | 'not-decommissioned') => {
+        return vehicleRepository.filterByDecommissioned(decommissionedStatus);
+    })
 }
