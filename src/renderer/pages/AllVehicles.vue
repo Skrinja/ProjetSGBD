@@ -73,12 +73,12 @@ const searchColumn = ref('numVehicle');
 const seartchableColumns = [
     {label: 'VRM', value: 'numVehicle'},
     {label: 'Plaque', value: 'numPlate'},
-    {label: 'Marque / Modèle', value: 'brandModel'},
+    {label: 'Marque ou Modèle', value: 'brandModel'},
 ]; 
 
 const handleSearch = async () => { // Je vais mettre toutes les recherches ici avec un switch case
     if (!searchQuery.value) {
-        await getAllVehicles();
+        await filterByDecommissioned(decommissionedFilter.value);
         return;
     }
     switch (searchColumn.value) {
