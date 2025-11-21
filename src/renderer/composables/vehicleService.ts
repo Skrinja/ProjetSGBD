@@ -40,6 +40,10 @@ export default function useVehicleService() {
         vehicles.value = await (window as any).electronService.vehicle.filterByDecommissioned(DecompressionedStatus);
     }
 
+    const searchByBrandAndModel = async (brandOrModel: string) => {
+        vehicles.value = await (window as any).electronService.vehicle.searchByBrandAndModel(brandOrModel);
+    }
+
     return {
         vehicles,
         getAllVehicles,
@@ -50,6 +54,7 @@ export default function useVehicleService() {
         searchByNumVehicle,
         searchByNumPlate,
         filterByDecommissioned,
+        searchByBrandAndModel,
     }
 }
 

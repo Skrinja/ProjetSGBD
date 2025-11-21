@@ -36,5 +36,10 @@ export function registerVehicleHandlers() {
 
     ipcMain.handle('vehicleRepo:filterByDecommissioned', (event, decommissionedStatus: 'all' | 'decommissioned' | 'not-decommissioned') => {
         return vehicleRepository.filterByDecommissioned(decommissionedStatus);
-    })
+    });
+
+    ipcMain.handle('vehicleRepo:searchByBrandAndModel', (event, brandOrModel: string) => {
+        return vehicleRepository.searchByBrandAndModel(brandOrModel);
+    });
+    
 }

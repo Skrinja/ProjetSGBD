@@ -186,4 +186,23 @@ export default class VehicleRepository {
 
     return vehiclesFromDb.map((v) => this.mapToVehicle(v));
   }
+
+  async searchByBrandAndModel(brandOrModel: string): Promise<Vehicle[]>{
+    let vehicleFromDb = await this.dbclient.vehicles.findMany({
+      where: {
+        OR: [
+          {
+            brand: {contains: brandOrModel.replace(/[ -]/g, '').toUpperCase()}
+          },
+          {
+            model: {contains: brandOrModel.replace(/[ -]/g, '').toUpperCase()}
+          }
+        ]
+      },
+      include: {
+        departments: true,
+      }
+    });
+    return vehicleFromDb.map((v) => this.mapToVehicle(v));
+  }
 }

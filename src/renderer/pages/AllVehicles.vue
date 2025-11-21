@@ -57,7 +57,7 @@ import { useRouter } from 'vue-router';
 import GoBackButton from '../components/GoBackButton.vue';
 import { ref } from 'vue';
 
-const { vehicles, getAllVehicles, searchByNumVehicle, searchByNumPlate, filterByDecommissioned} = useVehicleService();
+const { vehicles, getAllVehicles, searchByNumVehicle, searchByNumPlate, filterByDecommissioned, searchByBrandAndModel} = useVehicleService();
 const router = useRouter();
 
 const goToDetails = (id: number) => {
@@ -73,6 +73,7 @@ const searchColumn = ref('numVehicle');
 const seartchableColumns = [
     {label: 'VRM', value: 'numVehicle'},
     {label: 'Plaque', value: 'numPlate'},
+    {label: 'Marque / Modèle', value: 'brandModel'},
 ]; 
 
 const handleSearch = async () => { // Je vais mettre toutes les recherches ici avec un switch case
@@ -87,6 +88,9 @@ const handleSearch = async () => { // Je vais mettre toutes les recherches ici a
             break;
         case 'numPlate':
             searchByNumPlate(searchQuery.value);
+            break;
+        case 'brandModel':
+            searchByBrandAndModel(searchQuery.value); 
             break;
     }
 }
