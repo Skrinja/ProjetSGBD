@@ -177,7 +177,7 @@ export default class VehicleRepository {
       status = {decommissioned_vehicle: { equals: false}}
     }
 
-    const vehiclesFromDb = await this.dbclient.vehicles.findMany({
+    let vehiclesFromDb = await this.dbclient.vehicles.findMany({
       where: status,
       include: {
         departments: true,
