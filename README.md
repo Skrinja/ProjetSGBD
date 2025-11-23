@@ -1,6 +1,6 @@
 # 🚀 Guide de Démarrage Rapide
 
-Ce projet est une application Electron/Vue.js nécessitant un environnement **Node.js** et une base de données **MySQL/MariaDB**.
+Ce projet est une application Electron/Vue.js nécessitant un environnement **Node.js** et une base de données **MySQL**.
 
 ### 1. Installation des Pré-requis
 
