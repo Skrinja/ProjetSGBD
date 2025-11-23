@@ -5,7 +5,7 @@ Ce projet est une application Electron/Vue.js nécessitant un environnement **No
 ### 1. Installation des Pré-requis
 
 * Installez **Node.js** (inclut `npm`).
-* Installez le serveur de base de données **MySQL** ou **MariaDB** en local.
+* Installez le serveur de base de données **MySQL** en local.
 
 ---
 
@@ -14,7 +14,7 @@ Ce projet est une application Electron/Vue.js nécessitant un environnement **No
 Avant de démarrer le projet, la structure de la base de données doit être créée.
 
 * Localisez le fichier `script.sql` fourni dans les fichiers du projet.
-* Utilisez votre client MySQL/MariaDB (Workbench, DBeaver, etc.) pour **exécuter le contenu de `script.sql`**. Cela créera la base de données et toutes ses tables.
+* Utilisez votre client MySQL (Workbench, DBeaver, etc.) pour **exécuter le contenu de `script.sql`**. Cela créera la base de données et toutes ses tables.
 
 ---
 
@@ -32,7 +32,8 @@ npm install
 
 * Renommer le fichier `.env.example` en `.env`.
 * Éditez le fichier .env et remplacez l'URL de la variable DATABASE_URL par l'URL de connexion à votre base de données locale.
-    Par exemple :
+
+Par exemple :
     ```
     DATABASE_URL=mysql://user:password@localhost:3306/nom_de_la_base
     ```
