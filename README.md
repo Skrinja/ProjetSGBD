@@ -28,7 +28,7 @@ Ouvrez votre terminal à la racine du projet et installez les librairies :
 npm install
 ```
 
-### b. Fichier d'environnement
+#### b. Fichier d'environnement
 
 * Renommer le fichier `.env.example` en `.env`.
 * Éditez le fichier .env et remplacez l'URL de la variable DATABASE_URL par l'URL de connexion à votre base de données locale.
