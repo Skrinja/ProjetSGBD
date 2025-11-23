@@ -34,9 +34,9 @@ npm install
 * Éditez le fichier .env et remplacez l'URL de la variable DATABASE_URL par l'URL de connexion à votre base de données locale.
 
 Par exemple :
-    ```
-    DATABASE_URL=mysql://user:password@localhost:3306/nom_de_la_base
-    ```
+```
+DATABASE_URL=mysql://user:password@localhost:3306/nom_de_la_base
+```
 
 ### 4. Démarrage de l'Application
 
